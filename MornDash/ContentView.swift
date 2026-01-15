@@ -12,10 +12,27 @@ struct ContentView: View {
     @StateObject private var viewModel = HomeViewModel()
     @StateObject private var blockManager = BlockManager()
     
+    // Onboarding Flag
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    
     @State private var showGlow = false         // 文字発光用
     // selectedBlockMode, previewingSound は SettingsView に移動したため削除
     
     var body: some View {
+        Group {
+            if !hasCompletedOnboarding {
+                OnboardingView(
+                    isCompleted: $hasCompletedOnboarding,
+                    viewModel: viewModel,
+                    blockManager: blockManager
+                )
+            } else {
+                mainAppView
+            }
+        }
+    }
+    
+    var mainAppView: some View {
         ZStack {
             // 1. Organic Ambient Background
             AmbientBackgroundView(color: colorForState)
@@ -128,3 +145,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
