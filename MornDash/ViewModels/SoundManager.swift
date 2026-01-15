@@ -62,6 +62,27 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         stopVibration()
     }
     
+    // プレビュー再生（バイブレーションなし）
+    func previewSound(soundName: String) {
+        stopAlarm() // 既存の再生を停止
+        
+        let sound = AlarmSound.all.first(where: { $0.name == soundName }) ?? AlarmSound.defaultSound
+        let frequency = sound.frequency
+        
+        if let url = generateSineWaveWAV(frequency: frequency) {
+            setupAudioSession()
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: url)
+                audioPlayer?.numberOfLoops = -1 // ループ再生（停止ボタンで止める）
+                audioPlayer?.volume = 1.0
+                audioPlayer?.prepareToPlay()
+                audioPlayer?.play()
+            } catch {
+                print("Preview failed: \(error)")
+            }
+        }
+    }
+    
     // バイブレーション開始（1秒おきに振動）
     func startVibration() {
         // 初回振動

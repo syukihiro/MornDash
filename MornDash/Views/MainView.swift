@@ -70,27 +70,7 @@ struct MainView: View {
             
             Spacer()
             
-            // Sound Selector (Minimal)
-            if viewModel.appState != .editing {
-                Menu {
-                    ForEach(AlarmSound.all) { sound in
-                        Button(sound.name) {
-                            viewModel.alarmSettings.soundName = sound.name
-                        }
-                    }
-                } label: {
-                    HStack(spacing: 5) {
-                        Image(systemName: "music.note")
-                        Text(viewModel.alarmSettings.soundName)
-                    }
-                    .font(.system(size: 14, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.4))
-                    .padding(.horizontal, 15)
-                    .padding(.vertical, 8)
-                    .background(Capsule().fill(.white.opacity(0.1)))
-                }
-                .padding(.bottom, 20)
-            }
+            // Sound Selector Removed (Moved to Settings)
             
             // Bottom Controls (Minimal)
             if viewModel.appState != .editing {
