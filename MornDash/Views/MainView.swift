@@ -47,6 +47,11 @@ struct MainView: View {
                             .foregroundColor(viewModel.alarmSettings.isEnabled ? .white : .white.opacity(0.3))
                             .shadow(color: viewModel.alarmSettings.isEnabled ? colorForState.opacity(0.8) : .clear, radius: showGlow ? 30 : 10)
                             .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true), value: showGlow)
+                            .onTapGesture {
+                                withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
+                                    viewModel.appState = .editing
+                                }
+                            }
                         
                         if viewModel.alarmSettings.isEnabled {
                             // ナイトスタンドモードの説明
@@ -76,18 +81,7 @@ struct MainView: View {
             if viewModel.appState != .editing {
                 VStack(spacing: 30) {
                     // Edit Button
-                    Button(action: {
-                        withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
-                            viewModel.appState = .editing
-                        }
-                    }) {
-                        Label("Current Time", systemImage: "pencil")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundColor(.white.opacity(0.4))
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 10)
-                            .background(Capsule().fill(.white.opacity(0.05)))
-                    }
+                    // Edit Button Removed (Tap Time to Edit)
                     
                     // Slide to Sleep
                     SlideToPerformView(label: "SLIDE TO SLEEP", icon: "moon.stars.fill", color: .indigo.opacity(0.8)) {
