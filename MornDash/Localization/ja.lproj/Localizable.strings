@@ -19,7 +19,7 @@
 /* MainView */
 "main_keep_app_open" = "アプリを開いたまま、おやすみなさい";
 "main_ready_to_sleep" = "寝る準備はできましたか？";
-"main_slide_to_sleep" = "スライドして就寝";
+"main_slide_to_sleep" = "スライドして就寝モード";
 
 /* SettingsView */
 "settings_focus_duration" = "集中時間";
