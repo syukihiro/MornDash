@@ -6,14 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXBuildFile section */
-		E2744A082F192D1B00413322 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E2744A062F192D1B00413322 /* Localizable.strings */; };
-/* End PBXBuildFile section */
-
 /* Begin PBXFileReference section */
 		E27449B72F17D1B200413322 /* MornDash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MornDash.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2744A042F192D1B00413322 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E2744A052F192D1B00413322 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -51,7 +45,6 @@
 		E27449AE2F17D1B200413322 = {
 			isa = PBXGroup;
 			children = (
-				E2744A072F192D1B00413322 /* Localization */,
 				E27449B92F17D1B200413322 /* MornDash */,
 				E27449B82F17D1B200413322 /* Products */,
 			);
@@ -63,14 +56,6 @@
 				E27449B72F17D1B200413322 /* MornDash.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		E2744A072F192D1B00413322 /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				E2744A062F192D1B00413322 /* Localizable.strings */,
-			);
-			path = Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +123,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2744A082F192D1B00413322 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,18 +137,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		E2744A062F192D1B00413322 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E2744A042F192D1B00413322 /* en */,
-				E2744A052F192D1B00413322 /* ja */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		E27449C02F17D1B400413322 /* Debug */ = {
