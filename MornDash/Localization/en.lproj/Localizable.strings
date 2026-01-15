@@ -21,6 +21,12 @@
 "main_ready_to_sleep" = "READY TO SLEEP?";
 "main_slide_to_sleep" = "SLIDE TO SLEEP";
 
+/* Tooltip */
+"tooltip_slide_to_sleep" = "Slide to start sleep mode.\nApps restricted after sleep (%lld min) & waking (%lld min).";
+"tooltip_tap_to_edit" = "Tap time to edit wake up time.";
+
+
+
 /* SettingsView */
 "settings_focus_duration" = "Focus Duration";
 "settings_wind_down_duration" = "Wind Down Duration";

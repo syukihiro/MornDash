@@ -21,6 +21,12 @@
 "main_ready_to_sleep" = "寝る準備はできましたか？";
 "main_slide_to_sleep" = "スライドして就寝モード";
 
+/* Tooltip */
+"tooltip_slide_to_sleep" = "矢印をスライドして睡眠モードを開始します。\n就寝モード直後(%lld分)と起床後(%lld分)、アプリが制限されます。";
+"tooltip_tap_to_edit" = "時間をタップして\n起床時間を変更できます。";
+
+
+
 /* SettingsView */
 "settings_focus_duration" = "集中時間";
 "settings_wind_down_duration" = "就寝前の準備時間";

@@ -7,8 +7,11 @@ struct MainView: View {
     let colorForState: Color
     let showGlow: Bool
     
+    @AppStorage("tooltipStep") private var tooltipStep = 0 // 0: Time, 1: Slide, 2: Done
+
     var body: some View {
-        VStack(spacing: 40) {
+        ZStack {
+            VStack(spacing: 40) {
             
             Spacer()
             
@@ -77,6 +80,15 @@ struct MainView: View {
                 }
             }
             .frame(height: 300) // Reserve space
+            .overlay(alignment: .top) {
+                if tooltipStep == 0 && viewModel.appState == .standby {
+                    TooltipView(
+                        text: NSLocalizedString("tooltip_tap_to_edit", comment: ""),
+                        onDismiss: { withAnimation { tooltipStep = 1 } },
+                        arrowDirection: .down
+                    )
+                }
+            }
             
             Spacer()
             
@@ -99,5 +111,33 @@ struct MainView: View {
                 .padding(.bottom, 50)
             }
         }
+        
+        // Tooltip Overlay Step 1 (Slider) & Interaction Blocker
+        if tooltipStep < 2 && viewModel.appState == .standby {
+            Color.black.opacity(0.01)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    withAnimation {
+                        tooltipStep += 1
+                    }
+                }
+                .zIndex(10)
+            
+            if tooltipStep == 1 {
+                TooltipView(
+                    text: String(
+                        format: NSLocalizedString("tooltip_slide_to_sleep", comment: ""),
+                        viewModel.alarmSettings.windDownDurationMinutes,
+                        viewModel.alarmSettings.blockDurationMinutes
+                    ),
+                    onDismiss: { withAnimation { tooltipStep = 2 } },
+                    arrowDirection: .down
+                )
+                .padding(.bottom, 130)
+                .frame(maxHeight: .infinity, alignment: .bottom)
+                .zIndex(11)
+            }
+        }
     }
+}
 }
