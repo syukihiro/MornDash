@@ -12,6 +12,7 @@ struct MornDashApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .preferredColorScheme(.dark) // 常にダークモード（黒ベース）を強制
         }
     }
 }
