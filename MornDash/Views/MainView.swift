@@ -55,13 +55,13 @@ struct MainView: View {
                         
                         if viewModel.alarmSettings.isEnabled {
                             // ナイトスタンドモードの説明
-                            Text("Keep app open & screen on")
+                            Text("main_keep_app_open")
                                 .font(.system(size: 14, weight: .light, design: .rounded))
                                 .foregroundColor(.green.opacity(0.8))
                                 .tracking(1)
                                 .transition(.opacity)
                         } else {
-                            Text("READY TO SLEEP?")
+                            Text("main_ready_to_sleep")
                                 .font(.caption)
                                 .tracking(4)
                                 .foregroundColor(.gray)
@@ -84,7 +84,7 @@ struct MainView: View {
                     // Edit Button Removed (Tap Time to Edit)
                     
                     // Slide to Sleep
-                    SlideToPerformView(label: "SLIDE TO SLEEP", icon: "moon.stars.fill", color: .indigo.opacity(0.8)) {
+                    SlideToPerformView(label: NSLocalizedString("main_slide_to_sleep", comment: ""), icon: "moon.stars.fill", color: .indigo.opacity(0.8)) {
                         withAnimation {
                             viewModel.startWindDown(blockManager: blockManager)
                         }

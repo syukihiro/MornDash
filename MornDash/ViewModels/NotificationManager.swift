@@ -32,8 +32,8 @@ class NotificationManager {
         cancelAlarm()
         
         let content = UNMutableNotificationContent()
-        content.title = "MornDash"
-        content.body = "It's time to wake up! Tap to block your screen."
+        content.title = NSLocalizedString("notification_title", comment: "")
+        content.body = NSLocalizedString("notification_body_main", comment: "")
         // カスタムサウンドを使用 (SoundManagerで生成した Library/Sounds/alarm_sound.wav)
         content.sound = UNNotificationSound(named: UNNotificationSoundName("alarm_sound.wav"))
         
@@ -65,8 +65,8 @@ class NotificationManager {
     // バックアップ通知のスケジュール
     private func scheduleBackupNotifications(at date: Date, count: Int) {
         let content = UNMutableNotificationContent()
-        content.title = "MornDash"
-        content.body = "Wake up! The alarm is ringing!"
+        content.title = NSLocalizedString("notification_title", comment: "")
+        content.body = NSLocalizedString("notification_body_backup", comment: "")
         content.sound = UNNotificationSound(named: UNNotificationSoundName("alarm_sound.wav"))
         if #available(iOS 15.0, *) {
             content.interruptionLevel = .timeSensitive

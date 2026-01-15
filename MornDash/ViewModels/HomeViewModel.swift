@@ -26,7 +26,7 @@ class HomeViewModel: ObservableObject {
     
     // ※iOS制限により、バックグラウンドからの全画面起動は不可。
     // 「アプリを開いたまま枕元に置く」スタイルを推奨する。
-    let keepOpenMessage = "For full alarm experience, keep the app open."
+    let keepOpenMessage = NSLocalizedString("vm_keep_app_open_message", comment: "Message advising user to keep app open")
     
     init() {
         self.alarmSettings = AlarmSettings.load()

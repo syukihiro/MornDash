@@ -1,0 +1,68 @@
+/* 
+  Localizable.strings
+  MornDash
+
+  Created by AI Agent.
+*/
+
+/* Common */
+"settings_title" = "設定";
+"common_done" = "完了";
+"common_select" = "選択";
+"common_next" = "次へ";
+"common_continue" = "続ける";
+
+/* Modes */
+"Morning" = "朝モード";
+"Night" = "夜モード";
+
+/* MainView */
+"main_keep_app_open" = "アプリを開いたまま、画面をオンにしてください";
+"main_ready_to_sleep" = "寝る準備はできましたか？";
+"main_slide_to_sleep" = "スライドして就寝";
+
+/* SettingsView */
+"settings_focus_duration" = "集中時間";
+"settings_wind_down_duration" = "就寝前の準備時間";
+"settings_alarm_sound" = "アラーム音";
+"settings_blocked_apps" = "制限するアプリ";
+"settings_morning_block" = "朝の制限";
+"settings_sleep_block" = "夜の制限";
+"time_3_min" = "3分";
+"time_5_min" = "5分";
+"time_10_min" = "10分";
+
+/* Onboarding */
+"onboarding_welcome_title" = "MornDashへようこそ";
+"onboarding_welcome_desc" = "最高の朝を迎えるために。\nまずはいくつかの権限を許可してください。";
+"onboarding_param_notification" = "通知を許可";
+"onboarding_param_screentime" = "スクリーンタイムを許可";
+"onboarding_wakeup_question" = "起床時間はいつですか？";
+"onboarding_focus_title" = "朝の集中タイム";
+"onboarding_focus_desc" = "起床直後に制限するアプリを選んでください。\nSNSを見続けてしまう朝から卒業しましょう。";
+"onboarding_select_apps" = "制限するアプリを選択";
+"onboarding_finish" = "設定を完了";
+"onboarding_items_selected" = "%d 個選択中";
+
+/* RingingView */
+"ringing_snooze" = "スヌーズ";
+"ringing_slide_to_stop" = "スライドして停止";
+
+/* WindDownView */
+"wind_down_title" = "おやすみ準備中";
+"wind_down_current_time" = "現在時刻";
+"wind_down_wakeup_time" = "起床時刻";
+
+/* BlockingView */
+"blocking_focus" = "集中タイム";
+
+/* SnoozedView */
+"snoozed_zzz" = "zZ";
+
+/* ViewModel */
+"vm_keep_app_open_message" = "アラームを確実に鳴らすため、アプリを開いたままにしてください。";
+
+/* Notification */
+"notification_title" = "MornDash";
+"notification_body_main" = "起きる時間です！タップして画面をブロックしましょう。";
+"notification_body_backup" = "起きてください！アラームが鳴っています！";

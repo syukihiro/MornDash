@@ -1,4 +1,5 @@
 import SwiftUI
+import FamilyControls
 
 struct RingingView: View {
     @ObservedObject var viewModel: HomeViewModel
@@ -31,12 +32,12 @@ struct RingingView: View {
                 Button(action: {
                     viewModel.snoozeAlarm()
                 }) {
-                    Text("Snooze")
+                    Text("ringing_snooze")
                         .font(.system(size: 18, weight: .medium))
                         .foregroundColor(.white.opacity(0.7))
                 }
                 
-                SlideToPerformView(label: "SLIDE TO STOP", icon: "alarm.fill", color: .red) {
+                SlideToPerformView(label: NSLocalizedString("ringing_slide_to_stop", comment: ""), icon: "alarm.fill", color: .red) {
                     withAnimation {
                         viewModel.stopAlarmAndStartBlock(blockManager: blockManager)
                     }

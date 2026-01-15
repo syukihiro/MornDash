@@ -82,12 +82,12 @@ struct OnboardingWelcomeView: View {
                 .shadow(color: .orange.opacity(0.5), radius: 20, x: 0, y: 0)
             
             VStack(spacing: 12) {
-                Text("Welcome to MornDash")
+                Text("onboarding_welcome_title")
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                 
-                Text("Master your morning routine.\nFirst, we need a few permissions to work our magic.")
+                Text("onboarding_welcome_desc")
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white.opacity(0.8))
@@ -95,7 +95,7 @@ struct OnboardingWelcomeView: View {
             
             VStack(spacing: 20) {
                 PermissionButton(
-                    title: "Enable Notifications",
+                    title: NSLocalizedString("onboarding_param_notification", comment: ""),
                     icon: "bell.badge.fill",
                     isAuthorized: notificationsAuthorized
                 ) {
@@ -106,7 +106,7 @@ struct OnboardingWelcomeView: View {
                 }
                 
                 PermissionButton(
-                    title: "Enable Screen Time",
+                    title: NSLocalizedString("onboarding_param_screentime", comment: ""),
                     icon: "hourglass",
                     isAuthorized: screenTimeAuthorized
                 ) {
@@ -120,7 +120,7 @@ struct OnboardingWelcomeView: View {
             .padding(.horizontal)
             
             Button(action: nextAction) {
-                Text("Continue")
+                Text("common_continue")
                     .font(.headline)
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity)
@@ -160,6 +160,7 @@ struct PermissionButton: View {
                 
                 if isAuthorized {
                     Image(systemName: "checkmark.circle.fill")
+                    
                         .foregroundColor(.green)
                 }
             }
@@ -183,7 +184,7 @@ struct OnboardingTimeView: View {
     
     var body: some View {
         VStack(spacing: 30) {
-            Text("When do you wake up?")
+            Text("onboarding_wakeup_question")
                 .font(.title)
                 .fontWeight(.bold)
                 .foregroundColor(.white)
@@ -197,7 +198,7 @@ struct OnboardingTimeView: View {
                 .cornerRadius(20)
             
             Button(action: nextAction) {
-                Text("Next")
+                Text("common_next")
                     .font(.headline)
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity)
@@ -225,12 +226,12 @@ struct OnboardingBlockingView: View {
                 .shadow(color: .orange.opacity(0.5), radius: 20)
             
             VStack(spacing: 12) {
-                Text("Morning Focus")
+                Text("onboarding_focus_title")
                     .font(.title)
                     .fontWeight(.bold)
                     .foregroundColor(.white)
                 
-                Text("Select apps to block immediately after waking up. \nDon't let doomscrolling steal your morning.")
+                Text("onboarding_focus_desc")
                     .font(.body)
                     .multilineTextAlignment(.center)
                     .foregroundColor(.white.opacity(0.8))
@@ -238,7 +239,7 @@ struct OnboardingBlockingView: View {
             
             Button(action: { showPicker = true }) {
                 HStack {
-                    Text("Select Apps to Block")
+                    Text("onboarding_select_apps")
                         .font(.headline)
                     Spacer()
                     Image(systemName: "chevron.right")
@@ -252,7 +253,7 @@ struct OnboardingBlockingView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Button("Done") { showPicker = false }
+                        Button("common_done") { showPicker = false }
                             .padding()
                     }
                     FamilyActivityPicker(selection: $blockManager.morningSelection)
@@ -260,13 +261,13 @@ struct OnboardingBlockingView: View {
             }
             
             if !blockManager.morningSelection.applicationTokens.isEmpty || !blockManager.morningSelection.categoryTokens.isEmpty {
-                Text("\(blockManager.morningSelection.applicationTokens.count + blockManager.morningSelection.categoryTokens.count) items selected")
+                Text(String(format: NSLocalizedString("onboarding_items_selected", comment: ""), blockManager.morningSelection.applicationTokens.count + blockManager.morningSelection.categoryTokens.count))
                     .font(.caption)
                     .foregroundColor(.green)
             }
             
             Button(action: nextAction) {
-                Text("Finish Setup")
+                Text("onboarding_finish")
                     .font(.headline)
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity)

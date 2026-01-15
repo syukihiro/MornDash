@@ -1,4 +1,5 @@
 import SwiftUI
+import FamilyControls
 
 struct BlockingView: View {
     @ObservedObject var viewModel: HomeViewModel
@@ -17,7 +18,7 @@ struct BlockingView: View {
                 .foregroundColor(.white)
                 .shadow(color: .indigo.opacity(0.8), radius: 30)
                 
-            Text("FOCUS")
+            Text("blocking_focus")
                 .font(.caption)
                 .tracking(10)
                 .foregroundColor(.indigo)

@@ -1,4 +1,5 @@
 import SwiftUI
+import FamilyControls
 
 struct WindDownView: View {
     @ObservedObject var viewModel: HomeViewModel
@@ -7,13 +8,13 @@ struct WindDownView: View {
         VStack(spacing: 40) {
             Spacer()
             
-            Text("WIND DOWN")
+            Text("wind_down_title")
                 .font(.caption)
                 .tracking(8)
                 .foregroundColor(.indigo.opacity(0.8))
             
             VStack(spacing: 10) {
-                Text("CURRENT TIME")
+                Text("wind_down_current_time")
                     .font(.system(size: 10, weight: .bold))
                     .foregroundColor(.white.opacity(0.3))
                     .tracking(2)
@@ -33,7 +34,7 @@ struct WindDownView: View {
                     .foregroundColor(.green.opacity(0.8))
                     .shadow(color: .green.opacity(0.3), radius: 10)
                 
-                Text("WAKE UP TIME")
+                Text("wind_down_wakeup_time")
                     .font(.system(size: 10, weight: .bold))
                     .foregroundColor(.white.opacity(0.3))
                     .tracking(2)
@@ -44,7 +45,7 @@ struct WindDownView: View {
             Spacer()
             
             // 停止スライダー
-            SlideToPerformView(label: "SLIDE TO STOP", icon: "xmark", color: .white.opacity(0.3)) {
+            SlideToPerformView(label: NSLocalizedString("ringing_slide_to_stop", comment: ""), icon: "xmark", color: .white.opacity(0.3)) {
                 withAnimation {
                     viewModel.cancelWindDown()
                 }

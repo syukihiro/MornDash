@@ -1,0 +1,68 @@
+/* 
+  Localizable.strings
+  MornDash
+
+  Created by AI Agent.
+*/
+
+/* Common */
+"settings_title" = "Settings";
+"common_done" = "Done";
+"common_select" = "Select";
+"common_next" = "Next";
+"common_continue" = "Continue";
+
+/* Modes */
+"Morning" = "Morning";
+"Night" = "Night";
+
+/* MainView */
+"main_keep_app_open" = "Keep app open & screen on";
+"main_ready_to_sleep" = "READY TO SLEEP?";
+"main_slide_to_sleep" = "SLIDE TO SLEEP";
+
+/* SettingsView */
+"settings_focus_duration" = "Focus Duration";
+"settings_wind_down_duration" = "Wind Down Duration";
+"settings_alarm_sound" = "Alarm Sound";
+"settings_blocked_apps" = "Blocked Apps";
+"settings_morning_block" = "Morning Block";
+"settings_sleep_block" = "Sleep Block";
+"time_3_min" = "3 min";
+"time_5_min" = "5 min";
+"time_10_min" = "10 min";
+
+/* Onboarding */
+"onboarding_welcome_title" = "Welcome to MornDash";
+"onboarding_welcome_desc" = "Master your morning routine.\nFirst, we need a few permissions to work our magic.";
+"onboarding_param_notification" = "Enable Notifications";
+"onboarding_param_screentime" = "Enable Screen Time";
+"onboarding_wakeup_question" = "When do you wake up?";
+"onboarding_focus_title" = "Morning Focus";
+"onboarding_focus_desc" = "Select apps to block immediately after waking up. \nDon't let doomscrolling steal your morning.";
+"onboarding_select_apps" = "Select Apps to Block";
+"onboarding_finish" = "Finish Setup";
+"onboarding_items_selected" = "%d items selected";
+
+/* RingingView */
+"ringing_snooze" = "Snooze";
+"ringing_slide_to_stop" = "SLIDE TO STOP";
+
+/* WindDownView */
+"wind_down_title" = "WIND DOWN";
+"wind_down_current_time" = "CURRENT TIME";
+"wind_down_wakeup_time" = "WAKE UP TIME";
+
+/* BlockingView */
+"blocking_focus" = "FOCUS";
+
+/* SnoozedView */
+"snoozed_zzz" = "zZ";
+
+/* ViewModel */
+"vm_keep_app_open_message" = "For full alarm experience, keep the app open.";
+
+/* Notification */
+"notification_title" = "MornDash";
+"notification_body_main" = "It's time to wake up! Tap to block your screen.";
+"notification_body_backup" = "Wake up! The alarm is ringing!";

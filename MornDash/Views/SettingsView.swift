@@ -16,7 +16,7 @@ struct SettingsView: View {
             // ... (Header)
             // ヘッダー
             HStack {
-                Text("Settings")
+                Text("settings_title")
                     .font(.headline)
                     .foregroundColor(.primary)
                 Spacer()
@@ -39,7 +39,7 @@ struct SettingsView: View {
                     // 設定モード切替（Morning / Night）
                     Picker("Mode", selection: $selectedBlockMode) {
                         ForEach(BlockMode.allCases) { mode in
-                            Text(mode.rawValue).tag(mode)
+                            Text(LocalizedStringKey(mode.rawValue)).tag(mode)
                         }
                     }
                     .pickerStyle(SegmentedPickerStyle())
@@ -47,15 +47,15 @@ struct SettingsView: View {
                     
                     // 時間設定
                     VStack(alignment: .leading, spacing: 5) {
-                        Text(selectedBlockMode == .morning ? "Focus Duration" : "Wind Down Duration")
+                        Text(selectedBlockMode == .morning ? LocalizedStringKey("settings_focus_duration") : LocalizedStringKey("settings_wind_down_duration"))
                             .font(.caption)
                             .foregroundColor(.secondary)
                             .padding(.leading, 5)
                         
                         Picker("Duration", selection: durationBinding) {
-                            Text("3 min").tag(3)
-                            Text("5 min").tag(5)
-                            Text("10 min").tag(10)
+                            Text("time_3_min").tag(3)
+                            Text("time_5_min").tag(5)
+                            Text("time_10_min").tag(10)
                         }
                         .pickerStyle(SegmentedPickerStyle())
                     }
@@ -66,7 +66,7 @@ struct SettingsView: View {
                     
                     // サウンド選択
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Alarm Sound")
+                        Text("settings_alarm_sound")
                             .font(.caption)
                             .foregroundColor(.secondary)
                             .padding(.leading, 20)
@@ -117,11 +117,11 @@ struct SettingsView: View {
                         showAppSelection = true
                     }) {
                         HStack {
-                            Text("Blocked Apps")
+                            Text("settings_blocked_apps")
                                 .font(.headline)
                                 .foregroundColor(.primary)
                             Spacer()
-                            Text("Select")
+                            Text("common_select")
                                 .foregroundColor(.secondary)
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.gray)
@@ -140,11 +140,11 @@ struct SettingsView: View {
         .sheet(isPresented: $showAppSelection) {
             VStack {
                 HStack {
-                    Text(selectedBlockMode == .morning ? "Morning Block" : "Sleep Block")
+                    Text(selectedBlockMode == .morning ? LocalizedStringKey("settings_morning_block") : LocalizedStringKey("settings_sleep_block"))
                         .font(.headline)
                         .padding(.leading)
                     Spacer()
-                    Button("Done") {
+                    Button("common_done") {
                         showAppSelection = false
                     }
                     .padding()

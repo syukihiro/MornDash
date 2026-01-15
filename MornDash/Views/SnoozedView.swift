@@ -1,4 +1,5 @@
 import SwiftUI
+import FamilyControls
 
 struct SnoozedView: View {
     @ObservedObject var viewModel: HomeViewModel
@@ -9,7 +10,7 @@ struct SnoozedView: View {
         VStack {
             Spacer()
             
-            Text("zZ")
+            Text("snoozed_zzz")
                 .font(.system(size: 120, weight: .ultraLight))
                 .foregroundColor(.white.opacity(0.3))
                 .offset(x: showGlow ? 10 : -10, y: showGlow ? -20 : 0)
@@ -25,7 +26,7 @@ struct SnoozedView: View {
                 
             Spacer()
             
-            SlideToPerformView(label: "SLIDE TO STOP", icon: "alarm.fill", color: .orange) {
+            SlideToPerformView(label: NSLocalizedString("ringing_slide_to_stop", comment: ""), icon: "alarm.fill", color: .orange) {
                 withAnimation {
                     viewModel.stopAlarmAndStartBlock(blockManager: blockManager)
                 }
