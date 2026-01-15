@@ -13,6 +13,7 @@ struct ContentView: View {
     @StateObject private var blockManager = BlockManager()
     
     @State private var showGlow = false         // 文字発光用
+    @State private var selectedBlockMode: BlockMode = .morning // 設定画面用モード選択
     
     var body: some View {
         ZStack {
@@ -87,28 +88,81 @@ struct ContentView: View {
                 blockManager.stopBlocking()
             }
         }
-        .onChange(of: blockManager.activitySelection) { _, _ in
-            blockManager.save()
+        .onChange(of: blockManager.morningSelection) { _, _ in
+            blockManager.save(mode: .morning)
+        }
+        .onChange(of: blockManager.sleepSelection) { _, _ in
+            blockManager.save(mode: .sleep)
         }
         .sheet(isPresented: $viewModel.showAppPicker, onDismiss: {
-            blockManager.save()
+            blockManager.saveAll()
         }) {
-            ZStack(alignment: .topTrailing) {
-                // スクリーンタイムAPIのピッカー
-                FamilyActivityPicker(selection: $blockManager.activitySelection)
+            VStack(spacing: 0) {
+                // ヘッダー
+                HStack {
+                    Text("Settings")
+                        .font(.headline)
+                        .foregroundColor(.primary)
+                    Spacer()
+                    Button(action: {
+                        viewModel.showAppPicker = false
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
+                            .symbolRenderingMode(.hierarchical)
+                            .font(.system(size: 30))
+                            .foregroundColor(.gray)
+                    }
+                }
+                .padding()
                 
-                // 閉じるボタン
-                Button(action: {
-                    viewModel.showAppPicker = false
-                }) {
-                    Image(systemName: "xmark.circle.fill")
-                        .font(.system(size: 30))
-                        .symbolRenderingMode(.hierarchical)
-                        .foregroundColor(.gray)
-                        .padding(20)
+                // 設定モード切替（Morning / Night）
+                Picker("Mode", selection: $selectedBlockMode) {
+                    ForEach(BlockMode.allCases) { mode in
+                        Text(mode.rawValue).tag(mode)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding(.horizontal)
+                .padding(.bottom, 10)
+                
+                // 時間設定 (Morning / Night 共通UI、バインディング切り替え)
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(selectedBlockMode == .morning ? "Focus Duration" : "Wind Down Duration")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.leading, 5)
+                    
+                    Picker("Duration", selection: durationBinding) {
+                        Text("3 min").tag(3)
+                        Text("5 min").tag(5)
+                        Text("10 min").tag(10)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+                .padding(.horizontal)
+                .padding(.bottom)
+                
+                Divider()
+                
+                // スクリーンタイムAPIのピッカー (モードに応じてバインディングを切り替え)
+                // FamilyActivityPickerはBindingを受け取るので、動的に切り替えるには工夫が必要
+                // selectedBlockModeに応じて表示するピッカーを変える
+                
+                if selectedBlockMode == .morning {
+                    FamilyActivityPicker(selection: $blockManager.morningSelection)
+                } else {
+                    FamilyActivityPicker(selection: $blockManager.sleepSelection)
                 }
             }
+            // システム背景色を使用して視認性を確保
+            .background(Color(uiColor: .systemBackground))
         }
+    }
+    
+    private var durationBinding: Binding<Int> {
+        selectedBlockMode == .morning
+            ? $viewModel.alarmSettings.blockDurationMinutes
+            : $viewModel.alarmSettings.windDownDurationMinutes
     }
     
     private var colorForState: Color {

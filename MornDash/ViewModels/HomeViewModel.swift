@@ -21,9 +21,8 @@ class HomeViewModel: ObservableObject {
     @Published var remainingWindDownTime: Int = 0
     
     private var cancellables = Set<AnyCancellable>()
-    private let BLOCK_DURATION = 180
     private let SNOOZE_DURATION = 540 // 9分 = 540秒
-    private let WIND_DOWN_DURATION = 180 // 3分
+    // private let WIND_DOWN_DURATION = 180 // 3分
     
     // ※iOS制限により、バックグラウンドからの全画面起動は不可。
     // 「アプリを開いたまま枕元に置く」スタイルを推奨する。
@@ -155,11 +154,12 @@ class HomeViewModel: ObservableObject {
         // アラーム設定をOFFにする（これによりローカル通知もキャンセルされる）
         alarmSettings.isEnabled = false
         
+        
         appState = .blocking
-        remainingBlockTime = BLOCK_DURATION
+        remainingBlockTime = alarmSettings.blockDurationMinutes * 60
         
         // スクリーンタイム制限開始
-        blockManager.startBlocking()
+        blockManager.startBlocking(for: .morning)
     }
     
     private func updateBlockTimer() {
@@ -176,7 +176,7 @@ class HomeViewModel: ObservableObject {
     
     // おやすみスタート
     func startWindDown(blockManager: BlockManager) {
-        remainingWindDownTime = WIND_DOWN_DURATION
+        remainingWindDownTime = alarmSettings.windDownDurationMinutes * 60
         appState = .windDown
         
         // アラームをONにする
@@ -185,7 +185,7 @@ class HomeViewModel: ObservableObject {
         }
         
         // 即座にブロック開始
-        blockManager.startBlocking()
+        blockManager.startBlocking(for: .sleep)
     }
     
     private func updateWindDownTimer() {

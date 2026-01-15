@@ -6,6 +6,8 @@ struct AlarmSettings: Codable, Identifiable {
     var time: Date
     var soundName: String = "Classic" // 追加: 選択されたサウンド名
     var selectedWeekdays: Set<Int>
+    var blockDurationMinutes: Int = 3 // ブロック時間（分）
+    var windDownDurationMinutes: Int = 3 // おやすみ前のブロック時間（分）
     var lastRingDate: Date? // 最後にアラームが鳴った日時
 
     
@@ -21,6 +23,8 @@ struct AlarmSettings: Codable, Identifiable {
             time: defaultTime,
             soundName: "Classic", // 初期値
             selectedWeekdays: [],
+            blockDurationMinutes: 3,
+            windDownDurationMinutes: 3,
             lastRingDate: nil
         )
     }

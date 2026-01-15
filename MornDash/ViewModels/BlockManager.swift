@@ -1,25 +1,33 @@
 import Foundation
 import FamilyControls
 import ManagedSettings
-import Combine // 必須: ObservableObjectと@Publishedに必要
+import Combine
+
+enum BlockMode: String, CaseIterable, Identifiable {
+    case morning = "Morning"
+    case sleep = "Night"
+    
+    var id: String { self.rawValue }
+}
 
 class BlockManager: ObservableObject {
-    // ユーザーが選択したブロック対象のアプリ・カテゴリ
-    @Published var activitySelection = FamilyActivitySelection() {
-        didSet {
-            save()
-        }
+    @Published var morningSelection = FamilyActivitySelection() {
+        didSet { save(mode: .morning) }
     }
     
-    // シールド設定を管理するストア
+    @Published var sleepSelection = FamilyActivitySelection() {
+        didSet { save(mode: .sleep) }
+    }
+    
     private let store = ManagedSettingsStore()
-    private let userDefaultsKey = "BlockActivitySelection"
+    private let morningKey = "BlockActivitySelection_Morning"
+    private let sleepKey = "BlockActivitySelection_Sleep"
+    private let oldKey = "BlockActivitySelection"
     
     init() {
-        loadSelection()
+        loadSelections()
     }
     
-    // スクリーンタイムAPIの認可リクエスト
     func requestAuthorization() async {
         do {
             try await AuthorizationCenter.shared.requestAuthorization(for: .individual)
@@ -29,43 +37,58 @@ class BlockManager: ObservableObject {
         }
     }
     
-    // ブロックを実行（シールド適用）
-    func startBlocking() {
-        // 選択されたアプリ・カテゴリに対してシールドを適用
-        print("Starting block with \(activitySelection.applicationTokens.count) apps")
+    func startBlocking(for mode: BlockMode) {
+        let selection = (mode == .morning) ? morningSelection : sleepSelection
+        print("Starting \(mode.rawValue) block with \(selection.applicationTokens.count) apps")
         
-        // アプリ、カテゴリ、ウェブドメインを制限対象に設定
-        store.shield.applications = activitySelection.applicationTokens
-        store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(activitySelection.categoryTokens)
-        store.shield.webDomains = activitySelection.webDomainTokens
+        store.shield.applications = selection.applicationTokens
+        store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(selection.categoryTokens)
+        store.shield.webDomains = selection.webDomainTokens
     }
     
-    // ブロック解除
     func stopBlocking() {
         print("Blocking stopped")
         store.clearAllSettings()
     }
     
-    // 保存
-    // 保存
-    func save() {
+    func save(mode: BlockMode) {
+        let selection = (mode == .morning) ? morningSelection : sleepSelection
+        let key = (mode == .morning) ? morningKey : sleepKey
+        
         let encoder = PropertyListEncoder()
         do {
-            let data = try encoder.encode(activitySelection)
-            UserDefaults.standard.set(data, forKey: userDefaultsKey)
-            print("Selection saved: \(activitySelection.applicationTokens.count) apps, \(activitySelection.categoryTokens.count) categories")
+            let data = try encoder.encode(selection)
+            UserDefaults.standard.set(data, forKey: key)
+            print("\(mode.rawValue) selection saved")
         } catch {
-            print("Failed to save selection: \(error)")
+            print("Failed to save \(mode.rawValue) selection: \(error)")
         }
     }
     
-    // 読み込み
-    private func loadSelection() {
-        guard let data = UserDefaults.standard.data(forKey: userDefaultsKey) else { return }
+    func saveAll() {
+        save(mode: .morning)
+        save(mode: .sleep)
+    }
+    
+    private func loadSelections() {
         let decoder = PropertyListDecoder()
-        if let selection = try? decoder.decode(FamilyActivitySelection.self, from: data) {
-            self.activitySelection = selection
-            print("Selection loaded: \(selection.applicationTokens.count) apps")
+        
+        // Morning (Migrate old key if needed)
+        if let data = UserDefaults.standard.data(forKey: morningKey) {
+            if let selection = try? decoder.decode(FamilyActivitySelection.self, from: data) {
+                self.morningSelection = selection
+            }
+        } else if let oldData = UserDefaults.standard.data(forKey: oldKey) {
+            if let selection = try? decoder.decode(FamilyActivitySelection.self, from: oldData) {
+                self.morningSelection = selection
+            }
+        }
+        
+        // Sleep
+        if let data = UserDefaults.standard.data(forKey: sleepKey) {
+            if let selection = try? decoder.decode(FamilyActivitySelection.self, from: data) {
+                self.sleepSelection = selection
+            }
         }
     }
 }
