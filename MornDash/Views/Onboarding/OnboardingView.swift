@@ -217,10 +217,12 @@ struct OnboardingBlockingView: View {
     
     var body: some View {
         VStack(spacing: 30) {
-            Image(systemName: "shield.fill")
-                .font(.system(size: 60))
-                .foregroundStyle(.indigo)
-                .shadow(color: .indigo.opacity(0.5), radius: 20)
+            Image("AppLogo")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100, height: 100)
+                .cornerRadius(22)
+                .shadow(color: .orange.opacity(0.5), radius: 20)
             
             VStack(spacing: 12) {
                 Text("Morning Focus")
