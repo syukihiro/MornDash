@@ -61,6 +61,7 @@ struct ContentView: View {
                 case .snoozed:
                     SnoozedView(
                         viewModel: viewModel,
+                        blockManager: blockManager,
                         showGlow: showGlow
                     )
                 case .blocking:

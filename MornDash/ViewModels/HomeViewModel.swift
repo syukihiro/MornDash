@@ -78,9 +78,8 @@ class HomeViewModel: ObservableObject {
         
         switch appState {
         case .standby, .editing:
-            if alarmSettings.isEnabled {
-                checkAlarm()
-            }
+            // Slide to Sleep（おやすみモード）を実行していない場合はアラームを鳴らさない
+            break
         case .snoozed:
             updateSnoozeTimer()
         case .blocking:

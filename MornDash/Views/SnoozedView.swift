@@ -2,6 +2,7 @@ import SwiftUI
 
 struct SnoozedView: View {
     @ObservedObject var viewModel: HomeViewModel
+    @ObservedObject var blockManager: BlockManager
     let showGlow: Bool
     
     var body: some View {
@@ -24,10 +25,12 @@ struct SnoozedView: View {
                 
             Spacer()
             
-            Button("Dismiss") {
-                viewModel.appState = .standby
+            SlideToPerformView(label: "SLIDE TO STOP", icon: "alarm.fill", color: .orange) {
+                withAnimation {
+                    viewModel.stopAlarmAndStartBlock(blockManager: blockManager)
+                }
             }
-            .foregroundColor(.white.opacity(0.5))
+            .padding(.horizontal, 40)
             .padding(.bottom, 50)
         }
     }
