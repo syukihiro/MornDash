@@ -158,11 +158,9 @@ struct PermissionButton: View {
                 
                 Spacer()
                 
-                if isAuthorized {
-                    Image(systemName: "checkmark.circle.fill")
-                    
-                        .foregroundColor(.green)
-                }
+                Image(systemName: isAuthorized ? "checkmark.circle.fill" : "circle")
+                    .font(.title2)
+                    .foregroundColor(isAuthorized ? .green : .white.opacity(0.3))
             }
             .foregroundColor(.white)
             .padding()
