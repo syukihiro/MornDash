@@ -4,7 +4,18 @@ import UserNotifications
 class NotificationManager {
     static let shared = NotificationManager()
     
-    // 通知の許可をリクエスト
+    // 通知の許可をリクエスト (Async)
+    func requestAuthorization() async -> Bool {
+        do {
+            let granted = try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge])
+            return granted
+        } catch {
+            print("Notification permission error: \(error.localizedDescription)")
+            return false
+        }
+    }
+
+    // 通知の許可をリクエスト (Legacy)
     func requestAuthorization() {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if granted {

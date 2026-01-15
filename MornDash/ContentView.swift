@@ -81,6 +81,13 @@ struct ContentView: View {
             UIApplication.shared.isIdleTimerDisabled = true
             
             Task {
+                // 1. 通知許可をリクエスト
+                _ = await NotificationManager.shared.requestAuthorization()
+                
+                // 少し待ってから次のダイアログへ
+                try? await Task.sleep(nanoseconds: 500_000_000) // 0.5秒
+                
+                // 2. スクリーンタイム許可をリクエスト
                 await blockManager.requestAuthorization()
             }
         }

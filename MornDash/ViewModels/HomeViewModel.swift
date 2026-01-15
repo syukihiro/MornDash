@@ -34,8 +34,7 @@ class HomeViewModel: ObservableObject {
         // 通知用サウンドファイルの準備（Library/Soundsへ保存）
         SoundManager.shared.prepareNotificationSound(soundName: alarmSettings.soundName)
         
-        // 通知許可をリクエスト
-        NotificationManager.shared.requestAuthorization()
+        // 通知許可のリクエストはContentViewで制御する（ダイアログ重複回避のため）
         
         setupSubscriptions()
         startTimer()
