@@ -96,17 +96,6 @@ struct ContentView: View {
             
             // 重要: 画面の自動ロック（スリープ）を無効化
             UIApplication.shared.isIdleTimerDisabled = true
-            
-            Task {
-                // 1. 通知許可をリクエスト
-                _ = await NotificationManager.shared.requestAuthorization()
-                
-                // 少し待ってから次のダイアログへ
-                try? await Task.sleep(nanoseconds: 500_000_000) // 0.5秒
-                
-                // 2. スクリーンタイム許可をリクエスト
-                await blockManager.requestAuthorization()
-            }
         }
         .onChange(of: viewModel.appState) { _, newState in
             if newState == .standby || newState == .sleeping {
@@ -129,7 +118,6 @@ struct ContentView: View {
             )
         }
     }
-    
     private var colorForState: Color {
         switch viewModel.appState {
         case .ringing: return .red
