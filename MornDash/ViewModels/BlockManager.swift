@@ -7,7 +7,7 @@ class BlockManager: ObservableObject {
     // ユーザーが選択したブロック対象のアプリ・カテゴリ
     @Published var activitySelection = FamilyActivitySelection() {
         didSet {
-            saveSelection()
+            save()
         }
     }
     
@@ -47,11 +47,15 @@ class BlockManager: ObservableObject {
     }
     
     // 保存
-    private func saveSelection() {
+    // 保存
+    func save() {
         let encoder = PropertyListEncoder()
-        if let data = try? encoder.encode(activitySelection) {
+        do {
+            let data = try encoder.encode(activitySelection)
             UserDefaults.standard.set(data, forKey: userDefaultsKey)
-            print("Selection saved")
+            print("Selection saved: \(activitySelection.applicationTokens.count) apps, \(activitySelection.categoryTokens.count) categories")
+        } catch {
+            print("Failed to save selection: \(error)")
         }
     }
     

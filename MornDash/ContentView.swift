@@ -87,7 +87,12 @@ struct ContentView: View {
                 blockManager.stopBlocking()
             }
         }
-        .sheet(isPresented: $viewModel.showAppPicker) {
+        .onChange(of: blockManager.activitySelection) { _, _ in
+            blockManager.save()
+        }
+        .sheet(isPresented: $viewModel.showAppPicker, onDismiss: {
+            blockManager.save()
+        }) {
             ZStack(alignment: .topTrailing) {
                 // スクリーンタイムAPIのピッカー
                 FamilyActivityPicker(selection: $blockManager.activitySelection)
