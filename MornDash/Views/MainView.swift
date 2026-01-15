@@ -55,11 +55,16 @@ struct MainView: View {
                         
                         if viewModel.alarmSettings.isEnabled {
                             // ナイトスタンドモードの説明
-                            Text("main_keep_app_open")
-                                .font(.system(size: 14, weight: .light, design: .rounded))
-                                .foregroundColor(.green.opacity(0.8))
-                                .tracking(1)
-                                .transition(.opacity)
+                            HStack(spacing: 6) {
+                                Text("main_keep_app_open")
+                                    .font(.system(size: 14, weight: .light, design: .rounded))
+                                
+                                Image(systemName: "moon.fill")
+                                    .font(.system(size: 12))
+                            }
+                            .foregroundColor(.green.opacity(0.8))
+                            .tracking(1)
+                            .transition(.opacity)
                         } else {
                             Text("main_ready_to_sleep")
                                 .font(.caption)
