@@ -20,6 +20,10 @@
 "main_keep_app_open" = "Keep app open & screen on";
 "main_ready_to_sleep" = "READY TO SLEEP?";
 "main_slide_to_sleep" = "SLIDE TO SLEEP";
+"main_alarm_on" = "ALARM ON";
+"main_alarm_off" = "ALARM OFF";
+"main_turn_on" = "TURN ON";
+"main_turn_off" = "TURN OFF";
 
 /* Tooltip */
 "tooltip_slide_to_sleep" = "Slide to start sleep mode.\nApps restricted after sleep (%lld min) & waking (%lld min).";
@@ -28,6 +32,7 @@
 
 
 /* SettingsView */
+"settings_alarm_time" = "Alarm Time";
 "settings_focus_duration" = "Focus Duration";
 "settings_wind_down_duration" = "Wind Down Duration";
 "settings_alarm_sound" = "Alarm Sound";

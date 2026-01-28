@@ -6,18 +6,15 @@ struct MainView: View {
     @ObservedObject var blockManager: BlockManager
     let colorForState: Color
     let showGlow: Bool
-    
-    @AppStorage("tooltipStep") private var tooltipStep = 0 // 0: Time, 1: Slide, 2: Done
 
     var body: some View {
-        ZStack {
-            VStack(spacing: 40) {
-            
+        VStack(spacing: 40) {
             Spacer()
             
             // Central Element: TIME or EDITOR
             ZStack {
                 if viewModel.appState == .editing {
+                    // 編集モード: DatePicker表示
                     VStack(spacing: 20) {
                         DatePicker("", selection: $viewModel.alarmSettings.time, displayedComponents: .hourAndMinute)
                             .datePickerStyle(WheelDatePickerStyle())
@@ -43,8 +40,9 @@ struct MainView: View {
                     }
                     .transition(.opacity.combined(with: .scale(scale: 0.9)))
                 } else {
-                    VStack(spacing: 12) {
-                        // The Massive Time Display
+                    // 通常モード: 時刻表示（タップで編集）
+                    VStack(spacing: 20) {
+                        // The Massive Time Display (タップで編集)
                         Text(viewModel.alarmSettings.time, style: .time)
                             .font(.system(size: 100, weight: .ultraLight, design: .default))
                             .foregroundColor(viewModel.alarmSettings.isEnabled ? .white : .white.opacity(0.3))
@@ -56,88 +54,52 @@ struct MainView: View {
                                 }
                             }
                         
+                        // Status Text
                         if viewModel.alarmSettings.isEnabled {
-                            // ナイトスタンドモードの説明
-                            HStack(spacing: 6) {
-                                Text("main_keep_app_open")
-                                    .font(.system(size: 14, weight: .light, design: .rounded))
-                                
-                                Image(systemName: "moon.fill")
-                                    .font(.system(size: 12))
-                            }
-                            .foregroundColor(.green.opacity(0.8))
-                            .tracking(1)
-                            .transition(.opacity)
+                            Text("main_alarm_on")
+                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                                .foregroundColor(.green.opacity(0.9))
+                                .tracking(2)
                         } else {
-                            Text("main_ready_to_sleep")
-                                .font(.caption)
-                                .tracking(4)
-                                .foregroundColor(.gray)
-                                .opacity(0.8)
+                            Text("main_alarm_off")
+                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                                .foregroundColor(.gray.opacity(0.7))
+                                .tracking(2)
                         }
                     }
                     .transition(.opacity.combined(with: .scale(scale: 1.1)))
                 }
             }
             .frame(height: 300) // Reserve space
-            .overlay(alignment: .top) {
-                if tooltipStep == 0 && viewModel.appState == .standby {
-                    TooltipView(
-                        text: NSLocalizedString("tooltip_tap_to_edit", comment: ""),
-                        onDismiss: { withAnimation { tooltipStep = 1 } },
-                        arrowDirection: .down
-                    )
-                }
-            }
             
             Spacer()
             
-            // Sound Selector Removed (Moved to Settings)
-            
-            // Bottom Controls (Minimal)
+            // Simple ON/OFF Toggle Button (編集モード時は非表示)
             if viewModel.appState != .editing {
-                VStack(spacing: 30) {
-                    // Edit Button
-                    // Edit Button Removed (Tap Time to Edit)
-                    
-                    // Slide to Sleep
-                    SlideToPerformView(label: NSLocalizedString("main_slide_to_sleep", comment: ""), icon: "moon.stars.fill", color: .indigo.opacity(0.8)) {
-                        withAnimation {
-                            viewModel.startWindDown(blockManager: blockManager)
-                        }
+                Button(action: {
+                    withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
+                        viewModel.toggleAlarm()
                     }
+                }) {
+                    HStack(spacing: 12) {
+                        Image(systemName: viewModel.alarmSettings.isEnabled ? "bell.fill" : "bell.slash.fill")
+                            .font(.system(size: 24, weight: .medium))
+                        
+                        Text(viewModel.alarmSettings.isEnabled ? "main_turn_off" : "main_turn_on")
+                            .font(.system(size: 18, weight: .semibold, design: .rounded))
+                    }
+                    .foregroundColor(.white)
                     .padding(.horizontal, 40)
+                    .padding(.vertical, 18)
+                    .background(
+                        Capsule()
+                            .fill(viewModel.alarmSettings.isEnabled ? Color.red.opacity(0.7) : Color.green.opacity(0.7))
+                            .shadow(color: (viewModel.alarmSettings.isEnabled ? Color.red : Color.green).opacity(0.4), radius: 15, x: 0, y: 5)
+                    )
                 }
-                .padding(.bottom, 50)
-            }
-        }
-        
-        // Tooltip Overlay Step 1 (Slider) & Interaction Blocker
-        if tooltipStep < 2 && viewModel.appState == .standby {
-            Color.black.opacity(0.01)
-                .ignoresSafeArea()
-                .onTapGesture {
-                    withAnimation {
-                        tooltipStep += 1
-                    }
-                }
-                .zIndex(10)
-            
-            if tooltipStep == 1 {
-                TooltipView(
-                    text: String(
-                        format: NSLocalizedString("tooltip_slide_to_sleep", comment: ""),
-                        viewModel.alarmSettings.windDownDurationMinutes,
-                        viewModel.alarmSettings.blockDurationMinutes
-                    ),
-                    onDismiss: { withAnimation { tooltipStep = 2 } },
-                    arrowDirection: .down
-                )
-                .padding(.bottom, 130)
-                .frame(maxHeight: .infinity, alignment: .bottom)
-                .zIndex(11)
+                .animation(.spring(response: 0.3, dampingFraction: 0.6), value: viewModel.alarmSettings.isEnabled)
+                .padding(.bottom, 80)
             }
         }
     }
-}
 }
