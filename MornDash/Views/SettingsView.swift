@@ -10,6 +10,7 @@ struct SettingsView: View {
     @State private var previewingSound: String? = nil
     
     @State private var showAppSelection = false
+    @State private var showSoundSelection = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -64,49 +65,30 @@ struct SettingsView: View {
                     Divider()
                         .padding(.horizontal)
                     
-                    // サウンド選択
+                    // サウンド選択ボタン
                     VStack(alignment: .leading, spacing: 10) {
                         Text("settings_alarm_sound")
                             .font(.caption)
                             .foregroundColor(.secondary)
                             .padding(.leading, 20)
                         
-                        ForEach(AlarmSound.all) { sound in
+                        Button(action: {
+                            showSoundSelection = true
+                        }) {
                             HStack {
-                                Button(action: {
-                                    viewModel.alarmSettings.soundName = sound.name
-                                }) {
-                                    HStack {
-                                        Text(sound.name)
-                                            .foregroundColor(.primary)
-                                        Spacer()
-                                        if viewModel.alarmSettings.soundName == sound.name {
-                                            Image(systemName: "checkmark")
-                                                .foregroundColor(.blue)
-                                        }
-                                    }
-                                }
-                                
-                                // プレビューボタン
-                                Button(action: {
-                                    if previewingSound == sound.name {
-                                        SoundManager.shared.stopAlarm()
-                                        previewingSound = nil
-                                    } else {
-                                        SoundManager.shared.previewSound(soundName: sound.name)
-                                        previewingSound = sound.name
-                                    }
-                                }) {
-                                    Image(systemName: (previewingSound == sound.name) ? "stop.circle.fill" : "play.circle.fill")
-                                        .font(.title2)
-                                        .foregroundColor(.gray)
-                                }
-                                .padding(.leading, 10)
+                                Text(viewModel.alarmSettings.soundName)
+                                    .foregroundColor(.primary)
+                                Spacer()
+                                Text("common_select")
+                                    .foregroundColor(.secondary)
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
                             }
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 8)
-                            .background(Color(uiColor: .systemBackground))
+                            .padding()
+                            .background(Color(uiColor: .secondarySystemBackground))
+                            .cornerRadius(12)
                         }
+                        .padding(.horizontal)
                     }
                     
                     Divider()
@@ -174,6 +156,9 @@ struct SettingsView: View {
                 }
             }
         }
+        .sheet(isPresented: $showSoundSelection) {
+            SoundSelectionView(viewModel: viewModel, isPresented: $showSoundSelection)
+        }
     }
     
     private var durationBinding: Binding<Int> {
@@ -182,3 +167,67 @@ struct SettingsView: View {
             : $viewModel.alarmSettings.windDownDurationMinutes
     }
 }
+
+struct SoundSelectionView: View {
+    @ObservedObject var viewModel: HomeViewModel
+    @Binding var isPresented: Bool
+    @State private var previewingSound: String? = nil
+    
+    var body: some View {
+        VStack {
+            // Header
+            HStack {
+                Text("settings_alarm_sound")
+                    .font(.headline)
+                Spacer()
+                Button("common_done") {
+                    SoundManager.shared.stopAlarm()
+                    isPresented = false
+                }
+            }
+            .padding()
+            
+            ScrollView {
+                VStack(spacing: 10) {
+                    ForEach(AlarmSound.all) { sound in
+                        HStack {
+                            Button(action: {
+                                viewModel.alarmSettings.soundName = sound.name
+                            }) {
+                                HStack {
+                                    Text(sound.name)
+                                        .foregroundColor(.primary)
+                                    Spacer()
+                                    if viewModel.alarmSettings.soundName == sound.name {
+                                        Image(systemName: "checkmark")
+                                            .foregroundColor(.blue)
+                                    }
+                                }
+                            }
+                            
+                            // プレビューボタン
+                            Button(action: {
+                                if previewingSound == sound.name {
+                                    SoundManager.shared.stopAlarm()
+                                    previewingSound = nil
+                                } else {
+                                    SoundManager.shared.previewSound(soundName: sound.name)
+                                    previewingSound = sound.name
+                                }
+                            }) {
+                                Image(systemName: (previewingSound == sound.name) ? "stop.circle.fill" : "play.circle.fill")
+                                    .font(.title2)
+                                    .foregroundColor(.gray)
+                            }
+                            .padding(.leading, 10)
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 8)
+                        .background(Color(uiColor: .systemBackground))
+                        .cornerRadius(8)
+                    }
+                }
+                .padding(.horizontal)
+            }
+        }
+    }
