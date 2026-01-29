@@ -76,4 +76,7 @@
 /* Notification */
 "notification_title" = "MornDash";
 "notification_body_main" = "起きる時間です！タップして画面をブロックしましょう。";
-"notification_body_backup" = "起きてください！アラームが鳴っています！";
+
+/* Credits */
+"settings_credit_title" = "クレジット";
+"settings_credit_otologic" = "音源提供：OtoLogic";

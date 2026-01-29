@@ -29,12 +29,19 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
     }
     
     func startAlarm(soundName: String) {
-        // AlarmSound構造体から周波数を取得
         let sound = AlarmSound.all.first(where: { $0.name == soundName }) ?? AlarmSound.defaultSound
-        let frequency = sound.frequency
         
-        // WAVデータを生成して再生
-        if let url = generateSineWaveWAV(frequency: frequency) {
+        // システムサウンドが指定されている場合はまずそれを試みる
+        if let systemSoundName = sound.systemSoundName {
+            if let url = findSystemSound(name: systemSoundName) {
+                play(url: url)
+                return
+            }
+            print("System sound not found: \(systemSoundName), using generated sound instead")
+        }
+        
+        // システムサウンドが見つからなかった、または生成音の場合
+        if let url = generateSineWaveWAV(frequency: sound.frequency) {
             play(url: url)
         }
     }
@@ -67,10 +74,57 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
         stopAlarm() // 既存の再生を停止
         
         let sound = AlarmSound.all.first(where: { $0.name == soundName }) ?? AlarmSound.defaultSound
-        let frequency = sound.frequency
         
+        setupAudioSession()
+        
+        // システムサウンドが指定されている場合はまずそれを試みる
+        if let systemSoundName = sound.systemSoundName {
+            if let url = findSystemSound(name: systemSoundName) {
+                do {
+                    audioPlayer = try AVAudioPlayer(contentsOf: url)
+                    audioPlayer?.numberOfLoops = -1
+                    audioPlayer?.volume = 1.0
+                    audioPlayer?.prepareToPlay()
+                    audioPlayer?.play()
+                    print("Playing system sound: \(systemSoundName)")
+                    return
+                } catch {
+                    print("Failed to play system sound: \(error)")
+                }
+            }
+            print("System sound not found: \(systemSoundName), using generated sound instead")
+        }
+        
+        // システムサウンドが見つからない、またはカスタム生成音の場合
+        playGeneratedSound(frequency: sound.frequency)
+    }
+    
+    // システムサウンドを探すヘルパーメソッド
+    private func findSystemSound(name: String) -> URL? {
+        let possibleExtensions = ["caf", "m4a", "aiff", "wav", "mp3"]
+        
+        // まずアプリバンドル内を探す
+        for ext in possibleExtensions {
+            if let url = Bundle.main.url(forResource: name, withExtension: ext) {
+                return url
+            }
+        }
+        
+        // バンドルに見つからない場合はシステムサウンドディレクトリも探す
+        let systemSoundsPath = "/System/Library/Audio/UISounds"
+        for ext in possibleExtensions {
+            let path = "\(systemSoundsPath)/\(name).\(ext)"
+            if FileManager.default.fileExists(atPath: path) {
+                return URL(fileURLWithPath: path)
+            }
+        }
+        
+        return nil
+    }
+    
+    // 生成音を再生するヘルパーメソッド
+    private func playGeneratedSound(frequency: Double) {
         if let url = generateSineWaveWAV(frequency: frequency) {
-            setupAudioSession()
             do {
                 audioPlayer = try AVAudioPlayer(contentsOf: url)
                 audioPlayer?.numberOfLoops = -1 // ループ再生（停止ボタンで止める）

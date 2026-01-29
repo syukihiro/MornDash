@@ -131,6 +131,23 @@ struct SettingsView: View {
                         .cornerRadius(12)
                     }
                     .padding(.horizontal)
+                    
+                    Divider()
+                        .padding(.horizontal)
+                    
+                    // クレジット (OtoLogic)
+                    VStack(spacing: 5) {
+                        Text("settings_credit_title")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        
+                        Link(destination: URL(string: "https://otologic.jp")!) {
+                            Text("settings_credit_otologic")
+                                .font(.caption)
+                                .foregroundColor(.blue)
+                        }
+                    }
+                    .padding(.bottom, 20)
                 }
                 .padding(.bottom, 20)
             }

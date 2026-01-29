@@ -76,4 +76,7 @@
 /* Notification */
 "notification_title" = "MornDash";
 "notification_body_main" = "It's time to wake up! Tap to block your screen.";
-"notification_body_backup" = "Wake up! The alarm is ringing!";
+
+/* Credits */
+"settings_credit_title" = "Credits";
+"settings_credit_otologic" = "Sound Effects by OtoLogic";
