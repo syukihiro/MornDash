@@ -8,98 +8,109 @@ struct MainView: View {
     let showGlow: Bool
 
     var body: some View {
-        VStack(spacing: 40) {
-            Spacer()
-            
-            // Central Element: TIME or EDITOR
-            ZStack {
-                if viewModel.appState == .editing {
-                    // 編集モード: DatePicker表示
-                    VStack(spacing: 20) {
-                        DatePicker("", selection: $viewModel.alarmSettings.time, displayedComponents: .hourAndMinute)
-                            .datePickerStyle(WheelDatePickerStyle())
-                            .labelsHidden()
-                            .colorScheme(.dark)
-                            .frame(width: 300, height: 200)
-                            .background(
-                                RoundedRectangle(cornerRadius: 20)
-                                    .fill(.ultraThinMaterial)
-                            )
-                        
-                        Button(action: {
-                            withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
-                                viewModel.appState = .standby
-                            }
-                        }) {
-                            Image(systemName: "checkmark")
-                                .font(.system(size: 30, weight: .light))
-                                .foregroundColor(.white)
-                                .padding(20)
-                                .background(Circle().fill(.white.opacity(0.1)))
-                        }
-                    }
-                    .transition(.opacity.combined(with: .scale(scale: 0.9)))
-                } else {
-                    // 通常モード: 時刻表示（タップで編集）
-                    VStack(spacing: 20) {
-                        // The Massive Time Display (タップで編集)
-                        Text(viewModel.alarmSettings.time, style: .time)
-                            .font(.system(size: 100, weight: .ultraLight, design: .default))
-                            .foregroundColor(viewModel.alarmSettings.isEnabled ? .white : .white.opacity(0.3))
-                            .shadow(color: viewModel.alarmSettings.isEnabled ? colorForState.opacity(0.8) : .clear, radius: showGlow ? 30 : 10)
-                            .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true), value: showGlow)
-                            .onTapGesture {
-                                withAnimation(.spring(response: 0.5, dampingFraction: 0.7)) {
-                                    viewModel.appState = .editing
-                                }
-                            }
-                        
-                        // Status Text
-                        if viewModel.alarmSettings.isEnabled {
-                            Text("main_alarm_on")
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                                .foregroundColor(.green.opacity(0.9))
-                                .tracking(2)
-                        } else {
-                            Text("main_alarm_off")
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                                .foregroundColor(.gray.opacity(0.7))
-                                .tracking(2)
-                        }
-                    }
-                    .transition(.opacity.combined(with: .scale(scale: 1.1)))
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: 30) {
+                if viewModel.streakStore.currentStreak > 0 {
+                    streakPill
+                        .padding(.top, 20)
                 }
-            }
-            .frame(height: 300) // Reserve space
-            
-            Spacer()
-            
-            // Simple ON/OFF Toggle Button (編集モード時は非表示)
-            if viewModel.appState != .editing {
-                Button(action: {
-                    withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
-                        viewModel.toggleAlarm()
+
+                VStack(spacing: 12) {
+                    Image(systemName: "sunrise.fill")
+                        .font(.system(size: 70, weight: .ultraLight))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [.orange, .yellow],
+                                startPoint: .bottom,
+                                endPoint: .top
+                            )
+                        )
+                        .shadow(color: colorForState.opacity(0.6), radius: showGlow ? 30 : 10)
+                        .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true), value: showGlow)
+
+                    Text("main_next_block")
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundColor(.white.opacity(0.6))
+                        .tracking(2)
+
+                    Text(startTimeString)
+                        .font(.system(size: 64, weight: .thin, design: .rounded))
+                        .foregroundColor(.white)
+                }
+                .padding(.top, viewModel.streakStore.currentStreak > 0 ? 0 : 40)
+
+                if viewModel.taskStore.tasks.isEmpty {
+                    Text("main_no_tasks")
+                        .font(.system(size: 14))
+                        .foregroundColor(.white.opacity(0.5))
+                        .padding()
+                } else {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("main_todays_tasks")
+                            .font(.system(size: 12, weight: .medium))
+                            .foregroundColor(.white.opacity(0.5))
+                            .tracking(2)
+
+                        ForEach(sortedTasks) { task in
+                            HStack {
+                                Image(systemName: task.isCompletedToday ? "checkmark.circle.fill" : "circle")
+                                    .foregroundColor(task.isCompletedToday ? .green : .white.opacity(0.3))
+                                Text(task.title)
+                                    .foregroundColor(.white.opacity(0.8))
+                                    .strikethrough(task.isCompletedToday, color: .white.opacity(0.4))
+                            }
+                            .font(.system(size: 16))
+                        }
                     }
-                }) {
-                    HStack(spacing: 12) {
-                        Image(systemName: viewModel.alarmSettings.isEnabled ? "bell.fill" : "bell.slash.fill")
-                            .font(.system(size: 24, weight: .medium))
-                        
-                        Text(viewModel.alarmSettings.isEnabled ? "main_turn_off" : "main_turn_on")
-                            .font(.system(size: 18, weight: .semibold, design: .rounded))
-                    }
-                    .foregroundColor(.white)
-                    .padding(.horizontal, 40)
-                    .padding(.vertical, 18)
+                    .padding()
+                    .frame(maxWidth: 320, alignment: .leading)
                     .background(
-                        Capsule()
-                            .fill(viewModel.alarmSettings.isEnabled ? Color.red.opacity(0.7) : Color.green.opacity(0.7))
-                            .shadow(color: (viewModel.alarmSettings.isEnabled ? Color.red : Color.green).opacity(0.4), radius: 15, x: 0, y: 5)
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.white.opacity(0.05))
                     )
                 }
-                .animation(.spring(response: 0.3, dampingFraction: 0.6), value: viewModel.alarmSettings.isEnabled)
-                .padding(.bottom, 80)
             }
+            .frame(maxWidth: .infinity)
+            .padding(.bottom, 40)
         }
+    }
+
+    private var startTimeString: String {
+        String(format: "%02d:%02d", viewModel.config.startHour, viewModel.config.startMinute)
+    }
+
+    private var sortedTasks: [TaskItem] {
+        viewModel.taskStore.tasks.enumerated()
+            .sorted { lhs, rhs in
+                if lhs.element.isCompletedToday == rhs.element.isCompletedToday {
+                    return lhs.offset < rhs.offset
+                }
+                return !lhs.element.isCompletedToday
+            }
+            .map(\.element)
+    }
+
+    private var streakPill: some View {
+        HStack(spacing: 6) {
+            Image(systemName: "flame.fill")
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [.orange, .red],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+            Text(String(format: NSLocalizedString("streak_days_format", comment: ""), viewModel.streakStore.currentStreak))
+                .foregroundColor(.white.opacity(0.9))
+        }
+        .font(.system(size: 13, weight: .semibold))
+        .padding(.horizontal, 14)
+        .padding(.vertical, 7)
+        .background(
+            Capsule().fill(Color.white.opacity(0.08))
+        )
+        .overlay(
+            Capsule().strokeBorder(Color.orange.opacity(0.25), lineWidth: 1)
+        )
     }
 }

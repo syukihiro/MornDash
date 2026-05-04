@@ -1,33 +1,24 @@
 import Foundation
 import FamilyControls
 import ManagedSettings
+import DeviceActivity
 import Combine
 
-enum BlockMode: String, CaseIterable, Identifiable {
-    case morning = "Morning"
-    case sleep = "Night"
-    
-    var id: String { self.rawValue }
-}
-
 class BlockManager: ObservableObject {
-    @Published var morningSelection = FamilyActivitySelection() {
-        didSet { save(mode: .morning) }
+    @Published var selection: FamilyActivitySelection {
+        didSet {
+            SharedStorage.saveSelection(selection)
+        }
     }
-    
-    @Published var sleepSelection = FamilyActivitySelection() {
-        didSet { save(mode: .sleep) }
-    }
-    
+
     private let store = ManagedSettingsStore()
-    private let morningKey = "BlockActivitySelection_Morning"
-    private let sleepKey = "BlockActivitySelection_Sleep"
-    private let oldKey = "BlockActivitySelection"
-    
+    private let center = DeviceActivityCenter()
+    static let activityName = DeviceActivityName("dailyBlock")
+
     init() {
-        loadSelections()
+        self.selection = SharedStorage.loadSelection()
     }
-    
+
     func requestAuthorization() async {
         do {
             try await AuthorizationCenter.shared.requestAuthorization(for: .individual)
@@ -36,59 +27,40 @@ class BlockManager: ObservableObject {
             print("Authorization failed: \(error.localizedDescription)")
         }
     }
-    
-    func startBlocking(for mode: BlockMode) {
-        let selection = (mode == .morning) ? morningSelection : sleepSelection
-        print("Starting \(mode.rawValue) block with \(selection.applicationTokens.count) apps")
-        
-        store.shield.applications = selection.applicationTokens
-        store.shield.applicationCategories = ShieldSettings.ActivityCategoryPolicy.specific(selection.categoryTokens)
-        store.shield.webDomains = selection.webDomainTokens
+
+    /// Apply shield immediately (main app calls this when the user opens the app during an active block window).
+    func applyShield() {
+        store.shield.applications = selection.applicationTokens.isEmpty ? nil : selection.applicationTokens
+        store.shield.applicationCategories = selection.categoryTokens.isEmpty
+            ? nil
+            : ShieldSettings.ActivityCategoryPolicy.specific(selection.categoryTokens)
+        store.shield.webDomains = selection.webDomainTokens.isEmpty ? nil : selection.webDomainTokens
     }
-    
-    func stopBlocking() {
-        print("Blocking stopped")
+
+    /// Remove shield immediately (called when user completes tasks or presses give-up).
+    func clearShield() {
         store.clearAllSettings()
     }
-    
-    func save(mode: BlockMode) {
-        let selection = (mode == .morning) ? morningSelection : sleepSelection
-        let key = (mode == .morning) ? morningKey : sleepKey
-        
-        let encoder = PropertyListEncoder()
+
+    /// Register the DeviceActivity schedule. This tells the OS to wake the extension at the
+    /// user's start time every day. The extension applies the shield regardless of whether the
+    /// main app is open.
+    func scheduleDailyBlock(startHour: Int, startMinute: Int) {
+        let schedule = DeviceActivitySchedule(
+            intervalStart: DateComponents(hour: startHour, minute: startMinute),
+            intervalEnd: DateComponents(hour: 23, minute: 59),
+            repeats: true
+        )
         do {
-            let data = try encoder.encode(selection)
-            UserDefaults.standard.set(data, forKey: key)
-            print("\(mode.rawValue) selection saved")
+            center.stopMonitoring([Self.activityName])
+            try center.startMonitoring(Self.activityName, during: schedule)
+            print("Scheduled daily block at \(startHour):\(startMinute)")
         } catch {
-            print("Failed to save \(mode.rawValue) selection: \(error)")
+            print("Failed to schedule: \(error.localizedDescription)")
         }
     }
-    
-    func saveAll() {
-        save(mode: .morning)
-        save(mode: .sleep)
-    }
-    
-    private func loadSelections() {
-        let decoder = PropertyListDecoder()
-        
-        // Morning (Migrate old key if needed)
-        if let data = UserDefaults.standard.data(forKey: morningKey) {
-            if let selection = try? decoder.decode(FamilyActivitySelection.self, from: data) {
-                self.morningSelection = selection
-            }
-        } else if let oldData = UserDefaults.standard.data(forKey: oldKey) {
-            if let selection = try? decoder.decode(FamilyActivitySelection.self, from: oldData) {
-                self.morningSelection = selection
-            }
-        }
-        
-        // Sleep
-        if let data = UserDefaults.standard.data(forKey: sleepKey) {
-            if let selection = try? decoder.decode(FamilyActivitySelection.self, from: data) {
-                self.sleepSelection = selection
-            }
-        }
+
+    func unscheduleDailyBlock() {
+        center.stopMonitoring([Self.activityName])
     }
 }

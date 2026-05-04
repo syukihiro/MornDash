@@ -2,206 +2,142 @@ import Foundation
 import Combine
 
 enum AppState {
-    case standby    // 待機中（時計表示）
-    case editing    // 時刻編集中
-    case ringing    // 鳴動中
-    case snoozed    // スヌーズ中
-    case blocking   // ブロック実行中
-    case windDown   // おやすみ前の3分間ブロック
-    case sleeping   // おやすみ中（3分経過後、ブロックなし、画面維持）
+    case idle       // 開始時間前、またはタスク完了済み
+    case blocking   // ブロック中(タスク未完了)
 }
 
 class HomeViewModel: ObservableObject {
-    @Published var alarmSettings: AlarmSettings
+    @Published var config: AppConfig
+    @Published var taskStore: TaskStore
+    @Published var streakStore: StreakStore
+    @Published var emergencyUnlockStore: EmergencyUnlockStore
     @Published var currentTime: Date = Date()
-    @Published var showAppPicker = false
-    @Published var appState: AppState = .standby
-    @Published var remainingBlockTime: Int = 0 
-    @Published var remainingSnoozeTime: Int = 0
-    @Published var remainingWindDownTime: Int = 0
-    
+    @Published var pendingBadge: Badge?
+
+    private var pendingBadgeQueue: [Badge] = []
     private var cancellables = Set<AnyCancellable>()
-    private let SNOOZE_DURATION = 540 // 9分 = 540秒
-    // private let WIND_DOWN_DURATION = 180 // 3分
-    
-    // ※iOS制限により、バックグラウンドからの全画面起動は不可。
-    // 「アプリを開いたまま枕元に置く」スタイルを推奨する。
-    let keepOpenMessage = NSLocalizedString("vm_keep_app_open_message", comment: "Message advising user to keep app open")
-    
+
     init() {
-        self.alarmSettings = AlarmSettings.load()
-        
-        // 通知用サウンドファイルの準備（Library/Soundsへ保存）
-        SoundManager.shared.prepareNotificationSound(soundName: alarmSettings.soundName)
-        
-        // 通知許可のリクエストはContentViewで制御する（ダイアログ重複回避のため）
-        
+        self.config = AppConfig.load()
+        self.taskStore = TaskStore.load()
+        self.streakStore = StreakStore.load()
+        self.emergencyUnlockStore = EmergencyUnlockStore.load()
         setupSubscriptions()
         startTimer()
     }
-    
+
     private func setupSubscriptions() {
-        $alarmSettings
+        $config
             .dropFirst()
-            .debounce(for: 0.5, scheduler: RunLoop.main)
-            .sink { settings in
-                settings.save()
-                
-                // 設定変更時にサウンドファイルを更新（選択された音色で再生成）
-                SoundManager.shared.prepareNotificationSound(soundName: settings.soundName)
-                
-                // 通知の更新
-                if settings.isEnabled {
-                    print("Scheduling notification for: \(settings.time)")
-                    NotificationManager.shared.scheduleAlarm(at: settings.time)
-                } else {
-                    print("Canceling notification")
-                    NotificationManager.shared.cancelAlarm()
-                }
-            }
+            .debounce(for: 0.3, scheduler: RunLoop.main)
+            .sink { settings in settings.save() }
+            .store(in: &cancellables)
+
+        $taskStore
+            .dropFirst()
+            .debounce(for: 0.3, scheduler: RunLoop.main)
+            .sink { store in store.save() }
+            .store(in: &cancellables)
+
+        $streakStore
+            .dropFirst()
+            .debounce(for: 0.3, scheduler: RunLoop.main)
+            .sink { store in store.save() }
+            .store(in: &cancellables)
+
+        $emergencyUnlockStore
+            .dropFirst()
+            .debounce(for: 0.3, scheduler: RunLoop.main)
+            .sink { store in store.save() }
             .store(in: &cancellables)
     }
-    
+
     private func startTimer() {
         Timer.publish(every: 1, on: .main, in: .common)
             .autoconnect()
             .sink { [weak self] _ in
-                guard let self = self else { return }
-                self.tick()
+                self?.currentTime = Date()
             }
             .store(in: &cancellables)
     }
-    
-    private func tick() {
-        currentTime = Date()
-        
-        switch appState {
-        case .standby, .editing:
-            // Slide to Sleep（おやすみモード）を実行していない場合はアラームを鳴らさない
-            break
-        case .snoozed:
-            updateSnoozeTimer()
-        case .blocking:
-            updateBlockTimer()
-        case .windDown:
-            // おやすみ中もアラームチェックは必要（3分以内に指定時刻になった場合など）
-            checkAlarm()
-            updateWindDownTimer()
-        case .sleeping:
-            checkAlarm()
-        default:
-            break
+
+    var appState: AppState {
+        if isInBlockWindow && !taskStore.allCompletedToday && !hasGivenUpToday {
+            return .blocking
         }
+        return .idle
     }
-    
-    private func checkAlarm() {
+
+    /// 現在時刻 >= 開始時刻(同日内) なら true
+    var isInBlockWindow: Bool {
         let calendar = Calendar.current
-        let currentComponents = calendar.dateComponents([.hour, .minute, .second], from: currentTime)
-        let alarmComponents = calendar.dateComponents([.hour, .minute], from: alarmSettings.time)
-        
-        if currentComponents.hour == alarmComponents.hour &&
-            currentComponents.minute == alarmComponents.minute {
-            
-            // アプリ再起動時などの二重発火防止
-            if let lastRing = alarmSettings.lastRingDate {
-                // 分単位まで一致していたら、既に鳴らしたとみなしてスキップ
-                if calendar.isDate(lastRing, equalTo: currentTime, toGranularity: .minute) {
-                    return
+        let now = currentTime
+        let startComponents = DateComponents(
+            year: calendar.component(.year, from: now),
+            month: calendar.component(.month, from: now),
+            day: calendar.component(.day, from: now),
+            hour: config.startHour,
+            minute: config.startMinute
+        )
+        guard let start = calendar.date(from: startComponents) else { return false }
+        return now >= start
+    }
+
+    var hasGivenUpToday: Bool {
+        guard let rawDate = SharedStorage.defaults.object(forKey: SharedStorage.Keys.lastGiveUpDate) as? Date else {
+            return false
+        }
+        return Calendar.current.isDateInToday(rawDate)
+    }
+
+    // MARK: - Actions
+
+    func toggleTask(_ id: UUID, blockManager: BlockManager) {
+        let wasAllCompleted = taskStore.allCompletedToday
+        taskStore.toggle(id)
+        if taskStore.allCompletedToday {
+            if !wasAllCompleted {
+                streakStore.recordCompletionToday()
+                let newlyUnlocked = streakStore.newlyUnlockedBadges()
+                if !newlyUnlocked.isEmpty {
+                    pendingBadgeQueue.append(contentsOf: newlyUnlocked)
+                    presentNextBadgeIfNeeded()
                 }
             }
-            
-            startRinging()
+            blockManager.clearShield()
         }
     }
-    
-    private func startRinging() {
-        appState = .ringing
-        
-        // 最後に鳴らした時刻を記録（二重発火防止）
-        alarmSettings.lastRingDate = Date()
-        // Combineのsink経由で保存されるが、念のため
-        
-        // サウンド再生
-        SoundManager.shared.startAlarm(soundName: alarmSettings.soundName)
-        
-        // バイブレーション開始
-        SoundManager.shared.startVibration()
+
+    func dismissPendingBadge() {
+        if let current = pendingBadge {
+            streakStore.markCelebrated(threshold: current.threshold)
+        }
+        pendingBadge = nil
+        presentNextBadgeIfNeeded()
     }
-    
-    // スヌーズ開始
-    func snoozeAlarm() {
-        SoundManager.shared.stopAlarm()
-        // バイブレーション停止（stopAlarm内で呼ばれるが明示的に書くならここも確認）
-        appState = .snoozed
-        remainingSnoozeTime = SNOOZE_DURATION
+
+    private func presentNextBadgeIfNeeded() {
+        guard pendingBadge == nil, !pendingBadgeQueue.isEmpty else { return }
+        pendingBadge = pendingBadgeQueue.removeFirst()
     }
-    
-    private func updateSnoozeTimer() {
-        if remainingSnoozeTime > 0 {
-            remainingSnoozeTime -= 1
+
+    func giveUp(blockManager: BlockManager) {
+        SharedStorage.defaults.set(Date(), forKey: SharedStorage.Keys.lastGiveUpDate)
+        emergencyUnlockStore.record()
+        blockManager.clearShield()
+        objectWillChange.send()
+    }
+
+    /// メインアプリが前面に出たとき、現在ブロック窓内ならシールドを適用(冗長だが安全網)。
+    func syncShield(blockManager: BlockManager) {
+        if appState == .blocking {
+            blockManager.applyShield()
         } else {
-            // スヌーズ終了 -> 再度鳴動
-            startRinging()
+            blockManager.clearShield()
         }
     }
-    
-    // アラーム停止＆ブロック開始
-    func stopAlarmAndStartBlock(blockManager: BlockManager) {
-        SoundManager.shared.stopAlarm()
-        
-        // アラーム設定をOFFにする（これによりローカル通知もキャンセルされる）
-        alarmSettings.isEnabled = false
-        
-        
-        appState = .blocking
-        remainingBlockTime = alarmSettings.blockDurationMinutes * 60
-        
-        // スクリーンタイム制限開始
-        blockManager.startBlocking(for: .morning)
-    }
-    
-    private func updateBlockTimer() {
-        if remainingBlockTime > 0 {
-            remainingBlockTime -= 1
-        } else {
-            finishBlocking()
-        }
-    }
-    
-    private func finishBlocking() {
-        appState = .standby
-    }
-    
-    // おやすみスタート
-    func startWindDown(blockManager: BlockManager) {
-        remainingWindDownTime = alarmSettings.windDownDurationMinutes * 60
-        appState = .windDown
-        
-        // アラームをONにする
-        if !alarmSettings.isEnabled {
-            alarmSettings.isEnabled = true
-        }
-        
-        // 即座にブロック開始
-        blockManager.startBlocking(for: .sleep)
-    }
-    
-    private func updateWindDownTimer() {
-        if remainingWindDownTime > 0 {
-            remainingWindDownTime -= 1
-        } else {
-            // 3分経過後はsleepingに移行（画面は維持するが、ContentView側で非ブロックになる）
-            appState = .sleeping
-        }
-    }
-    
-    // おやすみモード中断
-    func cancelWindDown() {
-        appState = .standby
-    }
-    
-    // アラームON/OFFトグル
-    func toggleAlarm() {
-        alarmSettings.isEnabled.toggle()
+
+    func applySchedule(blockManager: BlockManager) {
+        blockManager.scheduleDailyBlock(startHour: config.startHour, startMinute: config.startMinute)
     }
 }

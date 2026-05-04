@@ -1,82 +1,146 @@
-/* 
+/*
   Localizable.strings
   MornDash
-
-  Created by AI Agent.
 */
 
 /* Common */
 "settings_title" = "Settings";
 "common_done" = "Done";
+"common_cancel" = "Cancel";
 "common_select" = "Select";
 "common_next" = "Next";
 "common_continue" = "Continue";
+"common_back" = "Back";
+"common_skip" = "Skip";
+"common_start" = "Get Started";
 
-/* Modes */
-"Morning" = "Morning";
-"Night" = "Night";
+/* MainView (idle) */
+"main_next_block" = "NEXT BLOCK";
+"main_todays_tasks" = "TODAY'S TASKS";
+"main_no_tasks" = "No tasks yet. Add some from the Tasks tab.";
 
-/* MainView */
-"main_keep_app_open" = "Keep app open & screen on";
-"main_ready_to_sleep" = "READY TO SLEEP?";
-"main_slide_to_sleep" = "SLIDE TO SLEEP";
-"main_alarm_on" = "ALARM ON";
-"main_alarm_off" = "ALARM OFF";
-"main_turn_on" = "TURN ON";
-"main_turn_off" = "TURN OFF";
+/* Tabs */
+"tab_home" = "Home";
+"tab_tasks" = "Tasks";
+"tab_stats" = "Stats";
+"tab_settings" = "Settings";
 
-/* Tooltip */
-"tooltip_slide_to_sleep" = "Slide to start sleep mode.\nApps restricted after sleep (%lld min) & waking (%lld min).";
-"tooltip_tap_to_edit" = "Tap time to edit wake up time.";
+/* Streak / Stats */
+"streak_days_format" = "%d day streak";
+"stats_current_streak" = "CURRENT STREAK";
+"stats_longest_streak" = "BEST";
+"stats_total_completed" = "TOTAL DAYS";
+"stats_last_7_days" = "LAST 7 DAYS";
+"stats_contributions" = "ACTIVITY";
+"stats_badges" = "BADGES";
+"stats_no_data" = "Complete all your tasks for a day to start your streak.";
+"stats_blocked_usage_today" = "BLOCKED APPS · TODAY";
+"stats_blocked_usage_no_selection" = "No apps selected for blocking yet.";
+"stats_emergency_unlocks" = "Emergency unlocks";
+"stats_emergency_unlocks_total_unit" = "total";
+"stats_emergency_unlocks_this_week" = "This week";
+"stats_emergency_unlocks_this_month" = "This month";
+"stats_emergency_unlocks_last" = "Last: %@";
+"stats_emergency_unlocks_none" = "No emergency unlocks yet.";
 
-
-
-/* SettingsView */
-"settings_alarm_time" = "Alarm Time";
-"settings_focus_duration" = "Focus Duration";
-"settings_wind_down_duration" = "Wind Down Duration";
-"settings_alarm_sound" = "Alarm Sound";
-"settings_blocked_apps" = "Blocked Apps";
-"settings_morning_block" = "Morning Block";
-"settings_sleep_block" = "Sleep Block";
-"time_3_min" = "3 min";
-"time_5_min" = "5 min";
-"time_10_min" = "10 min";
-
-/* Onboarding */
-"onboarding_welcome_title" = "Welcome to MornDash";
-"onboarding_welcome_desc" = "Master your morning routine.\nFirst, we need a few permissions to work our magic.";
-"onboarding_param_notification" = "Enable Notifications";
-"onboarding_param_screentime" = "Enable Screen Time";
-"onboarding_wakeup_question" = "When do you wake up?";
-"onboarding_focus_title" = "Morning Focus";
-"onboarding_focus_desc" = "Select apps to block immediately after waking up. \nDon't let doomscrolling steal your morning.";
-"onboarding_select_apps" = "Select Apps to Block";
-"onboarding_finish" = "Finish Setup";
-"onboarding_items_selected" = "%d items selected";
-
-/* RingingView */
-"ringing_snooze" = "Snooze";
-"ringing_slide_to_stop" = "SLIDE TO STOP";
-
-/* WindDownView */
-"wind_down_title" = "WIND DOWN";
-"wind_down_current_time" = "CURRENT TIME";
-"wind_down_wakeup_time" = "WAKE UP TIME";
+/* Badges */
+"badge_3day" = "3 Day\nStarter";
+"badge_7day" = "Week\nWarrior";
+"badge_30day" = "Month\nMaster";
+"badge_100day" = "Century\nChampion";
+"badge_celebration_eyebrow" = "BADGE UNLOCKED";
+"badge_celebration_continue" = "Continue";
 
 /* BlockingView */
-"blocking_focus" = "FOCUS";
+"blocking_header" = "BLOCKED";
+"blocking_subtitle" = "Complete your tasks to unlock.";
+"blocking_give_up" = "Emergency unlock";
+"blocking_give_up_confirm_title" = "Unlock for an emergency?";
+"blocking_give_up_confirm_message" = "Use only in emergencies. Today's tasks will stay unchecked, and blocking will resume tomorrow.";
+"blocking_give_up_confirm_button" = "Emergency unlock";
 
-/* SnoozedView */
-"snoozed_zzz" = "zZ";
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "Emergency unlock";
+"emergency_unlock_subtitle" = "Are you sure you want to unlock?";
+"emergency_unlock_bullet_today" = "Today's tasks will remain unchecked.";
+"emergency_unlock_bullet_tomorrow" = "Blocking will resume tomorrow morning.";
+"emergency_unlock_bullet_streak" = "Your streak may be broken.";
+"emergency_unlock_slide_label" = "Slide to unlock";
+"emergency_unlock_cancel" = "Never mind";
 
-/* ViewModel */
-"vm_keep_app_open_message" = "For full alarm experience, keep the app open.";
+/* SettingsView */
+"settings_start_time" = "Start Time";
+"settings_tasks" = "Tasks";
+"settings_tasks_footer" = "Complete all tasks to unlock blocked apps. Tasks reset every day.";
+"settings_task_placeholder" = "Task";
+"settings_add_task_placeholder" = "Add a task";
+"settings_blocking" = "Blocking";
+"settings_blocked_apps" = "Blocked Apps";
+"settings_items_unit" = "items";
 
-/* Notification */
-"notification_title" = "MornDash";
-"notification_body_main" = "It's time to wake up! Tap to block your screen.";
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "Losing your day to SNS and time-wasting apps?";
+"onboarding_problem_desc" = "The apps you open without thinking add up to hours — and your whole day slips away.";
+"onboarding_problem_point_scroll" = "Opening social feeds on autopilot";
+"onboarding_problem_point_time" = "Hours melting into apps every day";
+"onboarding_problem_point_mood" = "Never getting to what you actually want to do";
 
-/* Credits */
-"settings_credit_title" = "Credits";
-"settings_credit_otologic" = "Sound Effects by OtoLogic";
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "How MornDash works";
+"onboarding_how_desc" = "From your set time, time-wasting apps stay locked for the rest of the day.";
+"onboarding_how_step1_title" = "At your set time";
+"onboarding_how_step1_desc" = "Blocking kicks in automatically each day";
+"onboarding_how_step2_title" = "Apps lock down";
+"onboarding_how_step2_desc" = "The apps you pick stay locked all day";
+"onboarding_how_step3_title" = "Tasks unlock them";
+"onboarding_how_step3_desc" = "Finish your chosen tasks to release the block";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Enable Screen Time";
+"onboarding_permission_desc" = "To block apps, MornDash needs access to Apple's Screen Time.";
+"onboarding_permission_note" = "Everything stays on your device. MornDash doesn't send your data anywhere.";
+"onboarding_param_screentime" = "Enable Screen Time";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "Pick apps to block";
+"onboarding_apps_desc" = "Choose the apps you want locked for the whole day.";
+"onboarding_apps_hint" = "Social and video apps are a good starting point.";
+"onboarding_select_apps" = "Select Apps";
+"onboarding_items_selected" = "%d items selected";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "When should it start?";
+"onboarding_time_desc" = "From this time every day, your chosen apps stay locked.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "Set your unlock tasks";
+"onboarding_tasks_desc" = "Finish them all to unlock the apps for today. Pick from suggestions or write your own.";
+"onboarding_tasks_your_list" = "Your tasks";
+"onboarding_tasks_suggestions" = "Suggestions";
+"onboarding_tasks_custom" = "Write your own";
+"onboarding_tasks_empty" = "No tasks yet";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "Take back your time.";
+"onboarding_motivation_desc" = "Spend your hours on your life, not your feed.\nSmall wins build the person you want to be.";
+"onboarding_motivation_point_focus" = "Stay focused the whole day";
+"onboarding_motivation_point_calm" = "Finally get to what really matters";
+"onboarding_motivation_point_self" = "One step closer to your best self";
+"onboarding_finish" = "Get Started";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "Stretch";
+"onboarding_preset_water" = "Drink a glass of water";
+"onboarding_preset_face" = "Wash my face";
+"onboarding_preset_teeth" = "Brush my teeth";
+"onboarding_preset_bed" = "Make my bed";
+"onboarding_preset_breakfast" = "Eat breakfast";
+"onboarding_preset_meditate" = "Meditate for 5 minutes";
+"onboarding_preset_journal" = "Write in my journal";
+"onboarding_preset_walk" = "Step outside and breathe";
+"onboarding_preset_read" = "Read 10 pages";
+
+/* Default tasks */
+"default_task_stretch" = "Stretch";
+"default_task_water" = "Drink a glass of water";
+"default_task_face" = "Wash my face";

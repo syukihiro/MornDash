@@ -1,82 +1,146 @@
-/* 
+/*
   Localizable.strings
   MornDash
-
-  Created by AI Agent.
 */
 
 /* Common */
 "settings_title" = "設定";
 "common_done" = "完了";
+"common_cancel" = "キャンセル";
 "common_select" = "選択";
 "common_next" = "次へ";
 "common_continue" = "続ける";
+"common_back" = "戻る";
+"common_skip" = "スキップ";
+"common_start" = "始める";
 
-/* Modes */
-"Morning" = "朝モード";
-"Night" = "夜モード";
+/* MainView (idle) */
+"main_next_block" = "次のブロック";
+"main_todays_tasks" = "今日のタスク";
+"main_no_tasks" = "タスクがまだありません。タスクタブから追加してください。";
 
-/* MainView */
-"main_keep_app_open" = "アプリを開いたまま、おやすみなさい";
-"main_ready_to_sleep" = "寝る準備はできましたか？";
-"main_slide_to_sleep" = "スライドして就寝モード";
-"main_alarm_on" = "アラーム ON";
-"main_alarm_off" = "アラーム OFF";
-"main_turn_on" = "ONにする";
-"main_turn_off" = "OFFにする";
+/* Tabs */
+"tab_home" = "ホーム";
+"tab_tasks" = "タスク";
+"tab_stats" = "記録";
+"tab_settings" = "設定";
 
-/* Tooltip */
-"tooltip_slide_to_sleep" = "矢印をスライドして睡眠モードを開始します。\n就寝モード直後(%lld分)と起床後(%lld分)、アプリが制限されます。";
-"tooltip_tap_to_edit" = "時間をタップして\n起床時間を変更できます。";
+/* Streak / Stats */
+"streak_days_format" = "%d日連続";
+"stats_current_streak" = "継続中";
+"stats_longest_streak" = "最長";
+"stats_total_completed" = "累計達成日";
+"stats_last_7_days" = "この7日間";
+"stats_contributions" = "アクティビティ";
+"stats_badges" = "バッジ";
+"stats_no_data" = "タスクを全て完了して連続記録をスタート。";
+"stats_blocked_usage_today" = "ブロック対象アプリ · 今日";
+"stats_blocked_usage_no_selection" = "ブロックするアプリが未選択です。";
+"stats_emergency_unlocks" = "緊急解除";
+"stats_emergency_unlocks_total_unit" = "回（累計）";
+"stats_emergency_unlocks_this_week" = "今週";
+"stats_emergency_unlocks_this_month" = "今月";
+"stats_emergency_unlocks_last" = "前回: %@";
+"stats_emergency_unlocks_none" = "まだ緊急解除はありません。";
 
-
-
-/* SettingsView */
-"settings_alarm_time" = "アラーム時刻";
-"settings_focus_duration" = "集中時間";
-"settings_wind_down_duration" = "就寝前の準備時間";
-"settings_alarm_sound" = "アラーム音";
-"settings_blocked_apps" = "制限するアプリ";
-"settings_morning_block" = "朝の制限";
-"settings_sleep_block" = "夜の制限";
-"time_3_min" = "3分";
-"time_5_min" = "5分";
-"time_10_min" = "10分";
-
-/* Onboarding */
-"onboarding_welcome_title" = "MornDashへようこそ";
-"onboarding_welcome_desc" = "最高の朝を迎えるために。\nまずはいくつかの権限を許可してください。";
-"onboarding_param_notification" = "通知を許可";
-"onboarding_param_screentime" = "スクリーンタイムを許可";
-"onboarding_wakeup_question" = "起床時間はいつですか？";
-"onboarding_focus_title" = "朝の集中タイム";
-"onboarding_focus_desc" = "起床直後に制限するアプリを選んでください。\nSNSを見続けてしまう朝から卒業しましょう。";
-"onboarding_select_apps" = "制限するアプリを選択";
-"onboarding_finish" = "設定を完了";
-"onboarding_items_selected" = "%d 個選択中";
-
-/* RingingView */
-"ringing_snooze" = "スヌーズ";
-"ringing_slide_to_stop" = "スライドして停止";
-
-/* WindDownView */
-"wind_down_title" = "おやすみ準備中";
-"wind_down_current_time" = "現在時刻";
-"wind_down_wakeup_time" = "起床時刻";
+/* Badges */
+"badge_3day" = "3日\n達成";
+"badge_7day" = "1週間\n達成";
+"badge_30day" = "1ヶ月\n達成";
+"badge_100day" = "100日\n達成";
+"badge_celebration_eyebrow" = "BADGE UNLOCKED";
+"badge_celebration_continue" = "続ける";
 
 /* BlockingView */
-"blocking_focus" = "集中タイム";
+"blocking_header" = "ブロック中";
+"blocking_subtitle" = "タスクをすべて完了すると解除されます。";
+"blocking_give_up" = "緊急時の解除";
+"blocking_give_up_confirm_title" = "緊急で解除しますか？";
+"blocking_give_up_confirm_message" = "緊急時のみご利用ください。今日のチェックはそのままで、明日からまたブロックが始まります。";
+"blocking_give_up_confirm_button" = "緊急解除する";
 
-/* SnoozedView */
-"snoozed_zzz" = "zZ";
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "緊急解除";
+"emergency_unlock_subtitle" = "本当にロックを解除いたしますか？";
+"emergency_unlock_bullet_today" = "今日のタスクはチェックされません。";
+"emergency_unlock_bullet_tomorrow" = "明日の朝、ブロックがふたたび始まります。";
+"emergency_unlock_bullet_streak" = "連続記録は途切れる場合があります。";
+"emergency_unlock_slide_label" = "スライドで緊急解除";
+"emergency_unlock_cancel" = "やっぱりやめる";
 
-/* ViewModel */
-"vm_keep_app_open_message" = "アラームを確実に鳴らすため、アプリを開いたままにしてください。";
+/* SettingsView */
+"settings_start_time" = "開始時間";
+"settings_tasks" = "タスク";
+"settings_tasks_footer" = "すべてのタスクを完了するとアプリが解除されます。日をまたぐとリセットされます。";
+"settings_task_placeholder" = "タスク";
+"settings_add_task_placeholder" = "タスクを追加";
+"settings_blocking" = "ブロック設定";
+"settings_blocked_apps" = "制限するアプリ";
+"settings_items_unit" = "個";
 
-/* Notification */
-"notification_title" = "MornDash";
-"notification_body_main" = "起きる時間です！タップして画面をブロックしましょう。";
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "1日中、SNSに時間を奪われていませんか？";
+"onboarding_problem_desc" = "無意識に開くSNSや動画アプリ。積み重なれば、1日の大半が溶けていきます。";
+"onboarding_problem_point_scroll" = "気づくとSNSを開いている";
+"onboarding_problem_point_time" = "1日何時間もアプリに溶ける";
+"onboarding_problem_point_mood" = "やりたいことに手がつかない";
 
-/* Credits */
-"settings_credit_title" = "クレジット";
-"settings_credit_otologic" = "音源提供：OtoLogic";
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "MornDashの仕組み";
+"onboarding_how_desc" = "設定した時刻から、無駄なアプリが1日中開けなくなります。";
+"onboarding_how_step1_title" = "時間になると";
+"onboarding_how_step1_desc" = "設定した時刻にブロックが自動で始まる";
+"onboarding_how_step2_title" = "アプリが閉じる";
+"onboarding_how_step2_desc" = "選んだアプリはその日ずっとロックされる";
+"onboarding_how_step3_title" = "タスクで解除";
+"onboarding_how_step3_desc" = "決めたタスクを全部こなすとロック解除";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "スクリーンタイムを許可";
+"onboarding_permission_desc" = "アプリをブロックするために、Appleの「スクリーンタイム」へのアクセスが必要です。";
+"onboarding_permission_note" = "データは端末内だけに留まります。MornDashが外部に送信することはありません。";
+"onboarding_param_screentime" = "スクリーンタイムを許可";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "ブロックするアプリを選ぶ";
+"onboarding_apps_desc" = "1日中開けないようにしたいアプリを選んでください。";
+"onboarding_apps_hint" = "SNSや動画アプリを選ぶのがおすすめです。";
+"onboarding_select_apps" = "アプリを選択";
+"onboarding_items_selected" = "%d 個選択中";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "何時からブロック？";
+"onboarding_time_desc" = "毎日この時間から、選んだアプリが1日中使えなくなります。";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "解除条件のタスクを決めよう";
+"onboarding_tasks_desc" = "全部終えるとその日だけアプリが解除されます。おすすめから選ぶか、自分で作ってください。";
+"onboarding_tasks_your_list" = "あなたのタスク";
+"onboarding_tasks_suggestions" = "おすすめから追加";
+"onboarding_tasks_custom" = "自分で作る";
+"onboarding_tasks_empty" = "まだタスクがありません";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "時間を、取り戻す。";
+"onboarding_motivation_desc" = "SNSじゃなく、自分の人生に時間を使おう。\n小さな積み重ねが、本当のあなたを作る。";
+"onboarding_motivation_point_focus" = "深い集中で1日を過ごす";
+"onboarding_motivation_point_calm" = "本当にやりたいことに手が届く";
+"onboarding_motivation_point_self" = "なりたい自分に、少しずつ近づく";
+"onboarding_finish" = "始める";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "ストレッチをする";
+"onboarding_preset_water" = "水を1杯飲む";
+"onboarding_preset_face" = "顔を洗う";
+"onboarding_preset_teeth" = "歯を磨く";
+"onboarding_preset_bed" = "ベッドを整える";
+"onboarding_preset_breakfast" = "朝食を取る";
+"onboarding_preset_meditate" = "5分間瞑想する";
+"onboarding_preset_journal" = "日記を書く";
+"onboarding_preset_walk" = "外に出て深呼吸";
+"onboarding_preset_read" = "本を10ページ読む";
+
+/* Default tasks */
+"default_task_stretch" = "ストレッチをする";
+"default_task_water" = "水を1杯飲む";
+"default_task_face" = "顔を洗う";
