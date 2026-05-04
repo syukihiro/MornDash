@@ -312,7 +312,7 @@ private struct HourglassTimerView: View {
 
                 let topFill = max(0, min(1, progress))
                 let bottomFill = 1 - topFill
-                let topSandY = topY + (1 - topFill) * (midY - topY)
+                let topSandTopY = topY + (1 - topFill) * (midY - topY)
                 let bottomSandTopY = midY + (1 - bottomFill) * (bottomY - midY)
 
                 let accent = isFinished ? Color.red.opacity(0.9) : Color.orange.opacity(0.9)
@@ -369,20 +369,20 @@ private struct HourglassTimerView: View {
                 // Top sand
                 if topFill > 0.001 {
                     var topSand = Path()
-                    let y = topSandY
+                    let y = topSandTopY
                     let hw = halfWidth(at: y)
-                    topSand.move(to: CGPoint(x: centerX - topHalfWidth, y: topY))
-                    topSand.addLine(to: CGPoint(x: centerX + topHalfWidth, y: topY))
+                    topSand.move(to: CGPoint(x: centerX - hw, y: y))
                     topSand.addLine(to: CGPoint(x: centerX + hw, y: y))
-                    topSand.addLine(to: CGPoint(x: centerX - hw, y: y))
+                    topSand.addLine(to: CGPoint(x: centerX + neckHalfWidth, y: midY))
+                    topSand.addLine(to: CGPoint(x: centerX - neckHalfWidth, y: midY))
                     topSand.closeSubpath()
                     canvas.fill(topSand, with: .linearGradient(
                         Gradient(colors: [
                             Color(red: 0.98, green: 0.80, blue: 0.45, opacity: 0.95),
                             Color(red: 0.88, green: 0.58, blue: 0.30, opacity: 0.90)
                         ]),
-                        startPoint: CGPoint(x: centerX, y: topY),
-                        endPoint: CGPoint(x: centerX, y: y)
+                        startPoint: CGPoint(x: centerX, y: y),
+                        endPoint: CGPoint(x: centerX, y: midY)
                     ))
                 }
 
