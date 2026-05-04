@@ -83,16 +83,23 @@ struct CustomPaywallView: View {
 
     private var hero: some View {
         VStack(spacing: 12) {
-            Image(systemName: "sparkles")
-                .font(.system(size: 44, weight: .light))
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: [.yellow, .orange],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
+            Image("AppLogo")
+                .resizable()
+                .scaledToFill()
+                .frame(width: 88, height: 88)
+                .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .strokeBorder(
+                            LinearGradient(
+                                colors: [.yellow.opacity(0.55), .orange.opacity(0.9)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            lineWidth: 1.5
+                        )
                 )
-                .shadow(color: .orange.opacity(0.5), radius: 20)
+                .shadow(color: .orange.opacity(0.45), radius: 18, y: 2)
                 .padding(.top, 8)
 
             Text("paywall_title")
@@ -383,7 +390,7 @@ struct CustomPaywallView: View {
     }
 
     private func orderedPackages(for offering: Offering) -> [Package] {
-        let order: [PackageType] = [.weekly, .monthly, .annual]
+        let order: [PackageType] = [.annual, .monthly, .weekly]
         let pkgs = offering.availablePackages
         let known = order.compactMap { type in pkgs.first { $0.packageType == type } }
         let extras = pkgs.filter { pkg in !order.contains(pkg.packageType) }
