@@ -1,14 +1,24 @@
 import Foundation
 import SwiftUI
 
+enum WorkoutKind: String, Codable, Equatable {
+    case squat
+}
+
 struct TaskItem: Codable, Identifiable, Equatable {
     var id: UUID = UUID()
     var title: String
     var lastCompletedDate: Date?
+    var workout: WorkoutKind?
+    var targetReps: Int?
 
     var isCompletedToday: Bool {
         guard let date = lastCompletedDate else { return false }
         return Calendar.current.isDateInToday(date)
+    }
+
+    var isWorkoutTask: Bool {
+        workout != nil
     }
 }
 
@@ -36,6 +46,12 @@ struct TaskStore: Codable {
         let trimmed = title.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
         tasks.append(TaskItem(title: trimmed))
+    }
+
+    mutating func addWorkout(_ workout: WorkoutKind, targetReps: Int, title: String) {
+        let trimmed = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty, targetReps > 0 else { return }
+        tasks.append(TaskItem(title: trimmed, workout: workout, targetReps: targetReps))
     }
 
     mutating func remove(at offsets: IndexSet) {

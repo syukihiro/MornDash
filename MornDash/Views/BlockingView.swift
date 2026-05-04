@@ -6,6 +6,7 @@ struct BlockingView: View {
     @ObservedObject var blockManager: BlockManager
 
     @State private var showGiveUpConfirm = false
+    @State private var activeWorkoutTaskID: UUID?
 
     var body: some View {
         VStack(spacing: 24) {
@@ -44,6 +45,10 @@ struct BlockingView: View {
                             index: item.index,
                             onPunch: {
                                 guard !item.task.isCompletedToday else { return }
+                                if item.task.isWorkoutTask {
+                                    activeWorkoutTaskID = item.task.id
+                                    return
+                                }
                                 withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                                     viewModel.toggleTask(item.task.id, blockManager: blockManager)
                                 }
@@ -68,6 +73,29 @@ struct BlockingView: View {
         .fullScreenCover(isPresented: $showGiveUpConfirm) {
             EmergencyUnlockView(viewModel: viewModel, blockManager: blockManager)
         }
+        .fullScreenCover(item: workoutTaskBinding) { task in
+            WorkoutSessionView(
+                task: task,
+                onComplete: {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                        viewModel.toggleTask(task.id, blockManager: blockManager)
+                    }
+                },
+                onCancel: {}
+            )
+        }
+    }
+
+    private var workoutTaskBinding: Binding<TaskItem?> {
+        Binding(
+            get: {
+                guard let id = activeWorkoutTaskID else { return nil }
+                return viewModel.taskStore.tasks.first { $0.id == id }
+            },
+            set: { newValue in
+                activeWorkoutTaskID = newValue?.id
+            }
+        )
     }
 
     private var sortedTasks: [(index: Int, task: TaskItem)] {

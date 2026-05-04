@@ -110,6 +110,10 @@ struct TasksTabView: View {
                 .listRowSeparatorTint(.white.opacity(0.08))
 
                 if showPresets {
+                    workoutPresetRow
+                        .listRowBackground(Color.white.opacity(0.04))
+                        .listRowSeparatorTint(.white.opacity(0.08))
+
                     ForEach(PresetTask.allCases) { preset in
                         presetRow(preset)
                             .listRowBackground(Color.white.opacity(0.04))
@@ -144,6 +148,51 @@ struct TasksTabView: View {
 
     private func isPresetAdded(_ preset: PresetTask) -> Bool {
         viewModel.taskStore.tasks.contains { $0.title == preset.title }
+    }
+
+    private var workoutPresetRow: some View {
+        let title = String(format: NSLocalizedString("workout_preset_squats_title", comment: ""), 20)
+        let added = viewModel.taskStore.tasks.contains { $0.workout == .squat && $0.targetReps == 20 }
+        return Button(action: { toggleWorkoutPreset(title: title, added: added) }) {
+            HStack(spacing: 14) {
+                Image(systemName: "figure.strengthtraining.traditional")
+                    .font(.system(size: 18, weight: .regular))
+                    .foregroundColor(added ? .green : .indigo)
+                    .frame(width: 24)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(title)
+                        .foregroundColor(.white)
+                    Text("workout_preset_ai_badge")
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundColor(.indigo)
+                        .tracking(1)
+                }
+                Spacer()
+                if subscriptionManager.isPro {
+                    Image(systemName: added ? "checkmark.circle.fill" : "plus.circle")
+                        .font(.system(size: 20))
+                        .foregroundColor(added ? .green : .white.opacity(0.5))
+                } else {
+                    Image(systemName: "lock.fill")
+                        .font(.system(size: 14))
+                        .foregroundColor(.indigo)
+                }
+            }
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func toggleWorkoutPreset(title: String, added: Bool) {
+        if added {
+            viewModel.taskStore.tasks.removeAll { $0.workout == .squat && $0.targetReps == 20 }
+            return
+        }
+        if !subscriptionManager.isPro {
+            showPaywall = true
+            return
+        }
+        if hasReachedFreeLimit { return }
+        viewModel.taskStore.addWorkout(.squat, targetReps: 20, title: title)
     }
 
     private func togglePreset(_ preset: PresetTask) {

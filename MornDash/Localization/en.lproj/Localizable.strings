@@ -37,11 +37,21 @@
 "stats_blocked_usage_today" = "BLOCKED APPS · TODAY";
 "stats_blocked_usage_no_selection" = "No apps selected for blocking yet.";
 "stats_emergency_unlocks" = "Emergency unlocks";
-"stats_emergency_unlocks_total_unit" = "total";
+"stats_emergency_unlocks_count_unit" = "times";
 "stats_emergency_unlocks_this_week" = "This week";
 "stats_emergency_unlocks_this_month" = "This month";
+"stats_emergency_unlocks_past_year" = "Past year";
+"stats_emergency_unlocks_total" = "Total";
 "stats_emergency_unlocks_last" = "Last: %@";
 "stats_emergency_unlocks_none" = "No emergency unlocks yet.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "Comparison";
+"stats_emergency_compare_week" = "vs last week";
+"stats_emergency_compare_month" = "vs last month";
+"stats_emergency_compare_year" = "vs last year";
+"stats_emergency_compare_lock_title" = "Track your unlock trend";
+"stats_emergency_compare_lock_message" = "Pro shows how your emergency unlocks compare to last week, last month, and last year.";
 "stats_blocked_duration" = "Blocked / day";
 "stats_blocked_duration_this_week" = "This week";
 "stats_blocked_duration_past_year" = "Past year";
@@ -234,3 +244,15 @@
 "subscription_terms_charge" = "Your account will be charged for renewal within 24 hours prior to the end of the current period.";
 "subscription_terms_manage" = "Subscriptions can be managed and auto-renewal turned off via your Account Settings after purchase.";
 "subscription_terms_trial" = "Any unused portion of a free trial period, if offered, will be forfeited when you purchase a subscription.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d Squats";
+"workout_preset_ai_badge" = "AI · PRO";
+"workout_status_recognizing" = "Recognizing...";
+"workout_status_no_body" = "Step into frame";
+"workout_status_adjust" = "Adjust your position";
+"workout_status_start" = "Start!";
+"workout_status_down" = "Down!";
+"workout_status_good" = "Nice!";
+"workout_simulator_notice" = "Camera is unavailable in the simulator. Tap to simulate completion.";
+"workout_simulator_complete" = "Mark as complete";

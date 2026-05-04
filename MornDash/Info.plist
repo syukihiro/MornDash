@@ -8,5 +8,7 @@
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSCameraUsageDescription</key>
+	<string>MornDash uses the camera to count squats so you can complete morning workout tasks.</string>
 </dict>
 </plist>

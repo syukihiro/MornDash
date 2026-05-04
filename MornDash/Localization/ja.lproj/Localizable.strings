@@ -37,11 +37,21 @@
 "stats_blocked_usage_today" = "ブロック対象アプリ · 今日";
 "stats_blocked_usage_no_selection" = "ブロックするアプリが未選択です。";
 "stats_emergency_unlocks" = "緊急解除";
-"stats_emergency_unlocks_total_unit" = "回（累計）";
+"stats_emergency_unlocks_count_unit" = "回";
 "stats_emergency_unlocks_this_week" = "今週";
 "stats_emergency_unlocks_this_month" = "今月";
+"stats_emergency_unlocks_past_year" = "1年";
+"stats_emergency_unlocks_total" = "累計";
 "stats_emergency_unlocks_last" = "前回: %@";
 "stats_emergency_unlocks_none" = "まだ緊急解除はありません。";
+
+/* 緊急解除 比較レポート (Pro限定) */
+"stats_emergency_compare" = "比較レポート";
+"stats_emergency_compare_week" = "先週比";
+"stats_emergency_compare_month" = "先月比";
+"stats_emergency_compare_year" = "去年比";
+"stats_emergency_compare_lock_title" = "緊急解除の推移を見る";
+"stats_emergency_compare_lock_message" = "Proにすると、緊急解除の回数が先週・先月・去年と比べてどう変化したかを見られます。";
 "stats_blocked_duration" = "1日あたりのブロック時間";
 "stats_blocked_duration_this_week" = "今週";
 "stats_blocked_duration_past_year" = "1年";
@@ -234,3 +244,15 @@
 "subscription_terms_charge" = "現在の期間終了の24時間前以内にアカウントへ更新料金が請求されます。";
 "subscription_terms_manage" = "購入後はアカウント設定からサブスクリプションを管理し、自動更新をオフにできます。";
 "subscription_terms_trial" = "無料体験期間が提供されている場合、サブスクリプション購入時点で未使用分は失効します。";
+
+/* Workout */
+"workout_preset_squats_title" = "スクワット %d回";
+"workout_preset_ai_badge" = "AI・PRO";
+"workout_status_recognizing" = "認識中...";
+"workout_status_no_body" = "フレーム内に入ってください";
+"workout_status_adjust" = "位置を調整してください";
+"workout_status_start" = "スタート！";
+"workout_status_down" = "下げて！";
+"workout_status_good" = "いいぞ！";
+"workout_simulator_notice" = "シミュレータではカメラが使えません。タップで完了を擬似実行できます。";
+"workout_simulator_complete" = "完了として記録";
