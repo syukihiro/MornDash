@@ -76,7 +76,9 @@
 "settings_add_task_placeholder" = "タスクを追加";
 "settings_blocking" = "ブロック設定";
 "settings_blocked_apps" = "制限するアプリ";
+"settings_categories_pro_only" = "アプリのカテゴリはProでのみ保存できます。無料プランでは個別のアプリまたはWebサイトを選んでください。";
 "settings_items_unit" = "個";
+"settings_weekday_scheduling" = "曜日別スケジュール";
 
 /* Onboarding — step 1: problem */
 "onboarding_problem_title" = "1日中、SNSに時間を奪われていませんか？";
@@ -107,6 +109,8 @@
 "onboarding_apps_hint" = "SNSや動画アプリを選ぶのがおすすめです。";
 "onboarding_select_apps" = "アプリを選択";
 "onboarding_items_selected" = "%d 個選択中";
+"onboarding_items_selected_with_limit" = "%d / %d 個選択中";
+"onboarding_apps_free_limit_hint" = "無料プランでは、アプリ・カテゴリ・サイトを合わせて%d個まで選べます。Proなら上限なしです。";
 
 /* Onboarding — step 5: time */
 "onboarding_time_title" = "何時からブロック？";
@@ -144,3 +148,70 @@
 "default_task_stretch" = "ストレッチをする";
 "default_task_water" = "水を1杯飲む";
 "default_task_face" = "顔を洗う";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "サブスクリプション";
+"settings_status_pro" = "Pro · 更新日 %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "無料プラン";
+"settings_upgrade_to_pro" = "Proにアップグレード";
+"settings_restore_purchase" = "購入を復元";
+"settings_manage_subscription" = "サブスクリプションを管理";
+"settings_restore_success_title" = "復元しました";
+"settings_restore_success_message" = "Proのサブスクリプションが有効です。";
+"settings_restore_failure_title" = "復元できません";
+"settings_restore_failure_message" = "このApple IDで有効なサブスクリプションが見つかりませんでした。";
+"settings_restore_error_title" = "復元に失敗しました";
+"common_ok" = "OK";
+
+/* Paywall feature bullets */
+"paywall_feature_unlimited_tasks" = "タスク数の制限なし";
+"paywall_feature_unlimited_blocked_apps" = "制限するアプリ・カテゴリ数に上限なし";
+"paywall_feature_full_history" = "全期間の履歴と貢献グラフ";
+"paywall_feature_multi_schedule" = "複数のブロック時間帯を設定";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "無料プランではタスクは%d個までです。Proにすると無制限に追加できます。";
+"gate_history_lock_title" = "全期間の履歴を見る";
+"gate_history_lock_message" = "Proにすると、全期間の貢献グラフと長期ストリークを見られます。";
+"gate_history_unlock_button" = "Proで解除";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "もっと自由に、もっと自分らしく。";
+"settings_card_pro_title" = "Pro メンバー";
+"settings_card_pro_subtitle" = "ご利用ありがとうございます。";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "朝の習慣を、もっと深く。\n全機能を解放しましょう。";
+"paywall_plan_weekly" = "週間プラン";
+"paywall_plan_monthly" = "月間プラン";
+"paywall_plan_annual" = "年間プラン";
+"paywall_per_week" = "1週間ごとに更新";
+"paywall_per_month" = "1ヶ月ごとに更新";
+"paywall_per_year" = "1年ごとに更新";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "%d%% お得";
+"paywall_cta_continue" = "続ける";
+"paywall_cta_free_trial" = "無料体験を始める";
+"paywall_terms" = "利用規約";
+"paywall_privacy" = "プライバシーポリシー";
+"paywall_offerings_unavailable" = "プランを読み込めませんでした。ネットワークをご確認ください。";
+"paywall_retry" = "再試行";
+"paywall_error_title" = "エラー";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "朝の習慣を、もっと深く。すべての機能をご利用いただけます。";
+"subscription_active" = "ご利用中";
+"subscription_next_renewal" = "次回更新日";
+"subscription_manage_in_store" = "App Store で管理";
+"subscription_cancel" = "サブスクリプションを解約";
+"subscription_cancel_alert_title" = "解約手続きへ進みますか？";
+"subscription_cancel_alert_message" = "App Store のサブスクリプション管理画面に移動します。";
+"subscription_cancel_alert_proceed" = "App Store を開く";
+"subscription_terms_heading" = "サブスクリプションについて";
+"subscription_terms_auto_renew" = "現在の期間が終了する24時間前までに自動更新を解除しない場合、サブスクリプションは自動更新されます。";
+"subscription_terms_charge" = "現在の期間終了の24時間前以内にアカウントへ更新料金が請求されます。";
+"subscription_terms_manage" = "購入後はアカウント設定からサブスクリプションを管理し、自動更新をオフにできます。";
+"subscription_terms_trial" = "無料体験期間が提供されている場合、サブスクリプション購入時点で未使用分は失効します。";

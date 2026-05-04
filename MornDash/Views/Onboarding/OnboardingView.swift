@@ -382,8 +382,12 @@ struct PermissionButton: View {
 
 struct OnboardingAppsView: View {
     @ObservedObject var blockManager: BlockManager
+    @EnvironmentObject private var subscriptionManager: SubscriptionManager
     var nextAction: () -> Void
     @State private var showPicker = false
+    @State private var showPaywall = false
+    @State private var selectionBeforePicker: FamilyActivitySelection?
+    @State private var pickerDraft = FamilyActivitySelection()
 
     var body: some View {
         VStack(spacing: 28) {
@@ -405,7 +409,7 @@ struct OnboardingAppsView: View {
                     .foregroundColor(.white.opacity(0.75))
             }
 
-            Button(action: { showPicker = true }) {
+            Button(action: openAppPicker) {
                 HStack {
                     Text("onboarding_select_apps").font(.headline)
                     Spacer()
@@ -416,9 +420,9 @@ struct OnboardingAppsView: View {
                 .background(Color.white.opacity(0.1))
                 .cornerRadius(12)
             }
-            .sheet(isPresented: $showPicker) {
+            .sheet(isPresented: $showPicker, onDismiss: handleAppsPickerDismiss) {
                 NavigationStack {
-                    FamilyActivityPicker(selection: $blockManager.selection)
+                    FamilyActivityPicker(selection: $pickerDraft)
                         .toolbar {
                             ToolbarItem(placement: .topBarTrailing) {
                                 Button(NSLocalizedString("common_done", comment: "")) { showPicker = false }
@@ -428,14 +432,26 @@ struct OnboardingAppsView: View {
             }
 
             if selectionCount > 0 {
-                Text(String(format: NSLocalizedString("onboarding_items_selected", comment: ""), selectionCount))
+                Text(selectionStatusText)
                     .font(.caption)
                     .foregroundColor(.green)
             } else {
-                Text("onboarding_apps_hint")
-                    .font(.caption)
-                    .foregroundColor(.white.opacity(0.5))
-                    .multilineTextAlignment(.center)
+                VStack(spacing: 6) {
+                    Text("onboarding_apps_hint")
+                        .font(.caption)
+                        .foregroundColor(.white.opacity(0.5))
+                        .multilineTextAlignment(.center)
+                    if !subscriptionManager.isPro {
+                        Text(String(format: NSLocalizedString("onboarding_apps_free_limit_hint", comment: ""), RevenueCatConfig.freeBlockedAppsLimit))
+                            .font(.caption2)
+                            .foregroundColor(.white.opacity(0.45))
+                            .multilineTextAlignment(.center)
+                        Text("settings_categories_pro_only")
+                            .font(.caption2)
+                            .foregroundColor(.white.opacity(0.45))
+                            .multilineTextAlignment(.center)
+                    }
+                }
             }
 
             Spacer()
@@ -443,6 +459,61 @@ struct OnboardingAppsView: View {
             PrimaryButton(title: "common_next", isEnabled: selectionCount > 0, action: nextAction)
         }
         .padding(.vertical, 20)
+        .paywallSheet(isPresented: $showPaywall)
+    }
+
+    private var selectionStatusText: String {
+        if subscriptionManager.isPro {
+            return String(format: NSLocalizedString("onboarding_items_selected", comment: ""), selectionCount)
+        }
+        return String(
+            format: NSLocalizedString("onboarding_items_selected_with_limit", comment: ""),
+            selectionCount,
+            RevenueCatConfig.freeBlockedAppsLimit
+        )
+    }
+
+    private func openAppPicker() {
+        selectionBeforePicker = blockManager.selection
+        pickerDraft = blockManager.selection
+        showPicker = true
+    }
+
+    private func handleAppsPickerDismiss() {
+        defer { selectionBeforePicker = nil }
+        let hadCategories = !pickerDraft.categoryTokens.isEmpty
+
+        if subscriptionManager.isPro {
+            blockManager.selection = pickerDraft
+            return
+        }
+
+        let sanitized = pickerDraft.clearingCategories()
+
+        if hadCategories, selectionItemCount(sanitized) == 0,
+           let prev = selectionBeforePicker, selectionItemCount(prev.clearingCategories()) > 0 {
+            blockManager.selection = prev.clearingCategories()
+            showPaywall = true
+            return
+        }
+
+        blockManager.selection = sanitized
+
+        if selectionItemCount(sanitized) > RevenueCatConfig.freeBlockedAppsLimit {
+            if let prev = selectionBeforePicker {
+                blockManager.selection = prev
+            }
+            showPaywall = true
+            return
+        }
+
+        if hadCategories {
+            showPaywall = true
+        }
+    }
+
+    private func selectionItemCount(_ selection: FamilyActivitySelection) -> Int {
+        selection.applicationTokens.count + selection.categoryTokens.count + selection.webDomainTokens.count
     }
 
     private var selectionCount: Int {
@@ -514,8 +585,10 @@ struct OnboardingTimeView: View {
 
 struct OnboardingTasksView: View {
     @ObservedObject var viewModel: HomeViewModel
+    @EnvironmentObject private var subscriptionManager: SubscriptionManager
     var nextAction: () -> Void
     @State private var newTaskTitle = ""
+    @State private var showPaywall = false
 
     var body: some View {
         VStack(spacing: 20) {
@@ -546,6 +619,11 @@ struct OnboardingTasksView: View {
             )
         }
         .padding(.vertical, 16)
+        .paywallSheet(isPresented: $showPaywall)
+    }
+
+    private var hasReachedFreeLimit: Bool {
+        !subscriptionManager.isPro && viewModel.taskStore.tasks.count >= RevenueCatConfig.freeTaskLimit
     }
 
     private var yourTasksSection: some View {
@@ -611,6 +689,14 @@ struct OnboardingTasksView: View {
             .padding(.vertical, 10)
             .background(Color.white.opacity(0.08))
             .cornerRadius(10)
+
+            if hasReachedFreeLimit {
+                Text(String(format: NSLocalizedString("gate_tasks_lock_message", comment: ""), RevenueCatConfig.freeTaskLimit))
+                    .font(.caption)
+                    .foregroundColor(.orange.opacity(0.85))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 4)
+            }
         }
     }
 
@@ -639,6 +725,10 @@ struct OnboardingTasksView: View {
         if let existing = viewModel.taskStore.tasks.first(where: { $0.title == preset.title }) {
             viewModel.taskStore.tasks.removeAll { $0.id == existing.id }
         } else {
+            if hasReachedFreeLimit {
+                showPaywall = true
+                return
+            }
             viewModel.taskStore.add(preset.title)
         }
     }
@@ -646,6 +736,10 @@ struct OnboardingTasksView: View {
     private func addCustomTask() {
         let trimmed = newTaskTitle.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
+        if hasReachedFreeLimit {
+            showPaywall = true
+            return
+        }
         viewModel.taskStore.add(trimmed)
         newTaskTitle = ""
     }

@@ -17,6 +17,7 @@ struct ContentView: View {
     @State private var showGlow = false
     @State private var selectedTab: Int = 0
     @Environment(\.scenePhase) private var scenePhase
+    @EnvironmentObject private var subscriptionManager: SubscriptionManager
 
     var body: some View {
         Group {
@@ -28,6 +29,15 @@ struct ContentView: View {
                 )
             } else {
                 mainAppView
+            }
+        }
+        .task {
+            await subscriptionManager.refresh()
+            blockManager.applyFreePlanCategoryRestrictionIfNeeded()
+        }
+        .onChange(of: subscriptionManager.isPro) { _, isPro in
+            if !isPro {
+                blockManager.applyFreePlanCategoryRestrictionIfNeeded()
             }
         }
     }
@@ -108,4 +118,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(SubscriptionManager.shared)
 }

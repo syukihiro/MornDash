@@ -2,9 +2,11 @@ import SwiftUI
 
 struct TasksTabView: View {
     @ObservedObject var viewModel: HomeViewModel
+    @EnvironmentObject private var subscriptionManager: SubscriptionManager
 
     @State private var newTaskTitle: String = ""
     @State private var showPresets: Bool = false
+    @State private var showPaywall: Bool = false
     @FocusState private var addFieldFocused: Bool
 
     var body: some View {
@@ -14,6 +16,9 @@ struct TasksTabView: View {
 
                 VStack(spacing: 0) {
                     taskList
+                    if hasReachedFreeLimit {
+                        gateBanner
+                    }
                     addBar
                 }
             }
@@ -25,7 +30,42 @@ struct TasksTabView: View {
                         .foregroundColor(.orange)
                 }
             }
+            .paywallSheet(isPresented: $showPaywall)
         }
+    }
+
+    private var hasReachedFreeLimit: Bool {
+        !subscriptionManager.isPro && viewModel.taskStore.tasks.count >= RevenueCatConfig.freeTaskLimit
+    }
+
+    private var gateBanner: some View {
+        Button(action: { showPaywall = true }) {
+            HStack(spacing: 10) {
+                Image(systemName: "sparkles")
+                    .foregroundColor(.orange)
+                Text(String(format: NSLocalizedString("gate_tasks_lock_message", comment: ""), RevenueCatConfig.freeTaskLimit))
+                    .font(.caption)
+                    .foregroundColor(.white.opacity(0.85))
+                    .multilineTextAlignment(.leading)
+                Spacer(minLength: 0)
+                Image(systemName: "chevron.right")
+                    .font(.caption2)
+                    .foregroundColor(.white.opacity(0.4))
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color.orange.opacity(0.12))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .strokeBorder(Color.orange.opacity(0.25), lineWidth: 1)
+                    )
+            )
+        }
+        .buttonStyle(.plain)
+        .padding(.horizontal, 16)
+        .padding(.bottom, 4)
     }
 
     private var taskList: some View {
@@ -110,6 +150,10 @@ struct TasksTabView: View {
         if let existing = viewModel.taskStore.tasks.first(where: { $0.title == preset.title }) {
             viewModel.taskStore.tasks.removeAll { $0.id == existing.id }
         } else {
+            if hasReachedFreeLimit {
+                showPaywall = true
+                return
+            }
             viewModel.taskStore.add(preset.title)
         }
     }
@@ -152,6 +196,10 @@ struct TasksTabView: View {
 
     private func addTask() {
         guard canAdd else { return }
+        if hasReachedFreeLimit {
+            showPaywall = true
+            return
+        }
         viewModel.taskStore.add(newTaskTitle)
         newTaskTitle = ""
         addFieldFocused = false

@@ -76,7 +76,9 @@
 "settings_add_task_placeholder" = "Add a task";
 "settings_blocking" = "Blocking";
 "settings_blocked_apps" = "Blocked Apps";
+"settings_categories_pro_only" = "App categories can only be saved with Pro. On the free plan, pick individual apps or websites.";
 "settings_items_unit" = "items";
+"settings_weekday_scheduling" = "Weekday Schedule";
 
 /* Onboarding — step 1: problem */
 "onboarding_problem_title" = "Losing your day to SNS and time-wasting apps?";
@@ -107,6 +109,8 @@
 "onboarding_apps_hint" = "Social and video apps are a good starting point.";
 "onboarding_select_apps" = "Select Apps";
 "onboarding_items_selected" = "%d items selected";
+"onboarding_items_selected_with_limit" = "%d / %d items selected";
+"onboarding_apps_free_limit_hint" = "On the free plan you can block up to %d apps, categories, or sites in total. Pro removes this limit.";
 
 /* Onboarding — step 5: time */
 "onboarding_time_title" = "When should it start?";
@@ -144,3 +148,70 @@
 "default_task_stretch" = "Stretch";
 "default_task_water" = "Drink a glass of water";
 "default_task_face" = "Wash my face";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "Subscription";
+"settings_status_pro" = "Pro · renews %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "Free plan";
+"settings_upgrade_to_pro" = "Upgrade to Pro";
+"settings_restore_purchase" = "Restore Purchase";
+"settings_manage_subscription" = "Manage Subscription";
+"settings_restore_success_title" = "Restored";
+"settings_restore_success_message" = "Your Pro subscription is active.";
+"settings_restore_failure_title" = "Couldn't restore";
+"settings_restore_failure_message" = "No active subscription was found for this Apple ID.";
+"settings_restore_error_title" = "Restore failed";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "Unlimited tasks";
+"paywall_feature_unlimited_blocked_apps" = "Unlimited apps & categories to block";
+"paywall_feature_full_history" = "Full history & contribution graph";
+"paywall_feature_multi_schedule" = "Multiple block schedules";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "Free plan supports up to %d tasks. Upgrade to add more.";
+"gate_history_lock_title" = "See your full history";
+"gate_history_lock_message" = "Pro unlocks the full contribution graph and long-term streaks.";
+"gate_history_unlock_button" = "Unlock with Pro";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "More freedom for the mornings you want.";
+"settings_card_pro_title" = "Pro Member";
+"settings_card_pro_subtitle" = "Thanks for supporting MornDash.";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "Go deeper into your morning practice.\nUnlock everything below.";
+"paywall_plan_weekly" = "Weekly";
+"paywall_plan_monthly" = "Monthly";
+"paywall_plan_annual" = "Annual";
+"paywall_per_week" = "Renews every week";
+"paywall_per_month" = "Renews every month";
+"paywall_per_year" = "Renews every year";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "Save %d%%";
+"paywall_cta_continue" = "Continue";
+"paywall_cta_free_trial" = "Start Free Trial";
+"paywall_terms" = "Terms of Use";
+"paywall_privacy" = "Privacy Policy";
+"paywall_offerings_unavailable" = "Couldn't load plans. Check your connection.";
+"paywall_retry" = "Try Again";
+"paywall_error_title" = "Something went wrong";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "Go deeper into your morning practice. All features unlocked.";
+"subscription_active" = "Active";
+"subscription_next_renewal" = "Next renewal";
+"subscription_manage_in_store" = "Manage in App Store";
+"subscription_cancel" = "Cancel Subscription";
+"subscription_cancel_alert_title" = "Proceed to cancel?";
+"subscription_cancel_alert_message" = "You'll be redirected to your App Store subscription management page.";
+"subscription_cancel_alert_proceed" = "Open App Store";
+"subscription_terms_heading" = "Subscription Terms";
+"subscription_terms_auto_renew" = "Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period.";
+"subscription_terms_charge" = "Your account will be charged for renewal within 24 hours prior to the end of the current period.";
+"subscription_terms_manage" = "Subscriptions can be managed and auto-renewal turned off via your Account Settings after purchase.";
+"subscription_terms_trial" = "Any unused portion of a free trial period, if offered, will be forfeited when you purchase a subscription.";

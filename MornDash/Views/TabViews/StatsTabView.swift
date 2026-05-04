@@ -9,6 +9,9 @@ extension DeviceActivityReport.Context {
 struct StatsTabView: View {
     @ObservedObject var viewModel: HomeViewModel
     @ObservedObject var blockManager: BlockManager
+    @EnvironmentObject private var subscriptionManager: SubscriptionManager
+
+    @State private var showPaywall = false
 
     var body: some View {
         NavigationStack {
@@ -22,7 +25,11 @@ struct StatsTabView: View {
                         emergencyUnlockSection
                         blockedUsageSection
                         weekStrip
-                        contributionGraph
+                        if subscriptionManager.isPro {
+                            contributionGraph
+                        } else {
+                            contributionGraphLockedBanner
+                        }
                         badgesSection
                     }
                     .padding(.horizontal, 20)
@@ -31,7 +38,57 @@ struct StatsTabView: View {
             }
             .navigationTitle(Text("tab_stats"))
             .toolbarColorScheme(.dark, for: .navigationBar)
+            .paywallSheet(isPresented: $showPaywall)
         }
+    }
+
+    private var contributionGraphLockedBanner: some View {
+        Button(action: { showPaywall = true }) {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 8) {
+                    Image(systemName: "lock.fill")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(.orange.opacity(0.85))
+                    Text("stats_contributions")
+                        .font(.system(size: 11, weight: .medium))
+                        .tracking(2)
+                        .foregroundColor(.white.opacity(0.5))
+                }
+
+                Text("gate_history_lock_title")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(.white)
+
+                Text("gate_history_lock_message")
+                    .font(.system(size: 13))
+                    .foregroundColor(.white.opacity(0.6))
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                HStack(spacing: 8) {
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 13, weight: .semibold))
+                    Text("gate_history_unlock_button")
+                        .font(.system(size: 14, weight: .semibold))
+                }
+                .foregroundColor(.black)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(Capsule().fill(Color.orange))
+                .padding(.top, 4)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.white.opacity(0.05))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .strokeBorder(Color.orange.opacity(0.18), lineWidth: 1)
+                    )
+            )
+        }
+        .buttonStyle(.plain)
     }
 
     // MARK: - Hero

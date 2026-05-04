@@ -72,15 +72,24 @@ class HomeViewModel: ObservableObject {
     var isInBlockWindow: Bool {
         let calendar = Calendar.current
         let now = currentTime
+        let weekday = calendar.component(.weekday, from: now)
+        let (h, m) = effectiveStartTime(forWeekday: weekday)
         let startComponents = DateComponents(
             year: calendar.component(.year, from: now),
             month: calendar.component(.month, from: now),
             day: calendar.component(.day, from: now),
-            hour: config.startHour,
-            minute: config.startMinute
+            hour: h,
+            minute: m
         )
         guard let start = calendar.date(from: startComponents) else { return false }
         return now >= start
+    }
+
+    private func effectiveStartTime(forWeekday weekday: Int) -> (hour: Int, minute: Int) {
+        if SubscriptionManager.shared.isPro && config.weekdaySchedulingEnabled {
+            return config.startTime(for: weekday)
+        }
+        return (config.startHour, config.startMinute)
     }
 
     var hasGivenUpToday: Bool {
@@ -138,6 +147,10 @@ class HomeViewModel: ObservableObject {
     }
 
     func applySchedule(blockManager: BlockManager) {
-        blockManager.scheduleDailyBlock(startHour: config.startHour, startMinute: config.startMinute)
+        if SubscriptionManager.shared.isPro && config.weekdaySchedulingEnabled {
+            blockManager.scheduleWeekdayBlocks(config.weekdayStartTimes)
+        } else {
+            blockManager.scheduleDailyBlock(startHour: config.startHour, startMinute: config.startMinute)
+        }
     }
 }
