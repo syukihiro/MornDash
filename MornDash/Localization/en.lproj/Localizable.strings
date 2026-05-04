@@ -261,3 +261,15 @@
 "workout_status_good" = "Nice!";
 "workout_simulator_notice" = "Camera is unavailable in the simulator. Tap to simulate completion.";
 "workout_simulator_complete" = "Mark as complete";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d min";
+"tasks_timer_sheet_title" = "Timer settings";
+"tasks_timer_minutes_placeholder" = "Minutes (1-180)";
+"tasks_timer_sheet_hint" = "Task completes when timer finishes.";
+"tasks_timer_remove" = "Remove timer";
+"tasks_timer_save" = "Save";
+"timer_session_title" = "TIMER";
+"timer_session_hint" = "Screen stays awake while running";
+"timer_session_start" = "Start";
+"timer_session_pause" = "Pause";

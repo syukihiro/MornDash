@@ -766,6 +766,10 @@ struct OnboardingTasksView: View {
         !subscriptionManager.isPro && viewModel.taskStore.tasks.count >= RevenueCatConfig.freeTaskLimit
     }
 
+    private var hasReachedFreeTimerLimit: Bool {
+        !subscriptionManager.isPro && viewModel.taskStore.timerTaskCount >= RevenueCatConfig.freeTimerTaskLimit
+    }
+
     private var yourTasksSection: some View {
         VStack(spacing: 8) {
             SectionHeader(title: "onboarding_tasks_your_list")
@@ -867,6 +871,16 @@ struct OnboardingTasksView: View {
         } else {
             if hasReachedFreeLimit {
                 showPaywall = true
+                return
+            }
+            if preset == .meditate {
+                if hasReachedFreeTimerLimit {
+                    showPaywall = true
+                    return
+                }
+                viewModel.taskStore.tasks.append(
+                    TaskItem(title: preset.title, timerDurationSeconds: 5 * 60)
+                )
                 return
             }
             viewModel.taskStore.add(preset.title)

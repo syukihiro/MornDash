@@ -9,6 +9,7 @@ enum RevenueCatConfig {
     static let yearlyProductID = "pro_yearly_dash"
 
     static let freeTaskLimit = 3
+    static let freeTimerTaskLimit = 1
     static let freeStatsHistoryDays = 7
     static let freeBlockedAppsLimit = 2
 

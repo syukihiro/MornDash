@@ -10,8 +10,12 @@ struct TasksTabView: View {
     @State private var showWorkoutRepPicker: Bool = false
     @State private var workoutRepsDraft: Int = 20
     @State private var workoutRepsInput: String = "20"
+    @State private var timerEditingTaskID: UUID?
+    @State private var timerMinutesInput: String = ""
+    @State private var showTimerPicker: Bool = false
     @FocusState private var addFieldFocused: Bool
     @FocusState private var workoutInputFocused: Bool
+    @FocusState private var timerInputFocused: Bool
 
     var body: some View {
         NavigationStack {
@@ -38,11 +42,18 @@ struct TasksTabView: View {
             .sheet(isPresented: $showWorkoutRepPicker) {
                 workoutRepPickerSheet
             }
+            .sheet(isPresented: $showTimerPicker) {
+                timerPickerSheet
+            }
         }
     }
 
     private var hasReachedFreeLimit: Bool {
         !subscriptionManager.isPro && viewModel.taskStore.tasks.count >= RevenueCatConfig.freeTaskLimit
+    }
+
+    private var hasReachedFreeTimerLimit: Bool {
+        !subscriptionManager.isPro && viewModel.taskStore.timerTaskCount >= RevenueCatConfig.freeTimerTaskLimit
     }
 
     private var gateBanner: some View {
@@ -78,16 +89,35 @@ struct TasksTabView: View {
     private var taskList: some View {
         List {
             Section {
-                ForEach($viewModel.taskStore.tasks) { $task in
+                ForEach(viewModel.taskStore.tasks.indices, id: \.self) { index in
+                    let task = $viewModel.taskStore.tasks[index]
                     HStack(spacing: 14) {
-                        Image(systemName: task.isCompletedToday ? "checkmark.circle.fill" : "circle")
+                        Image(systemName: task.wrappedValue.isCompletedToday ? "checkmark.circle.fill" : "circle")
                             .font(.system(size: 22, weight: .light))
-                            .foregroundColor(task.isCompletedToday ? .green : .white.opacity(0.35))
+                            .foregroundColor(task.wrappedValue.isCompletedToday ? .green : .white.opacity(0.35))
                         TextField(
                             NSLocalizedString("settings_task_placeholder", comment: ""),
-                            text: $task.title
+                            text: task.title
                         )
                         .foregroundColor(.white)
+
+                        Button(action: { editTimer(for: task.wrappedValue) }) {
+                            HStack(spacing: 4) {
+                                Image(systemName: task.wrappedValue.hasTimer ? "timer" : "timer.square")
+                                if let timerDurationSeconds = task.wrappedValue.timerDurationSeconds {
+                                    Text(timerLabel(seconds: timerDurationSeconds))
+                                }
+                            }
+                            .font(.system(size: 12, weight: .semibold))
+                            .foregroundColor(task.wrappedValue.hasTimer ? .indigo : .white.opacity(0.5))
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 6)
+                            .background(
+                                Capsule()
+                                    .fill(task.wrappedValue.hasTimer ? Color.indigo.opacity(0.2) : Color.white.opacity(0.06))
+                            )
+                        }
+                        .buttonStyle(.plain)
                     }
                     .listRowBackground(Color.white.opacity(0.04))
                     .listRowSeparatorTint(.white.opacity(0.08))
@@ -306,6 +336,16 @@ struct TasksTabView: View {
                 showPaywall = true
                 return
             }
+            if preset == .meditate {
+                if hasReachedFreeTimerLimit {
+                    showPaywall = true
+                    return
+                }
+                viewModel.taskStore.tasks.append(
+                    TaskItem(title: preset.title, timerDurationSeconds: 5 * 60)
+                )
+                return
+            }
             viewModel.taskStore.add(preset.title)
         }
     }
@@ -355,5 +395,110 @@ struct TasksTabView: View {
         viewModel.taskStore.add(newTaskTitle)
         newTaskTitle = ""
         addFieldFocused = false
+    }
+
+    private func timerLabel(seconds: Int) -> String {
+        let minutes = max(seconds / 60, 1)
+        return String(format: NSLocalizedString("tasks_timer_minutes_short_format", comment: ""), minutes)
+    }
+
+    private func editTimer(for task: TaskItem) {
+        timerEditingTaskID = task.id
+        if let seconds = task.timerDurationSeconds, seconds > 0 {
+            timerMinutesInput = "\(max(seconds / 60, 1))"
+        } else {
+            timerMinutesInput = "5"
+        }
+        showTimerPicker = true
+    }
+
+    private var timerPickerSheet: some View {
+        NavigationStack {
+            VStack(spacing: 20) {
+                Text("tasks_timer_sheet_title")
+                    .font(.headline)
+                    .foregroundColor(.white.opacity(0.9))
+
+                TextField(NSLocalizedString("tasks_timer_minutes_placeholder", comment: ""), text: $timerMinutesInput)
+                    .keyboardType(.numberPad)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .focused($timerInputFocused)
+                    .padding(14)
+                    .foregroundColor(.white)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.white.opacity(0.08))
+                    )
+                    .onChange(of: timerMinutesInput) { _, newValue in
+                        let filtered = newValue.filter(\.isNumber)
+                        if filtered != newValue {
+                            timerMinutesInput = filtered
+                        }
+                    }
+
+                Text("tasks_timer_sheet_hint")
+                    .font(.footnote)
+                    .foregroundColor(.white.opacity(0.55))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                HStack(spacing: 10) {
+                    Button(action: clearTimer) {
+                        Text("tasks_timer_remove")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(Capsule().fill(Color.white.opacity(0.12)))
+                    }
+                    .buttonStyle(.plain)
+
+                    Button(action: saveTimer) {
+                        Text("tasks_timer_save")
+                            .font(.headline)
+                            .foregroundColor(.black)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(Capsule().fill(Color.white))
+                    }
+                    .buttonStyle(.plain)
+                }
+
+                Spacer()
+            }
+            .padding(20)
+            .background(Color.black.ignoresSafeArea())
+            .onAppear {
+                timerInputFocused = true
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("common_done") {
+                        showTimerPicker = false
+                    }
+                    .foregroundColor(.orange)
+                }
+            }
+        }
+        .presentationDetents([.medium])
+    }
+
+    private func clearTimer() {
+        guard let timerEditingTaskID else { return }
+        viewModel.taskStore.updateTimer(timerEditingTaskID, timerDurationSeconds: nil)
+        showTimerPicker = false
+    }
+
+    private func saveTimer() {
+        guard let timerEditingTaskID else { return }
+        guard let minutes = Int(timerMinutesInput), (1...180).contains(minutes) else { return }
+        let current = viewModel.taskStore.tasks.first(where: { $0.id == timerEditingTaskID })
+        let addingNewTimer = current?.hasTimer != true
+        if addingNewTimer && hasReachedFreeTimerLimit {
+            showPaywall = true
+            return
+        }
+        viewModel.taskStore.updateTimer(timerEditingTaskID, timerDurationSeconds: minutes * 60)
+        showTimerPicker = false
     }
 }

@@ -11,6 +11,7 @@ struct TaskItem: Codable, Identifiable, Equatable {
     var lastCompletedDate: Date?
     var workout: WorkoutKind?
     var targetReps: Int?
+    var timerDurationSeconds: Int?
 
     var isCompletedToday: Bool {
         guard let date = lastCompletedDate else { return false }
@@ -19,6 +20,11 @@ struct TaskItem: Codable, Identifiable, Equatable {
 
     var isWorkoutTask: Bool {
         workout != nil
+    }
+
+    var hasTimer: Bool {
+        guard let timerDurationSeconds else { return false }
+        return timerDurationSeconds > 0
     }
 }
 
@@ -31,6 +37,10 @@ struct TaskStore: Codable {
 
     var completedCount: Int {
         tasks.filter(\.isCompletedToday).count
+    }
+
+    var timerTaskCount: Int {
+        tasks.filter(\.hasTimer).count
     }
 
     mutating func toggle(_ id: UUID) {
@@ -63,6 +73,11 @@ struct TaskStore: Codable {
         tasks[idx].title = title
     }
 
+    mutating func updateTimer(_ id: UUID, timerDurationSeconds: Int?) {
+        guard let idx = tasks.firstIndex(where: { $0.id == id }) else { return }
+        tasks[idx].timerDurationSeconds = timerDurationSeconds
+    }
+
     private static let saveKey = "mornDash_task_store"
 
     func save() {
@@ -74,7 +89,14 @@ struct TaskStore: Codable {
     static func load() -> TaskStore {
         if let data = UserDefaults.standard.data(forKey: saveKey),
            let decoded = try? JSONDecoder().decode(TaskStore.self, from: data) {
-            return decoded
+            var migrated = decoded
+            let meditateTitle = NSLocalizedString("onboarding_preset_meditate", comment: "")
+            for index in migrated.tasks.indices where migrated.tasks[index].title == meditateTitle {
+                if migrated.tasks[index].timerDurationSeconds == nil {
+                    migrated.tasks[index].timerDurationSeconds = 5 * 60
+                }
+            }
+            return migrated
         }
         return TaskStore(tasks: [
             TaskItem(title: NSLocalizedString("default_task_stretch", comment: "")),
