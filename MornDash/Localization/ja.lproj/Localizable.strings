@@ -248,6 +248,11 @@
 /* Workout */
 "workout_preset_squats_title" = "スクワット %d回";
 "workout_preset_ai_badge" = "AI・PRO";
+"workout_reps_picker_title" = "スクワットの回数を選択";
+"workout_reps_picker_stepper_format" = "%d回";
+"workout_reps_picker_placeholder" = "回数を入力（1〜999）";
+"workout_reps_picker_invalid" = "1〜999の数字を入力してください";
+"workout_reps_picker_add_button" = "この回数で追加";
 "workout_status_recognizing" = "認識中...";
 "workout_status_no_body" = "フレーム内に入ってください";
 "workout_status_adjust" = "位置を調整してください";

@@ -248,6 +248,11 @@
 /* Workout */
 "workout_preset_squats_title" = "%d Squats";
 "workout_preset_ai_badge" = "AI · PRO";
+"workout_reps_picker_title" = "Choose squat reps";
+"workout_reps_picker_stepper_format" = "%d reps";
+"workout_reps_picker_placeholder" = "Enter reps (1-999)";
+"workout_reps_picker_invalid" = "Enter a number between 1 and 999";
+"workout_reps_picker_add_button" = "Add this task";
 "workout_status_recognizing" = "Recognizing...";
 "workout_status_no_body" = "Step into frame";
 "workout_status_adjust" = "Adjust your position";

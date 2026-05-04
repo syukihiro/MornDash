@@ -7,7 +7,11 @@ struct TasksTabView: View {
     @State private var newTaskTitle: String = ""
     @State private var showPresets: Bool = false
     @State private var showPaywall: Bool = false
+    @State private var showWorkoutRepPicker: Bool = false
+    @State private var workoutRepsDraft: Int = 20
+    @State private var workoutRepsInput: String = "20"
     @FocusState private var addFieldFocused: Bool
+    @FocusState private var workoutInputFocused: Bool
 
     var body: some View {
         NavigationStack {
@@ -31,6 +35,9 @@ struct TasksTabView: View {
                 }
             }
             .paywallSheet(isPresented: $showPaywall)
+            .sheet(isPresented: $showWorkoutRepPicker) {
+                workoutRepPickerSheet
+            }
         }
     }
 
@@ -151,8 +158,11 @@ struct TasksTabView: View {
     }
 
     private var workoutPresetRow: some View {
-        let title = String(format: NSLocalizedString("workout_preset_squats_title", comment: ""), 20)
-        let added = viewModel.taskStore.tasks.contains { $0.workout == .squat && $0.targetReps == 20 }
+        let title = String(
+            format: NSLocalizedString("workout_preset_squats_title", comment: ""),
+            workoutRepsDraft
+        )
+        let added = viewModel.taskStore.tasks.contains { $0.workout == .squat && $0.targetReps == workoutRepsDraft }
         return Button(action: { toggleWorkoutPreset(title: title, added: added) }) {
             HStack(spacing: 14) {
                 Image(systemName: "figure.strengthtraining.traditional")
@@ -184,7 +194,7 @@ struct TasksTabView: View {
 
     private func toggleWorkoutPreset(title: String, added: Bool) {
         if added {
-            viewModel.taskStore.tasks.removeAll { $0.workout == .squat && $0.targetReps == 20 }
+            viewModel.taskStore.tasks.removeAll { $0.workout == .squat && $0.targetReps == workoutRepsDraft }
             return
         }
         if !subscriptionManager.isPro {
@@ -192,7 +202,100 @@ struct TasksTabView: View {
             return
         }
         if hasReachedFreeLimit { return }
-        viewModel.taskStore.addWorkout(.squat, targetReps: 20, title: title)
+        workoutRepsInput = "\(workoutRepsDraft)"
+        showWorkoutRepPicker = true
+    }
+
+    private var workoutRepPickerSheet: some View {
+        NavigationStack {
+            VStack(spacing: 22) {
+                Text("workout_reps_picker_title")
+                    .font(.headline)
+                    .foregroundColor(.white.opacity(0.85))
+
+                Text(
+                    String(
+                        format: NSLocalizedString("workout_preset_squats_title", comment: ""),
+                        workoutRepsDraft
+                    )
+                )
+                .font(.system(size: 36, weight: .bold, design: .rounded))
+                .foregroundColor(.white)
+
+                TextField(NSLocalizedString("workout_reps_picker_placeholder", comment: ""), text: $workoutRepsInput)
+                    .keyboardType(.numberPad)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .focused($workoutInputFocused)
+                    .padding(14)
+                    .foregroundColor(.white)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.white.opacity(0.08))
+                    )
+                    .onChange(of: workoutRepsInput) { _, newValue in
+                        let filtered = newValue.filter(\.isNumber)
+                        if filtered != newValue {
+                            workoutRepsInput = filtered
+                        }
+                        if let parsed = Int(filtered), (1...999).contains(parsed) {
+                            workoutRepsDraft = parsed
+                        }
+                    }
+                .padding(14)
+
+                if !workoutRepsInput.isEmpty, selectedRepsFromInput == nil {
+                    Text("workout_reps_picker_invalid")
+                        .font(.footnote)
+                        .foregroundColor(.red.opacity(0.9))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+
+                Spacer()
+
+                Button(action: addWorkoutTaskWithSelectedReps) {
+                    Text("workout_reps_picker_add_button")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Capsule().fill(Color.white))
+                }
+                .buttonStyle(.plain)
+                .disabled(selectedRepsFromInput == nil)
+                .opacity(selectedRepsFromInput == nil ? 0.5 : 1.0)
+            }
+            .padding(20)
+            .background(Color.black.ignoresSafeArea())
+            .onAppear {
+                workoutInputFocused = true
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("common_done") {
+                        showWorkoutRepPicker = false
+                    }
+                    .foregroundColor(.orange)
+                }
+            }
+        }
+        .presentationDetents([.medium])
+    }
+
+    private func addWorkoutTaskWithSelectedReps() {
+        guard let reps = selectedRepsFromInput else { return }
+        workoutRepsDraft = reps
+        let title = String(
+            format: NSLocalizedString("workout_preset_squats_title", comment: ""),
+            reps
+        )
+        viewModel.taskStore.addWorkout(.squat, targetReps: reps, title: title)
+        showWorkoutRepPicker = false
+    }
+
+    private var selectedRepsFromInput: Int? {
+        guard let reps = Int(workoutRepsInput), (1...999).contains(reps) else { return nil }
+        return reps
     }
 
     private func togglePreset(_ preset: PresetTask) {
