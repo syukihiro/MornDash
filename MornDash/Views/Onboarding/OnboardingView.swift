@@ -1,5 +1,7 @@
 import SwiftUI
+import DeviceActivity
 import FamilyControls
+import ManagedSettings
 
 struct OnboardingView: View {
     @Binding var isCompleted: Bool
@@ -380,86 +382,224 @@ struct PermissionButton: View {
 
 // MARK: - Step 4: Apps
 
+private struct OnboardingUsagePickRow: Identifiable {
+    let id: String
+    let name: String
+    let duration: TimeInterval
+    let token: ApplicationToken
+}
+
 struct OnboardingAppsView: View {
     @ObservedObject var blockManager: BlockManager
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
+    @Environment(\.scenePhase) private var scenePhase
+
     var nextAction: () -> Void
     @State private var showPicker = false
     @State private var showPaywall = false
     @State private var selectionBeforePicker: FamilyActivitySelection?
     @State private var pickerDraft = FamilyActivitySelection()
+    @State private var usageRows: [OnboardingUsagePickRow] = []
+
+    private var hasUsageList: Bool {
+        #if targetEnvironment(simulator)
+        false
+        #else
+        !usageRows.isEmpty
+        #endif
+    }
 
     var body: some View {
-        VStack(spacing: 28) {
-            Spacer(minLength: 10)
+        VStack(spacing: 0) {
+            ZStack(alignment: .top) {
+                #if !targetEnvironment(simulator)
+                DeviceActivityReport(.yesterdayUsagePick, filter: yesterdayUnrestrictedFilter)
+                    .frame(height: 1)
+                    .opacity(0.01)
+                    .allowsHitTesting(false)
+                    .accessibilityHidden(true)
+                #endif
 
-            Image(systemName: "apps.iphone")
-                .font(.system(size: 80))
-                .foregroundStyle(LinearGradient(colors: [.indigo, .purple], startPoint: .bottom, endPoint: .top))
-                .shadow(color: .indigo.opacity(0.5), radius: 20)
+                ScrollView {
+                    VStack(spacing: 18) {
+                        Text("onboarding_apps_title")
+                            .font(.title2.bold())
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
 
-            VStack(spacing: 12) {
-                Text("onboarding_apps_title")
-                    .font(.title2.bold())
-                    .foregroundColor(.white)
+                        Text("onboarding_apps_desc")
+                            .font(.subheadline)
+                            .multilineTextAlignment(.center)
+                            .foregroundColor(.white.opacity(0.65))
 
-                Text("onboarding_apps_desc")
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.white.opacity(0.75))
-            }
+                        yesterdayUsageSection
 
-            Button(action: openAppPicker) {
-                HStack {
-                    Text("onboarding_select_apps").font(.headline)
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                }
-                .foregroundColor(.white)
-                .padding()
-                .background(Color.white.opacity(0.1))
-                .cornerRadius(12)
-            }
-            .sheet(isPresented: $showPicker, onDismiss: handleAppsPickerDismiss) {
-                NavigationStack {
-                    FamilyActivityPicker(selection: $pickerDraft)
-                        .toolbar {
-                            ToolbarItem(placement: .topBarTrailing) {
-                                Button(NSLocalizedString("common_done", comment: "")) { showPicker = false }
+                        Button(action: openAppPicker) {
+                            HStack {
+                                Text("onboarding_select_apps").font(.headline)
+                                Spacer()
+                                Image(systemName: "chevron.right")
                             }
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.white.opacity(0.1))
+                            .cornerRadius(12)
                         }
-                }
-            }
 
-            if selectionCount > 0 {
-                Text(selectionStatusText)
-                    .font(.caption)
-                    .foregroundColor(.green)
-            } else {
-                VStack(spacing: 6) {
-                    Text("onboarding_apps_hint")
-                        .font(.caption)
-                        .foregroundColor(.white.opacity(0.5))
-                        .multilineTextAlignment(.center)
-                    if !subscriptionManager.isPro {
-                        Text(String(format: NSLocalizedString("onboarding_apps_free_limit_hint", comment: ""), RevenueCatConfig.freeBlockedAppsLimit))
-                            .font(.caption2)
-                            .foregroundColor(.white.opacity(0.45))
-                            .multilineTextAlignment(.center)
-                        Text("settings_categories_pro_only")
-                            .font(.caption2)
-                            .foregroundColor(.white.opacity(0.45))
-                            .multilineTextAlignment(.center)
+                        if selectionCount > 0 {
+                            Text(selectionStatusText)
+                                .font(.caption)
+                                .foregroundColor(.green)
+                                .multilineTextAlignment(.center)
+                        }
+
+                        if !subscriptionManager.isPro {
+                            Text(String(format: NSLocalizedString("onboarding_apps_free_footer", comment: ""), RevenueCatConfig.freeBlockedAppsLimit))
+                                .font(.caption2)
+                                .foregroundColor(.white.opacity(0.42))
+                                .multilineTextAlignment(.center)
+                        }
                     }
+                    .padding(.horizontal, 4)
                 }
             }
 
-            Spacer()
-
-            PrimaryButton(title: "common_next", isEnabled: selectionCount > 0, action: nextAction)
+            PrimaryButton(title: "common_next", action: nextAction)
+                .padding(.top, 8)
         }
         .padding(.vertical, 20)
+        .sheet(isPresented: $showPicker, onDismiss: handleAppsPickerDismiss) {
+            NavigationStack {
+                FamilyActivityPicker(selection: $pickerDraft)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            Button(NSLocalizedString("common_done", comment: "")) { showPicker = false }
+                        }
+                    }
+            }
+        }
         .paywallSheet(isPresented: $showPaywall)
+        .onAppear {
+            reloadUsageRowsFromCache()
+            scheduleUsageCacheReload()
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active {
+                reloadUsageRowsFromCache()
+            }
+        }
+    }
+
+    private var yesterdayUnrestrictedFilter: DeviceActivityFilter {
+        let cal = Calendar.current
+        let todayStart = cal.startOfDay(for: Date())
+        let yesterdayStart = cal.date(byAdding: .day, value: -1, to: todayStart) ?? todayStart
+        return DeviceActivityFilter(
+            segment: .daily(during: DateInterval(start: yesterdayStart, end: todayStart)),
+            users: .all,
+            devices: .init([.iPhone, .iPad]),
+            applications: [],
+            categories: [],
+            webDomains: []
+        )
+    }
+
+    @ViewBuilder
+    private var yesterdayUsageSection: some View {
+        #if !targetEnvironment(simulator)
+        if hasUsageList {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("onboarding_apps_yesterday_label")
+                    .font(.caption.weight(.semibold))
+                    .foregroundColor(.white.opacity(0.5))
+
+                VStack(spacing: 0) {
+                    ForEach(usageRows) { row in
+                        usageRowView(row)
+                    }
+                }
+                .background(Color.white.opacity(0.06))
+                .cornerRadius(12)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        #endif
+    }
+
+    private func usageRowView(_ row: OnboardingUsagePickRow) -> some View {
+        let selected = blockManager.selection.applicationTokens.contains(row.token)
+        return Button {
+            toggleUsageRow(row)
+        } label: {
+            HStack(spacing: 10) {
+                Text(row.name)
+                    .font(.subheadline.weight(.medium))
+                    .foregroundColor(.white.opacity(0.9))
+                    .lineLimit(1)
+                Spacer(minLength: 8)
+                Text(formattedDuration(row.duration))
+                    .font(.caption.weight(.medium).monospacedDigit())
+                    .foregroundColor(.white.opacity(0.45))
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 11)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .strokeBorder(selected ? Color.orange.opacity(0.85) : Color.clear, lineWidth: 2)
+            )
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func formattedDuration(_ interval: TimeInterval) -> String {
+        let seconds = Int(interval)
+        let h = seconds / 3600
+        let m = (seconds % 3600) / 60
+        if h > 0 && m > 0 {
+            return String(format: NSLocalizedString("onboarding_usage_hm_format", comment: ""), h, m)
+        } else if h > 0 {
+            return String(format: NSLocalizedString("onboarding_usage_h_only_format", comment: ""), h)
+        } else if seconds >= 60 {
+            return String(format: NSLocalizedString("onboarding_usage_m_only_format", comment: ""), m)
+        } else if seconds > 0 {
+            return NSLocalizedString("onboarding_usage_under_one_m", comment: "")
+        }
+        return "0m"
+    }
+
+    private func reloadUsageRowsFromCache() {
+        guard let snapshot = YesterdayUsageCachePayload.loadSnapshot() else {
+            usageRows = []
+            return
+        }
+        usageRows = snapshot.rows.compactMap { row in
+            guard let sel = try? PropertyListDecoder().decode(FamilyActivitySelection.self, from: row.singleAppSelectionData),
+                  let token = sel.applicationTokens.first else { return nil }
+            let id = "\(row.name)|\(row.durationSeconds)"
+            return OnboardingUsagePickRow(id: id, name: row.name, duration: TimeInterval(row.durationSeconds), token: token)
+        }
+    }
+
+    private func scheduleUsageCacheReload() {
+        Task {
+            try? await Task.sleep(nanoseconds: 2_500_000_000)
+            await MainActor.run { reloadUsageRowsFromCache() }
+        }
+    }
+
+    private func toggleUsageRow(_ row: OnboardingUsagePickRow) {
+        var sel = blockManager.selection
+        if sel.applicationTokens.contains(row.token) {
+            sel.applicationTokens.remove(row.token)
+            blockManager.selection = sel
+            return
+        }
+        if !subscriptionManager.isPro, selectionItemCount(sel) >= RevenueCatConfig.freeBlockedAppsLimit {
+            showPaywall = true
+            return
+        }
+        sel.applicationTokens.insert(row.token)
+        blockManager.selection = sel
     }
 
     private var selectionStatusText: String {

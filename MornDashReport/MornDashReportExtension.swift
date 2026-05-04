@@ -10,5 +10,8 @@ struct MornDashReportExtension: DeviceActivityReportExtension {
         TotalActivityReport { configuration in
             TotalActivityView(configuration: configuration)
         }
+        YesterdayPickReport { configuration in
+            YesterdayPickReportChrome(configuration: configuration)
+        }
     }
 }

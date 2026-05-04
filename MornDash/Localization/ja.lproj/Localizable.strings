@@ -105,12 +105,16 @@
 
 /* Onboarding — step 4: apps */
 "onboarding_apps_title" = "ブロックするアプリを選ぶ";
-"onboarding_apps_desc" = "1日中開けないようにしたいアプリを選んでください。";
-"onboarding_apps_hint" = "SNSや動画アプリを選ぶのがおすすめです。";
+"onboarding_apps_desc" = "一覧が出ればタップ。出なければ下のボタン。";
+"onboarding_apps_yesterday_label" = "昨日";
+"onboarding_apps_free_footer" = "無料: 最大%d個。カテゴリーはPro。";
 "onboarding_select_apps" = "アプリを選択";
+"onboarding_usage_hm_format" = "%d時間%d分";
+"onboarding_usage_h_only_format" = "%d時間";
+"onboarding_usage_m_only_format" = "%d分";
+"onboarding_usage_under_one_m" = "1分未満";
 "onboarding_items_selected" = "%d 個選択中";
 "onboarding_items_selected_with_limit" = "%d / %d 個選択中";
-"onboarding_apps_free_limit_hint" = "無料プランでは、アプリ・カテゴリ・サイトを合わせて%d個まで選べます。Proなら上限なしです。";
 
 /* Onboarding — step 5: time */
 "onboarding_time_title" = "何時からブロック？";

@@ -4,6 +4,8 @@ import FamilyControls
 
 extension DeviceActivityReport.Context {
     static let totalActivity = Self("Total Activity")
+    /// Must match `MornDashReport/TotalActivityReport.swift`.
+    static let yesterdayUsagePick = Self("Yesterday Usage Pick")
 }
 
 struct StatsTabView: View {

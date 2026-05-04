@@ -105,12 +105,16 @@
 
 /* Onboarding — step 4: apps */
 "onboarding_apps_title" = "Pick apps to block";
-"onboarding_apps_desc" = "Choose the apps you want locked for the whole day.";
-"onboarding_apps_hint" = "Social and video apps are a good starting point.";
+"onboarding_apps_desc" = "From yesterday’s list if shown, or use Select Apps.";
+"onboarding_apps_yesterday_label" = "Yesterday";
+"onboarding_apps_free_footer" = "Free: up to %d items. Categories need Pro.";
 "onboarding_select_apps" = "Select Apps";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%dm";
+"onboarding_usage_under_one_m" = "<1m";
 "onboarding_items_selected" = "%d items selected";
 "onboarding_items_selected_with_limit" = "%d / %d items selected";
-"onboarding_apps_free_limit_hint" = "On the free plan you can block up to %d apps, categories, or sites in total. Pro removes this limit.";
 
 /* Onboarding — step 5: time */
 "onboarding_time_title" = "When should it start?";
