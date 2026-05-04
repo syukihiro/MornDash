@@ -200,8 +200,8 @@ struct TimerSessionView: View {
                     .buttonStyle(.plain)
 
                     Button(action: toggleRunning) {
-                        Text(isRunning ? "timer_session_pause" : "timer_session_start")
-                            .font(.headline)
+                        Image(systemName: isRunning ? "pause.fill" : "play.fill")
+                            .font(.system(size: 22, weight: .semibold))
                             .foregroundColor(.black)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 14)
