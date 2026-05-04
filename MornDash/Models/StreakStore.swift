@@ -3,22 +3,30 @@ import Foundation
 struct StreakStore: Codable {
     private(set) var completionDates: [Date]
     private(set) var celebratedThresholds: Set<Int>
+    private(set) var blockedSecondsByDay: [Date: TimeInterval]
 
     private static let saveKey = "mornDash_streak_store"
 
     private enum CodingKeys: String, CodingKey {
         case completionDates
         case celebratedThresholds
+        case blockedSecondsByDay
     }
 
-    init(completionDates: [Date] = [], celebratedThresholds: Set<Int> = []) {
+    init(
+        completionDates: [Date] = [],
+        celebratedThresholds: Set<Int> = [],
+        blockedSecondsByDay: [Date: TimeInterval] = [:]
+    ) {
         self.completionDates = completionDates
         self.celebratedThresholds = celebratedThresholds
+        self.blockedSecondsByDay = blockedSecondsByDay
     }
 
     init(from decoder: Decoder) throws {
         let c = try decoder.container(keyedBy: CodingKeys.self)
         let dates = try c.decode([Date].self, forKey: .completionDates)
+        self.blockedSecondsByDay = (try? c.decodeIfPresent([Date: TimeInterval].self, forKey: .blockedSecondsByDay)) ?? [:]
         if let stored = try c.decodeIfPresent(Set<Int>.self, forKey: .celebratedThresholds) {
             self.completionDates = dates
             self.celebratedThresholds = stored
@@ -50,6 +58,63 @@ struct StreakStore: Codable {
         if !completionDates.contains(where: { Calendar.current.isDate($0, inSameDayAs: today) }) {
             completionDates.append(today)
             completionDates.sort()
+        }
+    }
+
+    /// 今日のブロック継続時間を記録する。シールドが解除された瞬間（タスク全完了 or 緊急解除）に呼ばれる想定。
+    /// 同日内に複数回呼ばれても、最初に記録された値を保持する（解除→再ロック→再解除の二重計上を避けるため）。
+    mutating func recordBlockedDurationToday(_ seconds: TimeInterval) {
+        let key = Calendar.current.startOfDay(for: Date())
+        if blockedSecondsByDay[key] == nil {
+            blockedSecondsByDay[key] = max(0, seconds)
+        }
+    }
+
+    enum BlockedDurationPeriod {
+        case currentWeek, lastWeek
+        case currentMonth, lastMonth
+        case currentYear, lastYear
+        /// 今日から遡って 365 日。
+        case pastYear
+    }
+
+    /// 指定期間内の「記録された日」だけを母数にした平均ブロック継続秒数。
+    /// 設定していない日でゼロ割りされないよう、母数は entry 数（記録のある日）に限定する。
+    func averageBlockedSeconds(_ period: BlockedDurationPeriod) -> TimeInterval {
+        guard let interval = dateInterval(for: period) else { return 0 }
+        let entries = blockedSecondsByDay.filter { interval.contains($0.key) }
+        guard !entries.isEmpty else { return 0 }
+        return entries.values.reduce(0, +) / TimeInterval(entries.count)
+    }
+
+    private func dateInterval(for period: BlockedDurationPeriod) -> DateInterval? {
+        let cal = Calendar.current
+        let now = Date()
+        switch period {
+        case .currentWeek:
+            return cal.dateInterval(of: .weekOfYear, for: now)
+        case .lastWeek:
+            guard let thisWeek = cal.dateInterval(of: .weekOfYear, for: now),
+                  let prev = cal.date(byAdding: .day, value: -1, to: thisWeek.start) else { return nil }
+            return cal.dateInterval(of: .weekOfYear, for: prev)
+        case .currentMonth:
+            return cal.dateInterval(of: .month, for: now)
+        case .lastMonth:
+            guard let thisMonth = cal.dateInterval(of: .month, for: now),
+                  let prev = cal.date(byAdding: .day, value: -1, to: thisMonth.start) else { return nil }
+            return cal.dateInterval(of: .month, for: prev)
+        case .currentYear:
+            return cal.dateInterval(of: .year, for: now)
+        case .lastYear:
+            guard let thisYear = cal.dateInterval(of: .year, for: now),
+                  let prev = cal.date(byAdding: .day, value: -1, to: thisYear.start) else { return nil }
+            return cal.dateInterval(of: .year, for: prev)
+        case .pastYear:
+            let end = cal.startOfDay(for: now)
+            guard let start = cal.date(byAdding: .day, value: -365, to: end) else { return nil }
+            // end は今日の00:00。今日のデータも含めるため end を翌日0時にする。
+            guard let endExclusive = cal.date(byAdding: .day, value: 1, to: end) else { return nil }
+            return DateInterval(start: start, end: endExclusive)
         }
     }
 

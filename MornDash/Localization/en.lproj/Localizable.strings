@@ -42,6 +42,21 @@
 "stats_emergency_unlocks_this_month" = "This month";
 "stats_emergency_unlocks_last" = "Last: %@";
 "stats_emergency_unlocks_none" = "No emergency unlocks yet.";
+"stats_blocked_duration" = "Blocked / day";
+"stats_blocked_duration_this_week" = "This week";
+"stats_blocked_duration_past_year" = "Past year";
+"stats_blocked_duration_per_day_suffix" = "/ day";
+"stats_blocked_duration_none" = "No blocked time recorded yet.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "Comparison";
+"stats_blocked_compare_week" = "vs last week";
+"stats_blocked_compare_month" = "vs last month";
+"stats_blocked_compare_year" = "vs last year";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "Compare your week, month, year";
+"stats_blocked_compare_lock_message" = "Pro shows how this week, month, and year stack up against the last.";
+"stats_blocked_compare_unlock_button" = "Unlock with Pro";
 
 /* Badges */
 "badge_3day" = "3 Day\nStarter";

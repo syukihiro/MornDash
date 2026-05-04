@@ -107,6 +107,7 @@ class HomeViewModel: ObservableObject {
         if taskStore.allCompletedToday {
             if !wasAllCompleted {
                 streakStore.recordCompletionToday()
+                recordTodaysBlockedDuration()
                 let newlyUnlocked = streakStore.newlyUnlockedBadges()
                 if !newlyUnlocked.isEmpty {
                     pendingBadgeQueue.append(contentsOf: newlyUnlocked)
@@ -133,8 +134,32 @@ class HomeViewModel: ObservableObject {
     func giveUp(blockManager: BlockManager) {
         SharedStorage.defaults.set(Date(), forKey: SharedStorage.Keys.lastGiveUpDate)
         emergencyUnlockStore.record()
+        recordTodaysBlockedDuration()
         blockManager.clearShield()
         objectWillChange.send()
+    }
+
+    /// 今日の開始時刻から現在までの経過秒を StreakStore に記録する。
+    /// 開始時刻前なら何もしない（その日はブロックが発生していない）。
+    private func recordTodaysBlockedDuration() {
+        guard let start = todayStartDate() else { return }
+        let now = Date()
+        guard now >= start else { return }
+        streakStore.recordBlockedDurationToday(now.timeIntervalSince(start))
+    }
+
+    private func todayStartDate() -> Date? {
+        let cal = Calendar.current
+        let now = Date()
+        let weekday = cal.component(.weekday, from: now)
+        let (h, m) = effectiveStartTime(forWeekday: weekday)
+        return cal.date(from: DateComponents(
+            year: cal.component(.year, from: now),
+            month: cal.component(.month, from: now),
+            day: cal.component(.day, from: now),
+            hour: h,
+            minute: m
+        ))
     }
 
     /// メインアプリが前面に出たとき、現在ブロック窓内ならシールドを適用(冗長だが安全網)。

@@ -42,6 +42,21 @@
 "stats_emergency_unlocks_this_month" = "今月";
 "stats_emergency_unlocks_last" = "前回: %@";
 "stats_emergency_unlocks_none" = "まだ緊急解除はありません。";
+"stats_blocked_duration" = "1日あたりのブロック時間";
+"stats_blocked_duration_this_week" = "今週";
+"stats_blocked_duration_past_year" = "1年";
+"stats_blocked_duration_per_day_suffix" = "/日";
+"stats_blocked_duration_none" = "まだブロック時間の記録はありません。";
+
+/* 比較レポート (Pro限定) */
+"stats_blocked_compare" = "比較レポート";
+"stats_blocked_compare_week" = "先週比";
+"stats_blocked_compare_month" = "先月比";
+"stats_blocked_compare_year" = "去年比";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "先週・先月・去年と比べる";
+"stats_blocked_compare_lock_message" = "Proにすると、今週・今月・今年が、それぞれ前期間と比べてどう変化したかを見られます。";
+"stats_blocked_compare_unlock_button" = "Proで解除";
 
 /* Badges */
 "badge_3day" = "3日\n達成";

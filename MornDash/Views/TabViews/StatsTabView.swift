@@ -24,6 +24,12 @@ struct StatsTabView: View {
                     VStack(spacing: 20) {
                         streakHero
                         statCardsRow
+                        blockedDurationSection
+                        if subscriptionManager.isPro {
+                            comparisonReportSection
+                        } else {
+                            comparisonReportLockedBanner
+                        }
                         emergencyUnlockSection
                         blockedUsageSection
                         weekStrip
@@ -172,6 +178,227 @@ struct StatsTabView: View {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.white.opacity(0.05))
         )
+    }
+
+    // MARK: - Blocked duration (per-day averages)
+
+    private var blockedDurationSection: some View {
+        let thisWeek = viewModel.streakStore.averageBlockedSeconds(.currentWeek)
+        let pastYear = viewModel.streakStore.averageBlockedSeconds(.pastYear)
+
+        return VStack(alignment: .leading, spacing: 12) {
+            HStack(spacing: 8) {
+                Image(systemName: "hourglass")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundColor(.indigo.opacity(0.85))
+                Text("stats_blocked_duration")
+                    .font(.system(size: 11, weight: .medium))
+                    .tracking(2)
+                    .foregroundColor(.white.opacity(0.5))
+            }
+
+            HStack(alignment: .firstTextBaseline, spacing: 6) {
+                Text(formatDuration(thisWeek))
+                    .font(.system(size: 40, weight: .thin, design: .rounded))
+                    .foregroundColor(.white)
+                Text("stats_blocked_duration_per_day_suffix")
+                    .font(.system(size: 13, weight: .medium))
+                    .foregroundColor(.white.opacity(0.5))
+                Spacer()
+                Text("stats_blocked_duration_this_week")
+                    .font(.system(size: 11, weight: .medium))
+                    .tracking(1)
+                    .foregroundColor(.white.opacity(0.45))
+            }
+
+            HStack(spacing: 16) {
+                blockedDurationMetric(seconds: pastYear, labelKey: "stats_blocked_duration_past_year")
+                Spacer()
+            }
+
+            if thisWeek == 0 && pastYear == 0 {
+                Text("stats_blocked_duration_none")
+                    .font(.system(size: 11))
+                    .foregroundColor(.white.opacity(0.4))
+                    .padding(.top, 2)
+            }
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.white.opacity(0.05))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .strokeBorder(Color.indigo.opacity(0.12), lineWidth: 1)
+                )
+        )
+    }
+
+    private func blockedDurationMetric(seconds: TimeInterval, labelKey: String) -> some View {
+        VStack(alignment: .leading, spacing: 2) {
+            HStack(alignment: .firstTextBaseline, spacing: 4) {
+                Text(formatDuration(seconds))
+                    .font(.system(size: 18, weight: .medium, design: .rounded))
+                    .foregroundColor(.white.opacity(0.85))
+                Text("stats_blocked_duration_per_day_suffix")
+                    .font(.system(size: 10, weight: .medium))
+                    .foregroundColor(.white.opacity(0.45))
+            }
+            Text(LocalizedStringKey(labelKey))
+                .font(.system(size: 10, weight: .medium))
+                .tracking(1)
+                .foregroundColor(.white.opacity(0.45))
+        }
+    }
+
+    private func formatDuration(_ seconds: TimeInterval) -> String {
+        let totalMinutes = Int(seconds) / 60
+        let hours = totalMinutes / 60
+        let minutes = totalMinutes % 60
+        if hours > 0 && minutes > 0 {
+            return String(format: NSLocalizedString("onboarding_usage_hm_format", comment: ""), hours, minutes)
+        } else if hours > 0 {
+            return String(format: NSLocalizedString("onboarding_usage_h_only_format", comment: ""), hours)
+        } else if minutes > 0 {
+            return String(format: NSLocalizedString("onboarding_usage_m_only_format", comment: ""), minutes)
+        } else {
+            return NSLocalizedString("onboarding_usage_under_one_m", comment: "")
+        }
+    }
+
+    // MARK: - Comparison report (Pro)
+
+    private var comparisonReportSection: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(spacing: 8) {
+                Image(systemName: "chart.bar.xaxis")
+                    .font(.system(size: 12, weight: .semibold))
+                    .foregroundColor(.indigo.opacity(0.85))
+                Text("stats_blocked_compare")
+                    .font(.system(size: 11, weight: .medium))
+                    .tracking(2)
+                    .foregroundColor(.white.opacity(0.5))
+            }
+
+            comparisonRow(
+                current: viewModel.streakStore.averageBlockedSeconds(.currentWeek),
+                previous: viewModel.streakStore.averageBlockedSeconds(.lastWeek),
+                labelKey: "stats_blocked_compare_week"
+            )
+            Divider().background(Color.white.opacity(0.06))
+            comparisonRow(
+                current: viewModel.streakStore.averageBlockedSeconds(.currentMonth),
+                previous: viewModel.streakStore.averageBlockedSeconds(.lastMonth),
+                labelKey: "stats_blocked_compare_month"
+            )
+            Divider().background(Color.white.opacity(0.06))
+            comparisonRow(
+                current: viewModel.streakStore.averageBlockedSeconds(.currentYear),
+                previous: viewModel.streakStore.averageBlockedSeconds(.lastYear),
+                labelKey: "stats_blocked_compare_year"
+            )
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.white.opacity(0.05))
+        )
+    }
+
+    private func comparisonRow(current: TimeInterval, previous: TimeInterval, labelKey: String) -> some View {
+        let delta = percentChange(current: current, previous: previous)
+        return HStack(alignment: .firstTextBaseline, spacing: 8) {
+            HStack(alignment: .firstTextBaseline, spacing: 4) {
+                Text(formatDuration(current))
+                    .font(.system(size: 20, weight: .medium, design: .rounded))
+                    .foregroundColor(.white.opacity(0.9))
+                Text("stats_blocked_duration_per_day_suffix")
+                    .font(.system(size: 11, weight: .medium))
+                    .foregroundColor(.white.opacity(0.45))
+            }
+            Spacer()
+            VStack(alignment: .trailing, spacing: 2) {
+                Text(LocalizedStringKey(labelKey))
+                    .font(.system(size: 10, weight: .medium))
+                    .tracking(1)
+                    .foregroundColor(.white.opacity(0.45))
+                deltaLabel(delta)
+            }
+        }
+    }
+
+    private func percentChange(current: TimeInterval, previous: TimeInterval) -> Double? {
+        guard previous > 0 else { return nil }
+        return (current - previous) / previous
+    }
+
+    @ViewBuilder
+    private func deltaLabel(_ delta: Double?) -> some View {
+        if let delta {
+            let isUp = delta >= 0
+            HStack(spacing: 3) {
+                Image(systemName: isUp ? "arrow.up.right" : "arrow.down.right")
+                    .font(.system(size: 9, weight: .bold))
+                Text(String(format: "%@%.0f%%", isUp ? "+" : "", delta * 100))
+                    .font(.system(size: 12, weight: .semibold, design: .rounded))
+            }
+            .foregroundColor(isUp ? .green.opacity(0.85) : .red.opacity(0.75))
+        } else {
+            Text("stats_blocked_compare_no_baseline")
+                .font(.system(size: 12, weight: .semibold, design: .rounded))
+                .foregroundColor(.white.opacity(0.35))
+        }
+    }
+
+    private var comparisonReportLockedBanner: some View {
+        Button(action: { showPaywall = true }) {
+            VStack(alignment: .leading, spacing: 12) {
+                HStack(spacing: 8) {
+                    Image(systemName: "lock.fill")
+                        .font(.system(size: 12, weight: .semibold))
+                        .foregroundColor(.orange.opacity(0.85))
+                    Text("stats_blocked_compare")
+                        .font(.system(size: 11, weight: .medium))
+                        .tracking(2)
+                        .foregroundColor(.white.opacity(0.5))
+                }
+
+                Text("stats_blocked_compare_lock_title")
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundColor(.white)
+
+                Text("stats_blocked_compare_lock_message")
+                    .font(.system(size: 13))
+                    .foregroundColor(.white.opacity(0.6))
+                    .multilineTextAlignment(.leading)
+                    .fixedSize(horizontal: false, vertical: true)
+
+                HStack(spacing: 8) {
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 13, weight: .semibold))
+                    Text("stats_blocked_compare_unlock_button")
+                        .font(.system(size: 14, weight: .semibold))
+                }
+                .foregroundColor(.black)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 10)
+                .background(Capsule().fill(Color.orange))
+                .padding(.top, 4)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.white.opacity(0.05))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 16)
+                            .strokeBorder(Color.orange.opacity(0.18), lineWidth: 1)
+                    )
+            )
+        }
+        .buttonStyle(.plain)
     }
 
     // MARK: - Emergency unlocks
