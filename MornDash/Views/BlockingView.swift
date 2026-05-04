@@ -409,7 +409,7 @@ private struct HourglassTimerView: View {
                 // Falling stream and particles while running.
                 if isRunning && !isFinished {
                     var stream = Path()
-                    stream.move(to: CGPoint(x: centerX, y: midY - 10))
+                    stream.move(to: CGPoint(x: centerX, y: midY))
                     stream.addLine(to: CGPoint(x: centerX, y: bottomSandTopY - 2))
                     canvas.stroke(stream, with: .color(.orange.opacity(0.85)), lineWidth: 2)
 
@@ -417,7 +417,7 @@ private struct HourglassTimerView: View {
                         let phase = now * 120 + Double(i * 31)
                         let px = centerX + CGFloat(sin(phase * 0.03) * 3.0)
                         let travel = CGFloat((phase.truncatingRemainder(dividingBy: 100)) / 100.0)
-                        let py = (midY - 6) + (bottomSandTopY - midY) * travel
+                        let py = (midY + 1) + (bottomSandTopY - midY) * travel
                         let dotRect = CGRect(x: px - 1.2, y: py - 1.2, width: 2.4, height: 2.4)
                         canvas.fill(Path(ellipseIn: dotRect), with: .color(.orange.opacity(0.85)))
                     }
