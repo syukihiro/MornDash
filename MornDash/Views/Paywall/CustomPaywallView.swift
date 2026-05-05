@@ -121,7 +121,6 @@ struct CustomPaywallView: View {
         VStack(alignment: .leading, spacing: 14) {
             featureRow(icon: "checklist", text: "paywall_feature_unlimited_tasks")
             featureRow(icon: "apps.iphone", text: "paywall_feature_unlimited_blocked_apps")
-            featureRow(icon: "calendar.badge.clock", text: "paywall_feature_full_history")
             featureRow(icon: "clock.arrow.2.circlepath", text: "paywall_feature_multi_schedule")
         }
         .padding(20)

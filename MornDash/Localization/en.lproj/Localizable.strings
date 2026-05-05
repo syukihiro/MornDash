@@ -196,14 +196,10 @@
 /* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
 "paywall_feature_unlimited_tasks" = "Unlimited tasks";
 "paywall_feature_unlimited_blocked_apps" = "Unlimited apps & categories to block";
-"paywall_feature_full_history" = "Full history & contribution graph";
 "paywall_feature_multi_schedule" = "Multiple block schedules";
 
 /* Premium gates */
 "gate_tasks_lock_message" = "Free plan supports up to %d tasks. Upgrade to add more.";
-"gate_history_lock_title" = "See your full history";
-"gate_history_lock_message" = "Pro unlocks the full contribution graph and long-term streaks.";
-"gate_history_unlock_button" = "Unlock with Pro";
 /* Settings subscription card */
 "settings_card_free_title" = "MornDash Pro";
 "settings_card_free_subtitle" = "More freedom for the mornings you want.";

@@ -41,11 +41,7 @@ struct StatsTabView: View {
                         }
                         blockedUsageSection
                         StatsWeekStripView(days: viewModel.streakStore.recentDays(7))
-                        if subscriptionManager.isPro {
-                            StatsContributionGraphView(weeks: viewModel.streakStore.contributionGrid(weeks: 52))
-                        } else {
-                            contributionGraphLockedBanner
-                        }
+                        StatsContributionGraphView(weeks: viewModel.streakStore.contributionGrid(weeks: 52))
                         StatsBadgesSectionView(longestStreak: viewModel.streakStore.longestStreak)
                     }
                     .padding(.horizontal, 20)
@@ -56,16 +52,6 @@ struct StatsTabView: View {
             .toolbarColorScheme(.dark, for: .navigationBar)
             .paywallSheet(isPresented: $showPaywall)
         }
-    }
-
-    private var contributionGraphLockedBanner: some View {
-        StatsProLockBanner(
-            sectionTitleKey: "stats_contributions",
-            titleKey: "gate_history_lock_title",
-            messageKey: "gate_history_lock_message",
-            buttonTitleKey: "gate_history_unlock_button",
-            action: { showPaywall = true }
-        )
     }
 
     // MARK: - Blocked duration (per-day averages)

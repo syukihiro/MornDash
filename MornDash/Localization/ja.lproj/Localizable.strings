@@ -196,14 +196,10 @@
 /* Paywall feature bullets */
 "paywall_feature_unlimited_tasks" = "タスク数の制限なし";
 "paywall_feature_unlimited_blocked_apps" = "制限するアプリ・カテゴリ数に上限なし";
-"paywall_feature_full_history" = "全期間の履歴と貢献グラフ";
 "paywall_feature_multi_schedule" = "複数のブロック時間帯を設定";
 
 /* Premium gates */
 "gate_tasks_lock_message" = "無料プランではタスクは%d個までです。Proにすると無制限に追加できます。";
-"gate_history_lock_title" = "全期間の履歴を見る";
-"gate_history_lock_message" = "Proにすると、全期間の貢献グラフと長期ストリークを見られます。";
-"gate_history_unlock_button" = "Proで解除";
 /* Settings subscription card */
 "settings_card_free_title" = "MornDash Pro";
 "settings_card_free_subtitle" = "もっと自由に、もっと自分らしく。";
