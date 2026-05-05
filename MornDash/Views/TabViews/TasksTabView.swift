@@ -13,9 +13,13 @@ struct TasksTabView: View {
     @State private var timerEditingTaskID: UUID?
     @State private var timerMinutesInput: String = ""
     @State private var showTimerPicker: Bool = false
+    @State private var showFocusDurationPicker: Bool = false
+    @State private var focusKindDraft: FocusDetectionKind = .study
+    @State private var focusMinutesInput: String = "30"
     @FocusState private var addFieldFocused: Bool
     @FocusState private var workoutInputFocused: Bool
     @FocusState private var timerInputFocused: Bool
+    @FocusState private var focusMinutesInputFocused: Bool
 
     var body: some View {
         NavigationStack {
@@ -44,6 +48,9 @@ struct TasksTabView: View {
             }
             .sheet(isPresented: $showTimerPicker) {
                 timerPickerSheet
+            }
+            .sheet(isPresented: $showFocusDurationPicker) {
+                focusDurationPickerSheet
             }
         }
     }
@@ -151,6 +158,16 @@ struct TasksTabView: View {
                         .listRowBackground(Color.white.opacity(0.04))
                         .listRowSeparatorTint(.white.opacity(0.08))
 
+                    if UIDevice.current.userInterfaceIdiom != .pad {
+                        studyPresetRow
+                            .listRowBackground(Color.white.opacity(0.04))
+                            .listRowSeparatorTint(.white.opacity(0.08))
+
+                        pcWorkPresetRow
+                            .listRowBackground(Color.white.opacity(0.04))
+                            .listRowSeparatorTint(.white.opacity(0.08))
+                    }
+
                     ForEach(PresetTask.allCases) { preset in
                         presetRow(preset)
                             .listRowBackground(Color.white.opacity(0.04))
@@ -220,6 +237,124 @@ struct TasksTabView: View {
             }
         }
         .buttonStyle(.plain)
+    }
+
+    private var studyPresetRow: some View { focusPresetRow(kind: .study) }
+    private var pcWorkPresetRow: some View { focusPresetRow(kind: .pcWork) }
+
+    private func focusPresetRow(kind: FocusDetectionKind) -> some View {
+        let label = kind == .study
+            ? NSLocalizedString("focus_preset_study_label", comment: "")
+            : NSLocalizedString("focus_preset_pcwork_label", comment: "")
+        let added = viewModel.taskStore.tasks.contains { $0.focusKind == kind }
+        return Button(action: { toggleFocusPreset(kind: kind, added: added) }) {
+            HStack(spacing: 14) {
+                Image(systemName: kind == .study ? "book.fill" : "desktopcomputer")
+                    .font(.system(size: 18, weight: .regular))
+                    .foregroundColor(added ? .green : .indigo)
+                    .frame(width: 24)
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(label)
+                        .foregroundColor(.white)
+                    Text("focus_preset_ai_badge")
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundColor(.indigo)
+                        .tracking(1)
+                }
+                Spacer()
+                if subscriptionManager.isPro {
+                    Image(systemName: added ? "checkmark.circle.fill" : "plus.circle")
+                        .font(.system(size: 20))
+                        .foregroundColor(added ? .green : .white.opacity(0.5))
+                } else {
+                    Image(systemName: "lock.fill")
+                        .font(.system(size: 14))
+                        .foregroundColor(.indigo)
+                }
+            }
+        }
+        .buttonStyle(.plain)
+    }
+
+    private func toggleFocusPreset(kind: FocusDetectionKind, added: Bool) {
+        if added {
+            viewModel.taskStore.tasks.removeAll { $0.focusKind == kind }
+            return
+        }
+        if !subscriptionManager.isPro {
+            showPaywall = true
+            return
+        }
+        if hasReachedFreeLimit { return }
+        focusKindDraft = kind
+        focusMinutesInput = "30"
+        showFocusDurationPicker = true
+    }
+
+    private var focusDurationPickerSheet: some View {
+        NavigationStack {
+            VStack(spacing: 22) {
+                let kindLabel = focusKindDraft == .study
+                    ? NSLocalizedString("focus_preset_study_label", comment: "")
+                    : NSLocalizedString("focus_preset_pcwork_label", comment: "")
+                Text(kindLabel)
+                    .font(.headline)
+                    .foregroundColor(.white.opacity(0.85))
+
+                TextField(NSLocalizedString("tasks_timer_minutes_placeholder", comment: ""), text: $focusMinutesInput)
+                    .keyboardType(.numberPad)
+                    .textInputAutocapitalization(.never)
+                    .autocorrectionDisabled()
+                    .focused($focusMinutesInputFocused)
+                    .padding(14)
+                    .foregroundColor(.white)
+                    .background(
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.white.opacity(0.08))
+                    )
+                    .onChange(of: focusMinutesInput) { _, newValue in
+                        let filtered = newValue.filter(\.isNumber)
+                        if filtered != newValue { focusMinutesInput = filtered }
+                    }
+
+                Spacer()
+
+                Button(action: addFocusTask) {
+                    Text("workout_reps_picker_add_button")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Capsule().fill(Color.white))
+                }
+                .buttonStyle(.plain)
+                .disabled(selectedFocusMinutes == nil)
+                .opacity(selectedFocusMinutes == nil ? 0.5 : 1.0)
+            }
+            .padding(20)
+            .background(Color.black.ignoresSafeArea())
+            .onAppear { focusMinutesInputFocused = true }
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("common_done") { showFocusDurationPicker = false }
+                        .foregroundColor(.orange)
+                }
+            }
+        }
+        .presentationDetents([.medium])
+    }
+
+    private var selectedFocusMinutes: Int? {
+        guard let m = Int(focusMinutesInput), (1...180).contains(m) else { return nil }
+        return m
+    }
+
+    private func addFocusTask() {
+        guard let minutes = selectedFocusMinutes else { return }
+        let titleKey = focusKindDraft == .study ? "focus_preset_study_title" : "focus_preset_pcwork_title"
+        let title = String(format: NSLocalizedString(titleKey, comment: ""), minutes)
+        viewModel.taskStore.addFocus(kind: focusKindDraft, targetSeconds: minutes * 60, title: title)
+        showFocusDurationPicker = false
     }
 
     private func toggleWorkoutPreset(title: String, added: Bool) {

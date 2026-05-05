@@ -258,6 +258,24 @@
 "workout_simulator_notice" = "シミュレータではカメラが使えません。タップで完了を擬似実行できます。";
 "workout_simulator_complete" = "完了として記録";
 
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "学習 %d分";
+"focus_preset_pcwork_title" = "PC作業 %d分";
+"focus_preset_study_label" = "学習";
+"focus_preset_pcwork_label" = "PC作業";
+"focus_preset_ai_badge" = "AI・PRO";
+"focus_status_detected" = "集中中";
+"focus_status_no_face" = "席にいません";
+"focus_status_multiple_faces" = "複数の人物が検出されています";
+"focus_status_low_quality" = "照明が暗すぎます";
+"focus_status_bad_angle" = "カメラの方を向いてください";
+"focus_status_face_too_small" = "近づいてください";
+"focus_hint_setup_title" = "端末をセットしてください";
+"focus_hint_setup_body" = "端末を立てかけて、顔がフレームに入るようにしてください。";
+"focus_hint_setup_close" = "了解";
+"focus_privacy_notice" = "映像は端末外に送信されません";
+"focus_session_remaining" = "残り";
+
 /* Task timer */
 "tasks_timer_minutes_short_format" = "%d分";
 "tasks_timer_sheet_title" = "タイマー設定";

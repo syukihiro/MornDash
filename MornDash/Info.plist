@@ -9,6 +9,6 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSCameraUsageDescription</key>
-	<string>MornDash uses the camera to count squats so you can complete morning workout tasks.</string>
+	<string>Used to detect workout movements and to verify focus during study/PC work sessions.</string>
 </dict>
 </plist>

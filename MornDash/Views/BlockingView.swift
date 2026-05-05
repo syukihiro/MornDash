@@ -9,6 +9,7 @@ struct BlockingView: View {
     @State private var showGiveUpConfirm = false
     @State private var activeWorkoutTaskID: UUID?
     @State private var activeTimerTaskID: UUID?
+    @State private var activeFocusTaskID: UUID?
 
     var body: some View {
         VStack(spacing: 24) {
@@ -47,6 +48,10 @@ struct BlockingView: View {
                             index: item.index,
                             onPunch: {
                                 guard !item.task.isCompletedToday else { return }
+                                if item.task.isFocusTask {
+                                    activeFocusTaskID = item.task.id
+                                    return
+                                }
                                 if item.task.isWorkoutTask {
                                     activeWorkoutTaskID = item.task.id
                                     return
@@ -101,6 +106,24 @@ struct BlockingView: View {
                 onCancel: {}
             )
         }
+        .fullScreenCover(item: focusTaskBinding) { task in
+            FocusSessionView(
+                task: task,
+                onComplete: {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                        viewModel.toggleTask(task.id, blockManager: blockManager)
+                    }
+                    viewModel.taskStore.clearFocusSession(task.id)
+                },
+                onCancel: {
+                    viewModel.taskStore.clearFocusSession(task.id)
+                },
+                onTick: { accumulated in
+                    viewModel.taskStore.updateFocusAccumulated(task.id, accumulated: accumulated, sessionStart: Date())
+                    viewModel.taskStore.save()
+                }
+            )
+        }
     }
 
     private var workoutTaskBinding: Binding<TaskItem?> {
@@ -134,6 +157,18 @@ struct BlockingView: View {
             },
             set: { newValue in
                 activeTimerTaskID = newValue?.id
+            }
+        )
+    }
+
+    private var focusTaskBinding: Binding<TaskItem?> {
+        Binding(
+            get: {
+                guard let id = activeFocusTaskID else { return nil }
+                return viewModel.taskStore.tasks.first { $0.id == id }
+            },
+            set: { newValue in
+                activeFocusTaskID = newValue?.id
             }
         )
     }
