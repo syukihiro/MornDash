@@ -58,6 +58,17 @@
 "stats_blocked_duration_per_day_suffix" = "/ day";
 "stats_blocked_duration_none" = "No blocked time recorded yet.";
 
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "TASK BREAKDOWN";
+"stats_task_period_month" = "This month";
+"stats_task_period_year" = "This year";
+"stats_task_consistency_format" = "%d / %d days";
+"stats_task_no_data_month" = "Check off tasks this month to see them here.";
+"stats_task_no_data_year" = "Check off tasks this year to see them here.";
+"stats_task_compare" = "Compare";
+"stats_task_compare_lock_title" = "See your progress over time";
+"stats_task_compare_lock_message" = "Pro shows how each task compares to the previous month or year.";
+
 /* Comparison report (Pro-only) */
 "stats_blocked_compare" = "Comparison";
 "stats_blocked_compare_week" = "vs last week";

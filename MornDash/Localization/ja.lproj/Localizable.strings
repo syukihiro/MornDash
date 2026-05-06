@@ -58,6 +58,17 @@
 "stats_blocked_duration_per_day_suffix" = "/日";
 "stats_blocked_duration_none" = "まだブロック時間の記録はありません。";
 
+/* タスク別記録 */
+"stats_task_breakdown" = "タスク別記録";
+"stats_task_period_month" = "今月";
+"stats_task_period_year" = "今年";
+"stats_task_consistency_format" = "%d / %d 日";
+"stats_task_no_data_month" = "今月タスクをこなすと、ここに記録が並びます。";
+"stats_task_no_data_year" = "今年タスクをこなすと、ここに記録が並びます。";
+"stats_task_compare" = "比較";
+"stats_task_compare_lock_title" = "あなたの積み上げを見る";
+"stats_task_compare_lock_message" = "Proにすると、各タスクが前月・去年と比べてどう変化したかを見られます。";
+
 /* 比較レポート (Pro限定) */
 "stats_blocked_compare" = "比較レポート";
 "stats_blocked_compare_week" = "先週比";

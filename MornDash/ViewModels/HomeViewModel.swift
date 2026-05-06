@@ -11,6 +11,7 @@ class HomeViewModel: ObservableObject {
     @Published var taskStore: TaskStore
     @Published var streakStore: StreakStore
     @Published var emergencyUnlockStore: EmergencyUnlockStore
+    @Published var taskHistoryStore: TaskHistoryStore
     @Published var currentTime: Date = Date()
     @Published var pendingBadge: Badge?
 
@@ -22,6 +23,7 @@ class HomeViewModel: ObservableObject {
         self.taskStore = TaskStore.load()
         self.streakStore = StreakStore.load()
         self.emergencyUnlockStore = EmergencyUnlockStore.load()
+        self.taskHistoryStore = TaskHistoryStore.load()
         setupSubscriptions()
         startTimer()
     }
@@ -46,6 +48,12 @@ class HomeViewModel: ObservableObject {
             .store(in: &cancellables)
 
         $emergencyUnlockStore
+            .dropFirst()
+            .debounce(for: 0.3, scheduler: RunLoop.main)
+            .sink { store in store.save() }
+            .store(in: &cancellables)
+
+        $taskHistoryStore
             .dropFirst()
             .debounce(for: 0.3, scheduler: RunLoop.main)
             .sink { store in store.save() }
@@ -103,7 +111,11 @@ class HomeViewModel: ObservableObject {
 
     func toggleTask(_ id: UUID, blockManager: BlockManager) {
         let wasAllCompleted = taskStore.allCompletedToday
+        let wasCompletedTask = taskStore.tasks.first(where: { $0.id == id })?.isCompletedToday ?? false
         taskStore.toggle(id)
+        if !wasCompletedTask, let task = taskStore.tasks.first(where: { $0.id == id }), task.isCompletedToday {
+            taskHistoryStore.record(taskId: task.id, title: task.title)
+        }
         if taskStore.allCompletedToday {
             if !wasAllCompleted {
                 streakStore.recordCompletionToday()

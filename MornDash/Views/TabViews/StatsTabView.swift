@@ -33,6 +33,12 @@ struct StatsTabView: View {
                         } else {
                             comparisonReportLockedBanner
                         }
+                        StatsTaskBreakdownSection(
+                            history: viewModel.taskHistoryStore,
+                            tasks: viewModel.taskStore.tasks,
+                            isPro: subscriptionManager.isPro,
+                            onUpgradeTap: { showPaywall = true }
+                        )
                         emergencyUnlockSection
                         if subscriptionManager.isPro {
                             emergencyComparisonReportSection
