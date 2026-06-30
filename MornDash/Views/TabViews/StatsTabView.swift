@@ -28,6 +28,7 @@ struct StatsTabView: View {
                             longestStreak: viewModel.streakStore.longestStreak,
                             totalCompleted: viewModel.streakStore.totalCompleted
                         )
+                        StatsMonthCalendarView(days: viewModel.streakStore.monthCalendar())
                         blockedDurationSection
                         StatsTaskBreakdownSection(
                             history: viewModel.taskHistoryStore,

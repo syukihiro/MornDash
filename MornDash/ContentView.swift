@@ -117,7 +117,11 @@ struct ContentView: View {
     private var colorForState: Color {
         switch viewModel.appState {
         case .blocking: return .indigo
-        case .idle: return .orange
+        case .idle:
+            if !viewModel.taskStore.tasks.isEmpty && viewModel.taskStore.allCompletedToday {
+                return Color(red: 0.62, green: 0.92, blue: 0.74).opacity(0.55)
+            }
+            return .orange
         }
     }
 }

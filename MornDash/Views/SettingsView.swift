@@ -232,7 +232,7 @@ struct SettingsView: View {
                     weekdayPickerRow(idx: idx)
                 }
             } else {
-                startTimePicker
+                startTimeRow
             }
         } header: {
             Text("settings_start_time")
@@ -288,16 +288,21 @@ struct SettingsView: View {
     }
 
     private func weekdayPickerRow(idx: Int) -> some View {
-        HStack {
-            Text(Calendar.current.weekdaySymbols[idx])
-                .font(.system(size: 15))
-            Spacer()
-            DatePicker(
-                "",
-                selection: weekdayTimeBinding(idx: idx),
-                displayedComponents: .hourAndMinute
-            )
-            .labelsHidden()
+        let weekday = Calendar.current.weekdaySymbols[idx]
+        let time = weekdayTimeLabel(idx: idx)
+        return NavigationLink {
+            StartTimePickerView(selection: weekdayTimeBinding(idx: idx))
+                .navigationTitle(Text(weekday))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbarColorScheme(.dark, for: .navigationBar)
+        } label: {
+            HStack {
+                Text(weekday)
+                    .font(.system(size: 15))
+                Spacer()
+                Text(time)
+                    .foregroundColor(.secondary)
+            }
         }
     }
 
@@ -324,27 +329,50 @@ struct SettingsView: View {
 
     // MARK: - Existing rows
 
-    private var startTimePicker: some View {
-        DatePicker(
-            "",
-            selection: Binding(
-                get: {
-                    var components = DateComponents()
-                    components.hour = viewModel.config.startHour
-                    components.minute = viewModel.config.startMinute
-                    return Calendar.current.date(from: components) ?? Date()
-                },
-                set: { newValue in
-                    let components = Calendar.current.dateComponents([.hour, .minute], from: newValue)
-                    viewModel.config.startHour = components.hour ?? 7
-                    viewModel.config.startMinute = components.minute ?? 0
-                }
-            ),
-            displayedComponents: .hourAndMinute
+    private var startTimeRow: some View {
+        NavigationLink {
+            StartTimePickerView(selection: startTimeBinding)
+                .navigationTitle(Text("settings_start_time"))
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbarColorScheme(.dark, for: .navigationBar)
+        } label: {
+            HStack {
+                Text("settings_start_time_daily")
+                Spacer()
+                Text(startTimeLabel)
+                    .foregroundColor(.secondary)
+            }
+        }
+    }
+
+    private var startTimeBinding: Binding<Date> {
+        Binding(
+            get: {
+                var components = DateComponents()
+                components.hour = viewModel.config.startHour
+                components.minute = viewModel.config.startMinute
+                return Calendar.current.date(from: components) ?? Date()
+            },
+            set: { newValue in
+                let components = Calendar.current.dateComponents([.hour, .minute], from: newValue)
+                viewModel.config.startHour = components.hour ?? 7
+                viewModel.config.startMinute = components.minute ?? 0
+            }
         )
-        .datePickerStyle(.wheel)
-        .labelsHidden()
-        .frame(maxWidth: .infinity)
+    }
+
+    private var startTimeLabel: String {
+        timeLabel(hour: viewModel.config.startHour, minute: viewModel.config.startMinute)
+    }
+
+    private func weekdayTimeLabel(idx: Int) -> String {
+        guard idx < viewModel.config.weekdayStartTimes.count else { return timeLabel(hour: 7, minute: 0) }
+        let t = viewModel.config.weekdayStartTimes[idx]
+        return timeLabel(hour: t.hour, minute: t.minute)
+    }
+
+    private func timeLabel(hour: Int, minute: Int) -> String {
+        String(format: "%02d:%02d", hour, minute)
     }
 
     private var selectionCount: Int {

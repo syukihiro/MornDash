@@ -16,7 +16,19 @@
 
 /* MainView (idle) */
 "main_next_block" = "次のブロック";
+"main_completed_eyebrow" = "完了";
+"main_completed_title" = "今日は完了";
+"main_completed_subtitle" = "自由な1日を楽しもう。";
+"main_completed_streak_unit" = "日連続";
+"main_completed_message_3" = "習慣が形になってきた。明日も続けよう。";
+"main_completed_message_7" = "1週間、続けられた。あなたは本物だ。";
+"main_completed_message_30" = "圧倒的な継続力。自分を誇っていい。";
+"main_completed_message_100" = "100日の証。もう誰にも止められない。";
+"main_completed_week_progress" = "今週 %d / 7 日達成";
+"main_completed_best_streak" = "最高 %d日";
+"main_completed_next_block" = "次のブロック %@";
 "main_todays_tasks" = "今日のタスク";
+"main_todays_tasks_done" = "すべて完了";
 "main_no_tasks" = "タスクがまだありません。タスクタブから追加してください。";
 
 "routine_celebration_eyebrow" = "ALL DONE";
@@ -32,10 +44,13 @@
 
 /* Streak / Stats */
 "streak_days_format" = "%d日連続";
-"stats_current_streak" = "継続中";
-"stats_longest_streak" = "最長";
+"stats_streak_day_unit_singular" = "日";
+"stats_streak_day_unit_plural" = "日";
+"stats_current_streak" = "連続達成";
+"stats_longest_streak" = "最長連続";
 "stats_total_completed" = "累計達成日";
 "stats_last_7_days" = "この7日間";
+"stats_month_calendar" = "今月";
 "stats_contributions" = "アクティビティ";
 "stats_badges" = "バッジ";
 "stats_no_data" = "タスクを全て完了して連続記録をスタート。";
@@ -115,6 +130,7 @@
 
 /* SettingsView */
 "settings_start_time" = "開始時間";
+"settings_start_time_daily" = "毎日";
 "settings_tasks" = "タスク";
 "settings_tasks_footer" = "すべてのタスクを完了するとアプリが解除されます。日をまたぐとリセットされます。";
 "settings_task_placeholder" = "タスク";

@@ -7,7 +7,19 @@ struct MainView: View {
     let colorForState: Color
     let showGlow: Bool
 
+    private var allTasksCompletedToday: Bool {
+        !viewModel.taskStore.tasks.isEmpty && viewModel.taskStore.allCompletedToday
+    }
+
     var body: some View {
+        if allTasksCompletedToday {
+            CompletedHomeView(viewModel: viewModel)
+        } else {
+            waitingHome
+        }
+    }
+
+    private var waitingHome: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 30) {
                 if viewModel.streakStore.currentStreak > 0 {

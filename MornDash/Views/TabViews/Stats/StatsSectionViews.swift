@@ -15,9 +15,14 @@ struct StatsStreakHeroView: View {
                     )
                 )
 
-            Text("\(streak)")
-                .font(.system(size: 72, weight: .thin, design: .rounded))
-                .foregroundColor(.white)
+            HStack(alignment: .firstTextBaseline, spacing: 6) {
+                Text("\(streak)")
+                    .font(.system(size: 72, weight: .thin, design: .rounded))
+                Text(StatsFormatters.streakDayUnit(count: streak))
+                    .font(.system(size: 28, weight: .light, design: .rounded))
+                    .foregroundColor(.white.opacity(0.65))
+            }
+            .foregroundColor(.white)
 
             Text("stats_current_streak")
                 .font(.system(size: 12, weight: .medium))
@@ -48,19 +53,26 @@ struct StatsCardsRowView: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            statCard(value: "\(longestStreak)", labelKey: "stats_longest_streak", icon: "crown.fill", tint: .yellow)
-            statCard(value: "\(totalCompleted)", labelKey: "stats_total_completed", icon: "checkmark.seal.fill", tint: .green)
+            statCard(value: "\(longestStreak)", labelKey: "stats_longest_streak", icon: "crown.fill", tint: .yellow, showsDayUnit: true)
+            statCard(value: "\(totalCompleted)", labelKey: "stats_total_completed", icon: "checkmark.seal.fill", tint: .green, showsDayUnit: true)
         }
     }
 
-    private func statCard(value: String, labelKey: String, icon: String, tint: Color) -> some View {
+    private func statCard(value: String, labelKey: String, icon: String, tint: Color, showsDayUnit: Bool) -> some View {
         VStack(alignment: .leading, spacing: 10) {
             Image(systemName: icon)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundColor(tint)
-            Text(value)
-                .font(.system(size: 32, weight: .thin, design: .rounded))
-                .foregroundColor(.white)
+            HStack(alignment: .firstTextBaseline, spacing: 3) {
+                Text(value)
+                    .font(.system(size: 32, weight: .thin, design: .rounded))
+                if showsDayUnit, let count = Int(value) {
+                    Text(StatsFormatters.streakDayUnit(count: count))
+                        .font(.system(size: 16, weight: .light, design: .rounded))
+                        .foregroundColor(.white.opacity(0.55))
+                }
+            }
+            .foregroundColor(.white)
             Text(LocalizedStringKey(labelKey))
                 .font(.system(size: 11, weight: .medium))
                 .tracking(2)
@@ -72,6 +84,89 @@ struct StatsCardsRowView: View {
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color.white.opacity(0.05))
         )
+    }
+}
+
+struct StatsMonthCalendarView: View {
+    let days: [StreakStore.MonthCalendarDay]
+
+    private var weekdayHeaders: [String] {
+        let cal = Calendar.current
+        let symbols = cal.shortWeekdaySymbols
+        let start = cal.firstWeekday - 1
+        return (0..<7).map { symbols[(start + $0) % 7] }
+    }
+
+    private var monthTitle: String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.current
+        formatter.setLocalizedDateFormatFromTemplate("yyyyMMMM")
+        return formatter.string(from: Date())
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            HStack(alignment: .firstTextBaseline) {
+                Text("stats_month_calendar")
+                    .font(.system(size: 11, weight: .medium))
+                    .tracking(2)
+                    .foregroundColor(.white.opacity(0.5))
+                Spacer()
+                Text(monthTitle)
+                    .font(.system(size: 11, weight: .medium))
+                    .foregroundColor(.white.opacity(0.4))
+            }
+
+            LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 4), count: 7), spacing: 8) {
+                ForEach(Array(weekdayHeaders.enumerated()), id: \.offset) { _, symbol in
+                    Text(symbol)
+                        .font(.system(size: 10, weight: .medium))
+                        .foregroundColor(.white.opacity(0.35))
+                        .frame(maxWidth: .infinity)
+                }
+
+                ForEach(Array(days.enumerated()), id: \.offset) { _, day in
+                    monthDayCell(day)
+                }
+            }
+        }
+        .statsSectionCard()
+    }
+
+    @ViewBuilder
+    private func monthDayCell(_ day: StreakStore.MonthCalendarDay) -> some View {
+        let size: CGFloat = 32
+        ZStack {
+            if day.completed && day.isInMonth {
+                Circle()
+                    .fill(Color.orange)
+                Image(systemName: "checkmark")
+                    .font(.system(size: 10, weight: .bold))
+                    .foregroundColor(.white)
+            } else {
+                Circle()
+                    .fill(day.isInMonth ? Color.white.opacity(day.isFuture ? 0.04 : 0.08) : Color.clear)
+                if day.isInMonth {
+                    Text("\(day.day)")
+                        .font(.system(size: 12, weight: day.isToday ? .semibold : .regular, design: .rounded))
+                        .foregroundColor(dayTextColor(day))
+                }
+            }
+        }
+        .frame(width: size, height: size)
+        .overlay {
+            if day.isToday {
+                Circle().strokeBorder(Color.orange.opacity(0.7), lineWidth: 1.5)
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: size)
+    }
+
+    private func dayTextColor(_ day: StreakStore.MonthCalendarDay) -> Color {
+        if day.isFuture { return .white.opacity(0.2) }
+        if day.isToday { return .orange.opacity(0.9) }
+        return .white.opacity(0.55)
     }
 }
 

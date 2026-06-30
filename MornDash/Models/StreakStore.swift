@@ -205,6 +205,44 @@ struct StreakStore: Codable {
         let isFuture: Bool
     }
 
+    struct MonthCalendarDay {
+        let date: Date
+        let day: Int
+        let isInMonth: Bool
+        let completed: Bool
+        let isFuture: Bool
+        let isToday: Bool
+    }
+
+    /// 今月のカレンダーグリッド用。先頭の空白埋めを含む 7 の倍数の日セルを返す。
+    func monthCalendar(reference: Date = Date()) -> [MonthCalendarDay] {
+        let cal = Calendar.current
+        let today = cal.startOfDay(for: reference)
+        guard let monthInterval = cal.dateInterval(of: .month, for: today),
+              let dayRange = cal.range(of: .day, in: .month, for: today)
+        else { return [] }
+
+        let firstOfMonth = cal.startOfDay(for: monthInterval.start)
+        let leadingPadding = (cal.component(.weekday, from: firstOfMonth) - cal.firstWeekday + 7) % 7
+        let daysInMonth = dayRange.count
+        let totalCells = ((leadingPadding + daysInMonth + 6) / 7) * 7
+
+        guard let gridStart = cal.date(byAdding: .day, value: -leadingPadding, to: firstOfMonth) else { return [] }
+
+        return (0..<totalCells).compactMap { offset in
+            guard let date = cal.date(byAdding: .day, value: offset, to: gridStart) else { return nil }
+            let isInMonth = cal.isDate(date, equalTo: firstOfMonth, toGranularity: .month)
+            return MonthCalendarDay(
+                date: date,
+                day: cal.component(.day, from: date),
+                isInMonth: isInMonth,
+                completed: completionDates.contains { cal.isDate($0, inSameDayAs: date) },
+                isFuture: date > today,
+                isToday: cal.isDate(date, inSameDayAs: today)
+            )
+        }
+    }
+
     /// GitHub 風グリッド用。weeks 列 × 7 行を返す。
     /// 各列は週の開始日（ロケールの `firstWeekday`）から 7 日分。
     /// 最終列は今週、行 0 が週の開始曜日。

@@ -42,6 +42,11 @@ enum StatsFormatters {
         return formatter.string(from: date)
     }
 
+    static func streakDayUnit(count: Int) -> String {
+        let key = count == 1 ? "stats_streak_day_unit_singular" : "stats_streak_day_unit_plural"
+        return NSLocalizedString(key, comment: "")
+    }
+
     static func yearRange(from start: Date, to end: Date) -> String {
         let cal = Calendar.current
         let startYear = cal.component(.year, from: start)
