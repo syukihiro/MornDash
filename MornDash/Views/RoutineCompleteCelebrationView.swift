@@ -1,13 +1,29 @@
 import SwiftUI
 
+enum RoutineCelebrationStyle {
+    case full
+    case compact
+
+    /// 初回完了、またはバッジ閾値の連続日数に到達した日はフル演出。
+    static func forCompletion(streak: Int, isFirstCompletionEver: Bool) -> RoutineCelebrationStyle {
+        if isFirstCompletionEver || Badge.thresholds.contains(streak) {
+            return .full
+        }
+        return .compact
+    }
+}
+
 struct RoutineCompleteCelebrationView: View {
     let streak: Int
+    let style: RoutineCelebrationStyle
     let onDismiss: () -> Void
 
     @State private var phase: AnimationPhase = .initial
     @State private var ringPulse = false
     @State private var sunRotation: Double = 0
     @State private var sparkleSeed: Int = 0
+    @State private var compactVisible = false
+    @State private var compactDidDismiss = false
 
     private let accentGreen = Color(red: 0.45, green: 0.95, blue: 0.65)
     private let accentOrange = Color.orange
@@ -20,21 +36,41 @@ struct RoutineCompleteCelebrationView: View {
     }
 
     var body: some View {
+        Group {
+            switch style {
+            case .full:
+                fullCelebration
+            case .compact:
+                compactCelebration
+            }
+        }
+        .preferredColorScheme(.dark)
+        .onAppear {
+            switch style {
+            case .full:
+                runFullIntro()
+            case .compact:
+                runCompactIntro()
+            }
+        }
+    }
+
+    // MARK: - Full
+
+    private var fullCelebration: some View {
         ZStack {
-            backdrop
+            fullBackdrop
             CelebrationSparkleField(
                 seed: sparkleSeed,
                 colors: [accentGreen, accentYellow, accentOrange, .white],
                 active: phase != .initial,
                 count: 28
             )
-            content
+            fullContent
         }
-        .preferredColorScheme(.dark)
-        .onAppear { runIntro() }
     }
 
-    private var backdrop: some View {
+    private var fullBackdrop: some View {
         ZStack {
             Color.black.ignoresSafeArea()
 
@@ -58,7 +94,7 @@ struct RoutineCompleteCelebrationView: View {
         }
     }
 
-    private var content: some View {
+    private var fullContent: some View {
         VStack(spacing: 28) {
             Spacer()
 
@@ -132,19 +168,7 @@ struct RoutineCompleteCelebrationView: View {
                     .foregroundColor(.white.opacity(0.68))
 
                 if streak > 0 {
-                    HStack(spacing: 6) {
-                        Image(systemName: "flame.fill")
-                            .foregroundStyle(
-                                LinearGradient(colors: [.orange, .red], startPoint: .top, endPoint: .bottom)
-                            )
-                        Text(String(format: NSLocalizedString("streak_days_format", comment: ""), streak))
-                            .font(.system(size: 14, weight: .semibold))
-                            .foregroundColor(.white.opacity(0.85))
-                    }
-                    .padding(.horizontal, 14)
-                    .padding(.vertical, 7)
-                    .background(Capsule().fill(Color.white.opacity(0.08)))
-                    .padding(.top, 6)
+                    streakPill
                 }
             }
             .padding(.horizontal, 36)
@@ -181,7 +205,85 @@ struct RoutineCompleteCelebrationView: View {
         }
     }
 
-    private func runIntro() {
+    // MARK: - Compact
+
+    private var compactCelebration: some View {
+        ZStack {
+            Color.black.opacity(compactVisible ? 0.45 : 0)
+                .ignoresSafeArea()
+                .animation(.easeOut(duration: 0.25), value: compactVisible)
+                .onTapGesture { dismissCompact() }
+
+            VStack {
+                Spacer()
+
+                HStack(spacing: 14) {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 30, weight: .semibold))
+                        .foregroundStyle(accentGreen)
+                        .symbolEffect(.bounce, value: compactVisible)
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("routine_celebration_compact_title")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.white)
+
+                        if streak > 0 {
+                            HStack(spacing: 5) {
+                                Image(systemName: "flame.fill")
+                                    .font(.system(size: 12, weight: .semibold))
+                                    .foregroundStyle(.orange)
+                                Text(String(format: NSLocalizedString("streak_days_format", comment: ""), streak))
+                                    .font(.system(size: 13, weight: .medium))
+                                    .foregroundColor(.white.opacity(0.75))
+                            }
+                        }
+                    }
+
+                    Spacer(minLength: 0)
+                }
+                .padding(.horizontal, 20)
+                .padding(.vertical, 18)
+                .background(
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .fill(Color(white: 0.12))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                                .strokeBorder(accentGreen.opacity(0.25), lineWidth: 1)
+                        )
+                )
+                .padding(.horizontal, 20)
+                .padding(.bottom, 36)
+                .offset(y: compactVisible ? 0 : 72)
+                .opacity(compactVisible ? 1 : 0)
+                .animation(.spring(response: 0.45, dampingFraction: 0.82), value: compactVisible)
+            }
+        }
+        .contentShape(Rectangle())
+        .onTapGesture { dismissCompact() }
+    }
+
+    // MARK: - Shared
+
+    private var streakPill: some View {
+        HStack(spacing: 6) {
+            Image(systemName: "flame.fill")
+                .foregroundStyle(
+                    LinearGradient(colors: [.orange, .red], startPoint: .top, endPoint: .bottom)
+                )
+            Text(String(format: NSLocalizedString("streak_days_format", comment: ""), streak))
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(.white.opacity(0.85))
+        }
+        .padding(.horizontal, 14)
+        .padding(.vertical, 7)
+        .background(Capsule().fill(Color.white.opacity(0.08)))
+        .padding(.top, 6)
+    }
+
+    // MARK: - Intro
+
+    private func runFullIntro() {
         sparkleSeed = Int.random(in: 0..<10_000)
         withAnimation { phase = .burst }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
@@ -192,6 +294,24 @@ struct RoutineCompleteCelebrationView: View {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
             withAnimation { phase = .settled }
+        }
+    }
+
+    private func runCompactIntro() {
+        withAnimation { compactVisible = true }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.2) {
+            dismissCompact()
+        }
+    }
+
+    private func dismissCompact() {
+        guard compactVisible, !compactDidDismiss else { return }
+        compactDidDismiss = true
+        withAnimation(.easeIn(duration: 0.2)) {
+            compactVisible = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.22) {
+            onDismiss()
         }
     }
 }

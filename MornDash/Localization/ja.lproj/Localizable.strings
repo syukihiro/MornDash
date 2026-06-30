@@ -35,6 +35,7 @@
 "routine_celebration_title" = "おめでとう！";
 "routine_celebration_message" = "今日のタスクをすべて終えました。\n自由な1日を楽しもう。";
 "routine_celebration_continue" = "続ける";
+"routine_celebration_compact_title" = "今日のタスク完了";
 
 /* Tabs */
 "tab_home" = "ホーム";
@@ -113,6 +114,7 @@
 "badge_7day" = "1週間\n達成";
 "badge_30day" = "1ヶ月\n達成";
 "badge_100day" = "100日\n達成";
+"badge_365day" = "1年\n達成";
 "badge_celebration_eyebrow" = "BADGE UNLOCKED";
 "badge_celebration_continue" = "続ける";
 

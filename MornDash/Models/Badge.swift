@@ -12,7 +12,8 @@ struct Badge: Identifiable, Equatable, Hashable {
         Badge(threshold: 3,   labelKey: "badge_3day",   icon: "sparkles",    color: .mint),
         Badge(threshold: 7,   labelKey: "badge_7day",   icon: "star.fill",   color: .cyan),
         Badge(threshold: 30,  labelKey: "badge_30day",  icon: "trophy.fill", color: .yellow),
-        Badge(threshold: 100, labelKey: "badge_100day", icon: "crown.fill",  color: .purple),
+        Badge(threshold: 100, labelKey: "badge_100day", icon: "crown.fill",         color: .purple),
+        Badge(threshold: 365, labelKey: "badge_365day", icon: "sun.horizon.fill", color: .orange),
     ]
 
     static let thresholds: [Int] = all.map { $0.threshold }

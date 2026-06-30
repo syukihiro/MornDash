@@ -15,6 +15,7 @@ class HomeViewModel: ObservableObject {
     @Published var currentTime: Date = Date()
     @Published var pendingBadge: Badge?
     @Published var showRoutineCompleteCelebration = false
+    @Published var routineCelebrationStyle: RoutineCelebrationStyle = .full
 
     private var pendingBadgeQueue: [Badge] = []
     private var cancellables = Set<AnyCancellable>()
@@ -121,6 +122,11 @@ class HomeViewModel: ObservableObject {
             if !wasAllCompleted {
                 streakStore.recordCompletionToday()
                 recordTodaysBlockedDuration()
+                let streak = streakStore.currentStreak
+                routineCelebrationStyle = RoutineCelebrationStyle.forCompletion(
+                    streak: streak,
+                    isFirstCompletionEver: streakStore.totalCompleted == 1
+                )
                 let newlyUnlocked = streakStore.newlyUnlockedBadges()
                 if !newlyUnlocked.isEmpty {
                     pendingBadgeQueue.append(contentsOf: newlyUnlocked)

@@ -87,6 +87,7 @@ struct ContentView: View {
         .fullScreenCover(isPresented: $viewModel.showRoutineCompleteCelebration) {
             RoutineCompleteCelebrationView(
                 streak: viewModel.streakStore.currentStreak,
+                style: viewModel.routineCelebrationStyle,
                 onDismiss: { viewModel.dismissRoutineCompleteCelebration() }
             )
         }

@@ -35,6 +35,7 @@
 "routine_celebration_title" = "You did it!";
 "routine_celebration_message" = "All tasks complete for today.\nEnjoy your freedom.";
 "routine_celebration_continue" = "Continue";
+"routine_celebration_compact_title" = "All done for today";
 
 /* Tabs */
 "tab_home" = "Home";
@@ -113,6 +114,7 @@
 "badge_7day" = "Week\nWarrior";
 "badge_30day" = "Month\nMaster";
 "badge_100day" = "Century\nChampion";
+"badge_365day" = "Year\nLegend";
 "badge_celebration_eyebrow" = "BADGE UNLOCKED";
 "badge_celebration_continue" = "Continue";
 
