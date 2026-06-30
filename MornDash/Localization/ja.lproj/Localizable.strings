@@ -19,6 +19,11 @@
 "main_todays_tasks" = "今日のタスク";
 "main_no_tasks" = "タスクがまだありません。タスクタブから追加してください。";
 
+"routine_celebration_eyebrow" = "ALL DONE";
+"routine_celebration_title" = "おめでとう！";
+"routine_celebration_message" = "今日のタスクをすべて終えました。\n自由な1日を楽しもう。";
+"routine_celebration_continue" = "続ける";
+
 /* Tabs */
 "tab_home" = "ホーム";
 "tab_tasks" = "タスク";
@@ -78,6 +83,10 @@
 "stats_blocked_compare_lock_title" = "先週・先月・去年と比べる";
 "stats_blocked_compare_lock_message" = "Proにすると、今週・今月・今年が、それぞれ前期間と比べてどう変化したかを見られます。";
 "stats_blocked_compare_unlock_button" = "Proで解除";
+
+/* Pro セクション（記録タブ下部） */
+"stats_pro_section_title" = "Pro レポート";
+"stats_pro_section_upsell_desc" = "前期間との比較レポートをすべて利用できます。";
 
 /* Badges */
 "badge_3day" = "3日\n達成";
@@ -158,11 +167,13 @@
 
 /* Onboarding — step 6: tasks */
 "onboarding_tasks_title" = "解除条件のタスクを決めよう";
-"onboarding_tasks_desc" = "全部終えるとその日だけアプリが解除されます。おすすめから選ぶか、自分で作ってください。";
+"onboarding_tasks_desc" = "全部終えると、その日はアプリが解除されます。";
 "onboarding_tasks_your_list" = "あなたのタスク";
 "onboarding_tasks_suggestions" = "おすすめから追加";
 "onboarding_tasks_custom" = "自分で作る";
 "onboarding_tasks_empty" = "まだタスクがありません";
+"onboarding_tasks_empty_hint" = "下のおすすめをタップして、タスクを追加しよう";
+"onboarding_tasks_ritual_count" = "%d 個のタスク";
 
 /* Onboarding — step 7: motivation */
 "onboarding_motivation_title" = "時間を、取り戻す。";
@@ -174,20 +185,14 @@
 
 /* Onboarding — preset tasks */
 "onboarding_preset_stretch" = "ストレッチをする";
-"onboarding_preset_water" = "水を1杯飲む";
-"onboarding_preset_face" = "顔を洗う";
-"onboarding_preset_teeth" = "歯を磨く";
 "onboarding_preset_bed" = "ベッドを整える";
-"onboarding_preset_breakfast" = "朝食を取る";
 "onboarding_preset_meditate" = "5分間瞑想する";
 "onboarding_preset_journal" = "日記を書く";
-"onboarding_preset_walk" = "外に出て深呼吸";
 "onboarding_preset_read" = "本を10ページ読む";
+"onboarding_preset_run" = "ランニングをする";
 
 /* Default tasks */
 "default_task_stretch" = "ストレッチをする";
-"default_task_water" = "水を1杯飲む";
-"default_task_face" = "顔を洗う";
 
 /* Subscription / Settings */
 "settings_subscription_section" = "サブスクリプション";

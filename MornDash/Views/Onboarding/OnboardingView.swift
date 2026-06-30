@@ -111,86 +111,234 @@ private struct PrimaryButton: View {
     }
 }
 
-private struct SectionHeader: View {
-    let title: LocalizedStringKey
-
-    var body: some View {
-        Text(title)
-            .font(.system(size: 12, weight: .semibold))
-            .tracking(2)
-            .foregroundColor(.white.opacity(0.55))
-            .frame(maxWidth: .infinity, alignment: .leading)
-    }
-}
-
 // MARK: - Step 1: Problem
 
 struct OnboardingProblemView: View {
     var nextAction: () -> Void
+    @State private var appeared = false
+    @State private var glowPulse = false
+
+    private let painPoints: [(icon: String, text: LocalizedStringKey)] = [
+        ("hand.tap.fill", "onboarding_problem_point_scroll"),
+        ("clock.badge.exclamationmark.fill", "onboarding_problem_point_time"),
+        ("target", "onboarding_problem_point_mood"),
+    ]
 
     var body: some View {
-        VStack(spacing: 28) {
-            Spacer(minLength: 10)
+        ZStack {
+            ProblemStormBackdrop(glowPulse: glowPulse)
 
+            VStack(spacing: 0) {
+                problemHeroSection
+                    .padding(.top, 8)
+                    .padding(.bottom, 20)
+
+                VStack(spacing: 12) {
+                    ForEach(Array(painPoints.enumerated()), id: \.offset) { index, point in
+                        ProblemPainCard(icon: point.icon, text: point.text, index: index)
+                            .opacity(appeared ? 1 : 0)
+                            .offset(y: appeared ? 0 : 24)
+                            .animation(
+                                .spring(response: 0.55, dampingFraction: 0.78)
+                                    .delay(0.12 + Double(index) * 0.1),
+                                value: appeared
+                            )
+                    }
+                }
+
+                Spacer(minLength: 16)
+
+                problemContinueButton
+                    .opacity(appeared ? 1 : 0)
+                    .offset(y: appeared ? 0 : 20)
+                    .animation(.spring(response: 0.5, dampingFraction: 0.8).delay(0.45), value: appeared)
+            }
+        }
+        .padding(.vertical, 8)
+        .onAppear {
+            glowPulse = true
+            withAnimation(.easeOut(duration: 0.4)) {
+                appeared = true
+            }
+        }
+    }
+
+    private var problemHeroSection: some View {
+        VStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(LinearGradient(colors: [.purple.opacity(0.35), .clear], startPoint: .top, endPoint: .bottom))
-                    .frame(width: 200, height: 200)
-                    .blur(radius: 40)
+                    .fill(
+                        RadialGradient(
+                            colors: [.purple.opacity(0.5), .pink.opacity(0.2), .clear],
+                            center: .center,
+                            startRadius: 4,
+                            endRadius: 70
+                        )
+                    )
+                    .frame(width: 140, height: 140)
+                    .scaleEffect(glowPulse ? 1.08 : 0.92)
+                    .animation(.easeInOut(duration: 3).repeatForever(autoreverses: true), value: glowPulse)
 
                 Image(systemName: "iphone.gen3.radiowaves.left.and.right")
-                    .font(.system(size: 90, weight: .thin))
-                    .foregroundStyle(LinearGradient(colors: [.indigo, .purple], startPoint: .top, endPoint: .bottom))
-                    .shadow(color: .purple.opacity(0.6), radius: 20)
+                    .font(.system(size: 52, weight: .thin))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [.indigo, .purple, Color(red: 1, green: 0.45, blue: 0.65)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .shadow(color: .purple.opacity(0.55), radius: 18, y: 4)
             }
+            .frame(height: 88)
 
-            VStack(spacing: 14) {
+            VStack(spacing: 10) {
                 Text("onboarding_problem_title")
-                    .font(.title2.bold())
+                    .font(.system(size: 28, weight: .bold))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [.white, Color(red: 0.85, green: 0.78, blue: 1)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
 
                 Text("onboarding_problem_desc")
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.white.opacity(0.7))
+                    .lineSpacing(4)
+                    .foregroundColor(.white.opacity(0.65))
                     .fixedSize(horizontal: false, vertical: true)
             }
-            .padding(.horizontal, 8)
-
-            VStack(spacing: 10) {
-                ProblemRow(icon: "hand.tap.fill", text: "onboarding_problem_point_scroll")
-                ProblemRow(icon: "clock.badge.exclamationmark.fill", text: "onboarding_problem_point_time")
-                ProblemRow(icon: "target", text: "onboarding_problem_point_mood")
-            }
-
-            Spacer()
-
-            PrimaryButton(title: "common_continue", action: nextAction)
+            .padding(.horizontal, 4)
         }
-        .padding(.vertical, 20)
+    }
+
+    private var problemContinueButton: some View {
+        Button(action: nextAction) {
+            Text("common_continue")
+                .font(.headline.weight(.bold))
+                .foregroundColor(.black)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 17)
+                .background(
+                    Capsule()
+                        .fill(
+                            LinearGradient(
+                                colors: [.white, Color(red: 0.96, green: 0.94, blue: 1)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                        .shadow(color: .purple.opacity(0.3), radius: 16, y: 6)
+                )
+        }
+        .background(
+            Capsule()
+                .fill(Color.purple.opacity(0.32))
+                .blur(radius: 18)
+                .scaleEffect(glowPulse ? 1.04 : 0.96)
+                .animation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true), value: glowPulse)
+        )
     }
 }
 
-private struct ProblemRow: View {
+private struct ProblemStormBackdrop: View {
+    let glowPulse: Bool
+
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(Color.purple.opacity(0.2))
+                .frame(width: 280, height: 280)
+                .blur(radius: 70)
+                .offset(y: -120)
+                .scaleEffect(glowPulse ? 1.05 : 0.9)
+                .animation(.easeInOut(duration: 4).repeatForever(autoreverses: true), value: glowPulse)
+
+            Circle()
+                .fill(Color.pink.opacity(0.1))
+                .frame(width: 200, height: 200)
+                .blur(radius: 50)
+                .offset(x: -70, y: 80)
+                .scaleEffect(glowPulse ? 0.95 : 1.05)
+                .animation(.easeInOut(duration: 5).repeatForever(autoreverses: true), value: glowPulse)
+        }
+        .allowsHitTesting(false)
+    }
+}
+
+private struct ProblemPainCard: View {
     let icon: String
     let text: LocalizedStringKey
+    let index: Int
+
+    private var accent: Color {
+        switch index {
+        case 0: return Color(red: 1, green: 0.5, blue: 0.65)
+        case 1: return Color(red: 0.75, green: 0.55, blue: 1)
+        default: return Color(red: 0.55, green: 0.65, blue: 1)
+        }
+    }
 
     var body: some View {
         HStack(spacing: 14) {
-            Image(systemName: icon)
-                .font(.system(size: 16))
-                .foregroundColor(.pink.opacity(0.85))
-                .frame(width: 28)
+            ZStack {
+                Circle()
+                    .fill(
+                        RadialGradient(
+                            colors: [accent.opacity(0.45), accent.opacity(0.08)],
+                            center: .center,
+                            startRadius: 2,
+                            endRadius: 28
+                        )
+                    )
+                    .frame(width: 48, height: 48)
+
+                Image(systemName: icon)
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [.white, accent],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+            }
+
             Text(text)
-                .font(.subheadline)
-                .foregroundColor(.white.opacity(0.85))
-            Spacer()
+                .font(.body.weight(.semibold))
+                .foregroundColor(.white.opacity(0.92))
+                .fixedSize(horizontal: false, vertical: true)
+
+            Spacer(minLength: 0)
         }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 12)
-        .background(Color.white.opacity(0.06))
-        .cornerRadius(12)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 14)
+        .background(
+            RoundedRectangle(cornerRadius: 18)
+                .fill(
+                    LinearGradient(
+                        colors: [accent.opacity(0.14), Color.white.opacity(0.04)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18)
+                        .strokeBorder(
+                            LinearGradient(
+                                colors: [accent.opacity(0.5), accent.opacity(0.08)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            lineWidth: 1
+                        )
+                )
+        )
+        .shadow(color: accent.opacity(0.15), radius: 12, y: 4)
+        .allowsHitTesting(false)
     }
 }
 
@@ -730,26 +878,18 @@ struct OnboardingTasksView: View {
     @State private var newTaskTitle = ""
     @State private var showPaywall = false
 
+    private var taskCount: Int { viewModel.taskStore.tasks.count }
+
     var body: some View {
-        VStack(spacing: 20) {
-            VStack(spacing: 12) {
-                Text("onboarding_tasks_title")
-                    .font(.title2.bold())
-                    .foregroundColor(.white)
-                Text("onboarding_tasks_desc")
-                    .font(.subheadline)
-                    .multilineTextAlignment(.center)
-                    .foregroundColor(.white.opacity(0.75))
-            }
-            .padding(.top, 8)
+        VStack(spacing: 10) {
+            headerSection
 
             ScrollView(showsIndicators: false) {
-                VStack(spacing: 22) {
-                    yourTasksSection
-                    customInputSection
+                VStack(spacing: 16) {
                     suggestionsSection
+                    customInputSection
                 }
-                .padding(.bottom, 12)
+                .padding(.bottom, 8)
             }
 
             PrimaryButton(
@@ -758,8 +898,43 @@ struct OnboardingTasksView: View {
                 action: nextAction
             )
         }
-        .padding(.vertical, 16)
+        .padding(.vertical, 8)
         .paywallSheet(isPresented: $showPaywall)
+        .onAppear { ensureDefaultStretchSelected() }
+    }
+
+    private func ensureDefaultStretchSelected() {
+        guard viewModel.taskStore.tasks.isEmpty else { return }
+        viewModel.taskStore.add(PresetTask.stretch.title)
+    }
+
+    private var headerSection: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text("onboarding_tasks_title")
+                    .font(.title3.bold())
+                    .foregroundColor(.white)
+
+                Spacer(minLength: 0)
+
+                if taskCount > 0 {
+                    Text(String(format: NSLocalizedString("onboarding_tasks_ritual_count", comment: ""), taskCount))
+                        .font(.caption.weight(.semibold))
+                        .foregroundColor(Color(red: 0.5, green: 1.0, blue: 0.7))
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 4)
+                        .background(Capsule().fill(Color.green.opacity(0.14)))
+                        .transition(.scale.combined(with: .opacity))
+                }
+            }
+
+            Text("onboarding_tasks_desc")
+                .font(.footnote)
+                .foregroundColor(.white.opacity(0.55))
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .animation(.spring(response: 0.35, dampingFraction: 0.8), value: taskCount)
     }
 
     private var hasReachedFreeLimit: Bool {
@@ -770,49 +945,19 @@ struct OnboardingTasksView: View {
         !subscriptionManager.isPro && viewModel.taskStore.timerTaskCount >= RevenueCatConfig.freeTimerTaskLimit
     }
 
-    private var yourTasksSection: some View {
-        VStack(spacing: 8) {
-            SectionHeader(title: "onboarding_tasks_your_list")
-
-            if viewModel.taskStore.tasks.isEmpty {
-                Text("onboarding_tasks_empty")
-                    .font(.footnote)
-                    .foregroundColor(.white.opacity(0.5))
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .background(Color.white.opacity(0.04))
-                    .cornerRadius(10)
-            } else {
-                VStack(spacing: 6) {
-                    ForEach(viewModel.taskStore.tasks) { task in
-                        HStack {
-                            Image(systemName: "circle.fill")
-                                .font(.system(size: 6))
-                                .foregroundColor(.white.opacity(0.35))
-                            Text(task.title)
-                                .foregroundColor(.white)
-                                .font(.subheadline)
-                            Spacer()
-                            Button(action: { removeTask(task.id) }) {
-                                Image(systemName: "minus.circle.fill")
-                                    .foregroundColor(.red.opacity(0.7))
-                            }
-                        }
-                        .padding(.horizontal, 14)
-                        .padding(.vertical, 10)
-                        .background(Color.white.opacity(0.08))
-                        .cornerRadius(10)
-                    }
-                }
-            }
-        }
+    private var customOnlyTasks: [TaskItem] {
+        viewModel.taskStore.tasks.filter { PresetTask.matching(title: $0.title) == nil }
     }
 
     private var customInputSection: some View {
         VStack(spacing: 8) {
-            SectionHeader(title: "onboarding_tasks_custom")
+            OnboardingTasksSectionLabel(
+                icon: "pencil.line",
+                tint: .orange,
+                title: "onboarding_tasks_custom"
+            )
 
-            HStack {
+            HStack(spacing: 10) {
                 TextField(
                     NSLocalizedString("settings_add_task_placeholder", comment: ""),
                     text: $newTaskTitle
@@ -825,14 +970,38 @@ struct OnboardingTasksView: View {
                 Button(action: addCustomTask) {
                     Image(systemName: "plus.circle.fill")
                         .font(.title3)
-                        .foregroundColor(newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty ? .white.opacity(0.3) : .green)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(
+                            newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty ? .white.opacity(0.25) : .white,
+                            newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty ? .white.opacity(0.1) : .orange
+                        )
                 }
                 .disabled(newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty)
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
-            .background(Color.white.opacity(0.08))
-            .cornerRadius(10)
+            .background(
+                RoundedRectangle(cornerRadius: 14)
+                    .fill(Color.white.opacity(0.06))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 14)
+                            .strokeBorder(Color.orange.opacity(0.2), lineWidth: 1)
+                    )
+            )
+
+            if !customOnlyTasks.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 8) {
+                        ForEach(customOnlyTasks) { task in
+                            SelectedTaskChip(
+                                task: task,
+                                preset: nil,
+                                onRemove: { removeTask(task.id) }
+                            )
+                        }
+                    }
+                }
+            }
 
             if hasReachedFreeLimit {
                 Text(String(format: NSLocalizedString("gate_tasks_lock_message", comment: ""), RevenueCatConfig.freeTaskLimit))
@@ -846,15 +1015,21 @@ struct OnboardingTasksView: View {
 
     private var suggestionsSection: some View {
         VStack(spacing: 8) {
-            SectionHeader(title: "onboarding_tasks_suggestions")
+            OnboardingTasksSectionLabel(
+                icon: "star.fill",
+                tint: .yellow,
+                title: "onboarding_tasks_suggestions"
+            )
 
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 8) {
+            LazyVGrid(columns: [GridItem(.flexible(), spacing: 8), GridItem(.flexible(), spacing: 8)], spacing: 8) {
                 ForEach(PresetTask.allCases) { preset in
                     PresetChip(
                         preset: preset,
                         isAdded: isPresetAdded(preset)
                     ) {
-                        togglePreset(preset)
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                            togglePreset(preset)
+                        }
                     }
                 }
             }
@@ -894,12 +1069,73 @@ struct OnboardingTasksView: View {
             showPaywall = true
             return
         }
-        viewModel.taskStore.add(trimmed)
+        withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+            viewModel.taskStore.add(trimmed)
+        }
         newTaskTitle = ""
     }
 
     private func removeTask(_ id: UUID) {
-        viewModel.taskStore.tasks.removeAll { $0.id == id }
+        withAnimation(.spring(response: 0.35, dampingFraction: 0.8)) {
+            viewModel.taskStore.tasks.removeAll { $0.id == id }
+        }
+    }
+}
+
+private struct OnboardingTasksSectionLabel: View {
+    let icon: String
+    let tint: Color
+    let title: LocalizedStringKey
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Image(systemName: icon)
+                .font(.system(size: 11, weight: .semibold))
+                .foregroundColor(tint.opacity(0.9))
+            Text(title)
+                .font(.system(size: 12, weight: .semibold))
+                .tracking(1.5)
+                .foregroundColor(.white.opacity(0.55))
+            Spacer()
+        }
+    }
+}
+
+private struct SelectedTaskChip: View {
+    let task: TaskItem
+    let preset: PresetTask?
+    let onRemove: () -> Void
+
+    private var accent: Color { preset?.accentColor ?? .indigo }
+
+    var body: some View {
+        HStack(spacing: 6) {
+            if let preset {
+                Image(systemName: preset.icon)
+                    .font(.system(size: 11, weight: .semibold))
+                    .foregroundColor(accent)
+            }
+
+            Text(task.title)
+                .font(.caption.weight(.medium))
+                .foregroundColor(.white.opacity(0.9))
+                .lineLimit(1)
+
+            Button(action: onRemove) {
+                Image(systemName: "xmark.circle.fill")
+                    .font(.system(size: 14))
+                    .symbolRenderingMode(.palette)
+                    .foregroundStyle(.white.opacity(0.45), accent.opacity(0.5))
+            }
+        }
+        .padding(.leading, 10)
+        .padding(.trailing, 8)
+        .padding(.vertical, 7)
+        .background(
+            Capsule()
+                .fill(accent.opacity(0.12))
+                .overlay(Capsule().strokeBorder(accent.opacity(0.35), lineWidth: 1))
+        )
     }
 }
 
@@ -910,30 +1146,62 @@ private struct PresetChip: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 8) {
-                Image(systemName: preset.icon)
-                    .font(.system(size: 14))
-                    .foregroundColor(isAdded ? .green : .white.opacity(0.7))
-                    .frame(width: 18)
+            VStack(spacing: 6) {
+                ZStack(alignment: .topTrailing) {
+                    ZStack {
+                        Circle()
+                            .fill(
+                                LinearGradient(
+                                    colors: [
+                                        preset.accentColor.opacity(isAdded ? 0.45 : 0.28),
+                                        preset.accentColor.opacity(isAdded ? 0.2 : 0.08),
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .frame(width: 38, height: 38)
+
+                        Image(systemName: preset.icon)
+                            .font(.system(size: 17, weight: .semibold))
+                            .foregroundColor(isAdded ? .white : preset.accentColor)
+                    }
+
+                    if isAdded {
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.system(size: 14))
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(.white, preset.accentColor)
+                            .offset(x: 5, y: -5)
+                            .transition(.scale.combined(with: .opacity))
+                    }
+                }
+
                 Text(preset.title)
-                    .font(.footnote)
-                    .lineLimit(1)
-                    .foregroundColor(.white)
-                Spacer(minLength: 0)
-                Image(systemName: isAdded ? "checkmark.circle.fill" : "plus.circle")
-                    .font(.footnote)
-                    .foregroundColor(isAdded ? .green : .white.opacity(0.5))
+                    .font(.caption2.weight(.medium))
+                    .multilineTextAlignment(.center)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
+                    .foregroundColor(isAdded ? .white : .white.opacity(0.85))
             }
-            .padding(.horizontal, 10)
+            .frame(maxWidth: .infinity)
+            .padding(.horizontal, 6)
             .padding(.vertical, 10)
-            .background(Color.white.opacity(isAdded ? 0.14 : 0.06))
-            .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(isAdded ? Color.green.opacity(0.6) : Color.clear, lineWidth: 1)
+            .background(
+                RoundedRectangle(cornerRadius: 14)
+                    .fill(isAdded ? preset.accentColor.opacity(0.14) : Color.white.opacity(0.05))
             )
+            .overlay(
+                RoundedRectangle(cornerRadius: 14)
+                    .strokeBorder(
+                        isAdded ? preset.accentColor.opacity(0.55) : Color.white.opacity(0.08),
+                        lineWidth: isAdded ? 1.5 : 1
+                    )
+            )
+            .scaleEffect(isAdded ? 0.97 : 1)
         }
         .buttonStyle(.plain)
+        .animation(.spring(response: 0.3, dampingFraction: 0.7), value: isAdded)
     }
 }
 
@@ -941,68 +1209,228 @@ private struct PresetChip: View {
 
 struct OnboardingMotivationView: View {
     var finishAction: () -> Void
+    @State private var appeared = false
+    @State private var sunPulse = false
+
+    private let outcomePoints: [(icon: String, text: LocalizedStringKey)] = [
+        ("scope", "onboarding_motivation_point_focus"),
+        ("leaf.fill", "onboarding_motivation_point_calm"),
+        ("arrow.up.right.circle.fill", "onboarding_motivation_point_self"),
+    ]
 
     var body: some View {
-        VStack(spacing: 28) {
-            Spacer(minLength: 10)
+        ZStack {
+            MotivationSunriseBackdrop(sunPulse: sunPulse)
 
+            VStack(spacing: 0) {
+                heroSection
+                    .padding(.top, 8)
+                    .padding(.bottom, 20)
+
+                VStack(spacing: 12) {
+                    ForEach(Array(outcomePoints.enumerated()), id: \.offset) { index, point in
+                        MotivationOutcomeCard(icon: point.icon, text: point.text, index: index)
+                            .opacity(appeared ? 1 : 0)
+                            .offset(y: appeared ? 0 : 24)
+                            .animation(
+                                .spring(response: 0.55, dampingFraction: 0.78)
+                                    .delay(0.12 + Double(index) * 0.1),
+                                value: appeared
+                            )
+                    }
+                }
+
+                Spacer(minLength: 16)
+
+                motivationFinishButton
+                    .opacity(appeared ? 1 : 0)
+                    .offset(y: appeared ? 0 : 20)
+                    .animation(.spring(response: 0.5, dampingFraction: 0.8).delay(0.45), value: appeared)
+            }
+        }
+        .padding(.vertical, 8)
+        .onAppear {
+            sunPulse = true
+            withAnimation(.easeOut(duration: 0.4)) {
+                appeared = true
+            }
+        }
+    }
+
+    private var heroSection: some View {
+        VStack(spacing: 16) {
             ZStack {
                 Circle()
-                    .fill(LinearGradient(colors: [.orange.opacity(0.5), .clear], startPoint: .top, endPoint: .bottom))
-                    .frame(width: 220, height: 220)
-                    .blur(radius: 50)
+                    .fill(
+                        RadialGradient(
+                            colors: [.orange.opacity(0.55), .yellow.opacity(0.2), .clear],
+                            center: .center,
+                            startRadius: 4,
+                            endRadius: 70
+                        )
+                    )
+                    .frame(width: 140, height: 140)
+                    .scaleEffect(sunPulse ? 1.08 : 0.92)
+                    .animation(.easeInOut(duration: 3).repeatForever(autoreverses: true), value: sunPulse)
 
                 Image(systemName: "sun.max.fill")
-                    .font(.system(size: 90, weight: .light))
-                    .foregroundStyle(LinearGradient(colors: [.yellow, .orange], startPoint: .top, endPoint: .bottom))
-                    .shadow(color: .orange.opacity(0.6), radius: 24)
+                    .font(.system(size: 56, weight: .light))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [.yellow, .orange, Color(red: 1, green: 0.55, blue: 0.2)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .shadow(color: .orange.opacity(0.65), radius: 18, y: 4)
             }
+            .frame(height: 88)
 
-            VStack(spacing: 14) {
+            VStack(spacing: 10) {
                 Text("onboarding_motivation_title")
-                    .font(.title.bold())
+                    .font(.system(size: 30, weight: .bold))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [.white, Color(red: 1, green: 0.92, blue: 0.75)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
 
                 Text("onboarding_motivation_desc")
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.white.opacity(0.75))
+                    .lineSpacing(4)
+                    .foregroundColor(.white.opacity(0.68))
                     .fixedSize(horizontal: false, vertical: true)
             }
-
-            VStack(spacing: 10) {
-                MotivationRow(icon: "scope", text: "onboarding_motivation_point_focus")
-                MotivationRow(icon: "leaf.fill", text: "onboarding_motivation_point_calm")
-                MotivationRow(icon: "arrow.up.right.circle.fill", text: "onboarding_motivation_point_self")
-            }
-
-            Spacer()
-
-            PrimaryButton(title: "onboarding_finish", action: finishAction)
+            .padding(.horizontal, 4)
         }
-        .padding(.vertical, 20)
+    }
+
+    private var motivationFinishButton: some View {
+        Button(action: finishAction) {
+            Text("onboarding_finish")
+                .font(.headline.weight(.bold))
+                .foregroundColor(.black)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 17)
+                .background(
+                    Capsule()
+                        .fill(
+                            LinearGradient(
+                                colors: [.white, Color(red: 1, green: 0.97, blue: 0.9)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                        .shadow(color: .orange.opacity(0.35), radius: 16, y: 6)
+                )
+        }
+        .background(
+            Capsule()
+                .fill(Color.orange.opacity(0.35))
+                .blur(radius: 18)
+                .scaleEffect(sunPulse ? 1.04 : 0.96)
+                .animation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true), value: sunPulse)
+        )
     }
 }
 
-private struct MotivationRow: View {
+private struct MotivationSunriseBackdrop: View {
+    let sunPulse: Bool
+
+    var body: some View {
+        ZStack {
+            Circle()
+                .fill(Color.orange.opacity(0.22))
+                .frame(width: 280, height: 280)
+                .blur(radius: 70)
+                .offset(y: -120)
+                .scaleEffect(sunPulse ? 1.05 : 0.9)
+                .animation(.easeInOut(duration: 4).repeatForever(autoreverses: true), value: sunPulse)
+
+            Circle()
+                .fill(Color.yellow.opacity(0.1))
+                .frame(width: 200, height: 200)
+                .blur(radius: 50)
+                .offset(x: 80, y: 60)
+                .scaleEffect(sunPulse ? 0.95 : 1.05)
+                .animation(.easeInOut(duration: 5).repeatForever(autoreverses: true), value: sunPulse)
+        }
+        .allowsHitTesting(false)
+    }
+}
+
+private struct MotivationOutcomeCard: View {
     let icon: String
     let text: LocalizedStringKey
+    let index: Int
+
+    private var accent: Color {
+        switch index {
+        case 0: return Color(red: 1, green: 0.75, blue: 0.3)
+        case 1: return Color(red: 0.55, green: 0.95, blue: 0.65)
+        default: return Color(red: 0.65, green: 0.75, blue: 1)
+        }
+    }
 
     var body: some View {
         HStack(spacing: 14) {
-            Image(systemName: icon)
-                .font(.system(size: 16))
-                .foregroundColor(.yellow.opacity(0.9))
-                .frame(width: 28)
+            ZStack {
+                Circle()
+                    .fill(
+                        RadialGradient(
+                            colors: [accent.opacity(0.45), accent.opacity(0.08)],
+                            center: .center,
+                            startRadius: 2,
+                            endRadius: 28
+                        )
+                    )
+                    .frame(width: 48, height: 48)
+
+                Image(systemName: icon)
+                    .font(.system(size: 18, weight: .semibold))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [.white, accent],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+            }
+
             Text(text)
-                .font(.subheadline)
-                .foregroundColor(.white.opacity(0.9))
-            Spacer()
+                .font(.body.weight(.semibold))
+                .foregroundColor(.white.opacity(0.92))
+                .fixedSize(horizontal: false, vertical: true)
+
+            Spacer(minLength: 0)
         }
-        .padding(.horizontal, 14)
-        .padding(.vertical, 12)
-        .background(Color.white.opacity(0.06))
-        .cornerRadius(12)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 14)
+        .background(
+            RoundedRectangle(cornerRadius: 18)
+                .fill(
+                    LinearGradient(
+                        colors: [accent.opacity(0.14), Color.white.opacity(0.04)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18)
+                        .strokeBorder(
+                            LinearGradient(
+                                colors: [accent.opacity(0.5), accent.opacity(0.08)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            lineWidth: 1
+                        )
+                )
+        )
+        .shadow(color: accent.opacity(0.15), radius: 12, y: 4)
     }
 }

@@ -84,6 +84,12 @@ struct ContentView: View {
                 viewModel.syncShield(blockManager: blockManager)
             }
         }
+        .fullScreenCover(isPresented: $viewModel.showRoutineCompleteCelebration) {
+            RoutineCompleteCelebrationView(
+                streak: viewModel.streakStore.currentStreak,
+                onDismiss: { viewModel.dismissRoutineCompleteCelebration() }
+            )
+        }
         .fullScreenCover(item: $viewModel.pendingBadge) { badge in
             BadgeCelebrationView(
                 badge: badge,

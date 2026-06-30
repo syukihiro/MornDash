@@ -14,6 +14,7 @@ class HomeViewModel: ObservableObject {
     @Published var taskHistoryStore: TaskHistoryStore
     @Published var currentTime: Date = Date()
     @Published var pendingBadge: Badge?
+    @Published var showRoutineCompleteCelebration = false
 
     private var pendingBadgeQueue: [Badge] = []
     private var cancellables = Set<AnyCancellable>()
@@ -123,11 +124,16 @@ class HomeViewModel: ObservableObject {
                 let newlyUnlocked = streakStore.newlyUnlockedBadges()
                 if !newlyUnlocked.isEmpty {
                     pendingBadgeQueue.append(contentsOf: newlyUnlocked)
-                    presentNextBadgeIfNeeded()
                 }
+                showRoutineCompleteCelebration = true
             }
             blockManager.clearShield()
         }
+    }
+
+    func dismissRoutineCompleteCelebration() {
+        showRoutineCompleteCelebration = false
+        presentNextBadgeIfNeeded()
     }
 
     func dismissPendingBadge() {

@@ -53,22 +53,12 @@ struct BadgeCelebrationView: View {
     }
 
     private var sparkles: some View {
-        GeometryReader { proxy in
-            let size = max(proxy.size.width, proxy.size.height)
-            ZStack {
-                ForEach(0..<22, id: \.self) { i in
-                    SparkleParticle(
-                        index: i,
-                        seed: sparkleSeed,
-                        canvas: size,
-                        color: badge.color,
-                        active: phase != .initial
-                    )
-                }
-            }
-            .frame(width: proxy.size.width, height: proxy.size.height)
-        }
-        .ignoresSafeArea()
+        CelebrationSparkleField(
+            seed: sparkleSeed,
+            colors: [badge.color],
+            active: phase != .initial,
+            count: 22
+        )
     }
 
     private var content: some View {
@@ -182,60 +172,5 @@ struct BadgeCelebrationView: View {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.9) {
             withAnimation { phase = .settled }
         }
-    }
-}
-
-private struct SparkleParticle: View {
-    let index: Int
-    let seed: Int
-    let canvas: CGFloat
-    let color: Color
-    let active: Bool
-
-    @State private var animate = false
-
-    var body: some View {
-        var rng = SeededRandom(seed: UInt64(bitPattern: Int64(seed)) &* 31 &+ UInt64(index) &* 17 &+ 1)
-        let angle = rng.next() * 2 * .pi
-        let distance = canvas * 0.18 + rng.next() * canvas * 0.32
-        let dx = cos(angle) * distance
-        let dy = sin(angle) * distance
-        let dotSize = 3 + rng.next() * 5
-        let delay = rng.next() * 0.5
-        let duration = 1.6 + rng.next() * 1.4
-
-        return Circle()
-            .fill(color.opacity(0.85))
-            .frame(width: dotSize, height: dotSize)
-            .shadow(color: color.opacity(0.8), radius: 6)
-            .offset(x: animate ? dx : 0, y: animate ? dy : 0)
-            .opacity(animate ? 0.0 : 1.0)
-            .scaleEffect(animate ? 0.4 : 1.0)
-            .onChange(of: active) { _, isActive in
-                guard isActive else { return }
-                withAnimation(.easeOut(duration: duration).delay(delay)) {
-                    animate = true
-                }
-            }
-    }
-}
-
-/// 同じ `seed` から同じ列を返す軽量な疑似乱数。Swift の `SystemRandomNumberGenerator`
-/// はビュー再描画ごとに値が変わってしまうため、安定したパーティクル配置のために使う。
-private struct SeededRandom {
-    private var state: UInt64
-
-    init(seed: UInt64) {
-        self.state = seed == 0 ? 0x9E3779B97F4A7C15 : seed
-    }
-
-    /// 0..<1 の Double を返す。
-    mutating func next() -> Double {
-        state &+= 0x9E3779B97F4A7C15
-        var z = state
-        z = (z ^ (z >> 30)) &* 0xBF58476D1CE4E5B9
-        z = (z ^ (z >> 27)) &* 0x94D049BB133111EB
-        z = z ^ (z >> 31)
-        return Double(z >> 11) / Double(UInt64(1) << 53)
     }
 }

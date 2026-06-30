@@ -211,9 +211,11 @@ struct TimerSessionView: View {
                     .padding(.horizontal, 28)
 
                 Text(timeText)
-                    .font(.system(size: 60, weight: .thin, design: .rounded))
+                    .font(.system(size: 58, weight: .medium, design: .rounded))
+                    .fontWidth(.expanded)
                     .monospacedDigit()
                     .foregroundColor(.white)
+                    .contentTransition(.numericText())
 
                 HourglassTimerView(
                     progress: progress,

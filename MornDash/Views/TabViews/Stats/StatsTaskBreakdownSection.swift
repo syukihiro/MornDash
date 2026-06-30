@@ -1,31 +1,12 @@
 import SwiftUI
 
-/// タスク別アナリティクスセクション。
-/// - 期間トグル（今月 / 今年）
-/// - タスク別の達成日数リスト + 直近 7 日ドット
-/// - Pro 限定: タスクごとの前期間比 delta（無料は ProLockBanner）
+/// タスク別アナリティクス（無料）— 期間トグル + タスク別達成日数 + 直近 7 日ドット
 struct StatsTaskBreakdownSection: View {
     let history: TaskHistoryStore
     let tasks: [TaskItem]
-    let isPro: Bool
-    let onUpgradeTap: () -> Void
-
-    @State private var period: TaskHistoryStore.Period = .currentMonth
+    @Binding var period: TaskHistoryStore.Period
 
     var body: some View {
-        VStack(spacing: 16) {
-            mainCard
-            if isPro {
-                comparisonCard
-            } else {
-                lockedComparisonBanner
-            }
-        }
-    }
-
-    // MARK: - Main card
-
-    private var mainCard: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(alignment: .firstTextBaseline) {
                 StatsSectionHeader(icon: "chart.bar.doc.horizontal.fill", tint: .indigo.opacity(0.85), titleKey: "stats_task_breakdown")
@@ -75,8 +56,6 @@ struct StatsTaskBreakdownSection: View {
         .buttonStyle(.plain)
     }
 
-    // MARK: - Per-task rows
-
     private struct TaskRow: Identifiable {
         let id: UUID
         let title: String
@@ -121,12 +100,15 @@ struct StatsTaskBreakdownSection: View {
             }
         }
     }
+}
 
-    // MARK: - Pro comparison card
+/// タスク別の前期間比（Pro）
+struct StatsTaskComparisonSection: View {
+    let history: TaskHistoryStore
+    let tasks: [TaskItem]
+    let period: TaskHistoryStore.Period
 
-    @ViewBuilder
-    private var comparisonCard: some View {
-        let referenceKey = period == .currentMonth ? "stats_blocked_compare_month" : "stats_blocked_compare_year"
+    var body: some View {
         let rows = comparisonRows
         if rows.isEmpty {
             EmptyView()
@@ -135,7 +117,7 @@ struct StatsTaskBreakdownSection: View {
                 HStack(alignment: .firstTextBaseline) {
                     StatsSectionHeader(icon: "chart.bar.xaxis", tint: .indigo.opacity(0.85), titleKey: "stats_task_compare")
                     Spacer()
-                    Text(LocalizedStringKey(referenceKey))
+                    Text(LocalizedStringKey(period == .currentMonth ? "stats_blocked_compare_month" : "stats_blocked_compare_year"))
                         .font(.system(size: 10, weight: .medium))
                         .tracking(1)
                         .foregroundColor(.white.opacity(0.45))
@@ -158,6 +140,10 @@ struct StatsTaskBreakdownSection: View {
         let title: String
         let current: Int
         let delta: Double?
+    }
+
+    private var previousPeriod: TaskHistoryStore.Period {
+        period == .currentMonth ? .lastMonth : .lastYear
     }
 
     private var comparisonRows: [ComparisonRow] {
@@ -204,19 +190,5 @@ struct StatsTaskBreakdownSection: View {
                 .font(.system(size: 12, weight: .semibold, design: .rounded))
                 .foregroundColor(.white.opacity(0.35))
         }
-    }
-
-    private var lockedComparisonBanner: some View {
-        StatsProLockBanner(
-            sectionTitleKey: "stats_task_compare",
-            titleKey: "stats_task_compare_lock_title",
-            messageKey: "stats_task_compare_lock_message",
-            buttonTitleKey: "stats_blocked_compare_unlock_button",
-            action: onUpgradeTap
-        )
-    }
-
-    private var previousPeriod: TaskHistoryStore.Period {
-        period == .currentMonth ? .lastMonth : .lastYear
     }
 }

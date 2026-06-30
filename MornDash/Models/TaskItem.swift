@@ -140,9 +140,7 @@ struct TaskStore: Codable {
             return migrated
         }
         return TaskStore(tasks: [
-            TaskItem(title: NSLocalizedString("default_task_stretch", comment: "")),
-            TaskItem(title: NSLocalizedString("default_task_water", comment: "")),
-            TaskItem(title: NSLocalizedString("default_task_face", comment: ""))
+            TaskItem(title: NSLocalizedString("default_task_stretch", comment: ""))
         ])
     }
 }

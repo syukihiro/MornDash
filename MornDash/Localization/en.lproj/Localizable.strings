@@ -19,6 +19,11 @@
 "main_todays_tasks" = "TODAY'S TASKS";
 "main_no_tasks" = "No tasks yet. Add some from the Tasks tab.";
 
+"routine_celebration_eyebrow" = "ALL DONE";
+"routine_celebration_title" = "You did it!";
+"routine_celebration_message" = "All tasks complete for today.\nEnjoy your freedom.";
+"routine_celebration_continue" = "Continue";
+
 /* Tabs */
 "tab_home" = "Home";
 "tab_tasks" = "Tasks";
@@ -78,6 +83,10 @@
 "stats_blocked_compare_lock_title" = "Compare your week, month, year";
 "stats_blocked_compare_lock_message" = "Pro shows how this week, month, and year stack up against the last.";
 "stats_blocked_compare_unlock_button" = "Unlock with Pro";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro Reports";
+"stats_pro_section_upsell_desc" = "Unlock all period-over-period comparison reports.";
 
 /* Badges */
 "badge_3day" = "3 Day\nStarter";
@@ -158,11 +167,13 @@
 
 /* Onboarding — step 6: tasks */
 "onboarding_tasks_title" = "Set your unlock tasks";
-"onboarding_tasks_desc" = "Finish them all to unlock the apps for today. Pick from suggestions or write your own.";
+"onboarding_tasks_desc" = "Finish all tasks to unlock your apps for the day.";
 "onboarding_tasks_your_list" = "Your tasks";
 "onboarding_tasks_suggestions" = "Suggestions";
 "onboarding_tasks_custom" = "Write your own";
 "onboarding_tasks_empty" = "No tasks yet";
+"onboarding_tasks_empty_hint" = "Tap a suggestion below to add tasks";
+"onboarding_tasks_ritual_count" = "%d tasks";
 
 /* Onboarding — step 7: motivation */
 "onboarding_motivation_title" = "Take back your time.";
@@ -174,20 +185,14 @@
 
 /* Onboarding — preset tasks */
 "onboarding_preset_stretch" = "Stretch";
-"onboarding_preset_water" = "Drink a glass of water";
-"onboarding_preset_face" = "Wash my face";
-"onboarding_preset_teeth" = "Brush my teeth";
 "onboarding_preset_bed" = "Make my bed";
-"onboarding_preset_breakfast" = "Eat breakfast";
 "onboarding_preset_meditate" = "Meditate for 5 minutes";
 "onboarding_preset_journal" = "Write in my journal";
-"onboarding_preset_walk" = "Step outside and breathe";
 "onboarding_preset_read" = "Read 10 pages";
+"onboarding_preset_run" = "Go for a run";
 
 /* Default tasks */
 "default_task_stretch" = "Stretch";
-"default_task_water" = "Drink a glass of water";
-"default_task_face" = "Wash my face";
 
 /* Subscription / Settings */
 "settings_subscription_section" = "Subscription";

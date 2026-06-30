@@ -14,6 +14,7 @@ struct StatsTabView: View {
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
 
     @State private var showPaywall = false
+    @State private var taskBreakdownPeriod: TaskHistoryStore.Period = .currentMonth
 
     var body: some View {
         NavigationStack {
@@ -28,27 +29,18 @@ struct StatsTabView: View {
                             totalCompleted: viewModel.streakStore.totalCompleted
                         )
                         blockedDurationSection
-                        if subscriptionManager.isPro {
-                            comparisonReportSection
-                        } else {
-                            comparisonReportLockedBanner
-                        }
                         StatsTaskBreakdownSection(
                             history: viewModel.taskHistoryStore,
                             tasks: viewModel.taskStore.tasks,
-                            isPro: subscriptionManager.isPro,
-                            onUpgradeTap: { showPaywall = true }
+                            period: $taskBreakdownPeriod
                         )
                         emergencyUnlockSection
-                        if subscriptionManager.isPro {
-                            emergencyComparisonReportSection
-                        } else {
-                            emergencyComparisonLockedBanner
-                        }
                         blockedUsageSection
                         StatsWeekStripView(days: viewModel.streakStore.recentDays(7))
                         StatsContributionGraphView(weeks: viewModel.streakStore.contributionGrid(weeks: 52))
                         StatsBadgesSectionView(longestStreak: viewModel.streakStore.longestStreak)
+
+                        statsProSection
                     }
                     .padding(.horizontal, 20)
                     .padding(.vertical, 12)
@@ -57,6 +49,27 @@ struct StatsTabView: View {
             .navigationTitle(Text("tab_stats"))
             .toolbarColorScheme(.dark, for: .navigationBar)
             .paywallSheet(isPresented: $showPaywall)
+        }
+    }
+
+    @ViewBuilder
+    private var statsProSection: some View {
+        VStack(spacing: 16) {
+            if subscriptionManager.isPro {
+                StatsSectionHeader(icon: "sparkles", tint: .orange.opacity(0.85), titleKey: "stats_pro_section_title")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 4)
+
+                comparisonReportSection
+                StatsTaskComparisonSection(
+                    history: viewModel.taskHistoryStore,
+                    tasks: viewModel.taskStore.tasks,
+                    period: taskBreakdownPeriod
+                )
+                emergencyComparisonReportSection
+            } else {
+                StatsProUpsellSection(action: { showPaywall = true })
+            }
         }
     }
 
@@ -182,16 +195,6 @@ struct StatsTabView: View {
                 .font(.system(size: 12, weight: .semibold, design: .rounded))
                 .foregroundColor(.white.opacity(0.35))
         }
-    }
-
-    private var comparisonReportLockedBanner: some View {
-        StatsProLockBanner(
-            sectionTitleKey: "stats_blocked_compare",
-            titleKey: "stats_blocked_compare_lock_title",
-            messageKey: "stats_blocked_compare_lock_message",
-            buttonTitleKey: "stats_blocked_compare_unlock_button",
-            action: { showPaywall = true }
-        )
     }
 
     // MARK: - Emergency unlocks
@@ -335,16 +338,6 @@ struct StatsTabView: View {
                 .font(.system(size: 12, weight: .semibold, design: .rounded))
                 .foregroundColor(.white.opacity(0.35))
         }
-    }
-
-    private var emergencyComparisonLockedBanner: some View {
-        StatsProLockBanner(
-            sectionTitleKey: "stats_emergency_compare",
-            titleKey: "stats_emergency_compare_lock_title",
-            messageKey: "stats_emergency_compare_lock_message",
-            buttonTitleKey: "stats_blocked_compare_unlock_button",
-            action: { showPaywall = true }
-        )
     }
 
     // MARK: - Blocked apps usage
