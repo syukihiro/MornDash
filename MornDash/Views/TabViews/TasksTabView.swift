@@ -3,7 +3,8 @@ import SwiftUI
 struct TasksTabView: View {
     @ObservedObject var viewModel: HomeViewModel
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
-    @Environment(\.editMode) private var editMode
+
+    @State private var listEditMode: EditMode = .inactive
 
     @State private var newTaskTitle: String = ""
     @State private var showAddTaskSheet: Bool = false
@@ -185,6 +186,7 @@ struct TasksTabView: View {
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
         .background(Color.black)
+        .environment(\.editMode, $listEditMode)
     }
 
     private func presetRow(_ preset: PresetTask) -> some View {
@@ -492,13 +494,13 @@ struct TasksTabView: View {
     }
 
     private var isEditing: Bool {
-        editMode?.wrappedValue == .active
+        listEditMode == .active
     }
 
     private var editModeButton: some View {
         Button {
             withAnimation {
-                editMode?.wrappedValue = isEditing ? .inactive : .active
+                listEditMode = isEditing ? .inactive : .active
             }
         } label: {
             Image(systemName: isEditing ? "checkmark" : "square.and.pencil")
@@ -571,11 +573,15 @@ struct TasksTabView: View {
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                    Button("common_cancel") {
+                    Button {
                         newTaskTitle = ""
                         showAddTaskSheet = false
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundColor(.orange)
                     }
-                    .foregroundColor(.orange)
+                    .accessibilityLabel(Text("common_cancel"))
                 }
             }
             .onAppear {
