@@ -144,6 +144,7 @@
 "settings_add_task_placeholder" = "Add a task";
 "tasks_add_sheet_title" = "Add Task";
 "tasks_add_accessibility" = "Add task";
+"tasks_add_timer_toggle" = "Set a timer";
 "tasks_rename_sheet_title" = "Rename Task";
 "tasks_rename_accessibility" = "Rename task";
 "tasks_delete_accessibility" = "Delete tasks";
@@ -323,9 +324,13 @@
 
 /* Task timer */
 "tasks_timer_minutes_short_format" = "%d min";
+"tasks_timer_seconds_short_format" = "%d sec";
+"tasks_timer_duration_min_sec_format" = "%d min %02d sec";
+"tasks_timer_minutes_label" = "Minutes";
+"tasks_timer_seconds_label" = "Seconds";
+"tasks_timer_minutes_placeholder" = "Minutes (1–180)";
 "tasks_timer_sheet_title" = "Timer settings";
-"tasks_timer_minutes_placeholder" = "Minutes (1-180)";
-"tasks_timer_sheet_hint" = "Task completes when timer finishes.";
+"tasks_timer_sheet_hint" = "Set minutes and seconds. The task completes when the timer finishes.";
 "tasks_timer_remove" = "Remove timer";
 "tasks_timer_save" = "Save";
 "timer_session_title" = "TIMER";

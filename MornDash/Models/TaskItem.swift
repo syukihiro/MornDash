@@ -64,10 +64,10 @@ struct TaskStore: Codable {
         }
     }
 
-    mutating func add(_ title: String) {
+    mutating func add(_ title: String, timerDurationSeconds: Int? = nil) {
         let trimmed = title.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else { return }
-        tasks.append(TaskItem(title: trimmed))
+        tasks.append(TaskItem(title: trimmed, timerDurationSeconds: timerDurationSeconds))
     }
 
     mutating func addWorkout(_ workout: WorkoutKind, targetReps: Int, title: String) {

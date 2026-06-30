@@ -144,6 +144,7 @@
 "settings_add_task_placeholder" = "タスクを追加";
 "tasks_add_sheet_title" = "タスクを追加";
 "tasks_add_accessibility" = "タスクを追加";
+"tasks_add_timer_toggle" = "タイマーを設定";
 "tasks_rename_sheet_title" = "タスク名を変更";
 "tasks_rename_accessibility" = "タスク名を変更";
 "tasks_delete_accessibility" = "タスクを削除";
@@ -323,9 +324,13 @@
 
 /* Task timer */
 "tasks_timer_minutes_short_format" = "%d分";
+"tasks_timer_seconds_short_format" = "%d秒";
+"tasks_timer_duration_min_sec_format" = "%d分%02d秒";
+"tasks_timer_minutes_label" = "分";
+"tasks_timer_seconds_label" = "秒";
+"tasks_timer_minutes_placeholder" = "分（1〜180）";
 "tasks_timer_sheet_title" = "タイマー設定";
-"tasks_timer_minutes_placeholder" = "分を入力（1〜180）";
-"tasks_timer_sheet_hint" = "タイマー完了でタスク達成になります。";
+"tasks_timer_sheet_hint" = "分と秒を入力してください。タイマー完了でタスク達成になります。";
 "tasks_timer_remove" = "タイマーを外す";
 "tasks_timer_save" = "保存";
 "timer_session_title" = "TIMER";
