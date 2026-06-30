@@ -23,10 +23,11 @@ struct StatsTabView: View {
 
                 ScrollView {
                     VStack(spacing: 20) {
-                        StatsStreakHeroView(streak: viewModel.streakStore.currentStreak)
-                        StatsCardsRowView(
+                        StatsStreakSummaryView(
+                            streak: viewModel.streakStore.currentStreak,
                             longestStreak: viewModel.streakStore.longestStreak,
-                            totalCompleted: viewModel.streakStore.totalCompleted
+                            totalCompleted: viewModel.streakStore.totalCompleted,
+                            recentDays: viewModel.streakStore.recentDays(7)
                         )
                         StatsMonthCalendarView(days: viewModel.streakStore.monthCalendar())
                         blockedDurationSection
@@ -37,7 +38,6 @@ struct StatsTabView: View {
                         )
                         emergencyUnlockSection
                         blockedUsageSection
-                        StatsWeekStripView(days: viewModel.streakStore.recentDays(7))
                         StatsContributionGraphView(weeks: viewModel.streakStore.contributionGrid(weeks: 52))
                         StatsBadgesSectionView(longestStreak: viewModel.streakStore.longestStreak)
 

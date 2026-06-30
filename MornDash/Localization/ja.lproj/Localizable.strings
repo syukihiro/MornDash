@@ -49,6 +49,11 @@
 "stats_current_streak" = "連続達成";
 "stats_longest_streak" = "最長連続";
 "stats_total_completed" = "累計達成日";
+"stats_week_progress_short" = "今週 %d / 7 日";
+"stats_next_milestone" = "次の節目";
+"stats_next_milestone_days" = "%1$@まであと %2$d 日";
+"stats_summary_footer" = "最長 %d日 · 累計 %d日";
+"stats_all_badges_unlocked" = "すべてのバッジを獲得済み";
 "stats_last_7_days" = "この7日間";
 "stats_month_calendar" = "今月";
 "stats_contributions" = "アクティビティ";

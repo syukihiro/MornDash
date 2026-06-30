@@ -49,6 +49,11 @@
 "stats_current_streak" = "DAY STREAK";
 "stats_longest_streak" = "BEST STREAK";
 "stats_total_completed" = "TOTAL DAYS";
+"stats_week_progress_short" = "%d / 7 days this week";
+"stats_next_milestone" = "NEXT MILESTONE";
+"stats_next_milestone_days" = "%2$d days to %1$@";
+"stats_summary_footer" = "Best %d · Total %d days";
+"stats_all_badges_unlocked" = "All badges unlocked";
 "stats_last_7_days" = "LAST 7 DAYS";
 "stats_month_calendar" = "THIS MONTH";
 "stats_contributions" = "ACTIVITY";

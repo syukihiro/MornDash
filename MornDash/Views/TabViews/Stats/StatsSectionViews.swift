@@ -1,13 +1,47 @@
 import SwiftUI
 
-struct StatsStreakHeroView: View {
+struct StatsStreakSummaryView: View {
     let streak: Int
+    let longestStreak: Int
+    let totalCompleted: Int
+    let recentDays: [(date: Date, completed: Bool)]
+
+    private var weekCompleted: Int { recentDays.filter(\.completed).count }
+
+    private var nextBadge: Badge? {
+        Badge.all.first { longestStreak < $0.threshold }
+    }
 
     var body: some View {
-        VStack(spacing: 6) {
+        VStack(spacing: 18) {
+            hero
+
+            if streak == 0 && totalCompleted == 0 {
+                Text("stats_no_data")
+                    .font(.system(size: 12))
+                    .foregroundColor(.white.opacity(0.4))
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 8)
+            } else {
+                weekSection
+                milestoneSection
+                footerStats
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 18)
+        .background(
+            RoundedRectangle(cornerRadius: 14)
+                .fill(Color.white.opacity(0.05))
+        )
+    }
+
+    private var hero: some View {
+        VStack(spacing: 4) {
             HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Image(systemName: streak > 0 ? "flame.fill" : "flame")
-                    .font(.system(size: 22, weight: .light))
+                    .font(.system(size: 24, weight: .light))
                     .foregroundStyle(
                         LinearGradient(
                             colors: streak > 0 ? [.orange, .red] : [.white.opacity(0.25), .white.opacity(0.15)],
@@ -18,10 +52,10 @@ struct StatsStreakHeroView: View {
                     .offset(y: -1)
 
                 Text("\(streak)")
-                    .font(.system(size: 36, weight: .thin, design: .rounded))
+                    .font(.system(size: 44, weight: .thin, design: .rounded))
 
                 Text(StatsFormatters.streakDayUnit(count: streak))
-                    .font(.system(size: 16, weight: .light, design: .rounded))
+                    .font(.system(size: 18, weight: .light, design: .rounded))
                     .foregroundColor(.white.opacity(0.65))
             }
             .foregroundColor(.white)
@@ -30,65 +64,117 @@ struct StatsStreakHeroView: View {
                 .font(.system(size: 10, weight: .medium))
                 .tracking(2)
                 .foregroundColor(.white.opacity(0.45))
+        }
+    }
 
-            if streak == 0 {
-                Text("stats_no_data")
-                    .font(.system(size: 12))
-                    .foregroundColor(.white.opacity(0.4))
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 16)
-                    .padding(.top, 2)
+    private var weekSection: some View {
+        VStack(spacing: 10) {
+            HStack {
+                Text("stats_last_7_days")
+                    .font(.system(size: 10, weight: .medium))
+                    .tracking(1.5)
+                    .foregroundColor(.white.opacity(0.45))
+                Spacer()
+                Text(String(format: NSLocalizedString("stats_week_progress_short", comment: ""), weekCompleted))
+                    .font(.system(size: 11, weight: .medium))
+                    .foregroundColor(.white.opacity(0.55))
             }
+
+            HStack(spacing: 0) {
+                ForEach(Array(recentDays.enumerated()), id: \.offset) { _, day in
+                    Circle()
+                        .fill(day.completed ? Color.orange : Color.white.opacity(0.08))
+                        .frame(width: 10, height: 10)
+                        .frame(maxWidth: .infinity)
+                }
+            }
+
+            GeometryReader { proxy in
+                let progress = CGFloat(weekCompleted) / 7.0
+                ZStack(alignment: .leading) {
+                    Capsule()
+                        .fill(Color.white.opacity(0.08))
+                    Capsule()
+                        .fill(
+                            LinearGradient(
+                                colors: [.orange.opacity(0.85), .orange],
+                                startPoint: .leading,
+                                endPoint: .trailing
+                            )
+                        )
+                        .frame(width: max(0, proxy.size.width * progress))
+                }
+            }
+            .frame(height: 4)
         }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 16)
-        .background(
-            RoundedRectangle(cornerRadius: 14)
-                .fill(Color.white.opacity(0.05))
-        )
-    }
-}
-
-struct StatsCardsRowView: View {
-    let longestStreak: Int
-    let totalCompleted: Int
-
-    var body: some View {
-        HStack(spacing: 10) {
-            statCard(value: "\(longestStreak)", labelKey: "stats_longest_streak", icon: "crown.fill", tint: .yellow, showsDayUnit: true)
-            statCard(value: "\(totalCompleted)", labelKey: "stats_total_completed", icon: "checkmark.seal.fill", tint: .green, showsDayUnit: true)
-        }
     }
 
-    private func statCard(value: String, labelKey: String, icon: String, tint: Color, showsDayUnit: Bool) -> some View {
-        VStack(alignment: .leading, spacing: 6) {
-            HStack(spacing: 5) {
-                Image(systemName: icon)
-                    .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(tint)
-                HStack(alignment: .firstTextBaseline, spacing: 2) {
-                    Text(value)
-                        .font(.system(size: 22, weight: .thin, design: .rounded))
-                    if showsDayUnit, let count = Int(value) {
-                        Text(StatsFormatters.streakDayUnit(count: count))
-                            .font(.system(size: 12, weight: .light, design: .rounded))
-                            .foregroundColor(.white.opacity(0.55))
+    @ViewBuilder
+    private var milestoneSection: some View {
+        if let nextBadge {
+            let daysLeft = max(nextBadge.threshold - longestStreak, 0)
+            let progress = min(Double(longestStreak) / Double(nextBadge.threshold), 1.0)
+
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(spacing: 6) {
+                    Image(systemName: nextBadge.icon)
+                        .font(.system(size: 11, weight: .medium))
+                        .foregroundColor(nextBadge.color)
+                    Text("stats_next_milestone")
+                        .font(.system(size: 10, weight: .medium))
+                        .tracking(1.5)
+                        .foregroundColor(.white.opacity(0.45))
+                }
+
+                Text(
+                    String(
+                        format: NSLocalizedString("stats_next_milestone_days", comment: ""),
+                        badgeShortName(nextBadge),
+                        daysLeft
+                    )
+                )
+                .font(.system(size: 13, weight: .medium))
+                .foregroundColor(.white.opacity(0.75))
+
+                GeometryReader { proxy in
+                    ZStack(alignment: .leading) {
+                        Capsule()
+                            .fill(Color.white.opacity(0.08))
+                        Capsule()
+                            .fill(nextBadge.color.opacity(0.85))
+                            .frame(width: max(0, proxy.size.width * progress))
                     }
                 }
-                .foregroundColor(.white)
+                .frame(height: 4)
             }
-            Text(LocalizedStringKey(labelKey))
-                .font(.system(size: 10, weight: .medium))
-                .tracking(1.5)
-                .foregroundColor(.white.opacity(0.45))
+        } else {
+            HStack(spacing: 6) {
+                Image(systemName: "crown.fill")
+                    .font(.system(size: 11))
+                    .foregroundColor(.yellow.opacity(0.8))
+                Text("stats_all_badges_unlocked")
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundColor(.white.opacity(0.55))
+            }
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(.horizontal, 12)
-        .padding(.vertical, 10)
-        .background(
-            RoundedRectangle(cornerRadius: 14)
-                .fill(Color.white.opacity(0.05))
+    }
+
+    private var footerStats: some View {
+        Text(
+            String(
+                format: NSLocalizedString("stats_summary_footer", comment: ""),
+                longestStreak,
+                totalCompleted
+            )
         )
+        .font(.system(size: 11, weight: .medium))
+        .foregroundColor(.white.opacity(0.35))
+        .frame(maxWidth: .infinity)
+    }
+
+    private func badgeShortName(_ badge: Badge) -> String {
+        NSLocalizedString(badge.labelKey, comment: "")
+            .replacingOccurrences(of: "\n", with: "")
     }
 }
 
@@ -172,40 +258,6 @@ struct StatsMonthCalendarView: View {
         if day.isFuture { return .white.opacity(0.2) }
         if day.isToday { return .orange.opacity(0.9) }
         return .white.opacity(0.55)
-    }
-}
-
-struct StatsWeekStripView: View {
-    let days: [(date: Date, completed: Bool)]
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("stats_last_7_days")
-                .font(.system(size: 11, weight: .medium))
-                .tracking(2)
-                .foregroundColor(.white.opacity(0.5))
-
-            HStack(spacing: 8) {
-                ForEach(Array(days.enumerated()), id: \.offset) { _, day in
-                    VStack(spacing: 8) {
-                        Text(StatsFormatters.weekday(day.date))
-                            .font(.system(size: 10, weight: .medium))
-                            .foregroundColor(.white.opacity(0.4))
-                        Circle()
-                            .fill(day.completed ? Color.orange : Color.white.opacity(0.08))
-                            .frame(width: 28, height: 28)
-                            .overlay(
-                                Image(systemName: "checkmark")
-                                    .font(.system(size: 11, weight: .bold))
-                                    .foregroundColor(.white)
-                                    .opacity(day.completed ? 1 : 0)
-                            )
-                    }
-                    .frame(maxWidth: .infinity)
-                }
-            }
-        }
-        .statsSectionCard()
     }
 }
 
