@@ -4,44 +4,46 @@ struct StatsStreakHeroView: View {
     let streak: Int
 
     var body: some View {
-        VStack(spacing: 10) {
-            Image(systemName: streak > 0 ? "flame.fill" : "flame")
-                .font(.system(size: 48, weight: .light))
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: streak > 0 ? [.orange, .red] : [.white.opacity(0.25), .white.opacity(0.15)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
-
+        VStack(spacing: 6) {
             HStack(alignment: .firstTextBaseline, spacing: 6) {
+                Image(systemName: streak > 0 ? "flame.fill" : "flame")
+                    .font(.system(size: 22, weight: .light))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: streak > 0 ? [.orange, .red] : [.white.opacity(0.25), .white.opacity(0.15)],
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .offset(y: -1)
+
                 Text("\(streak)")
-                    .font(.system(size: 72, weight: .thin, design: .rounded))
+                    .font(.system(size: 36, weight: .thin, design: .rounded))
+
                 Text(StatsFormatters.streakDayUnit(count: streak))
-                    .font(.system(size: 28, weight: .light, design: .rounded))
+                    .font(.system(size: 16, weight: .light, design: .rounded))
                     .foregroundColor(.white.opacity(0.65))
             }
             .foregroundColor(.white)
 
             Text("stats_current_streak")
-                .font(.system(size: 12, weight: .medium))
-                .tracking(3)
-                .foregroundColor(.white.opacity(0.5))
+                .font(.system(size: 10, weight: .medium))
+                .tracking(2)
+                .foregroundColor(.white.opacity(0.45))
 
             if streak == 0 {
                 Text("stats_no_data")
-                    .font(.system(size: 13))
+                    .font(.system(size: 12))
                     .foregroundColor(.white.opacity(0.4))
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 20)
-                    .padding(.top, 4)
+                    .padding(.horizontal, 16)
+                    .padding(.top, 2)
             }
         }
         .frame(maxWidth: .infinity)
-        .padding(.vertical, 28)
+        .padding(.vertical, 16)
         .background(
-            RoundedRectangle(cornerRadius: 20)
+            RoundedRectangle(cornerRadius: 14)
                 .fill(Color.white.opacity(0.05))
         )
     }
@@ -52,36 +54,39 @@ struct StatsCardsRowView: View {
     let totalCompleted: Int
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 10) {
             statCard(value: "\(longestStreak)", labelKey: "stats_longest_streak", icon: "crown.fill", tint: .yellow, showsDayUnit: true)
             statCard(value: "\(totalCompleted)", labelKey: "stats_total_completed", icon: "checkmark.seal.fill", tint: .green, showsDayUnit: true)
         }
     }
 
     private func statCard(value: String, labelKey: String, icon: String, tint: Color, showsDayUnit: Bool) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
-            Image(systemName: icon)
-                .font(.system(size: 16, weight: .medium))
-                .foregroundColor(tint)
-            HStack(alignment: .firstTextBaseline, spacing: 3) {
-                Text(value)
-                    .font(.system(size: 32, weight: .thin, design: .rounded))
-                if showsDayUnit, let count = Int(value) {
-                    Text(StatsFormatters.streakDayUnit(count: count))
-                        .font(.system(size: 16, weight: .light, design: .rounded))
-                        .foregroundColor(.white.opacity(0.55))
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(spacing: 5) {
+                Image(systemName: icon)
+                    .font(.system(size: 12, weight: .medium))
+                    .foregroundColor(tint)
+                HStack(alignment: .firstTextBaseline, spacing: 2) {
+                    Text(value)
+                        .font(.system(size: 22, weight: .thin, design: .rounded))
+                    if showsDayUnit, let count = Int(value) {
+                        Text(StatsFormatters.streakDayUnit(count: count))
+                            .font(.system(size: 12, weight: .light, design: .rounded))
+                            .foregroundColor(.white.opacity(0.55))
+                    }
                 }
+                .foregroundColor(.white)
             }
-            .foregroundColor(.white)
             Text(LocalizedStringKey(labelKey))
-                .font(.system(size: 11, weight: .medium))
-                .tracking(2)
-                .foregroundColor(.white.opacity(0.5))
+                .font(.system(size: 10, weight: .medium))
+                .tracking(1.5)
+                .foregroundColor(.white.opacity(0.45))
         }
         .frame(maxWidth: .infinity, alignment: .leading)
-        .padding(16)
+        .padding(.horizontal, 12)
+        .padding(.vertical, 10)
         .background(
-            RoundedRectangle(cornerRadius: 16)
+            RoundedRectangle(cornerRadius: 14)
                 .fill(Color.white.opacity(0.05))
         )
     }
@@ -254,6 +259,7 @@ struct StatsContributionGraphView: View {
         let cellSpacing: CGFloat = 3
         let columnPitch = cellSize + cellSpacing
         let monthHeaderHeight: CGFloat = 12
+        let lastWeekIndex = max(weeks.count - 1, 0)
 
         return VStack(alignment: .leading, spacing: 12) {
             HStack(alignment: .firstTextBaseline) {
@@ -305,10 +311,11 @@ struct StatsContributionGraphView: View {
                     }
                     .padding(.trailing, 4)
                 }
-                .onAppear {
-                    DispatchQueue.main.async {
-                        proxy.scrollTo(weeks.count - 1, anchor: .trailing)
-                    }
+                .defaultScrollAnchor(.trailing)
+                .task(id: weeks.count) {
+                    guard weeks.count > 0 else { return }
+                    try? await Task.sleep(for: .milliseconds(80))
+                    proxy.scrollTo(lastWeekIndex, anchor: .trailing)
                 }
             }
         }

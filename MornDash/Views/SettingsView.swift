@@ -102,19 +102,29 @@ struct SettingsView: View {
         }
     }
 
+    private var subscriptionAppLogo: some View {
+        Image("AppLogo")
+            .resizable()
+            .scaledToFill()
+            .frame(width: 44, height: 44)
+            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
+            .overlay(
+                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                    .strokeBorder(
+                        LinearGradient(
+                            colors: [.yellow.opacity(0.45), .orange.opacity(0.75)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        ),
+                        lineWidth: 1
+                    )
+            )
+            .shadow(color: .orange.opacity(0.35), radius: 8)
+    }
+
     private var proBanner: some View {
         HStack(spacing: 14) {
-            Image(systemName: "sunrise.fill")
-                .font(.system(size: 26, weight: .ultraLight))
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: [.orange, .yellow],
-                        startPoint: .bottom,
-                        endPoint: .top
-                    )
-                )
-                .shadow(color: .orange.opacity(0.4), radius: 10)
-                .frame(width: 44)
+            subscriptionAppLogo
 
             VStack(alignment: .leading, spacing: 3) {
                 Text("subscription_pro_title")
@@ -166,17 +176,7 @@ struct SettingsView: View {
 
     private var upgradeBanner: some View {
         HStack(spacing: 14) {
-            Image(systemName: "sunrise.fill")
-                .font(.system(size: 26, weight: .ultraLight))
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: [.orange, .yellow],
-                        startPoint: .bottom,
-                        endPoint: .top
-                    )
-                )
-                .shadow(color: .orange.opacity(0.5), radius: 12)
-                .frame(width: 44)
+            subscriptionAppLogo
 
             VStack(alignment: .leading, spacing: 3) {
                 Text("subscription_pro_title")
