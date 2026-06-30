@@ -3,8 +3,10 @@ import SwiftUI
 struct TasksTabView: View {
     @ObservedObject var viewModel: HomeViewModel
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
+    @Environment(\.editMode) private var editMode
 
     @State private var newTaskTitle: String = ""
+    @State private var showAddTaskSheet: Bool = false
     @State private var showPresets: Bool = false
     @State private var showPaywall: Bool = false
     @State private var showWorkoutRepPicker: Bool = false
@@ -16,7 +18,7 @@ struct TasksTabView: View {
     @State private var showFocusDurationPicker: Bool = false
     @State private var focusKindDraft: FocusDetectionKind = .study
     @State private var focusMinutesInput: String = "30"
-    @FocusState private var addFieldFocused: Bool
+    @FocusState private var addTaskSheetFieldFocused: Bool
     @FocusState private var workoutInputFocused: Bool
     @FocusState private var timerInputFocused: Bool
     @FocusState private var focusMinutesInputFocused: Bool
@@ -31,18 +33,22 @@ struct TasksTabView: View {
                     if hasReachedFreeLimit {
                         gateBanner
                     }
-                    addBar
+                    addTaskButton
                 }
             }
             .navigationTitle(Text("tab_tasks"))
             .toolbarColorScheme(.dark, for: .navigationBar)
             .toolbar {
                 if !viewModel.taskStore.tasks.isEmpty {
-                    EditButton()
-                        .foregroundColor(.orange)
+                    ToolbarItem(placement: .topBarTrailing) {
+                        editModeButton
+                    }
                 }
             }
             .paywallSheet(isPresented: $showPaywall)
+            .sheet(isPresented: $showAddTaskSheet) {
+                addTaskSheet
+            }
             .sheet(isPresented: $showWorkoutRepPicker) {
                 workoutRepPickerSheet
             }
@@ -485,36 +491,99 @@ struct TasksTabView: View {
         }
     }
 
-    private var addBar: some View {
-        HStack(spacing: 10) {
-            Image(systemName: "plus")
-                .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.white.opacity(0.5))
+    private var isEditing: Bool {
+        editMode?.wrappedValue == .active
+    }
 
-            TextField(
-                NSLocalizedString("settings_add_task_placeholder", comment: ""),
-                text: $newTaskTitle
-            )
-            .focused($addFieldFocused)
-            .submitLabel(.done)
-            .onSubmit(addTask)
-            .foregroundColor(.white)
-
-            Button(action: addTask) {
-                Image(systemName: "arrow.up.circle.fill")
-                    .font(.system(size: 26))
-                    .foregroundColor(canAdd ? .orange : .white.opacity(0.2))
+    private var editModeButton: some View {
+        Button {
+            withAnimation {
+                editMode?.wrappedValue = isEditing ? .inactive : .active
             }
-            .disabled(!canAdd)
+        } label: {
+            Image(systemName: isEditing ? "checkmark" : "square.and.pencil")
+                .font(.system(size: 17, weight: .semibold))
+                .foregroundColor(.orange)
         }
-        .padding(.horizontal, 18)
-        .padding(.vertical, 12)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white.opacity(0.06))
+        .accessibilityLabel(
+            Text(isEditing ? "tasks_edit_done_accessibility" : "tasks_edit_accessibility")
         )
-        .padding(.horizontal, 16)
-        .padding(.bottom, 12)
+    }
+
+    private var addTaskButton: some View {
+        Button(action: openAddTaskSheet) {
+            Image(systemName: "plus.circle.fill")
+                .font(.system(size: 34))
+                .foregroundColor(.orange)
+        }
+        .buttonStyle(.plain)
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 14)
+        .accessibilityLabel(Text("tasks_add_accessibility"))
+    }
+
+    private func openAddTaskSheet() {
+        if hasReachedFreeLimit {
+            showPaywall = true
+            return
+        }
+        newTaskTitle = ""
+        showAddTaskSheet = true
+    }
+
+    private var addTaskSheet: some View {
+        NavigationStack {
+            VStack(spacing: 22) {
+                TextField(
+                    NSLocalizedString("settings_add_task_placeholder", comment: ""),
+                    text: $newTaskTitle
+                )
+                .focused($addTaskSheetFieldFocused)
+                .submitLabel(.done)
+                .onSubmit(addTask)
+                .textInputAutocapitalization(.sentences)
+                .autocorrectionDisabled()
+                .padding(14)
+                .foregroundColor(.white)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.white.opacity(0.08))
+                )
+
+                Spacer()
+
+                Button(action: addTask) {
+                    Text("tasks_add_sheet_title")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Capsule().fill(Color.white))
+                }
+                .buttonStyle(.plain)
+                .disabled(!canAdd)
+                .opacity(canAdd ? 1.0 : 0.5)
+            }
+            .padding(20)
+            .background(Color.black.ignoresSafeArea())
+            .navigationTitle(Text("tasks_add_sheet_title"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("common_cancel") {
+                        newTaskTitle = ""
+                        showAddTaskSheet = false
+                    }
+                    .foregroundColor(.orange)
+                }
+            }
+            .onAppear {
+                addTaskSheetFieldFocused = true
+            }
+        }
+        .presentationDetents([.medium])
+        .presentationDragIndicator(.visible)
     }
 
     private var canAdd: Bool {
@@ -529,7 +598,8 @@ struct TasksTabView: View {
         }
         viewModel.taskStore.add(newTaskTitle)
         newTaskTitle = ""
-        addFieldFocused = false
+        addTaskSheetFieldFocused = false
+        showAddTaskSheet = false
     }
 
     private func timerLabel(seconds: Int) -> String {

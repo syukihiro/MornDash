@@ -142,6 +142,10 @@
 "settings_tasks_footer" = "Complete all tasks to unlock blocked apps. Tasks reset every day.";
 "settings_task_placeholder" = "Task";
 "settings_add_task_placeholder" = "Add a task";
+"tasks_add_sheet_title" = "Add Task";
+"tasks_add_accessibility" = "Add task";
+"tasks_edit_accessibility" = "Edit tasks";
+"tasks_edit_done_accessibility" = "Done editing";
 "settings_blocking" = "Blocking";
 "settings_blocked_apps" = "Blocked Apps";
 "settings_categories_pro_only" = "App categories can only be saved with Pro. On the free plan, pick individual apps or websites.";

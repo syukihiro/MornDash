@@ -50,25 +50,29 @@ struct ContentView: View {
             TabView(selection: $selectedTab) {
                 homeTab
                     .tabItem {
-                        Label("tab_home", systemImage: "house.fill")
+                        Image(systemName: "house.fill")
+                            .accessibilityLabel(Text("tab_home"))
                     }
                     .tag(0)
 
                 TasksTabView(viewModel: viewModel)
                     .tabItem {
-                        Label("tab_tasks", systemImage: "checklist")
+                        Image(systemName: "checklist")
+                            .accessibilityLabel(Text("tab_tasks"))
                     }
                     .tag(1)
 
                 StatsTabView(viewModel: viewModel, blockManager: blockManager)
                     .tabItem {
-                        Label("tab_stats", systemImage: "chart.bar.fill")
+                        Image(systemName: "chart.bar.fill")
+                            .accessibilityLabel(Text("tab_stats"))
                     }
                     .tag(2)
 
                 SettingsView(viewModel: viewModel, blockManager: blockManager)
                     .tabItem {
-                        Label("tab_settings", systemImage: "gearshape.fill")
+                        Image(systemName: "gearshape.fill")
+                            .accessibilityLabel(Text("tab_settings"))
                     }
                     .tag(3)
             }
