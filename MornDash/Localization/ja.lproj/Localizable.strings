@@ -139,12 +139,14 @@
 "settings_start_time" = "開始時間";
 "settings_start_time_daily" = "毎日";
 "settings_tasks" = "タスク";
-"settings_tasks_footer" = "すべてのタスクを完了するとアプリが解除されます。日をまたぐとリセットされます。";
+"settings_tasks_footer" = "すべてのタスクを完了するとアプリが解除されます。日をまたぐとリセットされます。\nタスク名をタップして変更できます。";
 "settings_task_placeholder" = "タスク";
 "settings_add_task_placeholder" = "タスクを追加";
 "tasks_add_sheet_title" = "タスクを追加";
 "tasks_add_accessibility" = "タスクを追加";
-"tasks_edit_accessibility" = "タスクを編集";
+"tasks_rename_sheet_title" = "タスク名を変更";
+"tasks_rename_accessibility" = "タスク名を変更";
+"tasks_delete_accessibility" = "タスクを削除";
 "tasks_edit_done_accessibility" = "編集を終了";
 "settings_blocking" = "ブロック設定";
 "settings_blocked_apps" = "制限するアプリ";

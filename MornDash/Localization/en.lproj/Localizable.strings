@@ -139,12 +139,14 @@
 "settings_start_time" = "Start Time";
 "settings_start_time_daily" = "Daily";
 "settings_tasks" = "Tasks";
-"settings_tasks_footer" = "Complete all tasks to unlock blocked apps. Tasks reset every day.";
+"settings_tasks_footer" = "Complete all tasks to unlock blocked apps. Tasks reset every day.\nTap a task name to rename it.";
 "settings_task_placeholder" = "Task";
 "settings_add_task_placeholder" = "Add a task";
 "tasks_add_sheet_title" = "Add Task";
 "tasks_add_accessibility" = "Add task";
-"tasks_edit_accessibility" = "Edit tasks";
+"tasks_rename_sheet_title" = "Rename Task";
+"tasks_rename_accessibility" = "Rename task";
+"tasks_delete_accessibility" = "Delete tasks";
 "tasks_edit_done_accessibility" = "Done editing";
 "settings_blocking" = "Blocking";
 "settings_blocked_apps" = "Blocked Apps";

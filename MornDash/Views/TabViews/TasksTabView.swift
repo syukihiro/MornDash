@@ -8,6 +8,9 @@ struct TasksTabView: View {
 
     @State private var newTaskTitle: String = ""
     @State private var showAddTaskSheet: Bool = false
+    @State private var showRenameTaskSheet: Bool = false
+    @State private var renamingTaskID: UUID?
+    @State private var renameTaskTitle: String = ""
     @State private var showPresets: Bool = false
     @State private var showPaywall: Bool = false
     @State private var showWorkoutRepPicker: Bool = false
@@ -20,6 +23,7 @@ struct TasksTabView: View {
     @State private var focusKindDraft: FocusDetectionKind = .study
     @State private var focusMinutesInput: String = "30"
     @FocusState private var addTaskSheetFieldFocused: Bool
+    @FocusState private var renameTaskSheetFieldFocused: Bool
     @FocusState private var workoutInputFocused: Bool
     @FocusState private var timerInputFocused: Bool
     @FocusState private var focusMinutesInputFocused: Bool
@@ -49,6 +53,9 @@ struct TasksTabView: View {
             .paywallSheet(isPresented: $showPaywall)
             .sheet(isPresented: $showAddTaskSheet) {
                 addTaskSheet
+            }
+            .sheet(isPresented: $showRenameTaskSheet) {
+                renameTaskSheet
             }
             .sheet(isPresented: $showWorkoutRepPicker) {
                 workoutRepPickerSheet
@@ -103,32 +110,46 @@ struct TasksTabView: View {
     private var taskList: some View {
         List {
             Section {
-                ForEach(viewModel.taskStore.tasks.indices, id: \.self) { index in
-                    let task = $viewModel.taskStore.tasks[index]
+                ForEach(viewModel.taskStore.tasks) { task in
                     HStack(spacing: 14) {
-                        Image(systemName: task.wrappedValue.isCompletedToday ? "checkmark.circle.fill" : "circle")
+                        Image(systemName: task.isCompletedToday ? "checkmark.circle.fill" : "circle")
                             .font(.system(size: 22, weight: .light))
-                            .foregroundColor(task.wrappedValue.isCompletedToday ? .green : .white.opacity(0.35))
-                        TextField(
-                            NSLocalizedString("settings_task_placeholder", comment: ""),
-                            text: task.title
-                        )
-                        .foregroundColor(.white)
+                            .foregroundColor(task.isCompletedToday ? .green : .white.opacity(0.35))
 
-                        Button(action: { editTimer(for: task.wrappedValue) }) {
+                        Button(action: { openRenameSheet(for: task) }) {
+                            HStack(spacing: 6) {
+                                Text(task.title)
+                                    .font(.system(size: 16, weight: .regular))
+                                    .foregroundColor(.white)
+                                    .multilineTextAlignment(.leading)
+                                if !isEditing {
+                                    Image(systemName: "pencil")
+                                        .font(.system(size: 11, weight: .semibold))
+                                        .foregroundColor(.orange.opacity(0.75))
+                                }
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .disabled(isEditing)
+                        .accessibilityLabel(Text("tasks_rename_accessibility"))
+                        .accessibilityValue(task.title)
+
+                        Button(action: { editTimer(for: task) }) {
                             HStack(spacing: 4) {
-                                Image(systemName: task.wrappedValue.hasTimer ? "timer" : "timer.square")
-                                if let timerDurationSeconds = task.wrappedValue.timerDurationSeconds {
+                                Image(systemName: task.hasTimer ? "timer" : "timer.square")
+                                if let timerDurationSeconds = task.timerDurationSeconds {
                                     Text(timerLabel(seconds: timerDurationSeconds))
                                 }
                             }
                             .font(.system(size: 12, weight: .semibold))
-                            .foregroundColor(task.wrappedValue.hasTimer ? .indigo : .white.opacity(0.5))
+                            .foregroundColor(task.hasTimer ? .indigo : .white.opacity(0.5))
                             .padding(.horizontal, 8)
                             .padding(.vertical, 6)
                             .background(
                                 Capsule()
-                                    .fill(task.wrappedValue.hasTimer ? Color.indigo.opacity(0.2) : Color.white.opacity(0.06))
+                                    .fill(task.hasTimer ? Color.indigo.opacity(0.2) : Color.white.opacity(0.06))
                             )
                         }
                         .buttonStyle(.plain)
@@ -503,12 +524,12 @@ struct TasksTabView: View {
                 listEditMode = isEditing ? .inactive : .active
             }
         } label: {
-            Image(systemName: isEditing ? "checkmark" : "square.and.pencil")
+            Image(systemName: isEditing ? "checkmark" : "minus.circle")
                 .font(.system(size: 17, weight: .semibold))
                 .foregroundColor(.orange)
         }
         .accessibilityLabel(
-            Text(isEditing ? "tasks_edit_done_accessibility" : "tasks_edit_accessibility")
+            Text(isEditing ? "tasks_edit_done_accessibility" : "tasks_delete_accessibility")
         )
     }
 
@@ -590,6 +611,92 @@ struct TasksTabView: View {
         }
         .presentationDetents([.medium])
         .presentationDragIndicator(.visible)
+    }
+
+    private func openRenameSheet(for task: TaskItem) {
+        renamingTaskID = task.id
+        renameTaskTitle = task.title
+        showRenameTaskSheet = true
+    }
+
+    private var renameTaskSheet: some View {
+        NavigationStack {
+            VStack(spacing: 22) {
+                TextField(
+                    NSLocalizedString("settings_task_placeholder", comment: ""),
+                    text: $renameTaskTitle
+                )
+                .focused($renameTaskSheetFieldFocused)
+                .submitLabel(.done)
+                .onSubmit(saveRenamedTask)
+                .textInputAutocapitalization(.sentences)
+                .autocorrectionDisabled()
+                .padding(14)
+                .foregroundColor(.white)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.white.opacity(0.08))
+                )
+
+                Spacer()
+
+                Button(action: saveRenamedTask) {
+                    Text("common_done")
+                        .font(.headline)
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Capsule().fill(Color.white))
+                }
+                .buttonStyle(.plain)
+                .disabled(!canRename)
+                .opacity(canRename ? 1.0 : 0.5)
+            }
+            .padding(20)
+            .background(Color.black.ignoresSafeArea())
+            .navigationTitle(Text("tasks_rename_sheet_title"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarColorScheme(.dark, for: .navigationBar)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        closeRenameSheet()
+                    } label: {
+                        Image(systemName: "xmark")
+                            .font(.system(size: 15, weight: .semibold))
+                            .foregroundColor(.orange)
+                    }
+                    .accessibilityLabel(Text("common_cancel"))
+                }
+            }
+            .onAppear {
+                renameTaskSheetFieldFocused = true
+            }
+        }
+        .presentationDetents([.medium])
+        .presentationDragIndicator(.visible)
+    }
+
+    private var canRename: Bool {
+        !renameTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty
+    }
+
+    private func saveRenamedTask() {
+        guard canRename, let renamingTaskID else { return }
+        let trimmed = renameTaskTitle.trimmingCharacters(in: .whitespaces)
+        guard let index = viewModel.taskStore.tasks.firstIndex(where: { $0.id == renamingTaskID }) else {
+            closeRenameSheet()
+            return
+        }
+        viewModel.taskStore.tasks[index].title = trimmed
+        closeRenameSheet()
+    }
+
+    private func closeRenameSheet() {
+        renameTaskTitle = ""
+        renamingTaskID = nil
+        renameTaskSheetFieldFocused = false
+        showRenameTaskSheet = false
     }
 
     private var canAdd: Bool {
