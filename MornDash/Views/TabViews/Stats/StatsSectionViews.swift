@@ -125,7 +125,7 @@ struct StatsMonthCalendarView: View {
                         .frame(maxWidth: .infinity)
                 }
 
-                ForEach(Array(days.enumerated()), id: \.offset) { _, day in
+                ForEach(days) { day in
                     monthDayCell(day)
                 }
             }

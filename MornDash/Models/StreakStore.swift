@@ -205,13 +205,15 @@ struct StreakStore: Codable {
         let isFuture: Bool
     }
 
-    struct MonthCalendarDay {
+    struct MonthCalendarDay: Identifiable {
         let date: Date
         let day: Int
         let isInMonth: Bool
         let completed: Bool
         let isFuture: Bool
         let isToday: Bool
+
+        var id: Date { date }
     }
 
     /// 今月のカレンダーグリッド用。先頭の空白埋めを含む 7 の倍数の日セルを返す。
