@@ -64,12 +64,24 @@ struct MainView: View {
                             .tracking(2)
 
                         ForEach(sortedTasks) { task in
-                            HStack {
+                            HStack(alignment: .top, spacing: 8) {
                                 Image(systemName: task.isCompletedToday ? "checkmark.circle.fill" : "circle")
                                     .foregroundColor(task.isCompletedToday ? .green : .white.opacity(0.3))
-                                Text(task.title)
-                                    .foregroundColor(.white.opacity(0.8))
-                                    .strikethrough(task.isCompletedToday, color: .white.opacity(0.4))
+                                    .padding(.top, 2)
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(task.title)
+                                        .foregroundColor(.white.opacity(0.8))
+                                        .strikethrough(task.isCompletedToday, color: .white.opacity(0.4))
+                                    if task.hasTimer, let seconds = task.timerDurationSeconds {
+                                        HStack(spacing: 3) {
+                                            Image(systemName: "timer")
+                                            Text(TaskTimerFormatters.durationLabel(seconds: seconds))
+                                        }
+                                        .font(.system(size: 11, weight: .semibold))
+                                        .foregroundColor(.indigo.opacity(0.9))
+                                    }
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
                             .font(.system(size: 16))
                         }

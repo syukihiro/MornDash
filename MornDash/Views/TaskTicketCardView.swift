@@ -11,7 +11,7 @@ struct TaskTicketCardView: View {
     @State private var showPunchBurst: Bool = false
     @State private var showPunchFlash: Bool = false
 
-    private let cardHeight: CGFloat = 64
+    private let cardHeight: CGFloat = 72
     private let stubWidth: CGFloat = 78
     private let cornerRadius: CGFloat = 10
 
@@ -131,15 +131,39 @@ struct TaskTicketCardView: View {
             DashedDivider()
                 .frame(width: 1, height: cardHeight - 18)
 
-            Text(task.title)
-                .font(.system(size: 16, weight: .medium))
-                .foregroundColor(task.isCompletedToday ? .white.opacity(0.45) : .white)
-                .strikethrough(task.isCompletedToday, color: .white.opacity(0.5))
-                .padding(.horizontal, 14)
-                .lineLimit(2)
+            VStack(alignment: .leading, spacing: 4) {
+                Text(task.title)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(task.isCompletedToday ? .white.opacity(0.45) : .white)
+                    .strikethrough(task.isCompletedToday, color: .white.opacity(0.5))
+                    .lineLimit(2)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+
+                if task.hasTimer, let seconds = task.timerDurationSeconds {
+                    timerBadge(seconds: seconds)
+                }
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 10)
 
             Spacer(minLength: 0)
         }
+    }
+
+    private func timerBadge(seconds: Int) -> some View {
+        HStack(spacing: 4) {
+            Image(systemName: "timer")
+            Text(TaskTimerFormatters.durationLabel(seconds: seconds))
+        }
+        .font(.system(size: 11, weight: .semibold))
+        .foregroundColor(task.isCompletedToday ? .indigo.opacity(0.45) : .indigo.opacity(0.95))
+        .padding(.horizontal, 8)
+        .padding(.vertical, 4)
+        .background(
+            Capsule()
+                .fill(Color.indigo.opacity(task.isCompletedToday ? 0.1 : 0.22))
+        )
+        .fixedSize()
     }
 
     private func slideHint(progress: CGFloat) -> some View {
@@ -169,15 +193,12 @@ struct TaskTicketCardView: View {
         }
         UIImpactFeedbackGenerator(style: .heavy).impactOccurred()
 
-        // Burst particles + flash kick off at the moment of impact.
         showPunchBurst = true
         showPunchFlash = true
         withAnimation(.easeOut(duration: 0.18)) {
             showPunchFlash = false
         }
 
-        // Slight delay before flipping completion — lets user see the punch land
-        // and the DONE stamp slam down with the parent's withAnimation context.
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
             onPunch()
             withAnimation(.easeOut(duration: 0.25)) {
