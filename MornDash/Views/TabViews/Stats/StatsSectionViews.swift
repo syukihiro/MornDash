@@ -5,6 +5,7 @@ struct StatsStreakSummaryView: View {
     let longestStreak: Int
     let totalCompleted: Int
     let recentDays: [(date: Date, completed: Bool)]
+    @Environment(\.colorScheme) private var colorScheme
 
     private var weekCompleted: Int { recentDays.filter(\.completed).count }
 
@@ -19,7 +20,7 @@ struct StatsStreakSummaryView: View {
             if streak == 0 && totalCompleted == 0 {
                 Text("stats_no_data")
                     .font(.system(size: 12))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 8)
             } else {
@@ -33,8 +34,15 @@ struct StatsStreakSummaryView: View {
         .padding(.vertical, 18)
         .background(
             RoundedRectangle(cornerRadius: 14)
-                .fill(Color.white.opacity(0.05))
+                .fill(MornDashColors.cardFill(colorScheme))
+                .overlay {
+                    if colorScheme == .light {
+                        RoundedRectangle(cornerRadius: 14)
+                            .strokeBorder(MornDashColors.hairline(colorScheme), lineWidth: 1)
+                    }
+                }
         )
+        .mornDashCardShadow(colorScheme)
     }
 
     private var hero: some View {
@@ -44,7 +52,7 @@ struct StatsStreakSummaryView: View {
                     .font(.system(size: 24, weight: .light))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: streak > 0 ? [.orange, .red] : [.white.opacity(0.25), .white.opacity(0.15)],
+                            colors: streak > 0 ? [.orange, .red] : MornDashColors.flameInactiveGradient(colorScheme),
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -56,14 +64,14 @@ struct StatsStreakSummaryView: View {
 
                 Text(StatsFormatters.streakDayUnit(count: streak))
                     .font(.system(size: 18, weight: .light, design: .rounded))
-                    .foregroundColor(.white.opacity(0.65))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
             }
-            .foregroundColor(.white)
+            .foregroundColor(MornDashColors.labelPrimary(colorScheme))
 
             Text("stats_current_streak")
                 .font(.system(size: 10, weight: .medium))
                 .tracking(2)
-                .foregroundColor(.white.opacity(0.45))
+                .foregroundColor(MornDashColors.labelTertiary(colorScheme))
         }
     }
 
@@ -73,18 +81,18 @@ struct StatsStreakSummaryView: View {
                 Text("stats_last_7_days")
                     .font(.system(size: 10, weight: .medium))
                     .tracking(1.5)
-                    .foregroundColor(.white.opacity(0.45))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 Spacer()
                 Text(String(format: NSLocalizedString("stats_week_progress_short", comment: ""), weekCompleted))
                     .font(.system(size: 11, weight: .medium))
-                    .foregroundColor(.white.opacity(0.55))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
             }
 
             HStack(spacing: 0) {
                 ForEach(Array(recentDays.enumerated()), id: \.offset) { _, day in
                     Image(systemName: day.completed ? "checkmark.circle.fill" : "circle")
                         .font(.system(size: 16, weight: .regular))
-                        .foregroundStyle(day.completed ? Color.orange : Color.white.opacity(0.15))
+                        .foregroundStyle(day.completed ? Color.orange : MornDashColors.calendarEmptyDay(colorScheme))
                         .frame(maxWidth: .infinity)
                 }
             }
@@ -93,7 +101,7 @@ struct StatsStreakSummaryView: View {
                 let progress = CGFloat(weekCompleted) / 7.0
                 ZStack(alignment: .leading) {
                     Capsule()
-                        .fill(Color.white.opacity(0.08))
+                        .fill(MornDashColors.progressTrack(colorScheme))
                     Capsule()
                         .fill(
                             LinearGradient(
@@ -123,7 +131,7 @@ struct StatsStreakSummaryView: View {
                     Text("stats_next_milestone")
                         .font(.system(size: 10, weight: .medium))
                         .tracking(1.5)
-                        .foregroundColor(.white.opacity(0.45))
+                        .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 }
 
                 Text(
@@ -134,12 +142,12 @@ struct StatsStreakSummaryView: View {
                     )
                 )
                 .font(.system(size: 13, weight: .medium))
-                .foregroundColor(.white.opacity(0.75))
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.85))
 
                 GeometryReader { proxy in
                     ZStack(alignment: .leading) {
                         Capsule()
-                            .fill(Color.white.opacity(0.08))
+                            .fill(MornDashColors.progressTrack(colorScheme))
                         Capsule()
                             .fill(nextBadge.color.opacity(0.85))
                             .frame(width: max(0, proxy.size.width * progress))
@@ -154,7 +162,7 @@ struct StatsStreakSummaryView: View {
                     .foregroundColor(.yellow.opacity(0.8))
                 Text("stats_all_badges_unlocked")
                     .font(.system(size: 12, weight: .medium))
-                    .foregroundColor(.white.opacity(0.55))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
             }
         }
     }
@@ -168,7 +176,7 @@ struct StatsStreakSummaryView: View {
             )
         )
         .font(.system(size: 11, weight: .medium))
-        .foregroundColor(.white.opacity(0.35))
+        .foregroundColor(MornDashColors.labelMuted(colorScheme))
         .frame(maxWidth: .infinity)
     }
 
@@ -180,6 +188,7 @@ struct StatsStreakSummaryView: View {
 
 struct StatsMonthCalendarView: View {
     let days: [StreakStore.MonthCalendarDay]
+    @Environment(\.colorScheme) private var colorScheme
 
     private var weekdayHeaders: [String] {
         let cal = Calendar.current
@@ -201,18 +210,18 @@ struct StatsMonthCalendarView: View {
                 Text("stats_month_calendar")
                     .font(.system(size: 11, weight: .medium))
                     .tracking(2)
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 Spacer()
                 Text(monthTitle)
                     .font(.system(size: 11, weight: .medium))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(MornDashColors.labelMuted(colorScheme))
             }
 
             LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 4), count: 7), spacing: 8) {
                 ForEach(Array(weekdayHeaders.enumerated()), id: \.offset) { _, symbol in
                     Text(symbol)
                         .font(.system(size: 10, weight: .medium))
-                        .foregroundColor(.white.opacity(0.35))
+                        .foregroundColor(MornDashColors.labelMuted(colorScheme))
                         .frame(maxWidth: .infinity)
                 }
 
@@ -236,7 +245,7 @@ struct StatsMonthCalendarView: View {
                     .foregroundColor(.white)
             } else {
                 Circle()
-                    .fill(day.isInMonth ? Color.white.opacity(day.isFuture ? 0.04 : 0.08) : Color.clear)
+                    .fill(MornDashColors.calendarCellFill(colorScheme, inMonth: day.isInMonth, isFuture: day.isFuture))
                 if day.isInMonth {
                     Text("\(day.day)")
                         .font(.system(size: 12, weight: day.isToday ? .semibold : .regular, design: .rounded))
@@ -255,21 +264,22 @@ struct StatsMonthCalendarView: View {
     }
 
     private func dayTextColor(_ day: StreakStore.MonthCalendarDay) -> Color {
-        if day.isFuture { return .white.opacity(0.2) }
+        if day.isFuture { return MornDashColors.labelMuted(colorScheme) }
         if day.isToday { return .orange.opacity(0.9) }
-        return .white.opacity(0.55)
+        return MornDashColors.labelSecondary(colorScheme)
     }
 }
 
 struct StatsBadgesSectionView: View {
     let longestStreak: Int
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
             Text("stats_badges")
                 .font(.system(size: 11, weight: .medium))
                 .tracking(2)
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(MornDashColors.labelTertiary(colorScheme))
 
             HStack(spacing: 10) {
                 ForEach(Badge.all) { badge in
@@ -289,14 +299,14 @@ struct StatsBadgesSectionView: View {
         VStack(spacing: 6) {
             Image(systemName: icon)
                 .font(.system(size: 22, weight: .regular))
-                .foregroundColor(unlocked ? color : .white.opacity(0.15))
+                .foregroundColor(unlocked ? color : MornDashColors.calendarEmptyDay(colorScheme))
                 .frame(width: 48, height: 48)
                 .background(
-                    Circle().fill(unlocked ? color.opacity(0.15) : Color.white.opacity(0.04))
+                    Circle().fill(unlocked ? color.opacity(0.15) : MornDashColors.badgeLockedFill(colorScheme))
                 )
             Text(LocalizedStringKey(labelKey))
                 .font(.system(size: 10, weight: .medium))
-                .foregroundColor(unlocked ? .white.opacity(0.8) : .white.opacity(0.3))
+                .foregroundColor(unlocked ? MornDashColors.labelPrimary(colorScheme, opacity: 0.85) : MornDashColors.labelMuted(colorScheme))
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
@@ -305,6 +315,7 @@ struct StatsBadgesSectionView: View {
 
 struct StatsContributionGraphView: View {
     let weeks: [[StreakStore.ContributionDay]]
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         let cellSize: CGFloat = 11
@@ -318,13 +329,13 @@ struct StatsContributionGraphView: View {
                 Text("stats_contributions")
                     .font(.system(size: 11, weight: .medium))
                     .tracking(2)
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 Spacer()
                 if let firstDate = weeks.first?.first?.date,
                    let lastDate = weeks.last?.last(where: { !$0.isFuture })?.date {
                     Text(StatsFormatters.yearRange(from: firstDate, to: lastDate))
                         .font(.system(size: 10))
-                        .foregroundColor(.white.opacity(0.35))
+                        .foregroundColor(MornDashColors.labelMuted(colorScheme))
                 }
             }
 
@@ -337,7 +348,7 @@ struct StatsContributionGraphView: View {
                                 if let label = monthLabel(forWeek: i) {
                                     Text(label)
                                         .font(.system(size: 9, weight: .medium))
-                                        .foregroundColor(.white.opacity(0.4))
+                                        .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                                         .fixedSize()
                                         .offset(x: CGFloat(i) * columnPitch)
                                 }
@@ -378,11 +389,11 @@ struct StatsContributionGraphView: View {
     private func contributionCell(_ cell: StreakStore.ContributionDay) -> some View {
         let fill: Color
         if cell.isFuture {
-            fill = Color.white.opacity(0.03)
+            fill = MornDashColors.contributionEmpty(colorScheme)
         } else if cell.completed {
             fill = Color.orange
         } else {
-            fill = Color.white.opacity(0.08)
+            fill = MornDashColors.contributionLow(colorScheme)
         }
         return RoundedRectangle(cornerRadius: 2)
             .fill(fill)

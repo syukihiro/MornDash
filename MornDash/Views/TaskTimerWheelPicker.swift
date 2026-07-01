@@ -3,6 +3,7 @@ import SwiftUI
 struct TaskTimerWheelPicker: View {
     @Binding var minutes: Int
     @Binding var seconds: Int
+    @Environment(\.colorScheme) private var colorScheme
 
     private let minuteRange = 0...TaskTimerFormatters.maxMinutes
 
@@ -48,7 +49,7 @@ struct TaskTimerWheelPicker: View {
     private func unitLabel(_ key: LocalizedStringKey) -> some View {
         Text(key)
             .font(.body.weight(.semibold))
-            .foregroundColor(.white.opacity(0.65))
+            .foregroundColor(MornDashColors.labelSecondary(colorScheme))
             .frame(width: 28)
     }
 }
@@ -60,6 +61,7 @@ struct TaskTimerPickerSheet: View {
     var onRemove: (() -> Void)?
     var onCancel: (() -> Void)?
     let onDone: () -> Void
+    @Environment(\.colorScheme) private var colorScheme
 
     private var isValid: Bool {
         TaskTimerFormatters.totalSeconds(minutes: minutes, seconds: seconds) != nil
@@ -72,7 +74,7 @@ struct TaskTimerPickerSheet: View {
 
                 Text("tasks_timer_sheet_hint")
                     .font(.footnote)
-                    .foregroundColor(.white.opacity(0.55))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 8)
 
@@ -80,10 +82,10 @@ struct TaskTimerPickerSheet: View {
                     Button(action: onRemove) {
                         Text("tasks_timer_remove")
                             .font(.headline)
-                            .foregroundColor(.white)
+                            .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 12)
-                            .background(Capsule().fill(Color.white.opacity(0.12)))
+                            .background(Capsule().fill(MornDashColors.fieldBackground(colorScheme)))
                     }
                     .buttonStyle(.plain)
                     .padding(.top, 4)
@@ -94,10 +96,10 @@ struct TaskTimerPickerSheet: View {
             .padding(.horizontal, 20)
             .padding(.top, 8)
             .padding(.bottom, 20)
-            .background(Color.black.ignoresSafeArea())
+            .mornDashSheetBackground()
             .navigationTitle(Text("tasks_timer_sheet_title"))
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .mornDashNavigationBarStyle()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
@@ -123,6 +125,5 @@ struct TaskTimerPickerSheet: View {
         }
         .presentationDetents([.medium])
         .presentationDragIndicator(.visible)
-        .preferredColorScheme(.dark)
     }
 }

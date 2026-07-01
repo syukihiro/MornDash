@@ -12,6 +12,7 @@ struct StatsTabView: View {
     @ObservedObject var viewModel: HomeViewModel
     @ObservedObject var blockManager: BlockManager
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
+    @Environment(\.colorScheme) private var colorScheme
 
     @State private var showPaywall = false
     @State private var taskBreakdownPeriod: TaskHistoryStore.Period = .currentMonth
@@ -19,7 +20,7 @@ struct StatsTabView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.black.ignoresSafeArea()
+                MornDashColors.screenBackground(colorScheme).ignoresSafeArea()
 
                 ScrollView {
                     VStack(spacing: 20) {
@@ -48,7 +49,7 @@ struct StatsTabView: View {
                 }
             }
             .navigationTitle(Text("tab_stats"))
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .mornDashNavigationBarStyle()
             .paywallSheet(isPresented: $showPaywall)
         }
     }
@@ -86,15 +87,15 @@ struct StatsTabView: View {
             HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Text(StatsFormatters.duration(thisWeek))
                     .font(.system(size: 40, weight: .thin, design: .rounded))
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 Text("stats_blocked_duration_per_day_suffix")
                     .font(.system(size: 13, weight: .medium))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 Spacer()
                 Text("stats_blocked_duration_this_week")
                     .font(.system(size: 11, weight: .medium))
                     .tracking(1)
-                    .foregroundColor(.white.opacity(0.45))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
             }
 
             HStack(spacing: 16) {
@@ -105,11 +106,11 @@ struct StatsTabView: View {
             if thisWeek == 0 && pastYear == 0 {
                 Text("stats_blocked_duration_none")
                     .font(.system(size: 11))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     .padding(.top, 2)
             }
         }
-        .statsSectionCard(borderColor: .indigo.opacity(0.12))
+        .statsSectionCard(borderColor: .indigo.opacity(colorScheme == .dark ? 0.12 : 0.18))
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
@@ -118,15 +119,15 @@ struct StatsTabView: View {
             HStack(alignment: .firstTextBaseline, spacing: 4) {
                 Text(StatsFormatters.duration(seconds))
                     .font(.system(size: 18, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.85))
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.85))
                 Text("stats_blocked_duration_per_day_suffix")
                     .font(.system(size: 10, weight: .medium))
-                    .foregroundColor(.white.opacity(0.45))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
             }
             Text(LocalizedStringKey(labelKey))
                 .font(.system(size: 10, weight: .medium))
                 .tracking(1)
-                .foregroundColor(.white.opacity(0.45))
+                .foregroundColor(MornDashColors.labelTertiary(colorScheme))
         }
     }
 
@@ -141,13 +142,13 @@ struct StatsTabView: View {
                 previous: viewModel.streakStore.averageBlockedSeconds(.lastWeek),
                 labelKey: "stats_blocked_compare_week"
             )
-            Divider().background(Color.white.opacity(0.06))
+            Divider().background(MornDashColors.divider(colorScheme))
             comparisonRow(
                 current: viewModel.streakStore.averageBlockedSeconds(.currentMonth),
                 previous: viewModel.streakStore.averageBlockedSeconds(.lastMonth),
                 labelKey: "stats_blocked_compare_month"
             )
-            Divider().background(Color.white.opacity(0.06))
+            Divider().background(MornDashColors.divider(colorScheme))
             comparisonRow(
                 current: viewModel.streakStore.averageBlockedSeconds(.currentYear),
                 previous: viewModel.streakStore.averageBlockedSeconds(.lastYear),
@@ -164,17 +165,17 @@ struct StatsTabView: View {
             HStack(alignment: .firstTextBaseline, spacing: 4) {
                 Text(StatsFormatters.duration(current))
                     .font(.system(size: 20, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
                 Text("stats_blocked_duration_per_day_suffix")
                     .font(.system(size: 11, weight: .medium))
-                    .foregroundColor(.white.opacity(0.45))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
             }
             Spacer()
             VStack(alignment: .trailing, spacing: 2) {
                 Text(LocalizedStringKey(labelKey))
                     .font(.system(size: 10, weight: .medium))
                     .tracking(1)
-                    .foregroundColor(.white.opacity(0.45))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 deltaLabel(delta)
             }
         }
@@ -194,7 +195,7 @@ struct StatsTabView: View {
         } else {
             Text("stats_blocked_compare_no_baseline")
                 .font(.system(size: 12, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.35))
+                .foregroundColor(MornDashColors.labelMuted(colorScheme))
         }
     }
 
@@ -213,26 +214,26 @@ struct StatsTabView: View {
             HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Text("\(thisWeek)")
                     .font(.system(size: 40, weight: .thin, design: .rounded))
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 Text("stats_emergency_unlocks_count_unit")
                     .font(.system(size: 13, weight: .medium))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 Spacer()
                 Text("stats_emergency_unlocks_this_week")
                     .font(.system(size: 11, weight: .medium))
                     .tracking(1)
-                    .foregroundColor(.white.opacity(0.45))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
             }
 
             HStack(spacing: 16) {
                 emergencyUnlockMetric(value: thisMonth, labelKey: "stats_emergency_unlocks_this_month")
                 Divider()
                     .frame(height: 28)
-                    .background(Color.white.opacity(0.08))
+                    .background(MornDashColors.progressTrack(colorScheme))
                 emergencyUnlockMetric(value: pastYear, labelKey: "stats_emergency_unlocks_past_year")
                 Divider()
                     .frame(height: 28)
-                    .background(Color.white.opacity(0.08))
+                    .background(MornDashColors.progressTrack(colorScheme))
                 emergencyUnlockMetric(value: total, labelKey: "stats_emergency_unlocks_total")
                 Spacer()
             }
@@ -240,16 +241,16 @@ struct StatsTabView: View {
             if let last = store.lastUnlockDate {
                 Text(String(format: NSLocalizedString("stats_emergency_unlocks_last", comment: ""), StatsFormatters.relativeDate(last)))
                     .font(.system(size: 11))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     .padding(.top, 2)
             } else {
                 Text("stats_emergency_unlocks_none")
                     .font(.system(size: 11))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     .padding(.top, 2)
             }
         }
-        .statsSectionCard(borderColor: .orange.opacity(0.12))
+        .statsSectionCard(borderColor: .orange.opacity(colorScheme == .dark ? 0.12 : 0.22))
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
@@ -258,15 +259,15 @@ struct StatsTabView: View {
             HStack(alignment: .firstTextBaseline, spacing: 3) {
                 Text("\(value)")
                     .font(.system(size: 18, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.85))
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.85))
                 Text("stats_emergency_unlocks_count_unit")
                     .font(.system(size: 10, weight: .medium))
-                    .foregroundColor(.white.opacity(0.45))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
             }
             Text(LocalizedStringKey(labelKey))
                 .font(.system(size: 10, weight: .medium))
                 .tracking(1)
-                .foregroundColor(.white.opacity(0.45))
+                .foregroundColor(MornDashColors.labelTertiary(colorScheme))
         }
     }
 
@@ -282,13 +283,13 @@ struct StatsTabView: View {
                 previous: store.count(.lastWeek),
                 labelKey: "stats_emergency_compare_week"
             )
-            Divider().background(Color.white.opacity(0.06))
+            Divider().background(MornDashColors.divider(colorScheme))
             emergencyComparisonRow(
                 current: store.count(.currentMonth),
                 previous: store.count(.lastMonth),
                 labelKey: "stats_emergency_compare_month"
             )
-            Divider().background(Color.white.opacity(0.06))
+            Divider().background(MornDashColors.divider(colorScheme))
             emergencyComparisonRow(
                 current: store.count(.currentYear),
                 previous: store.count(.lastYear),
@@ -305,17 +306,17 @@ struct StatsTabView: View {
             HStack(alignment: .firstTextBaseline, spacing: 3) {
                 Text("\(current)")
                     .font(.system(size: 20, weight: .medium, design: .rounded))
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
                 Text("stats_emergency_unlocks_count_unit")
                     .font(.system(size: 11, weight: .medium))
-                    .foregroundColor(.white.opacity(0.45))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
             }
             Spacer()
             VStack(alignment: .trailing, spacing: 2) {
                 Text(LocalizedStringKey(labelKey))
                     .font(.system(size: 10, weight: .medium))
                     .tracking(1)
-                    .foregroundColor(.white.opacity(0.45))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 // 緊急解除では「減った=良い」のため delta の色は反転して評価する。
                 inverseDeltaLabel(delta)
             }
@@ -337,7 +338,7 @@ struct StatsTabView: View {
         } else {
             Text("stats_blocked_compare_no_baseline")
                 .font(.system(size: 12, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.35))
+                .foregroundColor(MornDashColors.labelMuted(colorScheme))
         }
     }
 
@@ -348,18 +349,18 @@ struct StatsTabView: View {
             Text("stats_blocked_usage_today")
                 .font(.system(size: 11, weight: .medium))
                 .tracking(2)
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(MornDashColors.labelTertiary(colorScheme))
 
             if selectionIsEmpty {
                 Text("stats_blocked_usage_no_selection")
                     .font(.system(size: 13))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     .frame(maxWidth: .infinity, minHeight: 60)
             } else {
                 #if targetEnvironment(simulator)
                 Text(verbatim: "DeviceActivityReport unavailable on simulator")
                     .font(.system(size: 12))
-                    .foregroundColor(.white.opacity(0.3))
+                    .foregroundColor(MornDashColors.labelMuted(colorScheme))
                     .frame(maxWidth: .infinity, minHeight: 280, alignment: .leading)
                 #else
                 DeviceActivityReport(.totalActivity, filter: todayFilter)

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication,
@@ -22,13 +23,21 @@ struct MornDashApp: App {
     @StateObject private var subscriptionManager = SubscriptionManager.shared
 
     init() {
+        AppAppearance.configure(isDark: AppearanceMode.isDarkAtLaunch)
         SubscriptionManager.shared.configure()
+    }
+
+    @AppStorage(AppearanceMode.storageKey) private var appearanceModeRaw = AppearanceMode.dark.rawValue
+
+    private var appearanceMode: AppearanceMode {
+        AppearanceMode(rawValue: appearanceModeRaw) ?? .dark
     }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .preferredColorScheme(.dark) // 常にダークモード（黒ベース）を強制
+                .preferredColorScheme(appearanceMode.preferredColorScheme)
+                .mornDashAppearanceSync()
                 .environmentObject(subscriptionManager)
         }
     }

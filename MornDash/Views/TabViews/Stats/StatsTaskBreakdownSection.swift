@@ -5,6 +5,7 @@ struct StatsTaskBreakdownSection: View {
     let history: TaskHistoryStore
     let tasks: [TaskItem]
     @Binding var period: TaskHistoryStore.Period
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -17,7 +18,7 @@ struct StatsTaskBreakdownSection: View {
             if perTaskRows.isEmpty {
                 Text(period == .currentMonth ? "stats_task_no_data_month" : "stats_task_no_data_year")
                     .font(.system(size: 12))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     .padding(.top, 4)
             } else {
                 VStack(spacing: 14) {
@@ -27,7 +28,7 @@ struct StatsTaskBreakdownSection: View {
                 }
             }
         }
-        .statsSectionCard(borderColor: .indigo.opacity(0.12))
+        .statsSectionCard(borderColor: .indigo.opacity(colorScheme == .dark ? 0.12 : 0.18))
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
@@ -36,7 +37,7 @@ struct StatsTaskBreakdownSection: View {
             toggleButton(.currentMonth, key: "stats_task_period_month")
             toggleButton(.currentYear, key: "stats_task_period_year")
         }
-        .background(Capsule().fill(Color.white.opacity(0.06)))
+        .background(Capsule().fill(MornDashColors.fieldBackground(colorScheme)))
     }
 
     private func toggleButton(_ value: TaskHistoryStore.Period, key: String) -> some View {
@@ -46,11 +47,11 @@ struct StatsTaskBreakdownSection: View {
         } label: {
             Text(LocalizedStringKey(key))
                 .font(.system(size: 11, weight: .semibold))
-                .foregroundColor(selected ? .black : .white.opacity(0.6))
+                .foregroundColor(selected ? MornDashColors.periodPillSelectedText(colorScheme) : MornDashColors.labelSecondary(colorScheme))
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
                 .background(
-                    Capsule().fill(selected ? Color.white.opacity(0.85) : Color.clear)
+                    Capsule().fill(selected ? MornDashColors.periodPillSelectedFill(colorScheme) : Color.clear)
                 )
         }
         .buttonStyle(.plain)
@@ -84,17 +85,17 @@ struct StatsTaskBreakdownSection: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(row.title)
                     .font(.system(size: 14, weight: .medium))
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
                     .lineLimit(1)
                 Text(String(format: NSLocalizedString("stats_task_consistency_format", comment: ""), row.count, row.total))
                     .font(.system(size: 11, weight: .regular, design: .rounded))
-                    .foregroundColor(.white.opacity(0.45))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
             }
             Spacer(minLength: 8)
             HStack(spacing: 4) {
                 ForEach(Array(row.recent7.enumerated()), id: \.offset) { _, day in
                     Circle()
-                        .fill(day.completed ? Color.indigo.opacity(0.85) : Color.white.opacity(0.1))
+                        .fill(day.completed ? Color.indigo.opacity(0.85) : MornDashColors.progressTrack(colorScheme))
                         .frame(width: 8, height: 8)
                 }
             }
@@ -107,6 +108,7 @@ struct StatsTaskComparisonSection: View {
     let history: TaskHistoryStore
     let tasks: [TaskItem]
     let period: TaskHistoryStore.Period
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         let rows = comparisonRows
@@ -120,12 +122,12 @@ struct StatsTaskComparisonSection: View {
                     Text(LocalizedStringKey(period == .currentMonth ? "stats_blocked_compare_month" : "stats_blocked_compare_year"))
                         .font(.system(size: 10, weight: .medium))
                         .tracking(1)
-                        .foregroundColor(.white.opacity(0.45))
+                        .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 }
 
                 ForEach(Array(rows.enumerated()), id: \.element.id) { index, row in
                     if index > 0 {
-                        Divider().background(Color.white.opacity(0.06))
+                        Divider().background(MornDashColors.divider(colorScheme))
                     }
                     comparisonTaskRow(row)
                 }
@@ -164,12 +166,12 @@ struct StatsTaskComparisonSection: View {
         HStack(alignment: .firstTextBaseline, spacing: 8) {
             Text(row.title)
                 .font(.system(size: 14, weight: .medium))
-                .foregroundColor(.white.opacity(0.9))
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
                 .lineLimit(1)
             Spacer(minLength: 8)
             Text("\(row.current)")
                 .font(.system(size: 18, weight: .medium, design: .rounded))
-                .foregroundColor(.white.opacity(0.85))
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.85))
             deltaLabel(row.delta)
         }
     }
@@ -188,7 +190,7 @@ struct StatsTaskComparisonSection: View {
         } else {
             Text("stats_blocked_compare_no_baseline")
                 .font(.system(size: 12, weight: .semibold, design: .rounded))
-                .foregroundColor(.white.opacity(0.35))
+                .foregroundColor(MornDashColors.labelMuted(colorScheme))
         }
     }
 }

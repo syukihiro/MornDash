@@ -6,6 +6,7 @@ struct MainView: View {
     @ObservedObject var blockManager: BlockManager
     let colorForState: Color
     let showGlow: Bool
+    @Environment(\.colorScheme) private var colorScheme
 
     private var allTasksCompletedToday: Bool {
         !viewModel.taskStore.tasks.isEmpty && viewModel.taskStore.allCompletedToday
@@ -42,36 +43,36 @@ struct MainView: View {
 
                     Text("main_next_block")
                         .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.6))
                         .tracking(2)
 
                     Text(startTimeString)
                         .font(.system(size: 64, weight: .thin, design: .rounded))
-                        .foregroundColor(.white)
+                        .foregroundColor(MornDashColors.primaryText(colorScheme))
                 }
                 .padding(.top, viewModel.streakStore.currentStreak > 0 ? 0 : 40)
 
                 if viewModel.taskStore.tasks.isEmpty {
                     Text("main_no_tasks")
                         .font(.system(size: 14))
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.5))
                         .padding()
                 } else {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("main_todays_tasks")
                             .font(.system(size: 12, weight: .medium))
-                            .foregroundColor(.white.opacity(0.5))
+                            .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.5))
                             .tracking(2)
 
                         ForEach(sortedTasks) { task in
                             HStack(alignment: .top, spacing: 8) {
                                 Image(systemName: task.isCompletedToday ? "checkmark.circle.fill" : "circle")
-                                    .foregroundColor(task.isCompletedToday ? .green : .white.opacity(0.3))
+                                    .foregroundColor(task.isCompletedToday ? .green : MornDashColors.secondaryText(colorScheme, opacity: 0.3))
                                     .padding(.top, 2)
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(task.title)
-                                        .foregroundColor(.white.opacity(0.8))
-                                        .strikethrough(task.isCompletedToday, color: .white.opacity(0.4))
+                                        .foregroundColor(MornDashColors.primaryText(colorScheme, opacity: 0.8))
+                                        .strikethrough(task.isCompletedToday, color: MornDashColors.secondaryText(colorScheme, opacity: 0.4))
                                     if task.hasTimer, let seconds = task.timerDurationSeconds {
                                         HStack(spacing: 3) {
                                             Image(systemName: "timer")
@@ -90,7 +91,7 @@ struct MainView: View {
                     .frame(maxWidth: 320, alignment: .leading)
                     .background(
                         RoundedRectangle(cornerRadius: 16)
-                            .fill(Color.white.opacity(0.05))
+                            .fill(MornDashColors.cardFill(colorScheme))
                     )
                 }
             }
@@ -125,13 +126,13 @@ struct MainView: View {
                     )
                 )
             Text(String(format: NSLocalizedString("streak_days_format", comment: ""), viewModel.streakStore.currentStreak))
-                .foregroundColor(.white.opacity(0.9))
+                .foregroundColor(MornDashColors.primaryText(colorScheme, opacity: 0.9))
         }
         .font(.system(size: 13, weight: .semibold))
         .padding(.horizontal, 14)
         .padding(.vertical, 7)
         .background(
-            Capsule().fill(Color.white.opacity(0.08))
+            Capsule().fill(MornDashColors.cardFill(colorScheme))
         )
         .overlay(
             Capsule().strokeBorder(Color.orange.opacity(0.25), lineWidth: 1)

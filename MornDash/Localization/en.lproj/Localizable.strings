@@ -154,6 +154,11 @@
 "settings_categories_pro_only" = "App categories can only be saved with Pro. On the free plan, pick individual apps or websites.";
 "settings_items_unit" = "items";
 "settings_weekday_scheduling" = "Weekday Schedule";
+"settings_appearance_section" = "Appearance";
+"settings_appearance" = "Theme";
+"settings_appearance_system" = "System";
+"settings_appearance_light" = "Light";
+"settings_appearance_dark" = "Dark";
 
 /* Onboarding — step 1: problem */
 "onboarding_problem_title" = "Losing your day to SNS and time-wasting apps?";

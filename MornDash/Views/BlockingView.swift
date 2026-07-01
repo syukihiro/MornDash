@@ -5,6 +5,7 @@ import UIKit
 struct BlockingView: View {
     @ObservedObject var viewModel: HomeViewModel
     @ObservedObject var blockManager: BlockManager
+    @Environment(\.colorScheme) private var colorScheme
 
     @State private var showGiveUpConfirm = false
     @State private var activeWorkoutTaskID: UUID?
@@ -25,7 +26,7 @@ struct BlockingView: View {
 
                 Text("blocking_subtitle")
                     .font(.system(size: 14))
-                    .foregroundColor(.white.opacity(0.7))
+                    .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.7))
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 40)
             }
@@ -34,10 +35,10 @@ struct BlockingView: View {
             HStack(spacing: 4) {
                 Text("\(viewModel.taskStore.completedCount)")
                     .font(.system(size: 48, weight: .thin, design: .rounded))
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.primaryText(colorScheme))
                 Text("/ \(viewModel.taskStore.tasks.count)")
                     .font(.system(size: 24, weight: .thin, design: .rounded))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.5))
             }
 
             ScrollView {
@@ -76,7 +77,7 @@ struct BlockingView: View {
             Button(action: { showGiveUpConfirm = true }) {
                 Text("blocking_give_up")
                     .font(.system(size: 13, weight: .medium))
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.4))
                     .underline()
             }
             .padding(.bottom, 30)
@@ -178,6 +179,7 @@ struct TimerSessionView: View {
     let task: TaskItem
     let onComplete: () -> Void
     let onCancel: () -> Void
+    @Environment(\.colorScheme) private var colorScheme
 
     @Environment(\.dismiss) private var dismiss
     private let totalSeconds: Int
@@ -196,7 +198,7 @@ struct TimerSessionView: View {
 
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
+            MornDashColors.screenBackground(colorScheme).ignoresSafeArea()
 
             VStack(spacing: 20) {
                 Text("timer_session_title")
@@ -207,14 +209,14 @@ struct TimerSessionView: View {
                 Text(task.title)
                     .font(.title3.weight(.semibold))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                     .padding(.horizontal, 28)
 
                 Text(timeText)
                     .font(.system(size: 58, weight: .medium, design: .rounded))
                     .fontWidth(.expanded)
                     .monospacedDigit()
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                     .contentTransition(.numericText())
 
                 HourglassTimerView(
@@ -229,20 +231,20 @@ struct TimerSessionView: View {
                     Button(action: cancel) {
                         Text("common_cancel")
                             .font(.headline)
-                            .foregroundColor(.white)
+                            .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 14)
-                            .background(Capsule().fill(Color.white.opacity(0.12)))
+                            .background(Capsule().fill(MornDashColors.fieldBackground(colorScheme)))
                     }
                     .buttonStyle(.plain)
 
                     Button(action: toggleRunning) {
                         Image(systemName: isRunning ? "pause.fill" : "play.fill")
                             .font(.system(size: 22, weight: .semibold))
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? .black : .white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 14)
-                            .background(Capsule().fill(Color.white))
+                            .background(Capsule().fill(Color.orange))
                     }
                     .buttonStyle(.plain)
                 }

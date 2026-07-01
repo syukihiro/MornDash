@@ -77,6 +77,7 @@ struct ContentView: View {
                     .tag(3)
             }
             .tint(.orange)
+            .mornDashTabBarStyle()
         }
         .onAppear {
             showGlow = true

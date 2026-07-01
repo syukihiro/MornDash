@@ -4,6 +4,7 @@ struct StatsSectionHeader: View {
     let icon: String
     let tint: Color
     let titleKey: LocalizedStringKey
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         HStack(spacing: 8) {
@@ -13,7 +14,7 @@ struct StatsSectionHeader: View {
             Text(titleKey)
                 .font(.system(size: 11, weight: .medium))
                 .tracking(2)
-                .foregroundColor(.white.opacity(0.5))
+                .foregroundColor(MornDashColors.labelTertiary(colorScheme))
         }
     }
 }
@@ -24,6 +25,7 @@ struct StatsProLockBanner: View {
     let messageKey: LocalizedStringKey
     let buttonTitleKey: LocalizedStringKey
     let action: () -> Void
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         Button(action: action) {
@@ -32,11 +34,11 @@ struct StatsProLockBanner: View {
 
                 Text(titleKey)
                     .font(.system(size: 18, weight: .semibold))
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
 
                 Text(messageKey)
                     .font(.system(size: 13))
-                    .foregroundColor(.white.opacity(0.6))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                     .multilineTextAlignment(.leading)
                     .fixedSize(horizontal: false, vertical: true)
 
@@ -46,14 +48,14 @@ struct StatsProLockBanner: View {
                     Text(buttonTitleKey)
                         .font(.system(size: 14, weight: .semibold))
                 }
-                .foregroundColor(.black)
+                .foregroundColor(.white)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
                 .background(Capsule().fill(Color.orange))
                 .padding(.top, 4)
             }
             .statsSectionCard(
-                borderColor: .orange.opacity(0.18)
+                borderColor: .orange.opacity(colorScheme == .dark ? 0.18 : 0.28)
             )
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -64,6 +66,7 @@ struct StatsProLockBanner: View {
 /// 記録タブ下部にまとめる Pro アップセル（比較レポート一式）
 struct StatsProUpsellSection: View {
     let action: () -> Void
+    @Environment(\.colorScheme) private var colorScheme
 
     private struct Feature: Identifiable {
         let id: String
@@ -84,7 +87,7 @@ struct StatsProUpsellSection: View {
 
             Text("stats_pro_section_upsell_desc")
                 .font(.system(size: 13))
-                .foregroundColor(.white.opacity(0.55))
+                .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                 .fixedSize(horizontal: false, vertical: true)
 
             VStack(spacing: 0) {
@@ -99,17 +102,17 @@ struct StatsProUpsellSection: View {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(feature.titleKey)
                                 .font(.system(size: 14, weight: .semibold))
-                                .foregroundColor(.white.opacity(0.9))
+                                .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
                             Text(feature.messageKey)
                                 .font(.system(size: 12))
-                                .foregroundColor(.white.opacity(0.5))
+                                .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                                 .fixedSize(horizontal: false, vertical: true)
                         }
                     }
                     .padding(.vertical, 12)
 
                     if index < features.count - 1 {
-                        Divider().background(Color.white.opacity(0.06))
+                        Divider().background(MornDashColors.divider(colorScheme))
                     }
                 }
             }
@@ -121,7 +124,7 @@ struct StatsProUpsellSection: View {
                     Text("stats_blocked_compare_unlock_button")
                         .font(.system(size: 14, weight: .semibold))
                 }
-                .foregroundColor(.black)
+                .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
                 .background(Capsule().fill(Color.orange))
@@ -129,27 +132,32 @@ struct StatsProUpsellSection: View {
             .buttonStyle(.plain)
             .padding(.top, 4)
         }
-        .statsSectionCard(borderColor: .orange.opacity(0.18))
+        .statsSectionCard(borderColor: .orange.opacity(colorScheme == .dark ? 0.18 : 0.28))
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }
 
 private struct StatsSectionCardModifier: ViewModifier {
     var borderColor: Color?
+    @Environment(\.colorScheme) private var colorScheme
 
     func body(content: Content) -> some View {
         content
             .padding(16)
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.white.opacity(0.05))
+                    .fill(MornDashColors.cardFill(colorScheme))
                     .overlay {
                         if let borderColor {
                             RoundedRectangle(cornerRadius: 16)
                                 .strokeBorder(borderColor, lineWidth: 1)
+                        } else if colorScheme == .light {
+                            RoundedRectangle(cornerRadius: 16)
+                                .strokeBorder(MornDashColors.hairline(colorScheme), lineWidth: 1)
                         }
                     }
             )
+            .mornDashCardShadow(colorScheme)
     }
 }
 

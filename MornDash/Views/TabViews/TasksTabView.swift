@@ -3,6 +3,7 @@ import SwiftUI
 struct TasksTabView: View {
     @ObservedObject var viewModel: HomeViewModel
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
+    @Environment(\.colorScheme) private var colorScheme
 
     @State private var listEditMode: EditMode = .inactive
 
@@ -35,7 +36,7 @@ struct TasksTabView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color.black.ignoresSafeArea()
+                MornDashColors.screenBackground(colorScheme).ignoresSafeArea()
 
                 VStack(spacing: 0) {
                     taskList
@@ -46,7 +47,7 @@ struct TasksTabView: View {
                 }
             }
             .navigationTitle(Text("tab_tasks"))
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .mornDashNavigationBarStyle()
             .toolbar {
                 if !viewModel.taskStore.tasks.isEmpty {
                     ToolbarItem(placement: .topBarTrailing) {
@@ -88,12 +89,12 @@ struct TasksTabView: View {
                     .foregroundColor(.orange)
                 Text(String(format: NSLocalizedString("gate_tasks_lock_message", comment: ""), RevenueCatConfig.freeTaskLimit))
                     .font(.caption)
-                    .foregroundColor(.white.opacity(0.85))
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
                     .multilineTextAlignment(.leading)
                 Spacer(minLength: 0)
                 Image(systemName: "chevron.right")
                     .font(.caption2)
-                    .foregroundColor(.white.opacity(0.4))
+                    .foregroundColor(MornDashColors.labelMuted(colorScheme))
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
@@ -118,13 +119,13 @@ struct TasksTabView: View {
                     HStack(spacing: 14) {
                         Image(systemName: task.isCompletedToday ? "checkmark.circle.fill" : "circle")
                             .font(.system(size: 22, weight: .light))
-                            .foregroundColor(task.isCompletedToday ? .green : .white.opacity(0.35))
+                            .foregroundColor(task.isCompletedToday ? .green : MornDashColors.inactiveIcon(colorScheme))
 
                         Button(action: { openRenameSheet(for: task) }) {
                             HStack(spacing: 6) {
                                 Text(task.title)
                                     .font(.system(size: 16, weight: .regular))
-                                    .foregroundColor(.white)
+                                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                                     .multilineTextAlignment(.leading)
                                 if !isEditing {
                                     Image(systemName: "pencil")
@@ -148,69 +149,69 @@ struct TasksTabView: View {
                                 }
                             }
                             .font(.system(size: 12, weight: .semibold))
-                            .foregroundColor(task.hasTimer ? .indigo : .white.opacity(0.5))
+                            .foregroundColor(task.hasTimer ? .indigo : MornDashColors.labelTertiary(colorScheme))
                             .padding(.horizontal, 8)
                             .padding(.vertical, 6)
                             .background(
                                 Capsule()
-                                    .fill(task.hasTimer ? Color.indigo.opacity(0.2) : Color.white.opacity(0.06))
+                                    .fill(task.hasTimer ? Color.indigo.opacity(colorScheme == .dark ? 0.2 : 0.14) : MornDashColors.fieldBackground(colorScheme))
                             )
                         }
                         .buttonStyle(.plain)
                     }
-                    .listRowBackground(Color.white.opacity(0.04))
-                    .listRowSeparatorTint(.white.opacity(0.08))
+                    .listRowBackground(MornDashColors.listRowBackground(colorScheme))
+                    .listRowSeparatorTint(MornDashColors.listSeparator(colorScheme))
                 }
                 .onDelete { offsets in
                     viewModel.taskStore.remove(at: offsets)
                 }
             } footer: {
                 Text("settings_tasks_footer")
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
             }
 
             Section {
                 Button(action: { withAnimation { showPresets.toggle() } }) {
                     HStack {
                         Text("onboarding_tasks_suggestions")
-                            .foregroundColor(.white)
+                            .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                         Spacer()
                         Image(systemName: "chevron.right")
                             .font(.system(size: 13, weight: .semibold))
-                            .foregroundColor(.white.opacity(0.5))
+                            .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                             .rotationEffect(.degrees(showPresets ? 90 : 0))
                     }
                 }
                 .buttonStyle(.plain)
-                .listRowBackground(Color.white.opacity(0.04))
-                .listRowSeparatorTint(.white.opacity(0.08))
+                .listRowBackground(MornDashColors.listRowBackground(colorScheme))
+                .listRowSeparatorTint(MornDashColors.listSeparator(colorScheme))
 
                 if showPresets {
                     workoutPresetRow
-                        .listRowBackground(Color.white.opacity(0.04))
-                        .listRowSeparatorTint(.white.opacity(0.08))
+                        .listRowBackground(MornDashColors.listRowBackground(colorScheme))
+                        .listRowSeparatorTint(MornDashColors.listSeparator(colorScheme))
 
                     if UIDevice.current.userInterfaceIdiom != .pad {
                         studyPresetRow
-                            .listRowBackground(Color.white.opacity(0.04))
-                            .listRowSeparatorTint(.white.opacity(0.08))
+                            .listRowBackground(MornDashColors.listRowBackground(colorScheme))
+                            .listRowSeparatorTint(MornDashColors.listSeparator(colorScheme))
 
                         pcWorkPresetRow
-                            .listRowBackground(Color.white.opacity(0.04))
-                            .listRowSeparatorTint(.white.opacity(0.08))
+                            .listRowBackground(MornDashColors.listRowBackground(colorScheme))
+                            .listRowSeparatorTint(MornDashColors.listSeparator(colorScheme))
                     }
 
                     ForEach(PresetTask.allCases) { preset in
                         presetRow(preset)
-                            .listRowBackground(Color.white.opacity(0.04))
-                            .listRowSeparatorTint(.white.opacity(0.08))
+                            .listRowBackground(MornDashColors.listRowBackground(colorScheme))
+                            .listRowSeparatorTint(MornDashColors.listSeparator(colorScheme))
                     }
                 }
             }
         }
         .listStyle(.insetGrouped)
         .scrollContentBackground(.hidden)
-        .background(Color.black)
+        .background(MornDashColors.screenBackground(colorScheme))
         .environment(\.editMode, $listEditMode)
     }
 
@@ -220,14 +221,14 @@ struct TasksTabView: View {
             HStack(spacing: 14) {
                 Image(systemName: preset.icon)
                     .font(.system(size: 18, weight: .regular))
-                    .foregroundColor(added ? .green : .white.opacity(0.7))
+                    .foregroundColor(added ? .green : MornDashColors.labelSecondary(colorScheme))
                     .frame(width: 24)
                 Text(preset.title)
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 Spacer()
                 Image(systemName: added ? "checkmark.circle.fill" : "plus.circle")
                     .font(.system(size: 20))
-                    .foregroundColor(added ? .green : .white.opacity(0.5))
+                    .foregroundColor(added ? .green : MornDashColors.labelTertiary(colorScheme))
             }
         }
         .buttonStyle(.plain)
@@ -251,7 +252,7 @@ struct TasksTabView: View {
                     .frame(width: 24)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title)
-                        .foregroundColor(.white)
+                        .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                     Text("workout_preset_ai_badge")
                         .font(.system(size: 10, weight: .semibold))
                         .foregroundColor(.indigo)
@@ -261,7 +262,7 @@ struct TasksTabView: View {
                 if subscriptionManager.isPro {
                     Image(systemName: added ? "checkmark.circle.fill" : "plus.circle")
                         .font(.system(size: 20))
-                        .foregroundColor(added ? .green : .white.opacity(0.5))
+                        .foregroundColor(added ? .green : MornDashColors.labelTertiary(colorScheme))
                 } else {
                     Image(systemName: "lock.fill")
                         .font(.system(size: 14))
@@ -288,7 +289,7 @@ struct TasksTabView: View {
                     .frame(width: 24)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(label)
-                        .foregroundColor(.white)
+                        .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                     Text("focus_preset_ai_badge")
                         .font(.system(size: 10, weight: .semibold))
                         .foregroundColor(.indigo)
@@ -298,7 +299,7 @@ struct TasksTabView: View {
                 if subscriptionManager.isPro {
                     Image(systemName: added ? "checkmark.circle.fill" : "plus.circle")
                         .font(.system(size: 20))
-                        .foregroundColor(added ? .green : .white.opacity(0.5))
+                        .foregroundColor(added ? .green : MornDashColors.labelTertiary(colorScheme))
                 } else {
                     Image(systemName: "lock.fill")
                         .font(.system(size: 14))
@@ -332,7 +333,7 @@ struct TasksTabView: View {
                     : NSLocalizedString("focus_preset_pcwork_label", comment: "")
                 Text(kindLabel)
                     .font(.headline)
-                    .foregroundColor(.white.opacity(0.85))
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
 
                 TextField(NSLocalizedString("tasks_timer_minutes_placeholder", comment: ""), text: $focusMinutesInput)
                     .keyboardType(.numberPad)
@@ -340,10 +341,10 @@ struct TasksTabView: View {
                     .autocorrectionDisabled()
                     .focused($focusMinutesInputFocused)
                     .padding(14)
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.white.opacity(0.08))
+                            .fill(MornDashColors.fieldBackground(colorScheme))
                     )
                     .onChange(of: focusMinutesInput) { _, newValue in
                         let filtered = newValue.filter(\.isNumber)
@@ -365,7 +366,7 @@ struct TasksTabView: View {
                 .opacity(selectedFocusMinutes == nil ? 0.5 : 1.0)
             }
             .padding(20)
-            .background(Color.black.ignoresSafeArea())
+            .mornDashSheetBackground()
             .onAppear { focusMinutesInputFocused = true }
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
@@ -409,7 +410,7 @@ struct TasksTabView: View {
             VStack(spacing: 22) {
                 Text("workout_reps_picker_title")
                     .font(.headline)
-                    .foregroundColor(.white.opacity(0.85))
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
 
                 Text(
                     String(
@@ -418,7 +419,7 @@ struct TasksTabView: View {
                     )
                 )
                 .font(.system(size: 36, weight: .bold, design: .rounded))
-                .foregroundColor(.white)
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme))
 
                 TextField(NSLocalizedString("workout_reps_picker_placeholder", comment: ""), text: $workoutRepsInput)
                     .keyboardType(.numberPad)
@@ -426,10 +427,10 @@ struct TasksTabView: View {
                     .autocorrectionDisabled()
                     .focused($workoutInputFocused)
                     .padding(14)
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                     .background(
                         RoundedRectangle(cornerRadius: 12)
-                            .fill(Color.white.opacity(0.08))
+                            .fill(MornDashColors.fieldBackground(colorScheme))
                     )
                     .onChange(of: workoutRepsInput) { _, newValue in
                         let filtered = newValue.filter(\.isNumber)
@@ -464,7 +465,7 @@ struct TasksTabView: View {
                 .opacity(selectedRepsFromInput == nil ? 0.5 : 1.0)
             }
             .padding(20)
-            .background(Color.black.ignoresSafeArea())
+            .mornDashSheetBackground()
             .onAppear {
                 workoutInputFocused = true
             }
@@ -578,15 +579,15 @@ struct TasksTabView: View {
                 .textInputAutocapitalization(.sentences)
                 .autocorrectionDisabled()
                 .padding(14)
-                .foregroundColor(.white)
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.white.opacity(0.08))
+                        .fill(MornDashColors.fieldBackground(colorScheme))
                 )
 
                 Toggle(isOn: $addTaskTimerEnabled) {
                     Text("tasks_add_timer_toggle")
-                        .foregroundColor(.white)
+                        .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 }
                 .tint(.orange)
                 .onChange(of: addTaskTimerEnabled) { _, enabled in
@@ -607,7 +608,7 @@ struct TasksTabView: View {
 
                     Text("tasks_timer_sheet_hint")
                         .font(.footnote)
-                        .foregroundColor(.white.opacity(0.55))
+                        .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
 
@@ -626,10 +627,10 @@ struct TasksTabView: View {
                 .opacity(canAdd ? 1.0 : 0.5)
             }
             .padding(20)
-            .background(Color.black.ignoresSafeArea())
+            .mornDashSheetBackground()
             .navigationTitle(Text("tasks_add_sheet_title"))
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .mornDashNavigationBarStyle()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {
@@ -673,10 +674,10 @@ struct TasksTabView: View {
                 .textInputAutocapitalization(.sentences)
                 .autocorrectionDisabled()
                 .padding(14)
-                .foregroundColor(.white)
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 .background(
                     RoundedRectangle(cornerRadius: 12)
-                        .fill(Color.white.opacity(0.08))
+                        .fill(MornDashColors.fieldBackground(colorScheme))
                 )
 
                 Spacer()
@@ -694,10 +695,10 @@ struct TasksTabView: View {
                 .opacity(canRename ? 1.0 : 0.5)
             }
             .padding(20)
-            .background(Color.black.ignoresSafeArea())
+            .mornDashSheetBackground()
             .navigationTitle(Text("tasks_rename_sheet_title"))
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .mornDashNavigationBarStyle()
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     Button {

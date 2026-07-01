@@ -13,5 +13,6 @@ struct StartTimePickerView: View {
         .labelsHidden()
         .frame(maxWidth: .infinity)
         .padding(.vertical, 8)
+        .mornDashScreenBackground()
     }
 }

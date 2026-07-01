@@ -4,6 +4,7 @@ struct TaskTicketCardView: View {
     let task: TaskItem
     let index: Int
     let onPunch: () -> Void
+    @Environment(\.colorScheme) private var colorScheme
 
     @State private var dragOffset: CGFloat = 0
     @State private var isDragging: Bool = false
@@ -81,6 +82,7 @@ struct TaskTicketCardView: View {
                         }
                     }
             )
+            .mornDashCardShadow(colorScheme)
         }
         .frame(height: cardHeight)
     }
@@ -89,12 +91,12 @@ struct TaskTicketCardView: View {
 
     private var ticketBackground: some View {
         RoundedRectangle(cornerRadius: cornerRadius)
-            .fill(Color.white.opacity(task.isCompletedToday ? 0.04 : 0.10))
+            .fill(MornDashColors.elevatedSurface(colorScheme, active: !task.isCompletedToday))
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .stroke(
-                        .white.opacity(task.isCompletedToday ? 0.10 : 0.18),
-                        style: StrokeStyle(lineWidth: 1, dash: [4, 3])
+                        MornDashColors.hairline(colorScheme, active: !task.isCompletedToday),
+                        style: StrokeStyle(lineWidth: colorScheme == .light ? 1.2 : 1, dash: [4, 3])
                     )
             )
     }
@@ -120,22 +122,34 @@ struct TaskTicketCardView: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(String(format: "No.%02d", index + 1))
                     .font(.system(size: 11, weight: .bold, design: .monospaced))
-                    .foregroundColor(.white.opacity(task.isCompletedToday ? 0.4 : 0.6))
                 Text(dateStamp)
                     .font(.system(size: 9, design: .monospaced))
-                    .foregroundColor(.white.opacity(0.4))
+                    .opacity(0.75)
             }
+            .foregroundColor(MornDashColors.ticketStubText(colorScheme, completed: task.isCompletedToday))
             .padding(.leading, 14)
             .frame(width: stubWidth, alignment: .leading)
+            .frame(maxHeight: .infinity)
+            .background(
+                MornDashColors.ticketStubGradient(colorScheme, active: !task.isCompletedToday)
+            )
+            .clipShape(
+                UnevenRoundedRectangle(
+                    topLeadingRadius: cornerRadius,
+                    bottomLeadingRadius: cornerRadius,
+                    bottomTrailingRadius: 0,
+                    topTrailingRadius: 0
+                )
+            )
 
-            DashedDivider()
+            DashedDivider(color: MornDashColors.hairline(colorScheme, active: !task.isCompletedToday))
                 .frame(width: 1, height: cardHeight - 18)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(task.title)
                     .font(.system(size: 16, weight: .medium))
-                    .foregroundColor(task.isCompletedToday ? .white.opacity(0.45) : .white)
-                    .strikethrough(task.isCompletedToday, color: .white.opacity(0.5))
+                    .foregroundColor(MornDashColors.ticketText(colorScheme, completed: task.isCompletedToday))
+                    .strikethrough(task.isCompletedToday, color: MornDashColors.ticketText(colorScheme, completed: true))
                     .lineLimit(2)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -220,6 +234,8 @@ struct TaskTicketCardView: View {
 }
 
 private struct DashedDivider: View {
+    let color: Color
+
     var body: some View {
         GeometryReader { geo in
             Path { path in
@@ -227,7 +243,7 @@ private struct DashedDivider: View {
                 path.addLine(to: CGPoint(x: 0.5, y: geo.size.height))
             }
             .stroke(
-                .white.opacity(0.28),
+                color,
                 style: StrokeStyle(lineWidth: 1, dash: [3, 3])
             )
         }

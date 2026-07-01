@@ -5,6 +5,9 @@ struct SettingsView: View {
     @ObservedObject var viewModel: HomeViewModel
     @ObservedObject var blockManager: BlockManager
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
+    @Environment(\.colorScheme) private var colorScheme
+
+    @AppStorage(AppearanceMode.storageKey) private var appearanceModeRaw = AppearanceMode.dark.rawValue
 
     @State private var showAppSelection = false
     @State private var showPaywall = false
@@ -38,10 +41,13 @@ struct SettingsView: View {
                         Text("settings_categories_pro_only")
                     }
                 }
+
+                appearanceSection
             }
+            .mornDashScreenBackground()
             .navigationTitle(Text("settings_title"))
             .navigationBarTitleDisplayMode(.inline)
-            .toolbarColorScheme(.dark, for: .navigationBar)
+            .mornDashNavigationBarStyle()
             .onChange(of: viewModel.config.startHour) { _, _ in
                 viewModel.applySchedule(blockManager: blockManager)
             }
@@ -67,9 +73,33 @@ struct SettingsView: View {
                             }
                         }
                 }
+                .preferredColorScheme((AppearanceMode(rawValue: appearanceModeRaw) ?? .dark).preferredColorScheme)
             }
             .paywallSheet(isPresented: $showPaywall)
         }
+    }
+
+    // MARK: - Appearance
+
+    private var appearanceSection: some View {
+        Section {
+            Picker(selection: appearanceModeBinding) {
+                ForEach(AppearanceMode.allCases) { mode in
+                    Text(mode.titleKey).tag(mode)
+                }
+            } label: {
+                Text("settings_appearance")
+            }
+        } header: {
+            Text("settings_appearance_section")
+        }
+    }
+
+    private var appearanceModeBinding: Binding<AppearanceMode> {
+        Binding(
+            get: { AppearanceMode(rawValue: appearanceModeRaw) ?? .dark },
+            set: { appearanceModeRaw = $0.rawValue }
+        )
     }
 
     // MARK: - Subscription section
@@ -129,11 +159,11 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text("subscription_pro_title")
                     .font(.system(size: 15, weight: .semibold))
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.primaryText(colorScheme))
                 if let plan = subscriptionManager.currentPlan {
                     Text(LocalizedStringKey(plan.displayNameKey))
                         .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.55))
+                        .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.55))
                         .tracking(0.5)
                 }
             }
@@ -147,7 +177,7 @@ struct SettingsView: View {
                 Text("subscription_active")
                     .font(.system(size: 11, weight: .semibold))
                     .tracking(0.8)
-                    .foregroundColor(.white.opacity(0.85))
+                    .foregroundColor(MornDashColors.primaryText(colorScheme, opacity: 0.85))
             }
             .padding(.horizontal, 10)
             .padding(.vertical, 5)
@@ -160,13 +190,13 @@ struct SettingsView: View {
 
             Image(systemName: "chevron.right")
                 .font(.system(size: 11, weight: .semibold))
-                .foregroundColor(.white.opacity(0.35))
+                .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.35))
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 14)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white.opacity(0.05))
+                .fill(MornDashColors.cardFill(colorScheme))
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
                         .strokeBorder(Color.orange.opacity(0.2), lineWidth: 1)
@@ -181,12 +211,12 @@ struct SettingsView: View {
             VStack(alignment: .leading, spacing: 3) {
                 Text("subscription_pro_title")
                     .font(.system(size: 15, weight: .semibold))
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.primaryText(colorScheme))
                     .lineLimit(1)
                     .minimumScaleFactor(0.8)
                 Text("settings_status_free")
                     .font(.system(size: 12))
-                    .foregroundColor(.white.opacity(0.55))
+                    .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.55))
                     .tracking(0.5)
                     .lineLimit(1)
             }
@@ -213,7 +243,7 @@ struct SettingsView: View {
         .padding(.vertical, 14)
         .background(
             RoundedRectangle(cornerRadius: 16)
-                .fill(Color.white.opacity(0.05))
+                .fill(MornDashColors.cardFill(colorScheme))
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
                         .strokeBorder(Color.orange.opacity(0.25), lineWidth: 1)
@@ -294,7 +324,7 @@ struct SettingsView: View {
             StartTimePickerView(selection: weekdayTimeBinding(idx: idx))
                 .navigationTitle(Text(weekday))
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbarColorScheme(.dark, for: .navigationBar)
+                .mornDashNavigationBarStyle()
         } label: {
             HStack {
                 Text(weekday)
@@ -334,7 +364,7 @@ struct SettingsView: View {
             StartTimePickerView(selection: startTimeBinding)
                 .navigationTitle(Text("settings_start_time"))
                 .navigationBarTitleDisplayMode(.inline)
-                .toolbarColorScheme(.dark, for: .navigationBar)
+                .mornDashNavigationBarStyle()
         } label: {
             HStack {
                 Text("settings_start_time_daily")
