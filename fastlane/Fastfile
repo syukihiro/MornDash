@@ -1,0 +1,28 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "App Store Connect の既存メタデータを fastlane/metadata に取得する"
+  desc "初回セットアップ後に最初に実行。CLI の `fastlane deliver download_metadata` と同等。"
+  lane :fetch_metadata do
+    UI.message("App Store Connect から既存メタデータを取得します…")
+    # --force を付けないと、既存の fastlane/metadata がある場合に上書き確認で
+    # 何もせず終了する(deliver の仕様)。
+    sh("fastlane", "deliver", "download_metadata",
+       "--api_key_path", "fastlane/.keys/asc_api_key.json",
+       "--app_identifier", "danchi.MornDash",
+       "--force", "true")
+    UI.success("fastlane/metadata に取得しました。")
+  end
+
+  desc "ローカルの fastlane/metadata を App Store Connect へ反映する"
+  desc "審査提出はしない(下書き保存のみ)。反映前に内容を git diff で必ず確認すること。"
+  lane :push_metadata do
+    deliver(
+      force: true,                  # HTML プレビューをスキップして反映
+      submit_for_review: false,     # 審査には自動提出しない
+      run_precheck_before_submit: false,
+      automatic_release: false
+    )
+    UI.success("メタデータを App Store Connect に反映しました(審査提出はしていません)。")
+  end
+end

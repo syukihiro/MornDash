@@ -1,0 +1,10 @@
+# deliver(App Store メタデータ管理)の共通設定。
+# 認証は App Store Connect API キーで行う。
+api_key_path("fastlane/.keys/asc_api_key.json")
+
+app_identifier("danchi.MornDash")
+
+# このプロジェクトでは deliver でバイナリ・スクリーンショットは扱わず、
+# アプリ情報/メタデータ(名前・説明文・キーワード・URL 等)のみを対象にする。
+skip_binary_upload(true)
+skip_screenshots(true)

@@ -1,0 +1,4 @@
+app_identifier("danchi.MornDash")
+
+# 認証は App Store Connect API キー(fastlane/.keys/asc_api_key.json)で行う。
+# そのため apple_id / team_id はここでは不要(API キーから解決される)。
