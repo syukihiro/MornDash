@@ -82,9 +82,9 @@ struct StatsStreakSummaryView: View {
 
             HStack(spacing: 0) {
                 ForEach(Array(recentDays.enumerated()), id: \.offset) { _, day in
-                    Circle()
-                        .fill(day.completed ? Color.orange : Color.white.opacity(0.08))
-                        .frame(width: 10, height: 10)
+                    Image(systemName: day.completed ? "checkmark.circle.fill" : "circle")
+                        .font(.system(size: 16, weight: .regular))
+                        .foregroundStyle(day.completed ? Color.orange : Color.white.opacity(0.15))
                         .frame(maxWidth: .infinity)
                 }
             }
