@@ -4,6 +4,7 @@ import FamilyControls
 import ManagedSettings
 
 struct OnboardingView: View {
+    @Environment(\.colorScheme) private var colorScheme
     @Binding var isCompleted: Bool
     @ObservedObject var viewModel: HomeViewModel
     @ObservedObject var blockManager: BlockManager
@@ -14,7 +15,7 @@ struct OnboardingView: View {
     var body: some View {
         ZStack {
             LinearGradient(
-                colors: [Color.black, Color(red: 0.08, green: 0.08, blue: 0.18)],
+                colors: MornDashColors.onboardingGradientColors(colorScheme),
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
@@ -61,9 +62,9 @@ struct OnboardingView: View {
             Button(action: back) {
                 Image(systemName: "chevron.left")
                     .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(.white.opacity(0.75))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                     .frame(width: 34, height: 34)
-                    .background(Circle().fill(Color.white.opacity(0.08)))
+                    .background(Circle().fill(MornDashColors.fieldBackground(colorScheme)))
             }
             .opacity(currentStep == 0 ? 0 : 1)
             .disabled(currentStep == 0)
@@ -71,7 +72,7 @@ struct OnboardingView: View {
             HStack(spacing: 6) {
                 ForEach(0..<stepCount, id: \.self) { index in
                     Capsule()
-                        .fill(index <= currentStep ? Color.white : Color.white.opacity(0.18))
+                        .fill(index <= currentStep ? MornDashColors.onboardingProgressActive(colorScheme) : MornDashColors.onboardingProgressInactive(colorScheme))
                         .frame(height: 4)
                         .frame(maxWidth: .infinity)
                         .animation(.spring(), value: currentStep)
@@ -94,6 +95,7 @@ struct OnboardingView: View {
 // MARK: - Shared primary button
 
 private struct PrimaryButton: View {
+    @Environment(\.colorScheme) private var colorScheme
     let title: LocalizedStringKey
     var isEnabled: Bool = true
     let action: () -> Void
@@ -102,10 +104,10 @@ private struct PrimaryButton: View {
         Button(action: action) {
             Text(title)
                 .font(.headline)
-                .foregroundColor(.black)
+                .foregroundColor(MornDashColors.onboardingPrimaryButtonText(colorScheme))
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Capsule().fill(isEnabled ? Color.white : Color.white.opacity(0.3)))
+                .background(Capsule().fill(MornDashColors.onboardingPrimaryButtonFill(colorScheme, enabled: isEnabled)))
         }
         .disabled(!isEnabled)
     }
@@ -114,6 +116,7 @@ private struct PrimaryButton: View {
 // MARK: - Step 1: Problem
 
 struct OnboardingProblemView: View {
+    @Environment(\.colorScheme) private var colorScheme
     var nextAction: () -> Void
     @State private var appeared = false
     @State private var glowPulse = false
@@ -198,7 +201,9 @@ struct OnboardingProblemView: View {
                     .multilineTextAlignment(.center)
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [.white, Color(red: 0.85, green: 0.78, blue: 1)],
+                            colors: colorScheme == .dark
+                                ? [.white, Color(red: 0.85, green: 0.78, blue: 1)]
+                                : [MornDashColors.labelPrimary(colorScheme), Color(red: 0.45, green: 0.28, blue: 0.72)],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
@@ -208,7 +213,7 @@ struct OnboardingProblemView: View {
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
                     .lineSpacing(4)
-                    .foregroundColor(.white.opacity(0.65))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                     .fixedSize(horizontal: false, vertical: true)
             }
             .padding(.horizontal, 4)
@@ -219,19 +224,21 @@ struct OnboardingProblemView: View {
         Button(action: nextAction) {
             Text("common_continue")
                 .font(.headline.weight(.bold))
-                .foregroundColor(.black)
+                .foregroundColor(MornDashColors.onboardingPrimaryButtonText(colorScheme))
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 17)
                 .background(
                     Capsule()
                         .fill(
                             LinearGradient(
-                                colors: [.white, Color(red: 0.96, green: 0.94, blue: 1)],
+                                colors: colorScheme == .dark
+                                    ? [.white, Color(red: 0.96, green: 0.94, blue: 1)]
+                                    : [.orange, Color(red: 1, green: 0.72, blue: 0.38)],
                                 startPoint: .top,
                                 endPoint: .bottom
                             )
                         )
-                        .shadow(color: .purple.opacity(0.3), radius: 16, y: 6)
+                        .shadow(color: .purple.opacity(colorScheme == .dark ? 0.3 : 0.15), radius: 16, y: 6)
                 )
         }
         .background(
@@ -245,6 +252,7 @@ struct OnboardingProblemView: View {
 }
 
 private struct ProblemStormBackdrop: View {
+    @Environment(\.colorScheme) private var colorScheme
     let glowPulse: Bool
 
     var body: some View {
@@ -270,6 +278,7 @@ private struct ProblemStormBackdrop: View {
 }
 
 private struct ProblemPainCard: View {
+    @Environment(\.colorScheme) private var colorScheme
     let icon: String
     let text: LocalizedStringKey
     let index: Int
@@ -300,7 +309,7 @@ private struct ProblemPainCard: View {
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [.white, accent],
+                            colors: [MornDashColors.iconGradientLeading(colorScheme), accent],
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -309,7 +318,7 @@ private struct ProblemPainCard: View {
 
             Text(text)
                 .font(.body.weight(.semibold))
-                .foregroundColor(.white.opacity(0.92))
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.92))
                 .fixedSize(horizontal: false, vertical: true)
 
             Spacer(minLength: 0)
@@ -320,7 +329,7 @@ private struct ProblemPainCard: View {
             RoundedRectangle(cornerRadius: 18)
                 .fill(
                     LinearGradient(
-                        colors: [accent.opacity(0.14), Color.white.opacity(0.04)],
+                        colors: [accent.opacity(0.14), MornDashColors.accentCardGradientEnd(colorScheme)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )
@@ -345,6 +354,7 @@ private struct ProblemPainCard: View {
 // MARK: - Step 2: How it works
 
 struct OnboardingHowItWorksView: View {
+    @Environment(\.colorScheme) private var colorScheme
     var nextAction: () -> Void
 
     var body: some View {
@@ -354,11 +364,11 @@ struct OnboardingHowItWorksView: View {
             VStack(spacing: 12) {
                 Text("onboarding_how_title")
                     .font(.title2.bold())
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 Text("onboarding_how_desc")
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.white.opacity(0.7))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
             }
 
             VStack(spacing: 14) {
@@ -397,6 +407,7 @@ struct OnboardingHowItWorksView: View {
 }
 
 private struct HowStepRow: View {
+    @Environment(\.colorScheme) private var colorScheme
     let number: String
     let icon: String
     let tint: Color
@@ -418,27 +429,28 @@ private struct HowStepRow: View {
                 HStack(spacing: 6) {
                     Text(number)
                         .font(.caption.bold())
-                        .foregroundColor(.white.opacity(0.5))
+                        .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     Text(title)
                         .font(.headline)
-                        .foregroundColor(.white)
+                        .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 }
                 Text(desc)
                     .font(.footnote)
-                    .foregroundColor(.white.opacity(0.7))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
             }
             Spacer()
         }
         .padding(14)
-        .background(Color.white.opacity(0.06))
+        .background(MornDashColors.fieldBackground(colorScheme))
         .cornerRadius(14)
     }
 }
 
 private struct Connector: View {
+    @Environment(\.colorScheme) private var colorScheme
     var body: some View {
         Rectangle()
-            .fill(Color.white.opacity(0.2))
+            .fill(MornDashColors.hairline(colorScheme))
             .frame(width: 2, height: 14)
             .padding(.leading, 40)
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -448,6 +460,7 @@ private struct Connector: View {
 // MARK: - Step 3: Permission
 
 struct OnboardingPermissionView: View {
+    @Environment(\.colorScheme) private var colorScheme
     var nextAction: () -> Void
     @State private var screenTimeAuthorized = false
 
@@ -463,12 +476,12 @@ struct OnboardingPermissionView: View {
             VStack(spacing: 12) {
                 Text("onboarding_permission_title")
                     .font(.title2.bold())
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
 
                 Text("onboarding_permission_desc")
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.white.opacity(0.75))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
             }
 
             PermissionButton(
@@ -483,10 +496,10 @@ struct OnboardingPermissionView: View {
             HStack(alignment: .top, spacing: 8) {
                 Image(systemName: "lock.shield")
                     .font(.footnote)
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 Text("onboarding_permission_note")
                     .font(.footnote)
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     .fixedSize(horizontal: false, vertical: true)
             }
             .padding(.horizontal, 4)
@@ -500,6 +513,7 @@ struct OnboardingPermissionView: View {
 }
 
 struct PermissionButton: View {
+    @Environment(\.colorScheme) private var colorScheme
     let title: String
     let icon: String
     let isAuthorized: Bool
@@ -513,15 +527,15 @@ struct PermissionButton: View {
                 Spacer()
                 Image(systemName: isAuthorized ? "checkmark.circle.fill" : "circle")
                     .font(.title2)
-                    .foregroundColor(isAuthorized ? .green : .white.opacity(0.3))
+                    .foregroundColor(isAuthorized ? .green : MornDashColors.inactiveIcon(colorScheme))
             }
-            .foregroundColor(.white)
+            .foregroundColor(MornDashColors.labelPrimary(colorScheme))
             .padding()
-            .background(Color.white.opacity(0.1))
+            .background(MornDashColors.fieldBackground(colorScheme))
             .cornerRadius(12)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(isAuthorized ? Color.green : Color.white.opacity(0.3), lineWidth: 1)
+                    .stroke(isAuthorized ? Color.green : MornDashColors.inactiveIcon(colorScheme), lineWidth: 1)
             )
         }
         .disabled(isAuthorized)
@@ -538,6 +552,7 @@ private struct OnboardingUsagePickRow: Identifiable {
 }
 
 struct OnboardingAppsView: View {
+    @Environment(\.colorScheme) private var colorScheme
     @ObservedObject var blockManager: BlockManager
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.scenePhase) private var scenePhase
@@ -572,13 +587,13 @@ struct OnboardingAppsView: View {
                     VStack(spacing: 18) {
                         Text("onboarding_apps_title")
                             .font(.title2.bold())
-                            .foregroundColor(.white)
+                            .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                             .frame(maxWidth: .infinity)
 
                         Text("onboarding_apps_desc")
                             .font(.subheadline)
                             .multilineTextAlignment(.center)
-                            .foregroundColor(.white.opacity(0.65))
+                            .foregroundColor(MornDashColors.labelSecondary(colorScheme))
 
                         yesterdayUsageSection
 
@@ -588,9 +603,9 @@ struct OnboardingAppsView: View {
                                 Spacer()
                                 Image(systemName: "chevron.right")
                             }
-                            .foregroundColor(.white)
+                            .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                             .padding()
-                            .background(Color.white.opacity(0.1))
+                            .background(MornDashColors.fieldBackground(colorScheme))
                             .cornerRadius(12)
                         }
 
@@ -604,7 +619,7 @@ struct OnboardingAppsView: View {
                         if !subscriptionManager.isPro {
                             Text(String(format: NSLocalizedString("onboarding_apps_free_footer", comment: ""), RevenueCatConfig.freeBlockedAppsLimit))
                                 .font(.caption2)
-                                .foregroundColor(.white.opacity(0.42))
+                                .foregroundColor(MornDashColors.labelMuted(colorScheme))
                                 .multilineTextAlignment(.center)
                         }
                     }
@@ -659,14 +674,14 @@ struct OnboardingAppsView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text("onboarding_apps_yesterday_label")
                     .font(.caption.weight(.semibold))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
 
                 VStack(spacing: 0) {
                     ForEach(usageRows) { row in
                         usageRowView(row)
                     }
                 }
-                .background(Color.white.opacity(0.06))
+                .background(MornDashColors.fieldBackground(colorScheme))
                 .cornerRadius(12)
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -682,12 +697,12 @@ struct OnboardingAppsView: View {
             HStack(spacing: 10) {
                 Text(row.name)
                     .font(.subheadline.weight(.medium))
-                    .foregroundColor(.white.opacity(0.9))
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
                     .lineLimit(1)
                 Spacer(minLength: 8)
                 Text(formattedDuration(row.duration))
                     .font(.caption.weight(.medium).monospacedDigit())
-                    .foregroundColor(.white.opacity(0.45))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 11)
@@ -814,6 +829,7 @@ struct OnboardingAppsView: View {
 // MARK: - Step 5: Time
 
 struct OnboardingTimeView: View {
+    @Environment(\.colorScheme) private var colorScheme
     @ObservedObject var viewModel: HomeViewModel
     var nextAction: () -> Void
 
@@ -829,12 +845,12 @@ struct OnboardingTimeView: View {
             VStack(spacing: 12) {
                 Text("onboarding_time_title")
                     .font(.title2.bold())
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
 
                 Text("onboarding_time_desc")
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.white.opacity(0.75))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
             }
 
             DatePicker(
@@ -855,10 +871,9 @@ struct OnboardingTimeView: View {
                 displayedComponents: .hourAndMinute
             )
             .datePickerStyle(.wheel)
-            .colorScheme(.dark)
             .labelsHidden()
             .padding()
-            .background(Color.white.opacity(0.05))
+            .background(MornDashColors.cardFill(colorScheme))
             .cornerRadius(20)
 
             Spacer()
@@ -872,6 +887,7 @@ struct OnboardingTimeView: View {
 // MARK: - Step 6: Tasks
 
 struct OnboardingTasksView: View {
+    @Environment(\.colorScheme) private var colorScheme
     @ObservedObject var viewModel: HomeViewModel
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     var nextAction: () -> Void
@@ -913,7 +929,7 @@ struct OnboardingTasksView: View {
             HStack(alignment: .firstTextBaseline, spacing: 8) {
                 Text("onboarding_tasks_title")
                     .font(.title3.bold())
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
 
                 Spacer(minLength: 0)
 
@@ -930,7 +946,7 @@ struct OnboardingTasksView: View {
 
             Text("onboarding_tasks_desc")
                 .font(.footnote)
-                .foregroundColor(.white.opacity(0.55))
+                .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 .fixedSize(horizontal: false, vertical: true)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -962,7 +978,7 @@ struct OnboardingTasksView: View {
                     NSLocalizedString("settings_add_task_placeholder", comment: ""),
                     text: $newTaskTitle
                 )
-                .foregroundColor(.white)
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 .textFieldStyle(.plain)
                 .submitLabel(.done)
                 .onSubmit { addCustomTask() }
@@ -972,8 +988,8 @@ struct OnboardingTasksView: View {
                         .font(.title3)
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
-                            newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty ? .white.opacity(0.25) : .white,
-                            newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty ? .white.opacity(0.1) : .orange
+                            newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty ? MornDashColors.inactiveIcon(colorScheme) : MornDashColors.labelPrimary(colorScheme),
+                            newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty ? MornDashColors.fieldBackground(colorScheme) : .orange
                         )
                 }
                 .disabled(newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty)
@@ -982,7 +998,7 @@ struct OnboardingTasksView: View {
             .padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 14)
-                    .fill(Color.white.opacity(0.06))
+                    .fill(MornDashColors.fieldBackground(colorScheme))
                     .overlay(
                         RoundedRectangle(cornerRadius: 14)
                             .strokeBorder(Color.orange.opacity(0.2), lineWidth: 1)
@@ -1083,6 +1099,7 @@ struct OnboardingTasksView: View {
 }
 
 private struct OnboardingTasksSectionLabel: View {
+    @Environment(\.colorScheme) private var colorScheme
     let icon: String
     let tint: Color
     let title: LocalizedStringKey
@@ -1095,13 +1112,14 @@ private struct OnboardingTasksSectionLabel: View {
             Text(title)
                 .font(.system(size: 12, weight: .semibold))
                 .tracking(1.5)
-                .foregroundColor(.white.opacity(0.55))
+                .foregroundColor(MornDashColors.labelTertiary(colorScheme))
             Spacer()
         }
     }
 }
 
 private struct SelectedTaskChip: View {
+    @Environment(\.colorScheme) private var colorScheme
     let task: TaskItem
     let preset: PresetTask?
     let onRemove: () -> Void
@@ -1118,14 +1136,14 @@ private struct SelectedTaskChip: View {
 
             Text(task.title)
                 .font(.caption.weight(.medium))
-                .foregroundColor(.white.opacity(0.9))
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
                 .lineLimit(1)
 
             Button(action: onRemove) {
                 Image(systemName: "xmark.circle.fill")
                     .font(.system(size: 14))
                     .symbolRenderingMode(.palette)
-                    .foregroundStyle(.white.opacity(0.45), accent.opacity(0.5))
+                    .foregroundStyle(MornDashColors.labelTertiary(colorScheme), accent.opacity(0.5))
             }
         }
         .padding(.leading, 10)
@@ -1140,6 +1158,7 @@ private struct SelectedTaskChip: View {
 }
 
 private struct PresetChip: View {
+    @Environment(\.colorScheme) private var colorScheme
     let preset: PresetTask
     let isAdded: Bool
     let action: () -> Void
@@ -1164,14 +1183,14 @@ private struct PresetChip: View {
 
                         Image(systemName: preset.icon)
                             .font(.system(size: 17, weight: .semibold))
-                            .foregroundColor(isAdded ? .white : preset.accentColor)
+                            .foregroundColor(isAdded ? MornDashColors.onboardingPrimaryButtonText(colorScheme) : preset.accentColor)
                     }
 
                     if isAdded {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.system(size: 14))
                             .symbolRenderingMode(.palette)
-                            .foregroundStyle(.white, preset.accentColor)
+                            .foregroundStyle(MornDashColors.onboardingPrimaryButtonText(colorScheme), preset.accentColor)
                             .offset(x: 5, y: -5)
                             .transition(.scale.combined(with: .opacity))
                     }
@@ -1182,19 +1201,19 @@ private struct PresetChip: View {
                     .multilineTextAlignment(.center)
                     .lineLimit(2)
                     .minimumScaleFactor(0.85)
-                    .foregroundColor(isAdded ? .white : .white.opacity(0.85))
+                    .foregroundColor(isAdded ? MornDashColors.labelPrimary(colorScheme) : MornDashColors.labelPrimary(colorScheme, opacity: 0.85))
             }
             .frame(maxWidth: .infinity)
             .padding(.horizontal, 6)
             .padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 14)
-                    .fill(isAdded ? preset.accentColor.opacity(0.14) : Color.white.opacity(0.05))
+                    .fill(isAdded ? preset.accentColor.opacity(0.14) : MornDashColors.cardFill(colorScheme))
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 14)
                     .strokeBorder(
-                        isAdded ? preset.accentColor.opacity(0.55) : Color.white.opacity(0.08),
+                        isAdded ? preset.accentColor.opacity(0.55) : MornDashColors.fieldBackground(colorScheme),
                         lineWidth: isAdded ? 1.5 : 1
                     )
             )
@@ -1208,6 +1227,7 @@ private struct PresetChip: View {
 // MARK: - Step 7: Motivation
 
 struct OnboardingMotivationView: View {
+    @Environment(\.colorScheme) private var colorScheme
     var finishAction: () -> Void
     @State private var appeared = false
     @State private var sunPulse = false
@@ -1292,7 +1312,9 @@ struct OnboardingMotivationView: View {
                     .multilineTextAlignment(.center)
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [.white, Color(red: 1, green: 0.92, blue: 0.75)],
+                            colors: colorScheme == .dark
+                                ? [.white, Color(red: 1, green: 0.92, blue: 0.75)]
+                                : [MornDashColors.labelPrimary(colorScheme), Color.orange],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
@@ -1302,7 +1324,7 @@ struct OnboardingMotivationView: View {
                     .font(.subheadline)
                     .multilineTextAlignment(.center)
                     .lineSpacing(4)
-                    .foregroundColor(.white.opacity(0.68))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                     .fixedSize(horizontal: false, vertical: true)
             }
             .padding(.horizontal, 4)
@@ -1313,14 +1335,16 @@ struct OnboardingMotivationView: View {
         Button(action: finishAction) {
             Text("onboarding_finish")
                 .font(.headline.weight(.bold))
-                .foregroundColor(.black)
+                .foregroundColor(MornDashColors.onboardingPrimaryButtonText(colorScheme))
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 17)
                 .background(
                     Capsule()
                         .fill(
                             LinearGradient(
-                                colors: [.white, Color(red: 1, green: 0.97, blue: 0.9)],
+                                colors: colorScheme == .dark
+                                    ? [.white, Color(red: 1, green: 0.97, blue: 0.9)]
+                                    : [.orange, Color(red: 1, green: 0.72, blue: 0.38)],
                                 startPoint: .top,
                                 endPoint: .bottom
                             )
@@ -1339,6 +1363,7 @@ struct OnboardingMotivationView: View {
 }
 
 private struct MotivationSunriseBackdrop: View {
+    @Environment(\.colorScheme) private var colorScheme
     let sunPulse: Bool
 
     var body: some View {
@@ -1364,6 +1389,7 @@ private struct MotivationSunriseBackdrop: View {
 }
 
 private struct MotivationOutcomeCard: View {
+    @Environment(\.colorScheme) private var colorScheme
     let icon: String
     let text: LocalizedStringKey
     let index: Int
@@ -1394,7 +1420,7 @@ private struct MotivationOutcomeCard: View {
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [.white, accent],
+                            colors: [MornDashColors.iconGradientLeading(colorScheme), accent],
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -1403,7 +1429,7 @@ private struct MotivationOutcomeCard: View {
 
             Text(text)
                 .font(.body.weight(.semibold))
-                .foregroundColor(.white.opacity(0.92))
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.92))
                 .fixedSize(horizontal: false, vertical: true)
 
             Spacer(minLength: 0)
@@ -1414,7 +1440,7 @@ private struct MotivationOutcomeCard: View {
             RoundedRectangle(cornerRadius: 18)
                 .fill(
                     LinearGradient(
-                        colors: [accent.opacity(0.14), Color.white.opacity(0.04)],
+                        colors: [accent.opacity(0.14), MornDashColors.accentCardGradientEnd(colorScheme)],
                         startPoint: .topLeading,
                         endPoint: .bottomTrailing
                     )

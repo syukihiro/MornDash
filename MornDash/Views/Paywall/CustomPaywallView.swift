@@ -4,6 +4,7 @@ import RevenueCat
 struct CustomPaywallView: View {
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
 
     @State private var selectedPackage: Package?
     @State private var isPurchasing = false
@@ -29,7 +30,6 @@ struct CustomPaywallView: View {
                 bottomBar
             }
         }
-        .preferredColorScheme(.dark)
         .task { await loadIfNeeded() }
         .alert(item: $errorMessage) { msg in
             Alert(
@@ -45,15 +45,12 @@ struct CustomPaywallView: View {
     private var background: some View {
         ZStack {
             LinearGradient(
-                colors: [
-                    Color(red: 0.10, green: 0.06, blue: 0.02),
-                    Color.black
-                ],
+                colors: MornDashColors.paywallGradientColors(colorScheme),
                 startPoint: .top,
                 endPoint: .bottom
             )
             RadialGradient(
-                colors: [Color.orange.opacity(0.18), .clear],
+                colors: [Color.orange.opacity(colorScheme == .dark ? 0.18 : 0.22), .clear],
                 center: .top,
                 startRadius: 0,
                 endRadius: 320
@@ -70,9 +67,9 @@ struct CustomPaywallView: View {
             Button(action: { dismiss() }) {
                 Image(systemName: "xmark")
                     .font(.system(size: 14, weight: .semibold))
-                    .foregroundColor(.white.opacity(0.7))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                     .frame(width: 32, height: 32)
-                    .background(Circle().fill(Color.white.opacity(0.08)))
+                    .background(Circle().fill(MornDashColors.fieldBackground(colorScheme)))
             }
         }
         .padding(.horizontal, 20)
@@ -104,12 +101,12 @@ struct CustomPaywallView: View {
 
             Text("paywall_title")
                 .font(.system(size: 28, weight: .bold))
-                .foregroundColor(.white)
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 .multilineTextAlignment(.center)
 
             Text("paywall_subtitle")
                 .font(.system(size: 14))
-                .foregroundColor(.white.opacity(0.65))
+                .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 12)
         }
@@ -127,11 +124,12 @@ struct CustomPaywallView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 18)
-                .fill(Color.white.opacity(0.04))
+                .fill(MornDashColors.cardFill(colorScheme))
                 .overlay(
                     RoundedRectangle(cornerRadius: 18)
-                        .strokeBorder(Color.white.opacity(0.06), lineWidth: 1)
+                        .strokeBorder(MornDashColors.hairline(colorScheme), lineWidth: 1)
                 )
+                .mornDashCardShadow(colorScheme)
         )
     }
 
@@ -144,7 +142,7 @@ struct CustomPaywallView: View {
                 .background(Circle().fill(Color.orange.opacity(0.15)))
             Text(text)
                 .font(.system(size: 14))
-                .foregroundColor(.white.opacity(0.9))
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
             Spacer(minLength: 0)
         }
     }
@@ -170,7 +168,7 @@ struct CustomPaywallView: View {
                     .foregroundColor(.orange.opacity(0.7))
                 Text("paywall_offerings_unavailable")
                     .font(.system(size: 14))
-                    .foregroundColor(.white.opacity(0.7))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                     .multilineTextAlignment(.center)
                 Button(action: { Task { await subscriptionManager.loadOfferings(force: true) } }) {
                     Text("paywall_retry")
@@ -182,7 +180,7 @@ struct CustomPaywallView: View {
             .padding(20)
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.white.opacity(0.04))
+                    .fill(MornDashColors.cardFill(colorScheme))
             )
         }
     }
@@ -196,7 +194,7 @@ struct CustomPaywallView: View {
             HStack(alignment: .center, spacing: 14) {
                 ZStack {
                     Circle()
-                        .strokeBorder(isSelected ? Color.orange : Color.white.opacity(0.25), lineWidth: 2)
+                        .strokeBorder(isSelected ? Color.orange : MornDashColors.hairline(colorScheme), lineWidth: 2)
                         .frame(width: 22, height: 22)
                     if isSelected {
                         Circle()
@@ -209,7 +207,7 @@ struct CustomPaywallView: View {
                     HStack(spacing: 8) {
                         Text(planTitleKey(for: package))
                             .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(.white)
+                            .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                         if isAnnual {
                             Text("paywall_badge_best_value")
                                 .font(.system(size: 10, weight: .bold))
@@ -230,7 +228,7 @@ struct CustomPaywallView: View {
                     }
                     Text(perPeriodLabel(for: package))
                         .font(.system(size: 12))
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                 }
 
                 Spacer(minLength: 0)
@@ -238,7 +236,7 @@ struct CustomPaywallView: View {
                 VStack(alignment: .trailing, spacing: 2) {
                     Text(package.storeProduct.localizedPriceString)
                         .font(.system(size: 16, weight: .semibold))
-                        .foregroundColor(.white)
+                        .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                     if let savings {
                         Text(String(format: NSLocalizedString("paywall_savings_format", comment: ""), savings))
                             .font(.system(size: 11, weight: .semibold))
@@ -249,14 +247,15 @@ struct CustomPaywallView: View {
             .padding(16)
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(Color.white.opacity(isSelected ? 0.08 : 0.04))
+                    .fill(MornDashColors.paywallPlanFill(colorScheme, selected: isSelected))
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
                             .strokeBorder(
-                                isSelected ? Color.orange.opacity(0.7) : Color.white.opacity(0.08),
+                                MornDashColors.paywallPlanStroke(colorScheme, selected: isSelected),
                                 lineWidth: isSelected ? 1.5 : 1
                             )
                     )
+                    .mornDashCardShadow(colorScheme)
             )
         }
         .buttonStyle(.plain)
@@ -315,11 +314,11 @@ struct CustomPaywallView: View {
                 Button(action: restore) {
                     HStack(spacing: 6) {
                         if isRestoring {
-                            ProgressView().tint(.white.opacity(0.7))
+                            ProgressView().tint(MornDashColors.labelSecondary(colorScheme))
                         }
                         Text("settings_restore_purchase")
                             .font(.system(size: 13, weight: .medium))
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     }
                 }
                 .disabled(isRestoring)
@@ -330,7 +329,7 @@ struct CustomPaywallView: View {
         .padding(.bottom, 18)
         .background(
             LinearGradient(
-                colors: [Color.black.opacity(0), Color.black.opacity(0.85), Color.black],
+                colors: MornDashColors.paywallFooterGradientColors(colorScheme),
                 startPoint: .top,
                 endPoint: .bottom
             )
@@ -353,16 +352,16 @@ struct CustomPaywallView: View {
             Link(destination: RevenueCatConfig.termsOfServiceURL) {
                 Text("paywall_terms")
                     .font(.system(size: 11))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     .underline()
             }
             Text("·")
                 .font(.system(size: 11))
-                .foregroundColor(.white.opacity(0.3))
+                .foregroundColor(MornDashColors.labelMuted(colorScheme))
             Link(destination: RevenueCatConfig.privacyPolicyURL) {
                 Text("paywall_privacy")
                     .font(.system(size: 11))
-                    .foregroundColor(.white.opacity(0.5))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     .underline()
             }
         }

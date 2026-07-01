@@ -190,6 +190,95 @@ enum MornDashColors {
     static func periodPillSelectedText(_ scheme: ColorScheme) -> Color {
         scheme == .dark ? .black : lightSurface
     }
+
+    // MARK: - Onboarding / celebration / paywall
+
+    static func onboardingGradientColors(_ scheme: ColorScheme) -> [Color] {
+        if scheme == .dark {
+            return [Color.black, Color(red: 0.08, green: 0.08, blue: 0.18)]
+        }
+        return [
+            Color(red: 0.99, green: 0.97, blue: 0.94),
+            Color(red: 0.98, green: 0.94, blue: 0.88),
+        ]
+    }
+
+    static func onboardingProgressActive(_ scheme: ColorScheme) -> Color {
+        scheme == .dark ? .white : .orange
+    }
+
+    static func onboardingProgressInactive(_ scheme: ColorScheme) -> Color {
+        scheme == .dark ? Color.white.opacity(0.18) : lightBorder
+    }
+
+    static func onboardingPrimaryButtonFill(_ scheme: ColorScheme, enabled: Bool) -> Color {
+        if !enabled {
+            return scheme == .dark ? Color.white.opacity(0.3) : lightBorder
+        }
+        return scheme == .dark ? .white : .orange
+    }
+
+    static func onboardingPrimaryButtonText(_ scheme: ColorScheme) -> Color {
+        scheme == .dark ? .black : .white
+    }
+
+    static func accentCardGradientEnd(_ scheme: ColorScheme) -> Color {
+        scheme == .dark ? Color.white.opacity(0.04) : lightSurface
+    }
+
+    static func iconGradientLeading(_ scheme: ColorScheme) -> Color {
+        scheme == .dark ? .white : lightInk
+    }
+
+    static func paywallGradientColors(_ scheme: ColorScheme) -> [Color] {
+        if scheme == .dark {
+            return [Color(red: 0.10, green: 0.06, blue: 0.02), .black]
+        }
+        return [
+            Color(red: 1.0, green: 0.97, blue: 0.92),
+            Color(red: 0.98, green: 0.96, blue: 0.93),
+        ]
+    }
+
+    static func paywallFooterGradientColors(_ scheme: ColorScheme) -> [Color] {
+        if scheme == .dark {
+            return [Color.black.opacity(0), Color.black.opacity(0.85), .black]
+        }
+        return [
+            lightCanvas.opacity(0),
+            lightCanvas.opacity(0.92),
+            lightCanvas,
+        ]
+    }
+
+    static func celebrationBackdrop(_ scheme: ColorScheme) -> Color {
+        scheme == .dark ? .black : lightCanvas
+    }
+
+    static func modalScrim(_ scheme: ColorScheme, opacity: Double = 0.45) -> Color {
+        if scheme == .dark {
+            return Color.black.opacity(opacity)
+        }
+        return lightInk.opacity(opacity * 0.35)
+    }
+
+    static func compactToastBackground(_ scheme: ColorScheme) -> Color {
+        scheme == .dark ? Color(white: 0.12) : lightSurface
+    }
+
+    static func paywallPlanFill(_ scheme: ColorScheme, selected: Bool) -> Color {
+        if scheme == .dark {
+            return Color.white.opacity(selected ? 0.08 : 0.04)
+        }
+        return selected ? Color.orange.opacity(0.08) : lightSurface
+    }
+
+    static func paywallPlanStroke(_ scheme: ColorScheme, selected: Bool) -> Color {
+        if scheme == .dark {
+            return selected ? Color.orange.opacity(0.7) : Color.white.opacity(0.08)
+        }
+        return selected ? Color.orange.opacity(0.55) : lightBorder
+    }
 }
 
 extension View {

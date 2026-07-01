@@ -17,6 +17,7 @@ struct RoutineCompleteCelebrationView: View {
     let streak: Int
     let style: RoutineCelebrationStyle
     let onDismiss: () -> Void
+    @Environment(\.colorScheme) private var colorScheme
 
     @State private var phase: AnimationPhase = .initial
     @State private var ringPulse = false
@@ -44,7 +45,6 @@ struct RoutineCompleteCelebrationView: View {
                 compactCelebration
             }
         }
-        .preferredColorScheme(.dark)
         .onAppear {
             switch style {
             case .full:
@@ -62,7 +62,7 @@ struct RoutineCompleteCelebrationView: View {
             fullBackdrop
             CelebrationSparkleField(
                 seed: sparkleSeed,
-                colors: [accentGreen, accentYellow, accentOrange, .white],
+                colors: [accentGreen, accentYellow, accentOrange, MornDashColors.iconGradientLeading(colorScheme)],
                 active: phase != .initial,
                 count: 28
             )
@@ -72,10 +72,10 @@ struct RoutineCompleteCelebrationView: View {
 
     private var fullBackdrop: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
+            MornDashColors.celebrationBackdrop(colorScheme).ignoresSafeArea()
 
             RadialGradient(
-                colors: [accentGreen.opacity(phase == .initial ? 0.0 : 0.45), .clear],
+                colors: [accentGreen.opacity(phase == .initial ? 0.0 : (colorScheme == .dark ? 0.45 : 0.32)), .clear],
                 center: .center,
                 startRadius: 0,
                 endRadius: phase == .initial ? 60 : 480
@@ -84,7 +84,7 @@ struct RoutineCompleteCelebrationView: View {
             .animation(.easeOut(duration: 1.6), value: phase)
 
             RadialGradient(
-                colors: [accentOrange.opacity(phase == .initial ? 0.0 : 0.2), .clear],
+                colors: [accentOrange.opacity(phase == .initial ? 0.0 : (colorScheme == .dark ? 0.2 : 0.16)), .clear],
                 center: UnitPoint(x: 0.5, y: 0.35),
                 startRadius: 40,
                 endRadius: 500
@@ -143,7 +143,7 @@ struct RoutineCompleteCelebrationView: View {
                     .font(.system(size: 72, weight: .regular))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [.white, accentGreen, accentYellow],
+                            colors: [MornDashColors.iconGradientLeading(colorScheme), accentGreen, accentYellow],
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -159,13 +159,13 @@ struct RoutineCompleteCelebrationView: View {
                 Text("routine_celebration_title")
                     .font(.system(size: 30, weight: .bold, design: .rounded))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
 
                 Text("routine_celebration_message")
                     .font(.system(size: 15, weight: .medium))
                     .multilineTextAlignment(.center)
                     .lineSpacing(4)
-                    .foregroundColor(.white.opacity(0.68))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
 
                 if streak > 0 {
                     streakPill
@@ -209,8 +209,9 @@ struct RoutineCompleteCelebrationView: View {
 
     private var compactCelebration: some View {
         ZStack {
-            Color.black.opacity(compactVisible ? 0.45 : 0)
+            MornDashColors.modalScrim(colorScheme)
                 .ignoresSafeArea()
+                .opacity(compactVisible ? 1 : 0)
                 .animation(.easeOut(duration: 0.25), value: compactVisible)
                 .onTapGesture { dismissCompact() }
 
@@ -226,7 +227,7 @@ struct RoutineCompleteCelebrationView: View {
                     VStack(alignment: .leading, spacing: 4) {
                         Text("routine_celebration_compact_title")
                             .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(.white)
+                            .foregroundColor(MornDashColors.labelPrimary(colorScheme))
 
                         if streak > 0 {
                             HStack(spacing: 5) {
@@ -235,7 +236,7 @@ struct RoutineCompleteCelebrationView: View {
                                     .foregroundStyle(.orange)
                                 Text(String(format: NSLocalizedString("streak_days_format", comment: ""), streak))
                                     .font(.system(size: 13, weight: .medium))
-                                    .foregroundColor(.white.opacity(0.75))
+                                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                             }
                         }
                     }
@@ -246,11 +247,12 @@ struct RoutineCompleteCelebrationView: View {
                 .padding(.vertical, 18)
                 .background(
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
-                        .fill(Color(white: 0.12))
+                        .fill(MornDashColors.compactToastBackground(colorScheme))
                         .overlay(
                             RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .strokeBorder(accentGreen.opacity(0.25), lineWidth: 1)
+                                .strokeBorder(accentGreen.opacity(colorScheme == .dark ? 0.25 : 0.35), lineWidth: 1)
                         )
+                        .mornDashCardShadow(colorScheme)
                 )
                 .padding(.horizontal, 20)
                 .padding(.bottom, 36)
@@ -273,11 +275,11 @@ struct RoutineCompleteCelebrationView: View {
                 )
             Text(String(format: NSLocalizedString("streak_days_format", comment: ""), streak))
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.white.opacity(0.85))
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.85))
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 7)
-        .background(Capsule().fill(Color.white.opacity(0.08)))
+        .background(Capsule().fill(MornDashColors.fieldBackground(colorScheme)))
         .padding(.top, 6)
     }
 

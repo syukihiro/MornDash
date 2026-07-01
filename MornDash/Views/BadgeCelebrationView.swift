@@ -4,6 +4,7 @@ struct BadgeCelebrationView: View {
     let badge: Badge
     let streak: Int
     let onDismiss: () -> Void
+    @Environment(\.colorScheme) private var colorScheme
 
     @State private var phase: AnimationPhase = .initial
     @State private var iconPulse = false
@@ -22,7 +23,6 @@ struct BadgeCelebrationView: View {
             sparkles
             content
         }
-        .preferredColorScheme(.dark)
         .onAppear { runIntro() }
     }
 
@@ -30,10 +30,10 @@ struct BadgeCelebrationView: View {
 
     private var backdrop: some View {
         ZStack {
-            Color.black.ignoresSafeArea()
+            MornDashColors.celebrationBackdrop(colorScheme).ignoresSafeArea()
 
             RadialGradient(
-                colors: [badge.color.opacity(phase == .initial ? 0.0 : 0.55), .clear],
+                colors: [badge.color.opacity(phase == .initial ? 0.0 : (colorScheme == .dark ? 0.55 : 0.38)), .clear],
                 center: .center,
                 startRadius: 0,
                 endRadius: phase == .initial ? 60 : 480
@@ -42,7 +42,7 @@ struct BadgeCelebrationView: View {
             .animation(.easeOut(duration: 1.6), value: phase)
 
             RadialGradient(
-                colors: [badge.color.opacity(phase == .initial ? 0.0 : 0.18), .clear],
+                colors: [badge.color.opacity(phase == .initial ? 0.0 : (colorScheme == .dark ? 0.18 : 0.12)), .clear],
                 center: .center,
                 startRadius: 120,
                 endRadius: 800
@@ -103,7 +103,7 @@ struct BadgeCelebrationView: View {
                     .font(.system(size: 76, weight: .regular))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [.white, badge.color],
+                            colors: [MornDashColors.iconGradientLeading(colorScheme), badge.color],
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -119,12 +119,12 @@ struct BadgeCelebrationView: View {
                 Text(LocalizedStringKey(badge.labelKey))
                     .font(.system(size: 28, weight: .semibold, design: .rounded))
                     .multilineTextAlignment(.center)
-                    .foregroundColor(.white)
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
 
                 Text(streakLabel)
                     .font(.system(size: 14, weight: .medium))
                     .tracking(2)
-                    .foregroundColor(.white.opacity(0.65))
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
             }
             .padding(.horizontal, 40)
             .opacity(phase == .initial ? 0 : 1)
