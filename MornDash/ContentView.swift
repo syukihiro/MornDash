@@ -94,6 +94,7 @@ struct ContentView: View {
             RoutineCompleteCelebrationView(
                 streak: viewModel.streakStore.currentStreak,
                 style: viewModel.routineCelebrationStyle,
+                badge: viewModel.celebrationBadge,
                 onDismiss: { viewModel.dismissRoutineCompleteCelebration() }
             )
         }

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CompletedHomeView: View {
     @ObservedObject var viewModel: HomeViewModel
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.accentTheme) private var accentTheme
 
     @State private var appeared = false
@@ -14,6 +15,16 @@ struct CompletedHomeView: View {
     private let accentGold = Color(red: 1.0, green: 0.88, blue: 0.55)
 
     private var streak: Int { viewModel.streakStore.currentStreak }
+
+    private var celebrationPrimary: Color {
+        colorScheme == .dark ? accentGreen : accentTheme.idleColor
+    }
+
+    private var celebrationGradient: [Color] {
+        colorScheme == .dark
+            ? [accentGreen, accentGold]
+            : accentTheme.idleGradientColors
+    }
 
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -55,8 +66,8 @@ struct CompletedHomeView: View {
         ZStack {
             RadialGradient(
                 colors: [
-                    heroAccent.opacity(glowBreath ? 0.14 : 0.08),
-                    heroAccent.opacity(0.04),
+                    heroAccent.opacity(glowBreath ? (colorScheme == .dark ? 0.14 : 0.22) : (colorScheme == .dark ? 0.08 : 0.12)),
+                    heroAccent.opacity(colorScheme == .dark ? 0.04 : 0.08),
                     .clear,
                 ],
                 center: UnitPoint(x: 0.5, y: 0.36),
@@ -66,7 +77,7 @@ struct CompletedHomeView: View {
             .animation(.easeInOut(duration: 3.2).repeatForever(autoreverses: true), value: glowBreath)
 
             RadialGradient(
-                colors: [accentGold.opacity(0.05), accentGold.opacity(0.015), .clear],
+                colors: [accentGold.opacity(colorScheme == .dark ? 0.05 : 0.12), accentGold.opacity(colorScheme == .dark ? 0.015 : 0.04), .clear],
                 center: UnitPoint(x: 0.5, y: 0.30),
                 startRadius: 0,
                 endRadius: 360
@@ -74,7 +85,9 @@ struct CompletedHomeView: View {
 
             AmbientFloatingSparkles(
                 seed: sparkleSeed,
-                colors: [heroAccent, accentGold, accentTheme.idleColor, .white],
+                colors: colorScheme == .dark
+                    ? [heroAccent, accentGold, accentTheme.idleColor, .white]
+                    : [heroAccent, accentGold, accentTheme.idleColor, accentTheme.idleColor.opacity(0.45)],
                 count: 14
             )
             .frame(height: 480)
@@ -142,7 +155,7 @@ struct CompletedHomeView: View {
                 }
                 .foregroundStyle(
                     LinearGradient(
-                        colors: [accentGreen, accentGold],
+                        colors: celebrationGradient,
                         startPoint: .leading,
                         endPoint: .trailing
                     )
@@ -160,8 +173,8 @@ struct CompletedHomeView: View {
 
                 Text("main_completed_streak_unit")
                     .font(.system(size: 18, weight: .semibold, design: .rounded))
-                    .tracking(6)
-                    .foregroundColor(.white.opacity(0.55))
+                    .tracking(colorScheme == .dark ? 6 : 4)
+                    .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                     .opacity(appeared ? 1 : 0)
                     .offset(y: appeared ? 0 : 8)
             }
@@ -171,7 +184,19 @@ struct CompletedHomeView: View {
     }
 
     private var streakNumberGradient: LinearGradient {
-        LinearGradient(
+        if colorScheme == .light {
+            return LinearGradient(
+                colors: streak >= 30
+                    ? [accentTheme.idleColor, accentGold]
+                    : streak >= 7
+                        ? [Color(red: 0.45, green: 0.24, blue: 0.05), accentTheme.idleColor]
+                        : [MornDashColors.labelPrimary(colorScheme), accentTheme.idleColor.opacity(0.9)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+        }
+
+        return LinearGradient(
             colors: streak >= 30
                 ? [.white, accentGold.opacity(0.9)]
                 : streak >= 7
@@ -183,7 +208,9 @@ struct CompletedHomeView: View {
     }
 
     private var heroAccent: Color {
-        streak >= 30 ? accentGold : streak >= 7 ? accentTheme.idleColor.opacity(0.85) : accentGreen
+        if streak >= 30 { return accentGold }
+        if streak >= 7 { return colorScheme == .dark ? accentTheme.idleColor.opacity(0.85) : accentTheme.idleColor }
+        return celebrationPrimary
     }
 
     // MARK: - Week strip
@@ -201,23 +228,27 @@ struct CompletedHomeView: View {
                                 Circle()
                                     .fill(
                                         LinearGradient(
-                                            colors: [accentGreen.opacity(0.85), accentGold.opacity(0.6)],
+                                            colors: celebrationGradient.map { $0.opacity(colorScheme == .dark ? 1.0 : 0.92) },
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing
                                         )
                                     )
                                     .frame(width: 28, height: 28)
-                                    .shadow(color: accentGreen.opacity(0.25), radius: 8)
+                                    .shadow(color: celebrationPrimary.opacity(colorScheme == .dark ? 0.25 : 0.22), radius: 8)
                             } else {
                                 Circle()
-                                    .fill(Color.white.opacity(0.06))
+                                    .fill(MornDashColors.progressTrack(colorScheme))
                                     .frame(width: 28, height: 28)
+                                    .overlay(
+                                        Circle()
+                                            .strokeBorder(MornDashColors.hairline(colorScheme, active: false), lineWidth: 1)
+                                    )
                             }
 
                             if day.completed {
                                 Image(systemName: "checkmark")
                                     .font(.system(size: 10, weight: .bold))
-                                    .foregroundColor(.white.opacity(0.85))
+                                    .foregroundColor(colorScheme == .dark ? .white.opacity(0.85) : .white)
                             }
                         }
                         .scaleEffect(appeared ? 1 : 0.5)
@@ -229,7 +260,7 @@ struct CompletedHomeView: View {
 
                         Text(weekdayLabel(for: day.date))
                             .font(.system(size: 9, weight: .medium))
-                            .foregroundColor(.white.opacity(0.35))
+                            .foregroundColor(MornDashColors.labelMuted(colorScheme))
                     }
                     .frame(maxWidth: .infinity)
                 }
@@ -237,19 +268,18 @@ struct CompletedHomeView: View {
 
             Text(String(format: NSLocalizedString("main_completed_week_progress", comment: ""), completedCount))
                 .font(.system(size: 12, weight: .medium))
-                .foregroundColor(.white.opacity(0.45))
+                .foregroundColor(MornDashColors.labelSecondary(colorScheme))
         }
         .padding(.vertical, 16)
         .padding(.horizontal, 12)
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(
-                    LinearGradient(
-                        colors: [Color.white.opacity(0.05), Color.white.opacity(0.02)],
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
+                .fill(MornDashColors.cardFill(colorScheme))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .strokeBorder(MornDashColors.hairline(colorScheme, active: false), lineWidth: 1)
                 )
+                .mornDashCardShadow(colorScheme)
         )
         .opacity(appeared ? 1 : 0)
         .animation(.easeOut(duration: 0.6).delay(0.45), value: appeared)
@@ -270,11 +300,11 @@ struct CompletedHomeView: View {
                 HStack(spacing: 10) {
                     Image(systemName: "checkmark.circle.fill")
                         .font(.system(size: 18))
-                        .foregroundColor(accentGreen.opacity(0.65))
+                        .foregroundColor(celebrationPrimary.opacity(colorScheme == .dark ? 0.65 : 0.9))
                     Text(task.title)
                         .font(.system(size: 15, weight: .medium))
-                        .foregroundColor(.white.opacity(0.55))
-                        .strikethrough(true, color: .white.opacity(0.3))
+                        .foregroundColor(MornDashColors.labelSecondary(colorScheme))
+                        .strikethrough(true, color: MornDashColors.labelMuted(colorScheme))
                 }
             }
         }
@@ -282,7 +312,12 @@ struct CompletedHomeView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(
             RoundedRectangle(cornerRadius: 18)
-                .fill(Color.white.opacity(0.035))
+                .fill(MornDashColors.cardFill(colorScheme))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18)
+                        .strokeBorder(MornDashColors.hairline(colorScheme, active: false), lineWidth: 1)
+                )
+                .mornDashCardShadow(colorScheme)
         )
         .opacity(appeared ? 1 : 0)
         .offset(y: appeared ? 0 : 20)
@@ -298,7 +333,7 @@ struct CompletedHomeView: View {
                 .foregroundColor(accentTheme.idleColor.opacity(0.7))
             Text(String(format: NSLocalizedString("main_completed_next_block", comment: ""), startTimeString))
                 .font(.system(size: 13, weight: .medium))
-                .foregroundColor(.white.opacity(0.35))
+                .foregroundColor(MornDashColors.labelMuted(colorScheme))
         }
         .opacity(appeared ? 1 : 0)
         .animation(.easeOut(duration: 0.5).delay(0.7), value: appeared)
@@ -338,6 +373,7 @@ private struct AmbientFloatingSparkles: View {
     let seed: Int
     let colors: [Color]
     let count: Int
+    @Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         GeometryReader { proxy in
@@ -347,7 +383,8 @@ private struct AmbientFloatingSparkles: View {
                         index: i,
                         seed: seed,
                         canvas: proxy.size,
-                        color: colors[i % colors.count]
+                        color: colors[i % colors.count],
+                        colorScheme: colorScheme
                     )
                 }
             }
@@ -361,6 +398,7 @@ private struct AmbientSparkle: View {
     let seed: Int
     let canvas: CGSize
     let color: Color
+    let colorScheme: ColorScheme
 
     @State private var phase = false
 
@@ -378,7 +416,7 @@ private struct AmbientSparkle: View {
             .frame(width: size, height: size)
             .shadow(color: color.opacity(0.3), radius: 3)
             .position(x: x, y: y)
-            .opacity(phase ? 0.08 : 0.35)
+            .opacity(phase ? 0.08 : (colorScheme == .dark ? 0.35 : 0.55))
             .offset(y: phase ? -driftY : driftY)
             .scaleEffect(phase ? 0.6 : 1.0)
             .onAppear {

@@ -52,11 +52,15 @@ struct StatsStreakSummaryView: View {
                 Image(systemName: streak > 0 ? "flame.fill" : "flame")
                     .font(.system(size: 24, weight: .light))
                     .foregroundStyle(
-                        LinearGradient(
-                            colors: streak > 0 ? accentTheme.emphasisGradientColors : MornDashColors.flameInactiveGradient(colorScheme),
-                            startPoint: .top,
-                            endPoint: .bottom
-                        )
+                        streak > 0
+                            ? AnyShapeStyle(MornDashColors.streakFlame)
+                            : AnyShapeStyle(
+                                LinearGradient(
+                                    colors: MornDashColors.flameInactiveGradient(colorScheme),
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
                     )
                     .offset(y: -1)
 

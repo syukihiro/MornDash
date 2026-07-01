@@ -16,8 +16,10 @@ class HomeViewModel: ObservableObject {
     @Published var pendingBadge: Badge?
     @Published var showRoutineCompleteCelebration = false
     @Published var routineCelebrationStyle: RoutineCelebrationStyle = .full
+    @Published var celebrationBadge: Badge?
 
     private var pendingBadgeQueue: [Badge] = []
+    private var badgesUnlockedThisCompletion: [Badge] = []
     private var cancellables = Set<AnyCancellable>()
 
     init() {
@@ -128,9 +130,8 @@ class HomeViewModel: ObservableObject {
                     isFirstCompletionEver: streakStore.totalCompleted == 1
                 )
                 let newlyUnlocked = streakStore.newlyUnlockedBadges()
-                if !newlyUnlocked.isEmpty {
-                    pendingBadgeQueue.append(contentsOf: newlyUnlocked)
-                }
+                badgesUnlockedThisCompletion = newlyUnlocked
+                celebrationBadge = newlyUnlocked.first
                 showRoutineCompleteCelebration = true
             }
             blockManager.clearShield()
@@ -139,6 +140,11 @@ class HomeViewModel: ObservableObject {
 
     func dismissRoutineCompleteCelebration() {
         showRoutineCompleteCelebration = false
+        for badge in badgesUnlockedThisCompletion {
+            streakStore.markCelebrated(threshold: badge.threshold)
+        }
+        badgesUnlockedThisCompletion = []
+        celebrationBadge = nil
         presentNextBadgeIfNeeded()
     }
 

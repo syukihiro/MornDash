@@ -115,7 +115,7 @@
 "badge_30day" = "1ヶ月\n達成";
 "badge_100day" = "100日\n達成";
 "badge_365day" = "1年\n達成";
-"badge_celebration_eyebrow" = "BADGE UNLOCKED";
+"badge_celebration_eyebrow" = "バッジ獲得";
 "badge_celebration_continue" = "続ける";
 
 /* BlockingView */

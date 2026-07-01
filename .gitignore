@@ -36,3 +36,8 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+
+# App Store Connect API キー(機密 — 絶対にコミットしない)
+fastlane/.keys/*.p8
+fastlane/.keys/*.json
+fastlane/.env

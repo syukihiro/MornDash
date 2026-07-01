@@ -119,13 +119,7 @@ struct MainView: View {
     private var streakPill: some View {
         HStack(spacing: 6) {
             Image(systemName: "flame.fill")
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: accentTheme.emphasisGradientColors,
-                        startPoint: .top,
-                        endPoint: .bottom
-                    )
-                )
+                .foregroundStyle(MornDashColors.streakFlame)
             Text(String(format: NSLocalizedString("streak_days_format", comment: ""), viewModel.streakStore.currentStreak))
                 .foregroundColor(MornDashColors.primaryText(colorScheme, opacity: 0.9))
         }
