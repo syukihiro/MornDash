@@ -13,7 +13,7 @@ enum RevenueCatConfig {
     static let freeStatsHistoryDays = 7
     static let freeBlockedAppsLimit = 2
 
-    // TODO: Replace with the project's actual privacy policy URL before App Store submission.
-    static let termsOfServiceURL = URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!
-    static let privacyPolicyURL = URL(string: "https://www.apple.com/legal/privacy/")!
+    static let termsOfServiceURL = URL(string: "https://nostalgic-calendula-e60.notion.site/MornDash-Terms-of-Service-390484266af481a28e07de0a9f4ac201")!
+    static let privacyPolicyURL = URL(string: "https://nostalgic-calendula-e60.notion.site/MornDash-Privacy-Policy-390484266af4816e9185eeddb06fd2e0")!
+    static let commercialTransactionsURL = URL(string: "https://nostalgic-calendula-e60.notion.site/MornDash-Notation-based-on-the-Act-on-Specified-Commercial-Transactions-390484266af48188bab6fc7ada901e14")!
 }

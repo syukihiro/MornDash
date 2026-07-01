@@ -266,6 +266,8 @@
 "settings_card_free_subtitle" = "More freedom for the mornings you want.";
 "settings_card_pro_title" = "Pro Member";
 "settings_card_pro_subtitle" = "Thanks for supporting MornDash.";
+"settings_legal_section" = "Legal";
+"settings_commercial_transactions" = "Specified Commercial Transactions";
 
 /* Custom paywall */
 "paywall_title" = "MornDash Pro";
@@ -282,6 +284,7 @@
 "paywall_cta_free_trial" = "Start Free Trial";
 "paywall_terms" = "Terms of Use";
 "paywall_privacy" = "Privacy Policy";
+"paywall_commercial" = "Commercial Transactions";
 "paywall_offerings_unavailable" = "Couldn't load plans. Check your connection.";
 "paywall_retry" = "Try Again";
 "paywall_error_title" = "Something went wrong";

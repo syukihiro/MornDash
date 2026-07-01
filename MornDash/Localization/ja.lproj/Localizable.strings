@@ -266,6 +266,8 @@
 "settings_card_free_subtitle" = "もっと自由に、もっと自分らしく。";
 "settings_card_pro_title" = "Pro メンバー";
 "settings_card_pro_subtitle" = "ご利用ありがとうございます。";
+"settings_legal_section" = "法的情報";
+"settings_commercial_transactions" = "特定商取引法に基づく表記";
 
 /* Custom paywall */
 "paywall_title" = "MornDash Pro";
@@ -282,6 +284,7 @@
 "paywall_cta_free_trial" = "無料体験を始める";
 "paywall_terms" = "利用規約";
 "paywall_privacy" = "プライバシーポリシー";
+"paywall_commercial" = "特商法表記";
 "paywall_offerings_unavailable" = "プランを読み込めませんでした。ネットワークをご確認ください。";
 "paywall_retry" = "再試行";
 "paywall_error_title" = "エラー";

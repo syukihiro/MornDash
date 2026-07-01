@@ -47,6 +47,8 @@ struct SettingsView: View {
                 appearanceSection
 
                 colorThemeSection
+
+                legalSection
             }
             .mornDashScreenBackground()
             .navigationTitle(Text("settings_title"))
@@ -189,6 +191,31 @@ struct SettingsView: View {
         }
         .buttonStyle(.plain)
         .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+
+    // MARK: - Legal
+
+    private var legalSection: some View {
+        Section {
+            legalLinkRow(titleKey: "paywall_terms", url: RevenueCatConfig.termsOfServiceURL)
+            legalLinkRow(titleKey: "paywall_privacy", url: RevenueCatConfig.privacyPolicyURL)
+            legalLinkRow(titleKey: "settings_commercial_transactions", url: RevenueCatConfig.commercialTransactionsURL)
+        } header: {
+            Text("settings_legal_section")
+        }
+    }
+
+    private func legalLinkRow(titleKey: LocalizedStringKey, url: URL) -> some View {
+        Link(destination: url) {
+            HStack {
+                Text(titleKey)
+                Spacer()
+                Image(systemName: "arrow.up.right")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+        }
+        .foregroundColor(.primary)
     }
 
     // MARK: - Subscription section

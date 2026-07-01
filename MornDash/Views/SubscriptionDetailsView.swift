@@ -194,20 +194,27 @@ struct SubscriptionDetailsView: View {
                 bulletText("subscription_terms_trial")
             }
 
-            HStack(spacing: 14) {
-                Link(destination: RevenueCatConfig.termsOfServiceURL) {
-                    Text("paywall_terms")
+            VStack(alignment: .leading, spacing: 6) {
+                HStack(spacing: 14) {
+                    Link(destination: RevenueCatConfig.termsOfServiceURL) {
+                        Text("paywall_terms")
+                            .font(.system(size: 11))
+                            .foregroundColor(accentTheme.idleColor.opacity(0.8))
+                            .underline()
+                    }
+                    Link(destination: RevenueCatConfig.privacyPolicyURL) {
+                        Text("paywall_privacy")
+                            .font(.system(size: 11))
+                            .foregroundColor(accentTheme.idleColor.opacity(0.8))
+                            .underline()
+                    }
+                }
+                Link(destination: RevenueCatConfig.commercialTransactionsURL) {
+                    Text("paywall_commercial")
                         .font(.system(size: 11))
                         .foregroundColor(accentTheme.idleColor.opacity(0.8))
                         .underline()
                 }
-                Link(destination: RevenueCatConfig.privacyPolicyURL) {
-                    Text("paywall_privacy")
-                        .font(.system(size: 11))
-                        .foregroundColor(accentTheme.idleColor.opacity(0.8))
-                        .underline()
-                }
-                Spacer()
             }
             .padding(.top, 6)
         }

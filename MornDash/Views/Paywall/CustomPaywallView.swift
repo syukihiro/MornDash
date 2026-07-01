@@ -350,18 +350,26 @@ struct CustomPaywallView: View {
     // MARK: - Legal
 
     private var legalLinks: some View {
-        HStack(spacing: 14) {
-            Link(destination: RevenueCatConfig.termsOfServiceURL) {
-                Text("paywall_terms")
+        VStack(spacing: 6) {
+            HStack(spacing: 14) {
+                Link(destination: RevenueCatConfig.termsOfServiceURL) {
+                    Text("paywall_terms")
+                        .font(.system(size: 11))
+                        .foregroundColor(MornDashColors.labelTertiary(colorScheme))
+                        .underline()
+                }
+                Text("·")
                     .font(.system(size: 11))
-                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
-                    .underline()
+                    .foregroundColor(MornDashColors.labelMuted(colorScheme))
+                Link(destination: RevenueCatConfig.privacyPolicyURL) {
+                    Text("paywall_privacy")
+                        .font(.system(size: 11))
+                        .foregroundColor(MornDashColors.labelTertiary(colorScheme))
+                        .underline()
+                }
             }
-            Text("·")
-                .font(.system(size: 11))
-                .foregroundColor(MornDashColors.labelMuted(colorScheme))
-            Link(destination: RevenueCatConfig.privacyPolicyURL) {
-                Text("paywall_privacy")
+            Link(destination: RevenueCatConfig.commercialTransactionsURL) {
+                Text("paywall_commercial")
                     .font(.system(size: 11))
                     .foregroundColor(MornDashColors.labelTertiary(colorScheme))
                     .underline()
