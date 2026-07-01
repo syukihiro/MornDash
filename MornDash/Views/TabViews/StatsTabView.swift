@@ -13,6 +13,7 @@ struct StatsTabView: View {
     @ObservedObject var blockManager: BlockManager
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     @State private var showPaywall = false
     @State private var taskBreakdownPeriod: TaskHistoryStore.Period = .currentMonth
@@ -58,7 +59,7 @@ struct StatsTabView: View {
     private var statsProSection: some View {
         VStack(spacing: 16) {
             if subscriptionManager.isPro {
-                StatsSectionHeader(icon: "sparkles", tint: .orange.opacity(0.85), titleKey: "stats_pro_section_title")
+                StatsSectionHeader(icon: "sparkles", tint: accentTheme.idleColor.opacity(0.85), titleKey: "stats_pro_section_title")
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 4)
 
@@ -82,7 +83,7 @@ struct StatsTabView: View {
         let pastYear = viewModel.streakStore.averageBlockedSeconds(.pastYear)
 
         return VStack(alignment: .leading, spacing: 12) {
-            StatsSectionHeader(icon: "hourglass", tint: .indigo.opacity(0.85), titleKey: "stats_blocked_duration")
+            StatsSectionHeader(icon: "hourglass", tint: accentTheme.blockingColor.opacity(0.85), titleKey: "stats_blocked_duration")
 
             HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Text(StatsFormatters.duration(thisWeek))
@@ -110,7 +111,7 @@ struct StatsTabView: View {
                     .padding(.top, 2)
             }
         }
-        .statsSectionCard(borderColor: .indigo.opacity(colorScheme == .dark ? 0.12 : 0.18))
+        .statsSectionCard(borderColor: accentTheme.blockingColor.opacity(colorScheme == .dark ? 0.12 : 0.18))
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
@@ -135,7 +136,7 @@ struct StatsTabView: View {
 
     private var comparisonReportSection: some View {
         VStack(alignment: .leading, spacing: 14) {
-            StatsSectionHeader(icon: "chart.bar.xaxis", tint: .indigo.opacity(0.85), titleKey: "stats_blocked_compare")
+            StatsSectionHeader(icon: "chart.bar.xaxis", tint: accentTheme.blockingColor.opacity(0.85), titleKey: "stats_blocked_compare")
 
             comparisonRow(
                 current: viewModel.streakStore.averageBlockedSeconds(.currentWeek),
@@ -209,7 +210,7 @@ struct StatsTabView: View {
         let total = store.count(.total)
 
         return VStack(alignment: .leading, spacing: 12) {
-            StatsSectionHeader(icon: "exclamationmark.triangle.fill", tint: .orange.opacity(0.85), titleKey: "stats_emergency_unlocks")
+            StatsSectionHeader(icon: "exclamationmark.triangle.fill", tint: accentTheme.idleColor.opacity(0.85), titleKey: "stats_emergency_unlocks")
 
             HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Text("\(thisWeek)")
@@ -250,7 +251,7 @@ struct StatsTabView: View {
                     .padding(.top, 2)
             }
         }
-        .statsSectionCard(borderColor: .orange.opacity(colorScheme == .dark ? 0.12 : 0.22))
+        .statsSectionCard(borderColor: accentTheme.idleColor.opacity(colorScheme == .dark ? 0.12 : 0.22))
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
@@ -276,7 +277,7 @@ struct StatsTabView: View {
     private var emergencyComparisonReportSection: some View {
         let store = viewModel.emergencyUnlockStore
         return VStack(alignment: .leading, spacing: 14) {
-            StatsSectionHeader(icon: "chart.bar.xaxis", tint: .orange.opacity(0.85), titleKey: "stats_emergency_compare")
+            StatsSectionHeader(icon: "chart.bar.xaxis", tint: accentTheme.idleColor.opacity(0.85), titleKey: "stats_emergency_compare")
 
             emergencyComparisonRow(
                 current: store.count(.currentWeek),

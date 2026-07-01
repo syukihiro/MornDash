@@ -7,6 +7,7 @@ struct WorkoutSessionView: View {
 
     @StateObject private var counter: WorkoutCounterViewModel
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.accentTheme) private var accentTheme
 
     init(task: TaskItem, onComplete: @escaping () -> Void, onCancel: @escaping () -> Void) {
         self.task = task
@@ -85,7 +86,7 @@ struct WorkoutSessionView: View {
             }
             ProgressView(value: progress)
                 .progressViewStyle(.linear)
-                .tint(.indigo)
+                .tint(accentTheme.blockingColor)
                 .frame(maxWidth: 220)
         }
     }
@@ -109,7 +110,7 @@ struct WorkoutSessionView: View {
                 .padding(.horizontal, 40)
             Button("workout_simulator_complete") { handleTargetReached() }
                 .buttonStyle(.borderedProminent)
-                .tint(.indigo)
+                .tint(accentTheme.blockingColor)
         }
     }
 

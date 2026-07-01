@@ -7,6 +7,7 @@ struct MainView: View {
     let colorForState: Color
     let showGlow: Bool
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     private var allTasksCompletedToday: Bool {
         !viewModel.taskStore.tasks.isEmpty && viewModel.taskStore.allCompletedToday
@@ -33,7 +34,7 @@ struct MainView: View {
                         .font(.system(size: 70, weight: .ultraLight))
                         .foregroundStyle(
                             LinearGradient(
-                                colors: [.orange, .yellow],
+                                colors: accentTheme.idleGradientColors,
                                 startPoint: .bottom,
                                 endPoint: .top
                             )
@@ -79,7 +80,7 @@ struct MainView: View {
                                             Text(TaskTimerFormatters.durationLabel(seconds: seconds))
                                         }
                                         .font(.system(size: 11, weight: .semibold))
-                                        .foregroundColor(.indigo.opacity(0.9))
+                                        .foregroundColor(accentTheme.blockingColor.opacity(0.9))
                                     }
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -120,7 +121,7 @@ struct MainView: View {
             Image(systemName: "flame.fill")
                 .foregroundStyle(
                     LinearGradient(
-                        colors: [.orange, .red],
+                        colors: accentTheme.emphasisGradientColors,
                         startPoint: .top,
                         endPoint: .bottom
                     )
@@ -135,7 +136,7 @@ struct MainView: View {
             Capsule().fill(MornDashColors.cardFill(colorScheme))
         )
         .overlay(
-            Capsule().strokeBorder(Color.orange.opacity(0.25), lineWidth: 1)
+            Capsule().strokeBorder(accentTheme.idleColor.opacity(0.25), lineWidth: 1)
         )
     }
 }

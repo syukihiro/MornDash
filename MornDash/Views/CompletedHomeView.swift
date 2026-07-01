@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CompletedHomeView: View {
     @ObservedObject var viewModel: HomeViewModel
+    @Environment(\.accentTheme) private var accentTheme
 
     @State private var appeared = false
     @State private var displayedStreak = 0
@@ -73,7 +74,7 @@ struct CompletedHomeView: View {
 
             AmbientFloatingSparkles(
                 seed: sparkleSeed,
-                colors: [heroAccent, accentGold, .orange, .white],
+                colors: [heroAccent, accentGold, accentTheme.idleColor, .white],
                 count: 14
             )
             .frame(height: 480)
@@ -182,7 +183,7 @@ struct CompletedHomeView: View {
     }
 
     private var heroAccent: Color {
-        streak >= 30 ? accentGold : streak >= 7 ? Color.orange.opacity(0.85) : accentGreen
+        streak >= 30 ? accentGold : streak >= 7 ? accentTheme.idleColor.opacity(0.85) : accentGreen
     }
 
     // MARK: - Week strip
@@ -294,7 +295,7 @@ struct CompletedHomeView: View {
         HStack(spacing: 6) {
             Image(systemName: "sunrise.fill")
                 .font(.system(size: 12))
-                .foregroundColor(.orange.opacity(0.7))
+                .foregroundColor(accentTheme.idleColor.opacity(0.7))
             Text(String(format: NSLocalizedString("main_completed_next_block", comment: ""), startTimeString))
                 .font(.system(size: 13, weight: .medium))
                 .foregroundColor(.white.opacity(0.35))

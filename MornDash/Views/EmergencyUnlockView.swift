@@ -4,6 +4,7 @@ struct EmergencyUnlockView: View {
     @ObservedObject var viewModel: HomeViewModel
     @ObservedObject var blockManager: BlockManager
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.accentTheme) private var accentTheme
 
     var body: some View {
         ZStack {
@@ -30,7 +31,7 @@ struct EmergencyUnlockView: View {
                         .font(.system(size: 64, weight: .light))
                         .foregroundStyle(
                             LinearGradient(
-                                colors: [.orange, .red],
+                                colors: accentTheme.emphasisGradientColors,
                                 startPoint: .top,
                                 endPoint: .bottom
                             )
@@ -62,7 +63,7 @@ struct EmergencyUnlockView: View {
                         .fill(Color.white.opacity(0.05))
                         .overlay(
                             RoundedRectangle(cornerRadius: 16)
-                                .strokeBorder(Color.orange.opacity(0.2), lineWidth: 1)
+                                .strokeBorder(accentTheme.idleColor.opacity(0.2), lineWidth: 1)
                         )
                 )
 
@@ -93,7 +94,7 @@ struct EmergencyUnlockView: View {
         HStack(alignment: .top, spacing: 12) {
             Image(systemName: icon)
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.orange.opacity(0.85))
+                .foregroundColor(accentTheme.idleColor.opacity(0.85))
                 .frame(width: 20)
                 .padding(.top, 2)
             Text(text)

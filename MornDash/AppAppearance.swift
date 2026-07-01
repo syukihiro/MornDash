@@ -2,7 +2,7 @@ import SwiftUI
 import UIKit
 
 enum AppAppearance {
-    static func configure(isDark: Bool) {
+    static func configure(isDark: Bool, accent: UIColor = .systemOrange) {
         let background = isDark ? UIColor.black : UIColor(red: 0.98, green: 0.96, blue: 0.93, alpha: 1)
         let surface = isDark ? UIColor(white: 0.08, alpha: 1) : UIColor.white
         let tabBarBackground = isDark ? UIColor(white: 0.05, alpha: 1) : UIColor.white.withAlphaComponent(0.92)
@@ -23,7 +23,7 @@ enum AppAppearance {
         UINavigationBar.appearance().standardAppearance = navAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navAppearance
         UINavigationBar.appearance().compactAppearance = navAppearance
-        UINavigationBar.appearance().tintColor = .systemOrange
+        UINavigationBar.appearance().tintColor = accent
 
         let tabAppearance = UITabBarAppearance()
         tabAppearance.configureWithOpaqueBackground()
@@ -31,11 +31,14 @@ enum AppAppearance {
         UITabBar.appearance().standardAppearance = tabAppearance
         UITabBar.appearance().scrollEdgeAppearance = tabAppearance
         UITabBar.appearance().unselectedItemTintColor = unselectedTabTint
-        UITabBar.appearance().tintColor = .systemOrange
+        UITabBar.appearance().tintColor = accent
     }
 
-    static func sync(mode: AppearanceMode, systemScheme: ColorScheme) {
-        configure(isDark: mode.resolvesToDark(systemScheme: systemScheme))
+    static func sync(mode: AppearanceMode, systemScheme: ColorScheme, accent: AccentTheme = .default) {
+        configure(
+            isDark: mode.resolvesToDark(systemScheme: systemScheme),
+            accent: accent.uiAccent
+        )
     }
 }
 
@@ -104,12 +107,16 @@ extension View {
 
 private struct MornDashAppearanceSyncModifier: ViewModifier {
     @AppStorage(AppearanceMode.storageKey) private var appearanceModeRaw = AppearanceMode.dark.rawValue
+    @AppStorage(AccentTheme.storageKey) private var accentThemeRaw = AccentTheme.default.rawValue
     @Environment(\.colorScheme) private var colorScheme
+    @EnvironmentObject private var subscriptionManager: SubscriptionManager
 
     func body(content: Content) -> some View {
         content
             .onAppear { syncAppearance() }
             .onChange(of: appearanceModeRaw) { _, _ in syncAppearance() }
+            .onChange(of: accentThemeRaw) { _, _ in syncAppearance() }
+            .onChange(of: subscriptionManager.isPro) { _, _ in syncAppearance() }
             .onChange(of: colorScheme) { _, _ in
                 let mode = AppearanceMode(rawValue: appearanceModeRaw) ?? .dark
                 if mode == .system {
@@ -120,6 +127,7 @@ private struct MornDashAppearanceSyncModifier: ViewModifier {
 
     private func syncAppearance() {
         let mode = AppearanceMode(rawValue: appearanceModeRaw) ?? .dark
-        AppAppearance.sync(mode: mode, systemScheme: colorScheme)
+        let accent = AccentTheme.resolved(storedRaw: accentThemeRaw, isPro: subscriptionManager.isPro)
+        AppAppearance.sync(mode: mode, systemScheme: colorScheme, accent: accent)
     }
 }

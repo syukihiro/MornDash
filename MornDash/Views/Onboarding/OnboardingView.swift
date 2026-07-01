@@ -5,6 +5,7 @@ import ManagedSettings
 
 struct OnboardingView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     @Binding var isCompleted: Bool
     @ObservedObject var viewModel: HomeViewModel
     @ObservedObject var blockManager: BlockManager
@@ -72,7 +73,7 @@ struct OnboardingView: View {
             HStack(spacing: 6) {
                 ForEach(0..<stepCount, id: \.self) { index in
                     Capsule()
-                        .fill(index <= currentStep ? MornDashColors.onboardingProgressActive(colorScheme) : MornDashColors.onboardingProgressInactive(colorScheme))
+                        .fill(index <= currentStep ? MornDashColors.onboardingProgressActive(colorScheme, accent: accentTheme) : MornDashColors.onboardingProgressInactive(colorScheme))
                         .frame(height: 4)
                         .frame(maxWidth: .infinity)
                         .animation(.spring(), value: currentStep)
@@ -96,6 +97,7 @@ struct OnboardingView: View {
 
 private struct PrimaryButton: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     let title: LocalizedStringKey
     var isEnabled: Bool = true
     let action: () -> Void
@@ -107,7 +109,7 @@ private struct PrimaryButton: View {
                 .foregroundColor(MornDashColors.onboardingPrimaryButtonText(colorScheme))
                 .frame(maxWidth: .infinity)
                 .padding()
-                .background(Capsule().fill(MornDashColors.onboardingPrimaryButtonFill(colorScheme, enabled: isEnabled)))
+                .background(Capsule().fill(MornDashColors.onboardingPrimaryButtonFill(colorScheme, enabled: isEnabled, accent: accentTheme)))
         }
         .disabled(!isEnabled)
     }
@@ -117,6 +119,7 @@ private struct PrimaryButton: View {
 
 struct OnboardingProblemView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     var nextAction: () -> Void
     @State private var appeared = false
     @State private var glowPulse = false
@@ -186,7 +189,7 @@ struct OnboardingProblemView: View {
                     .font(.system(size: 52, weight: .thin))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [.indigo, .purple, Color(red: 1, green: 0.45, blue: 0.65)],
+                            colors: [accentTheme.blockingColor, .purple, accentTheme.idleColor],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
@@ -233,7 +236,7 @@ struct OnboardingProblemView: View {
                             LinearGradient(
                                 colors: colorScheme == .dark
                                     ? [.white, Color(red: 0.96, green: 0.94, blue: 1)]
-                                    : [.orange, Color(red: 1, green: 0.72, blue: 0.38)],
+                                    : accentTheme.idleGradientColors,
                                 startPoint: .top,
                                 endPoint: .bottom
                             )
@@ -355,6 +358,7 @@ private struct ProblemPainCard: View {
 
 struct OnboardingHowItWorksView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     var nextAction: () -> Void
 
     var body: some View {
@@ -375,7 +379,7 @@ struct OnboardingHowItWorksView: View {
                 HowStepRow(
                     number: "1",
                     icon: "alarm.fill",
-                    tint: .orange,
+                    tint: accentTheme.idleColor,
                     title: "onboarding_how_step1_title",
                     desc: "onboarding_how_step1_desc"
                 )
@@ -383,7 +387,7 @@ struct OnboardingHowItWorksView: View {
                 HowStepRow(
                     number: "2",
                     icon: "lock.fill",
-                    tint: .indigo,
+                    tint: accentTheme.blockingColor,
                     title: "onboarding_how_step2_title",
                     desc: "onboarding_how_step2_desc"
                 )
@@ -461,6 +465,7 @@ private struct Connector: View {
 
 struct OnboardingPermissionView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     var nextAction: () -> Void
     @State private var screenTimeAuthorized = false
 
@@ -470,8 +475,8 @@ struct OnboardingPermissionView: View {
 
             Image(systemName: "shield.lefthalf.filled")
                 .font(.system(size: 80))
-                .foregroundStyle(LinearGradient(colors: [.indigo, .purple], startPoint: .bottom, endPoint: .top))
-                .shadow(color: .indigo.opacity(0.5), radius: 20)
+                .foregroundStyle(LinearGradient(colors: [accentTheme.blockingColor, .purple], startPoint: .bottom, endPoint: .top))
+                .shadow(color: accentTheme.blockingColor.opacity(0.5), radius: 20)
 
             VStack(spacing: 12) {
                 Text("onboarding_permission_title")
@@ -553,6 +558,7 @@ private struct OnboardingUsagePickRow: Identifiable {
 
 struct OnboardingAppsView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     @ObservedObject var blockManager: BlockManager
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.scenePhase) private var scenePhase
@@ -708,7 +714,7 @@ struct OnboardingAppsView: View {
             .padding(.vertical, 11)
             .background(
                 RoundedRectangle(cornerRadius: 10)
-                    .strokeBorder(selected ? Color.orange.opacity(0.85) : Color.clear, lineWidth: 2)
+                    .strokeBorder(selected ? accentTheme.idleColor.opacity(0.85) : Color.clear, lineWidth: 2)
             )
         }
         .buttonStyle(.plain)
@@ -830,6 +836,7 @@ struct OnboardingAppsView: View {
 
 struct OnboardingTimeView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     @ObservedObject var viewModel: HomeViewModel
     var nextAction: () -> Void
 
@@ -839,8 +846,8 @@ struct OnboardingTimeView: View {
 
             Image(systemName: "sunrise.fill")
                 .font(.system(size: 72))
-                .foregroundStyle(LinearGradient(colors: [.orange, .yellow], startPoint: .bottom, endPoint: .top))
-                .shadow(color: .orange.opacity(0.4), radius: 20)
+                .foregroundStyle(LinearGradient(colors: accentTheme.idleGradientColors, startPoint: .bottom, endPoint: .top))
+                .shadow(color: accentTheme.idleColor.opacity(0.4), radius: 20)
 
             VStack(spacing: 12) {
                 Text("onboarding_time_title")
@@ -888,6 +895,7 @@ struct OnboardingTimeView: View {
 
 struct OnboardingTasksView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     @ObservedObject var viewModel: HomeViewModel
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     var nextAction: () -> Void
@@ -969,7 +977,7 @@ struct OnboardingTasksView: View {
         VStack(spacing: 8) {
             OnboardingTasksSectionLabel(
                 icon: "pencil.line",
-                tint: .orange,
+                tint: accentTheme.idleColor,
                 title: "onboarding_tasks_custom"
             )
 
@@ -989,7 +997,7 @@ struct OnboardingTasksView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty ? MornDashColors.inactiveIcon(colorScheme) : MornDashColors.labelPrimary(colorScheme),
-                            newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty ? MornDashColors.fieldBackground(colorScheme) : .orange
+                            newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty ? MornDashColors.fieldBackground(colorScheme) : accentTheme.idleColor
                         )
                 }
                 .disabled(newTaskTitle.trimmingCharacters(in: .whitespaces).isEmpty)
@@ -1001,7 +1009,7 @@ struct OnboardingTasksView: View {
                     .fill(MornDashColors.fieldBackground(colorScheme))
                     .overlay(
                         RoundedRectangle(cornerRadius: 14)
-                            .strokeBorder(Color.orange.opacity(0.2), lineWidth: 1)
+                            .strokeBorder(accentTheme.idleColor.opacity(0.2), lineWidth: 1)
                     )
             )
 
@@ -1022,7 +1030,7 @@ struct OnboardingTasksView: View {
             if hasReachedFreeLimit {
                 Text(String(format: NSLocalizedString("gate_tasks_lock_message", comment: ""), RevenueCatConfig.freeTaskLimit))
                     .font(.caption)
-                    .foregroundColor(.orange.opacity(0.85))
+                    .foregroundColor(accentTheme.idleColor.opacity(0.85))
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 4)
             }
@@ -1120,11 +1128,12 @@ private struct OnboardingTasksSectionLabel: View {
 
 private struct SelectedTaskChip: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     let task: TaskItem
     let preset: PresetTask?
     let onRemove: () -> Void
 
-    private var accent: Color { preset?.accentColor ?? .indigo }
+    private var accent: Color { preset?.accentColor ?? accentTheme.blockingColor }
 
     var body: some View {
         HStack(spacing: 6) {
@@ -1228,6 +1237,7 @@ private struct PresetChip: View {
 
 struct OnboardingMotivationView: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     var finishAction: () -> Void
     @State private var appeared = false
     @State private var sunPulse = false
@@ -1283,7 +1293,7 @@ struct OnboardingMotivationView: View {
                 Circle()
                     .fill(
                         RadialGradient(
-                            colors: [.orange.opacity(0.55), .yellow.opacity(0.2), .clear],
+                            colors: [accentTheme.idleColor.opacity(0.55), accentTheme.idleGradientColors.last?.opacity(0.2) ?? accentTheme.idleColor.opacity(0.2), .clear],
                             center: .center,
                             startRadius: 4,
                             endRadius: 70
@@ -1297,12 +1307,12 @@ struct OnboardingMotivationView: View {
                     .font(.system(size: 56, weight: .light))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: [.yellow, .orange, Color(red: 1, green: 0.55, blue: 0.2)],
+                            colors: accentTheme.idleGradientColors + [accentTheme.idleColor],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
                     )
-                    .shadow(color: .orange.opacity(0.65), radius: 18, y: 4)
+                    .shadow(color: accentTheme.idleColor.opacity(0.65), radius: 18, y: 4)
             }
             .frame(height: 88)
 
@@ -1314,7 +1324,7 @@ struct OnboardingMotivationView: View {
                         LinearGradient(
                             colors: colorScheme == .dark
                                 ? [.white, Color(red: 1, green: 0.92, blue: 0.75)]
-                                : [MornDashColors.labelPrimary(colorScheme), Color.orange],
+                                : [MornDashColors.labelPrimary(colorScheme), accentTheme.idleColor],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         )
@@ -1344,17 +1354,17 @@ struct OnboardingMotivationView: View {
                             LinearGradient(
                                 colors: colorScheme == .dark
                                     ? [.white, Color(red: 1, green: 0.97, blue: 0.9)]
-                                    : [.orange, Color(red: 1, green: 0.72, blue: 0.38)],
+                                    : accentTheme.idleGradientColors,
                                 startPoint: .top,
                                 endPoint: .bottom
                             )
                         )
-                        .shadow(color: .orange.opacity(0.35), radius: 16, y: 6)
+                        .shadow(color: accentTheme.idleColor.opacity(0.35), radius: 16, y: 6)
                 )
         }
         .background(
             Capsule()
-                .fill(Color.orange.opacity(0.35))
+                .fill(accentTheme.idleColor.opacity(0.35))
                 .blur(radius: 18)
                 .scaleEffect(sunPulse ? 1.04 : 0.96)
                 .animation(.easeInOut(duration: 2.5).repeatForever(autoreverses: true), value: sunPulse)
@@ -1364,12 +1374,13 @@ struct OnboardingMotivationView: View {
 
 private struct MotivationSunriseBackdrop: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     let sunPulse: Bool
 
     var body: some View {
         ZStack {
             Circle()
-                .fill(Color.orange.opacity(0.22))
+                .fill(accentTheme.idleColor.opacity(0.22))
                 .frame(width: 280, height: 280)
                 .blur(radius: 70)
                 .offset(y: -120)

@@ -5,6 +5,7 @@ struct TaskTicketCardView: View {
     let index: Int
     let onPunch: () -> Void
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     @State private var dragOffset: CGFloat = 0
     @State private var isDragging: Bool = false
@@ -106,7 +107,7 @@ struct TaskTicketCardView: View {
             RoundedRectangle(cornerRadius: cornerRadius)
                 .fill(
                     LinearGradient(
-                        colors: [Color.orange.opacity(0.45), Color.orange.opacity(0.05)],
+                        colors: [accentTheme.idleColor.opacity(0.45), accentTheme.idleColor.opacity(0.05)],
                         startPoint: .leading,
                         endPoint: .trailing
                     )
@@ -131,7 +132,7 @@ struct TaskTicketCardView: View {
             .frame(width: stubWidth, alignment: .leading)
             .frame(maxHeight: .infinity)
             .background(
-                MornDashColors.ticketStubGradient(colorScheme, active: !task.isCompletedToday)
+                MornDashColors.ticketStubGradient(colorScheme, active: !task.isCompletedToday, accent: accentTheme)
             )
             .clipShape(
                 UnevenRoundedRectangle(
@@ -170,12 +171,12 @@ struct TaskTicketCardView: View {
             Text(TaskTimerFormatters.durationLabel(seconds: seconds))
         }
         .font(.system(size: 11, weight: .semibold))
-        .foregroundColor(task.isCompletedToday ? .indigo.opacity(0.45) : .indigo.opacity(0.95))
+        .foregroundColor(task.isCompletedToday ? accentTheme.blockingColor.opacity(0.45) : accentTheme.blockingColor.opacity(0.95))
         .padding(.horizontal, 8)
         .padding(.vertical, 4)
         .background(
             Capsule()
-                .fill(Color.indigo.opacity(task.isCompletedToday ? 0.1 : 0.22))
+                .fill(accentTheme.blockingColor.opacity(task.isCompletedToday ? 0.1 : 0.22))
         )
         .fixedSize()
     }
@@ -186,7 +187,7 @@ struct TaskTicketCardView: View {
                 Image(systemName: "chevron.right")
                     .font(.system(size: 13, weight: .heavy))
                     .foregroundColor(
-                        .orange.opacity(0.35 + 0.18 * Double(i) + 0.25 * progress)
+                        accentTheme.idleColor.opacity(0.35 + 0.18 * Double(i) + 0.25 * progress)
                     )
             }
         }

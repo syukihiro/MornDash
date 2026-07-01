@@ -6,8 +6,10 @@ struct SettingsView: View {
     @ObservedObject var blockManager: BlockManager
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     @AppStorage(AppearanceMode.storageKey) private var appearanceModeRaw = AppearanceMode.dark.rawValue
+    @AppStorage(AccentTheme.storageKey) private var accentThemeRaw = AccentTheme.default.rawValue
 
     @State private var showAppSelection = false
     @State private var showPaywall = false
@@ -43,6 +45,8 @@ struct SettingsView: View {
                 }
 
                 appearanceSection
+
+                colorThemeSection
             }
             .mornDashScreenBackground()
             .navigationTitle(Text("settings_title"))
@@ -102,6 +106,91 @@ struct SettingsView: View {
         )
     }
 
+    private var selectedAccentTheme: AccentTheme {
+        AccentTheme(rawValue: accentThemeRaw) ?? .default
+    }
+
+    private var colorThemeSection: some View {
+        Section {
+            if subscriptionManager.isPro {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 14) {
+                        ForEach(AccentTheme.allCases) { theme in
+                            colorThemeOption(theme)
+                        }
+                    }
+                    .padding(.vertical, 6)
+                }
+                .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+            } else {
+                Button(action: { showPaywall = true }) {
+                    HStack {
+                        Text("settings_color_theme")
+                        Spacer()
+                        Image(systemName: "lock.fill")
+                            .font(.system(size: 12))
+                            .foregroundColor(accentTheme.idleColor)
+                    }
+                }
+                .foregroundColor(.primary)
+            }
+        } header: {
+            Text("settings_color_theme_section")
+        } footer: {
+            if !subscriptionManager.isPro {
+                Text("settings_color_theme_pro_only")
+            }
+        }
+    }
+
+    private func colorThemeOption(_ theme: AccentTheme) -> some View {
+        let isSelected = selectedAccentTheme == theme
+        return Button {
+            accentThemeRaw = theme.rawValue
+        } label: {
+            VStack(spacing: 8) {
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: theme.idleGradientColors,
+                            startPoint: .bottomLeading,
+                            endPoint: .topTrailing
+                        )
+                    )
+                    .frame(width: 44, height: 44)
+                    .overlay(
+                        Circle()
+                            .strokeBorder(
+                                isSelected ? Color.white.opacity(0.9) : Color.clear,
+                                lineWidth: 2
+                            )
+                    )
+                    .overlay(
+                        Circle()
+                            .strokeBorder(
+                                isSelected ? theme.idleColor : Color.clear,
+                                lineWidth: 3
+                            )
+                            .padding(-3)
+                    )
+                    .shadow(color: theme.idleColor.opacity(isSelected ? 0.45 : 0.2), radius: isSelected ? 8 : 4)
+
+                Text(theme.titleKey)
+                    .font(.system(size: 11, weight: isSelected ? .semibold : .regular))
+                    .foregroundColor(
+                        isSelected
+                            ? MornDashColors.primaryText(colorScheme)
+                            : MornDashColors.secondaryText(colorScheme, opacity: 0.7)
+                    )
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.8)
+            }
+            .frame(width: 64)
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+    }
+
     // MARK: - Subscription section
 
     private var subscriptionSection: some View {
@@ -142,14 +231,14 @@ struct SettingsView: View {
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                     .strokeBorder(
                         LinearGradient(
-                            colors: [.yellow.opacity(0.45), .orange.opacity(0.75)],
+                            colors: [.yellow.opacity(0.45), accentTheme.idleColor.opacity(0.75)],
                             startPoint: .topLeading,
                             endPoint: .bottomTrailing
                         ),
                         lineWidth: 1
                     )
             )
-            .shadow(color: .orange.opacity(0.35), radius: 8)
+            .shadow(color: accentTheme.idleColor.opacity(0.35), radius: 8)
     }
 
     private var proBanner: some View {
@@ -172,7 +261,7 @@ struct SettingsView: View {
 
             HStack(spacing: 5) {
                 Circle()
-                    .fill(Color.orange)
+                    .fill(accentTheme.idleColor)
                     .frame(width: 6, height: 6)
                 Text("subscription_active")
                     .font(.system(size: 11, weight: .semibold))
@@ -185,7 +274,7 @@ struct SettingsView: View {
                 Capsule().fill(Color.white.opacity(0.06))
             )
             .overlay(
-                Capsule().strokeBorder(Color.orange.opacity(0.25), lineWidth: 1)
+                Capsule().strokeBorder(accentTheme.idleColor.opacity(0.25), lineWidth: 1)
             )
 
             Image(systemName: "chevron.right")
@@ -199,7 +288,7 @@ struct SettingsView: View {
                 .fill(MornDashColors.cardFill(colorScheme))
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .strokeBorder(Color.orange.opacity(0.2), lineWidth: 1)
+                        .strokeBorder(accentTheme.idleColor.opacity(0.2), lineWidth: 1)
                 )
         )
     }
@@ -226,17 +315,17 @@ struct SettingsView: View {
             Text("settings_upgrade_to_pro")
                 .font(.system(size: 12, weight: .semibold))
                 .tracking(0.3)
-                .foregroundColor(.orange)
+                .foregroundColor(accentTheme.idleColor)
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)
                 .fixedSize(horizontal: true, vertical: false)
                 .padding(.horizontal, 12)
                 .padding(.vertical, 7)
                 .background(
-                    Capsule().fill(Color.orange.opacity(0.12))
+                    Capsule().fill(accentTheme.idleColor.opacity(0.12))
                 )
                 .overlay(
-                    Capsule().strokeBorder(Color.orange.opacity(0.4), lineWidth: 1)
+                    Capsule().strokeBorder(accentTheme.idleColor.opacity(0.4), lineWidth: 1)
                 )
         }
         .padding(.horizontal, 16)
@@ -246,7 +335,7 @@ struct SettingsView: View {
                 .fill(MornDashColors.cardFill(colorScheme))
                 .overlay(
                     RoundedRectangle(cornerRadius: 16)
-                        .strokeBorder(Color.orange.opacity(0.25), lineWidth: 1)
+                        .strokeBorder(accentTheme.idleColor.opacity(0.25), lineWidth: 1)
                 )
         )
     }
@@ -282,7 +371,7 @@ struct SettingsView: View {
                     Spacer()
                     Image(systemName: "lock.fill")
                         .font(.system(size: 12))
-                        .foregroundColor(.orange)
+                        .foregroundColor(accentTheme.idleColor)
                 }
             }
             .foregroundColor(.primary)

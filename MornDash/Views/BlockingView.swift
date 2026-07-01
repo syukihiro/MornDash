@@ -6,6 +6,7 @@ struct BlockingView: View {
     @ObservedObject var viewModel: HomeViewModel
     @ObservedObject var blockManager: BlockManager
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     @State private var showGiveUpConfirm = false
     @State private var activeWorkoutTaskID: UUID?
@@ -17,12 +18,12 @@ struct BlockingView: View {
             VStack(spacing: 8) {
                 Image(systemName: "lock.fill")
                     .font(.system(size: 40, weight: .light))
-                    .foregroundColor(.indigo)
+                    .foregroundColor(accentTheme.blockingColor)
 
                 Text("blocking_header")
                     .font(.system(size: 14, weight: .medium))
                     .tracking(4)
-                    .foregroundColor(.indigo)
+                    .foregroundColor(accentTheme.blockingColor)
 
                 Text("blocking_subtitle")
                     .font(.system(size: 14))
@@ -180,6 +181,7 @@ struct TimerSessionView: View {
     let onComplete: () -> Void
     let onCancel: () -> Void
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     @Environment(\.dismiss) private var dismiss
     private let totalSeconds: Int
@@ -204,7 +206,7 @@ struct TimerSessionView: View {
                 Text("timer_session_title")
                     .font(.system(size: 13, weight: .medium))
                     .tracking(3)
-                    .foregroundColor(.indigo)
+                    .foregroundColor(accentTheme.blockingColor)
 
                 Text(task.title)
                     .font(.title3.weight(.semibold))
@@ -244,7 +246,7 @@ struct TimerSessionView: View {
                             .foregroundColor(colorScheme == .dark ? .black : .white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 14)
-                            .background(Capsule().fill(Color.orange))
+                            .background(Capsule().fill(accentTheme.idleColor))
                     }
                     .buttonStyle(.plain)
                 }
@@ -323,6 +325,7 @@ private struct HourglassTimerView: View {
     let progress: Double
     let isRunning: Bool
     let isFinished: Bool
+    @Environment(\.accentTheme) private var accentTheme
 
     var body: some View {
         TimelineView(.animation(minimumInterval: 1.0 / 30.0)) { context in
@@ -354,7 +357,7 @@ private struct HourglassTimerView: View {
                 let topSandTopY = topY + (1 - topFill) * (midY - topY)
                 let bottomSandTopY = midY + (1 - bottomFill) * (bottomY - midY)
 
-                let accent = isFinished ? Color.red.opacity(0.9) : Color.orange.opacity(0.9)
+                let accent = isFinished ? Color.red.opacity(0.9) : accentTheme.idleColor.opacity(0.9)
 
                 if isFinished {
                     let pulse = (sin(now * 4) + 1) / 2
@@ -450,7 +453,7 @@ private struct HourglassTimerView: View {
                     var stream = Path()
                     stream.move(to: CGPoint(x: centerX, y: midY))
                     stream.addLine(to: CGPoint(x: centerX, y: bottomSandTopY - 2))
-                    canvas.stroke(stream, with: .color(.orange.opacity(0.85)), lineWidth: 2)
+                    canvas.stroke(stream, with: .color(accentTheme.idleColor.opacity(0.85)), lineWidth: 2)
 
                     for i in 0..<14 {
                         let phase = now * 120 + Double(i * 31)
@@ -458,7 +461,7 @@ private struct HourglassTimerView: View {
                         let travel = CGFloat((phase.truncatingRemainder(dividingBy: 100)) / 100.0)
                         let py = (midY + 1) + (bottomSandTopY - midY) * travel
                         let dotRect = CGRect(x: px - 1.2, y: py - 1.2, width: 2.4, height: 2.4)
-                        canvas.fill(Path(ellipseIn: dotRect), with: .color(.orange.opacity(0.85)))
+                        canvas.fill(Path(ellipseIn: dotRect), with: .color(accentTheme.idleColor.opacity(0.85)))
                     }
                 }
 

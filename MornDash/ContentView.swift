@@ -18,6 +18,7 @@ struct ContentView: View {
     @State private var selectedTab: Int = 0
     @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
+    @Environment(\.accentTheme) private var accentTheme
 
     var body: some View {
         Group {
@@ -76,7 +77,7 @@ struct ContentView: View {
                     }
                     .tag(3)
             }
-            .tint(.orange)
+            .tint(accentTheme.idleColor)
             .mornDashTabBarStyle()
         }
         .onAppear {
@@ -122,17 +123,18 @@ struct ContentView: View {
 
     private var colorForState: Color {
         switch viewModel.appState {
-        case .blocking: return .indigo
+        case .blocking: return accentTheme.blockingColor
         case .idle:
             if !viewModel.taskStore.tasks.isEmpty && viewModel.taskStore.allCompletedToday {
-                return Color(red: 0.62, green: 0.92, blue: 0.74).opacity(0.55)
+                return accentTheme.completedColor
             }
-            return .orange
+            return accentTheme.idleColor
         }
     }
 }
 
 #Preview {
     ContentView()
+        .accentTheme(.classic)
         .environmentObject(SubscriptionManager.shared)
 }

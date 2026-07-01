@@ -28,15 +28,21 @@ struct MornDashApp: App {
     }
 
     @AppStorage(AppearanceMode.storageKey) private var appearanceModeRaw = AppearanceMode.dark.rawValue
+    @AppStorage(AccentTheme.storageKey) private var accentThemeRaw = AccentTheme.default.rawValue
 
     private var appearanceMode: AppearanceMode {
         AppearanceMode(rawValue: appearanceModeRaw) ?? .dark
+    }
+
+    private var resolvedAccentTheme: AccentTheme {
+        AccentTheme.resolved(storedRaw: accentThemeRaw, isPro: subscriptionManager.isPro)
     }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .preferredColorScheme(appearanceMode.preferredColorScheme)
+                .accentTheme(resolvedAccentTheme)
                 .mornDashAppearanceSync()
                 .environmentObject(subscriptionManager)
         }

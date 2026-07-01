@@ -6,11 +6,12 @@ struct StatsTaskBreakdownSection: View {
     let tasks: [TaskItem]
     @Binding var period: TaskHistoryStore.Period
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(alignment: .firstTextBaseline) {
-                StatsSectionHeader(icon: "chart.bar.doc.horizontal.fill", tint: .indigo.opacity(0.85), titleKey: "stats_task_breakdown")
+                StatsSectionHeader(icon: "chart.bar.doc.horizontal.fill", tint: accentTheme.blockingColor.opacity(0.85), titleKey: "stats_task_breakdown")
                 Spacer()
                 periodToggle
             }
@@ -28,7 +29,7 @@ struct StatsTaskBreakdownSection: View {
                 }
             }
         }
-        .statsSectionCard(borderColor: .indigo.opacity(colorScheme == .dark ? 0.12 : 0.18))
+        .statsSectionCard(borderColor: accentTheme.blockingColor.opacity(colorScheme == .dark ? 0.12 : 0.18))
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 
@@ -95,7 +96,7 @@ struct StatsTaskBreakdownSection: View {
             HStack(spacing: 4) {
                 ForEach(Array(row.recent7.enumerated()), id: \.offset) { _, day in
                     Circle()
-                        .fill(day.completed ? Color.indigo.opacity(0.85) : MornDashColors.progressTrack(colorScheme))
+                        .fill(day.completed ? accentTheme.blockingColor.opacity(0.85) : MornDashColors.progressTrack(colorScheme))
                         .frame(width: 8, height: 8)
                 }
             }
@@ -109,6 +110,7 @@ struct StatsTaskComparisonSection: View {
     let tasks: [TaskItem]
     let period: TaskHistoryStore.Period
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     var body: some View {
         let rows = comparisonRows
@@ -117,7 +119,7 @@ struct StatsTaskComparisonSection: View {
         } else {
             VStack(alignment: .leading, spacing: 14) {
                 HStack(alignment: .firstTextBaseline) {
-                    StatsSectionHeader(icon: "chart.bar.xaxis", tint: .indigo.opacity(0.85), titleKey: "stats_task_compare")
+                    StatsSectionHeader(icon: "chart.bar.xaxis", tint: accentTheme.blockingColor.opacity(0.85), titleKey: "stats_task_compare")
                     Spacer()
                     Text(LocalizedStringKey(period == .currentMonth ? "stats_blocked_compare_month" : "stats_blocked_compare_year"))
                         .font(.system(size: 10, weight: .medium))

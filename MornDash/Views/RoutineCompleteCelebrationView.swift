@@ -18,6 +18,7 @@ struct RoutineCompleteCelebrationView: View {
     let style: RoutineCelebrationStyle
     let onDismiss: () -> Void
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     @State private var phase: AnimationPhase = .initial
     @State private var ringPulse = false
@@ -27,7 +28,6 @@ struct RoutineCompleteCelebrationView: View {
     @State private var compactDidDismiss = false
 
     private let accentGreen = Color(red: 0.45, green: 0.95, blue: 0.65)
-    private let accentOrange = Color.orange
     private let accentYellow = Color.yellow
 
     private enum AnimationPhase {
@@ -62,7 +62,7 @@ struct RoutineCompleteCelebrationView: View {
             fullBackdrop
             CelebrationSparkleField(
                 seed: sparkleSeed,
-                colors: [accentGreen, accentYellow, accentOrange, MornDashColors.iconGradientLeading(colorScheme)],
+                colors: [accentGreen, accentYellow, accentTheme.idleColor, MornDashColors.iconGradientLeading(colorScheme)],
                 active: phase != .initial,
                 count: 28
             )
@@ -84,7 +84,7 @@ struct RoutineCompleteCelebrationView: View {
             .animation(.easeOut(duration: 1.6), value: phase)
 
             RadialGradient(
-                colors: [accentOrange.opacity(phase == .initial ? 0.0 : (colorScheme == .dark ? 0.2 : 0.16)), .clear],
+                colors: [accentTheme.idleColor.opacity(phase == .initial ? 0.0 : (colorScheme == .dark ? 0.2 : 0.16)), .clear],
                 center: UnitPoint(x: 0.5, y: 0.35),
                 startRadius: 40,
                 endRadius: 500
@@ -116,7 +116,7 @@ struct RoutineCompleteCelebrationView: View {
                 Circle()
                     .fill(
                         RadialGradient(
-                            colors: [accentOrange.opacity(0.4), accentGreen.opacity(0.08)],
+                            colors: [accentTheme.idleColor.opacity(0.4), accentGreen.opacity(0.08)],
                             center: .center,
                             startRadius: 4,
                             endRadius: 110
@@ -131,7 +131,7 @@ struct RoutineCompleteCelebrationView: View {
                     .overlay(
                         Circle().strokeBorder(
                             LinearGradient(
-                                colors: [accentGreen.opacity(0.6), accentOrange.opacity(0.35)],
+                                colors: [accentGreen.opacity(0.6), accentTheme.idleColor.opacity(0.35)],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             ),
@@ -233,7 +233,7 @@ struct RoutineCompleteCelebrationView: View {
                             HStack(spacing: 5) {
                                 Image(systemName: "flame.fill")
                                     .font(.system(size: 12, weight: .semibold))
-                                    .foregroundStyle(.orange)
+                                    .foregroundStyle(accentTheme.idleColor)
                                 Text(String(format: NSLocalizedString("streak_days_format", comment: ""), streak))
                                     .font(.system(size: 13, weight: .medium))
                                     .foregroundColor(MornDashColors.labelSecondary(colorScheme))
@@ -271,7 +271,7 @@ struct RoutineCompleteCelebrationView: View {
         HStack(spacing: 6) {
             Image(systemName: "flame.fill")
                 .foregroundStyle(
-                    LinearGradient(colors: [.orange, .red], startPoint: .top, endPoint: .bottom)
+                    LinearGradient(colors: accentTheme.emphasisGradientColors, startPoint: .top, endPoint: .bottom)
                 )
             Text(String(format: NSLocalizedString("streak_days_format", comment: ""), streak))
                 .font(.system(size: 14, weight: .semibold))

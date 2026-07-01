@@ -26,11 +26,12 @@ struct StatsProLockBanner: View {
     let buttonTitleKey: LocalizedStringKey
     let action: () -> Void
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     var body: some View {
         Button(action: action) {
             VStack(alignment: .leading, spacing: 12) {
-                StatsSectionHeader(icon: "lock.fill", tint: .orange.opacity(0.85), titleKey: sectionTitleKey)
+                StatsSectionHeader(icon: "lock.fill", tint: accentTheme.idleColor.opacity(0.85), titleKey: sectionTitleKey)
 
                 Text(titleKey)
                     .font(.system(size: 18, weight: .semibold))
@@ -51,11 +52,11 @@ struct StatsProLockBanner: View {
                 .foregroundColor(.white)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 10)
-                .background(Capsule().fill(Color.orange))
+                .background(Capsule().fill(accentTheme.idleColor))
                 .padding(.top, 4)
             }
             .statsSectionCard(
-                borderColor: .orange.opacity(colorScheme == .dark ? 0.18 : 0.28)
+                borderColor: accentTheme.idleColor.opacity(colorScheme == .dark ? 0.18 : 0.28)
             )
             .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -67,6 +68,7 @@ struct StatsProLockBanner: View {
 struct StatsProUpsellSection: View {
     let action: () -> Void
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     private struct Feature: Identifiable {
         let id: String
@@ -83,7 +85,7 @@ struct StatsProUpsellSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            StatsSectionHeader(icon: "lock.fill", tint: .orange.opacity(0.85), titleKey: "stats_pro_section_title")
+            StatsSectionHeader(icon: "lock.fill", tint: accentTheme.idleColor.opacity(0.85), titleKey: "stats_pro_section_title")
 
             Text("stats_pro_section_upsell_desc")
                 .font(.system(size: 13))
@@ -95,7 +97,7 @@ struct StatsProUpsellSection: View {
                     HStack(alignment: .top, spacing: 12) {
                         Image(systemName: feature.icon)
                             .font(.system(size: 13, weight: .semibold))
-                            .foregroundColor(.orange.opacity(0.85))
+                            .foregroundColor(accentTheme.idleColor.opacity(0.85))
                             .frame(width: 20, alignment: .center)
                             .padding(.top, 2)
 
@@ -127,12 +129,12 @@ struct StatsProUpsellSection: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 12)
-                .background(Capsule().fill(Color.orange))
+                .background(Capsule().fill(accentTheme.idleColor))
             }
             .buttonStyle(.plain)
             .padding(.top, 4)
         }
-        .statsSectionCard(borderColor: .orange.opacity(colorScheme == .dark ? 0.18 : 0.28))
+        .statsSectionCard(borderColor: accentTheme.idleColor.opacity(colorScheme == .dark ? 0.18 : 0.28))
         .frame(maxWidth: .infinity, alignment: .leading)
     }
 }

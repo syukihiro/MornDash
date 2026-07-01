@@ -3,6 +3,7 @@ import StoreKit
 
 struct SubscriptionDetailsView: View {
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
+    @Environment(\.accentTheme) private var accentTheme
     @State private var showCancelAlert = false
 
     var body: some View {
@@ -55,13 +56,13 @@ struct SubscriptionDetailsView: View {
                         Circle()
                             .fill(
                                 LinearGradient(
-                                    colors: [.orange, .yellow],
+                                    colors: accentTheme.idleGradientColors,
                                     startPoint: .topLeading,
                                     endPoint: .bottomTrailing
                                 )
                             )
                             .frame(width: 56, height: 56)
-                            .shadow(color: .orange.opacity(0.4), radius: 8, y: 2)
+                            .shadow(color: accentTheme.idleColor.opacity(0.4), radius: 8, y: 2)
                         Image(systemName: "crown.fill")
                             .font(.system(size: 26))
                             .foregroundStyle(.white)
@@ -103,7 +104,7 @@ struct SubscriptionDetailsView: View {
         .clipShape(RoundedRectangle(cornerRadius: 18))
         .overlay(
             RoundedRectangle(cornerRadius: 18)
-                .strokeBorder(Color.orange.opacity(0.2), lineWidth: 1)
+                .strokeBorder(accentTheme.idleColor.opacity(0.2), lineWidth: 1)
         )
         .padding(.horizontal, 16)
     }
@@ -197,13 +198,13 @@ struct SubscriptionDetailsView: View {
                 Link(destination: RevenueCatConfig.termsOfServiceURL) {
                     Text("paywall_terms")
                         .font(.system(size: 11))
-                        .foregroundColor(.orange.opacity(0.8))
+                        .foregroundColor(accentTheme.idleColor.opacity(0.8))
                         .underline()
                 }
                 Link(destination: RevenueCatConfig.privacyPolicyURL) {
                     Text("paywall_privacy")
                         .font(.system(size: 11))
-                        .foregroundColor(.orange.opacity(0.8))
+                        .foregroundColor(accentTheme.idleColor.opacity(0.8))
                         .underline()
                 }
                 Spacer()

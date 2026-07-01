@@ -5,6 +5,7 @@ struct CustomPaywallView: View {
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     @State private var selectedPackage: Package?
     @State private var isPurchasing = false
@@ -50,7 +51,7 @@ struct CustomPaywallView: View {
                 endPoint: .bottom
             )
             RadialGradient(
-                colors: [Color.orange.opacity(colorScheme == .dark ? 0.18 : 0.22), .clear],
+                colors: [accentTheme.idleColor.opacity(colorScheme == .dark ? 0.18 : 0.22), .clear],
                 center: .top,
                 startRadius: 0,
                 endRadius: 320
@@ -89,14 +90,14 @@ struct CustomPaywallView: View {
                     RoundedRectangle(cornerRadius: 20, style: .continuous)
                         .strokeBorder(
                             LinearGradient(
-                                colors: [.yellow.opacity(0.55), .orange.opacity(0.9)],
+                                colors: [.yellow.opacity(0.55), accentTheme.idleColor.opacity(0.9)],
                                 startPoint: .topLeading,
                                 endPoint: .bottomTrailing
                             ),
                             lineWidth: 1.5
                         )
                 )
-                .shadow(color: .orange.opacity(0.45), radius: 18, y: 2)
+                .shadow(color: accentTheme.idleColor.opacity(0.45), radius: 18, y: 2)
                 .padding(.top, 8)
 
             Text("paywall_title")
@@ -119,6 +120,7 @@ struct CustomPaywallView: View {
             featureRow(icon: "checklist", text: "paywall_feature_unlimited_tasks")
             featureRow(icon: "apps.iphone", text: "paywall_feature_unlimited_blocked_apps")
             featureRow(icon: "clock.arrow.2.circlepath", text: "paywall_feature_multi_schedule")
+            featureRow(icon: "paintpalette.fill", text: "paywall_feature_color_themes")
         }
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -137,9 +139,9 @@ struct CustomPaywallView: View {
         HStack(alignment: .center, spacing: 12) {
             Image(systemName: icon)
                 .font(.system(size: 14, weight: .semibold))
-                .foregroundColor(.orange)
+                .foregroundColor(accentTheme.idleColor)
                 .frame(width: 22, height: 22)
-                .background(Circle().fill(Color.orange.opacity(0.15)))
+                .background(Circle().fill(accentTheme.idleColor.opacity(0.15)))
             Text(text)
                 .font(.system(size: 14))
                 .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
@@ -159,13 +161,13 @@ struct CustomPaywallView: View {
             }
         } else if subscriptionManager.isLoadingOfferings {
             ProgressView()
-                .tint(.orange)
+                .tint(accentTheme.idleColor)
                 .frame(height: 160)
         } else {
             VStack(spacing: 12) {
                 Image(systemName: "exclamationmark.triangle")
                     .font(.system(size: 24))
-                    .foregroundColor(.orange.opacity(0.7))
+                    .foregroundColor(accentTheme.idleColor.opacity(0.7))
                 Text("paywall_offerings_unavailable")
                     .font(.system(size: 14))
                     .foregroundColor(MornDashColors.labelSecondary(colorScheme))
@@ -173,7 +175,7 @@ struct CustomPaywallView: View {
                 Button(action: { Task { await subscriptionManager.loadOfferings(force: true) } }) {
                     Text("paywall_retry")
                         .font(.system(size: 14, weight: .semibold))
-                        .foregroundColor(.orange)
+                        .foregroundColor(accentTheme.idleColor)
                 }
             }
             .frame(maxWidth: .infinity)
@@ -194,11 +196,11 @@ struct CustomPaywallView: View {
             HStack(alignment: .center, spacing: 14) {
                 ZStack {
                     Circle()
-                        .strokeBorder(isSelected ? Color.orange : MornDashColors.hairline(colorScheme), lineWidth: 2)
+                        .strokeBorder(isSelected ? accentTheme.idleColor : MornDashColors.hairline(colorScheme), lineWidth: 2)
                         .frame(width: 22, height: 22)
                     if isSelected {
                         Circle()
-                            .fill(Color.orange)
+                            .fill(accentTheme.idleColor)
                             .frame(width: 12, height: 12)
                     }
                 }
@@ -218,7 +220,7 @@ struct CustomPaywallView: View {
                                 .background(
                                     Capsule().fill(
                                         LinearGradient(
-                                            colors: [.yellow, .orange],
+                                            colors: accentTheme.idleGradientColors,
                                             startPoint: .leading,
                                             endPoint: .trailing
                                         )
@@ -247,11 +249,11 @@ struct CustomPaywallView: View {
             .padding(16)
             .background(
                 RoundedRectangle(cornerRadius: 16)
-                    .fill(MornDashColors.paywallPlanFill(colorScheme, selected: isSelected))
+                    .fill(MornDashColors.paywallPlanFill(colorScheme, selected: isSelected, accent: accentTheme))
                     .overlay(
                         RoundedRectangle(cornerRadius: 16)
                             .strokeBorder(
-                                MornDashColors.paywallPlanStroke(colorScheme, selected: isSelected),
+                                MornDashColors.paywallPlanStroke(colorScheme, selected: isSelected, accent: accentTheme),
                                 lineWidth: isSelected ? 1.5 : 1
                             )
                     )
@@ -300,7 +302,7 @@ struct CustomPaywallView: View {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(
                             LinearGradient(
-                                colors: [.yellow, .orange],
+                                colors: accentTheme.idleGradientColors,
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )

@@ -120,7 +120,7 @@ enum MornDashColors {
         return completed ? lightInkTertiary : Color(red: 0.45, green: 0.22, blue: 0.06)
     }
 
-    static func ticketStubGradient(_ scheme: ColorScheme, active: Bool) -> LinearGradient {
+    static func ticketStubGradient(_ scheme: ColorScheme, active: Bool, accent: AccentTheme = .default) -> LinearGradient {
         if scheme == .dark {
             return LinearGradient(
                 colors: [Color.white.opacity(0.06), Color.white.opacity(0.02)],
@@ -129,11 +129,9 @@ enum MornDashColors {
             )
         }
         if active {
+            let colors = accent.stubGradientColors
             return LinearGradient(
-                colors: [
-                    Color(red: 1.0, green: 0.72, blue: 0.38),
-                    Color(red: 1.0, green: 0.55, blue: 0.22),
-                ],
+                colors: colors,
                 startPoint: .topLeading,
                 endPoint: .bottomTrailing
             )
@@ -175,8 +173,8 @@ enum MornDashColors {
         scheme == .dark ? Color.white.opacity(0.03) : lightBorder.opacity(0.45)
     }
 
-    static func contributionLow(_ scheme: ColorScheme) -> Color {
-        scheme == .dark ? Color.white.opacity(0.08) : Color.orange.opacity(0.22)
+    static func contributionLow(_ scheme: ColorScheme, accent: AccentTheme = .default) -> Color {
+        scheme == .dark ? Color.white.opacity(0.08) : accent.idleColor.opacity(0.22)
     }
 
     static func badgeLockedFill(_ scheme: ColorScheme) -> Color {
@@ -203,19 +201,19 @@ enum MornDashColors {
         ]
     }
 
-    static func onboardingProgressActive(_ scheme: ColorScheme) -> Color {
-        scheme == .dark ? .white : .orange
+    static func onboardingProgressActive(_ scheme: ColorScheme, accent: AccentTheme = .default) -> Color {
+        scheme == .dark ? .white : accent.idleColor
     }
 
     static func onboardingProgressInactive(_ scheme: ColorScheme) -> Color {
         scheme == .dark ? Color.white.opacity(0.18) : lightBorder
     }
 
-    static func onboardingPrimaryButtonFill(_ scheme: ColorScheme, enabled: Bool) -> Color {
+    static func onboardingPrimaryButtonFill(_ scheme: ColorScheme, enabled: Bool, accent: AccentTheme = .default) -> Color {
         if !enabled {
             return scheme == .dark ? Color.white.opacity(0.3) : lightBorder
         }
-        return scheme == .dark ? .white : .orange
+        return scheme == .dark ? .white : accent.idleColor
     }
 
     static func onboardingPrimaryButtonText(_ scheme: ColorScheme) -> Color {
@@ -266,18 +264,18 @@ enum MornDashColors {
         scheme == .dark ? Color(white: 0.12) : lightSurface
     }
 
-    static func paywallPlanFill(_ scheme: ColorScheme, selected: Bool) -> Color {
+    static func paywallPlanFill(_ scheme: ColorScheme, selected: Bool, accent: AccentTheme = .default) -> Color {
         if scheme == .dark {
             return Color.white.opacity(selected ? 0.08 : 0.04)
         }
-        return selected ? Color.orange.opacity(0.08) : lightSurface
+        return selected ? accent.idleColor.opacity(0.08) : lightSurface
     }
 
-    static func paywallPlanStroke(_ scheme: ColorScheme, selected: Bool) -> Color {
+    static func paywallPlanStroke(_ scheme: ColorScheme, selected: Bool, accent: AccentTheme = .default) -> Color {
         if scheme == .dark {
-            return selected ? Color.orange.opacity(0.7) : Color.white.opacity(0.08)
+            return selected ? accent.idleColor.opacity(0.7) : Color.white.opacity(0.08)
         }
-        return selected ? Color.orange.opacity(0.55) : lightBorder
+        return selected ? accent.idleColor.opacity(0.55) : lightBorder
     }
 }
 

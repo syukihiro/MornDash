@@ -6,6 +6,7 @@ struct StatsStreakSummaryView: View {
     let totalCompleted: Int
     let recentDays: [(date: Date, completed: Bool)]
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     private var weekCompleted: Int { recentDays.filter(\.completed).count }
 
@@ -52,7 +53,7 @@ struct StatsStreakSummaryView: View {
                     .font(.system(size: 24, weight: .light))
                     .foregroundStyle(
                         LinearGradient(
-                            colors: streak > 0 ? [.orange, .red] : MornDashColors.flameInactiveGradient(colorScheme),
+                            colors: streak > 0 ? accentTheme.emphasisGradientColors : MornDashColors.flameInactiveGradient(colorScheme),
                             startPoint: .top,
                             endPoint: .bottom
                         )
@@ -92,7 +93,7 @@ struct StatsStreakSummaryView: View {
                 ForEach(Array(recentDays.enumerated()), id: \.offset) { _, day in
                     Image(systemName: day.completed ? "checkmark.circle.fill" : "circle")
                         .font(.system(size: 16, weight: .regular))
-                        .foregroundStyle(day.completed ? Color.orange : MornDashColors.calendarEmptyDay(colorScheme))
+                        .foregroundStyle(day.completed ? accentTheme.idleColor : MornDashColors.calendarEmptyDay(colorScheme))
                         .frame(maxWidth: .infinity)
                 }
             }
@@ -105,7 +106,7 @@ struct StatsStreakSummaryView: View {
                     Capsule()
                         .fill(
                             LinearGradient(
-                                colors: [.orange.opacity(0.85), .orange],
+                                colors: [accentTheme.idleColor.opacity(0.85), accentTheme.idleColor],
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )
@@ -189,6 +190,7 @@ struct StatsStreakSummaryView: View {
 struct StatsMonthCalendarView: View {
     let days: [StreakStore.MonthCalendarDay]
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     private var weekdayHeaders: [String] {
         let cal = Calendar.current
@@ -239,7 +241,7 @@ struct StatsMonthCalendarView: View {
         ZStack {
             if day.completed && day.isInMonth {
                 Circle()
-                    .fill(Color.orange)
+                    .fill(accentTheme.idleColor)
                 Image(systemName: "checkmark")
                     .font(.system(size: 10, weight: .bold))
                     .foregroundColor(.white)
@@ -256,7 +258,7 @@ struct StatsMonthCalendarView: View {
         .frame(width: size, height: size)
         .overlay {
             if day.isToday {
-                Circle().strokeBorder(Color.orange.opacity(0.7), lineWidth: 1.5)
+                Circle().strokeBorder(accentTheme.idleColor.opacity(0.7), lineWidth: 1.5)
             }
         }
         .frame(maxWidth: .infinity)
@@ -265,7 +267,7 @@ struct StatsMonthCalendarView: View {
 
     private func dayTextColor(_ day: StreakStore.MonthCalendarDay) -> Color {
         if day.isFuture { return MornDashColors.labelMuted(colorScheme) }
-        if day.isToday { return .orange.opacity(0.9) }
+        if day.isToday { return accentTheme.idleColor.opacity(0.9) }
         return MornDashColors.labelSecondary(colorScheme)
     }
 }
@@ -316,6 +318,7 @@ struct StatsBadgesSectionView: View {
 struct StatsContributionGraphView: View {
     let weeks: [[StreakStore.ContributionDay]]
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     var body: some View {
         let cellSize: CGFloat = 11
@@ -391,9 +394,9 @@ struct StatsContributionGraphView: View {
         if cell.isFuture {
             fill = MornDashColors.contributionEmpty(colorScheme)
         } else if cell.completed {
-            fill = Color.orange
+            fill = accentTheme.idleColor
         } else {
-            fill = MornDashColors.contributionLow(colorScheme)
+            fill = MornDashColors.contributionLow(colorScheme, accent: accentTheme)
         }
         return RoundedRectangle(cornerRadius: 2)
             .fill(fill)

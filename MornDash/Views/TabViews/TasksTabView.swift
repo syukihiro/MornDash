@@ -4,6 +4,7 @@ struct TasksTabView: View {
     @ObservedObject var viewModel: HomeViewModel
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     @State private var listEditMode: EditMode = .inactive
 
@@ -86,7 +87,7 @@ struct TasksTabView: View {
         Button(action: { showPaywall = true }) {
             HStack(spacing: 10) {
                 Image(systemName: "sparkles")
-                    .foregroundColor(.orange)
+                    .foregroundColor(accentTheme.idleColor)
                 Text(String(format: NSLocalizedString("gate_tasks_lock_message", comment: ""), RevenueCatConfig.freeTaskLimit))
                     .font(.caption)
                     .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: 0.9))
@@ -100,10 +101,10 @@ struct TasksTabView: View {
             .padding(.vertical, 10)
             .background(
                 RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.orange.opacity(0.12))
+                    .fill(accentTheme.idleColor.opacity(0.12))
                     .overlay(
                         RoundedRectangle(cornerRadius: 12)
-                            .strokeBorder(Color.orange.opacity(0.25), lineWidth: 1)
+                            .strokeBorder(accentTheme.idleColor.opacity(0.25), lineWidth: 1)
                     )
             )
         }
@@ -130,7 +131,7 @@ struct TasksTabView: View {
                                 if !isEditing {
                                     Image(systemName: "pencil")
                                         .font(.system(size: 11, weight: .semibold))
-                                        .foregroundColor(.orange.opacity(0.75))
+                                        .foregroundColor(accentTheme.idleColor.opacity(0.75))
                                 }
                             }
                             .frame(maxWidth: .infinity, alignment: .leading)
@@ -149,12 +150,12 @@ struct TasksTabView: View {
                                 }
                             }
                             .font(.system(size: 12, weight: .semibold))
-                            .foregroundColor(task.hasTimer ? .indigo : MornDashColors.labelTertiary(colorScheme))
+                            .foregroundColor(task.hasTimer ? accentTheme.blockingColor : MornDashColors.labelTertiary(colorScheme))
                             .padding(.horizontal, 8)
                             .padding(.vertical, 6)
                             .background(
                                 Capsule()
-                                    .fill(task.hasTimer ? Color.indigo.opacity(colorScheme == .dark ? 0.2 : 0.14) : MornDashColors.fieldBackground(colorScheme))
+                                    .fill(task.hasTimer ? accentTheme.blockingColor.opacity(colorScheme == .dark ? 0.2 : 0.14) : MornDashColors.fieldBackground(colorScheme))
                             )
                         }
                         .buttonStyle(.plain)
@@ -248,14 +249,14 @@ struct TasksTabView: View {
             HStack(spacing: 14) {
                 Image(systemName: "figure.strengthtraining.traditional")
                     .font(.system(size: 18, weight: .regular))
-                    .foregroundColor(added ? .green : .indigo)
+                    .foregroundColor(added ? .green : accentTheme.blockingColor)
                     .frame(width: 24)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(title)
                         .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                     Text("workout_preset_ai_badge")
                         .font(.system(size: 10, weight: .semibold))
-                        .foregroundColor(.indigo)
+                        .foregroundColor(accentTheme.blockingColor)
                         .tracking(1)
                 }
                 Spacer()
@@ -266,7 +267,7 @@ struct TasksTabView: View {
                 } else {
                     Image(systemName: "lock.fill")
                         .font(.system(size: 14))
-                        .foregroundColor(.indigo)
+                        .foregroundColor(accentTheme.blockingColor)
                 }
             }
         }
@@ -285,14 +286,14 @@ struct TasksTabView: View {
             HStack(spacing: 14) {
                 Image(systemName: kind == .study ? "book.fill" : "desktopcomputer")
                     .font(.system(size: 18, weight: .regular))
-                    .foregroundColor(added ? .green : .indigo)
+                    .foregroundColor(added ? .green : accentTheme.blockingColor)
                     .frame(width: 24)
                 VStack(alignment: .leading, spacing: 2) {
                     Text(label)
                         .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                     Text("focus_preset_ai_badge")
                         .font(.system(size: 10, weight: .semibold))
-                        .foregroundColor(.indigo)
+                        .foregroundColor(accentTheme.blockingColor)
                         .tracking(1)
                 }
                 Spacer()
@@ -303,7 +304,7 @@ struct TasksTabView: View {
                 } else {
                     Image(systemName: "lock.fill")
                         .font(.system(size: 14))
-                        .foregroundColor(.indigo)
+                        .foregroundColor(accentTheme.blockingColor)
                 }
             }
         }
@@ -371,7 +372,7 @@ struct TasksTabView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("common_done") { showFocusDurationPicker = false }
-                        .foregroundColor(.orange)
+                        .foregroundColor(accentTheme.idleColor)
                 }
             }
         }
@@ -474,7 +475,7 @@ struct TasksTabView: View {
                     Button("common_done") {
                         showWorkoutRepPicker = false
                     }
-                    .foregroundColor(.orange)
+                    .foregroundColor(accentTheme.idleColor)
                 }
             }
         }
@@ -531,7 +532,7 @@ struct TasksTabView: View {
         } label: {
             Image(systemName: isEditing ? "checkmark" : "minus.circle")
                 .font(.system(size: 17, weight: .semibold))
-                .foregroundColor(.orange)
+                .foregroundColor(accentTheme.idleColor)
         }
         .accessibilityLabel(
             Text(isEditing ? "tasks_edit_done_accessibility" : "tasks_delete_accessibility")
@@ -542,7 +543,7 @@ struct TasksTabView: View {
         Button(action: openAddTaskSheet) {
             Image(systemName: "plus.circle.fill")
                 .font(.system(size: 34))
-                .foregroundColor(.orange)
+                .foregroundColor(accentTheme.idleColor)
         }
         .buttonStyle(.plain)
         .frame(maxWidth: .infinity)
@@ -589,7 +590,7 @@ struct TasksTabView: View {
                     Text("tasks_add_timer_toggle")
                         .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 }
-                .tint(.orange)
+                .tint(accentTheme.idleColor)
                 .onChange(of: addTaskTimerEnabled) { _, enabled in
                     if enabled {
                         addTaskSheetFieldFocused = false
@@ -639,7 +640,7 @@ struct TasksTabView: View {
                     } label: {
                         Image(systemName: "xmark")
                             .font(.system(size: 15, weight: .semibold))
-                            .foregroundColor(.orange)
+                            .foregroundColor(accentTheme.idleColor)
                     }
                     .accessibilityLabel(Text("common_cancel"))
                 }
@@ -706,7 +707,7 @@ struct TasksTabView: View {
                     } label: {
                         Image(systemName: "xmark")
                             .font(.system(size: 15, weight: .semibold))
-                            .foregroundColor(.orange)
+                            .foregroundColor(accentTheme.idleColor)
                     }
                     .accessibilityLabel(Text("common_cancel"))
                 }

@@ -10,6 +10,7 @@ struct FocusSessionView: View {
     @AppStorage("focus_hint_seen") private var hintSeen: Bool = false
     @State private var showHint: Bool = false
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.accentTheme) private var accentTheme
 
     init(task: TaskItem, onComplete: @escaping () -> Void, onCancel: @escaping () -> Void, onTick: @escaping (Int) -> Void) {
         self.task = task
@@ -158,7 +159,7 @@ struct FocusSessionView: View {
             : 0
         return ProgressView(value: progress)
             .progressViewStyle(.linear)
-            .tint(.indigo)
+            .tint(accentTheme.blockingColor)
     }
 
     private var hintSheet: some View {

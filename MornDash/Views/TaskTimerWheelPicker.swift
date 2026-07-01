@@ -62,6 +62,7 @@ struct TaskTimerPickerSheet: View {
     var onCancel: (() -> Void)?
     let onDone: () -> Void
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
 
     private var isValid: Bool {
         TaskTimerFormatters.totalSeconds(minutes: minutes, seconds: seconds) != nil
@@ -111,14 +112,14 @@ struct TaskTimerPickerSheet: View {
                     } label: {
                         Image(systemName: "xmark")
                             .font(.system(size: 15, weight: .semibold))
-                            .foregroundColor(.orange)
+                            .foregroundColor(accentTheme.idleColor)
                     }
                     .accessibilityLabel(Text("common_cancel"))
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("common_done", action: onDone)
                         .fontWeight(.semibold)
-                        .foregroundColor(.orange)
+                        .foregroundColor(accentTheme.idleColor)
                         .disabled(!isValid)
                 }
             }

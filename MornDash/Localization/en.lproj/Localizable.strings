@@ -159,6 +159,15 @@
 "settings_appearance_system" = "System";
 "settings_appearance_light" = "Light";
 "settings_appearance_dark" = "Dark";
+"settings_color_theme_section" = "Color Theme";
+"settings_color_theme" = "Color Theme";
+"settings_color_theme_pro_only" = "Pro members can customize the app's accent colors.";
+"settings_color_theme_classic" = "Classic";
+"settings_color_theme_sunrise" = "Sunrise";
+"settings_color_theme_forest" = "Forest";
+"settings_color_theme_ocean" = "Ocean";
+"settings_color_theme_lavender" = "Lavender";
+"settings_color_theme_rose" = "Rose";
 
 /* Onboarding — step 1: problem */
 "onboarding_problem_title" = "Losing your day to SNS and time-wasting apps?";
@@ -248,6 +257,7 @@
 "paywall_feature_unlimited_tasks" = "Unlimited tasks";
 "paywall_feature_unlimited_blocked_apps" = "Unlimited apps & categories to block";
 "paywall_feature_multi_schedule" = "Multiple block schedules";
+"paywall_feature_color_themes" = "Custom color themes";
 
 /* Premium gates */
 "gate_tasks_lock_message" = "Free plan supports up to %d tasks. Upgrade to add more.";
