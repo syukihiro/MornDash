@@ -137,7 +137,9 @@
 
 /* SettingsView */
 "settings_start_time" = "Start Time";
+"settings_start_time_label" = "Start Time";
 "settings_start_time_daily" = "Daily";
+"settings_routine_section" = "Routine";
 "settings_tasks" = "Tasks";
 "settings_tasks_footer" = "Complete all tasks to unlock blocked apps. Tasks reset every day.\nTap a task name to rename it.";
 "settings_task_placeholder" = "Task";
@@ -162,6 +164,7 @@
 "settings_color_theme_section" = "Color Theme";
 "settings_color_theme" = "Color Theme";
 "settings_color_theme_pro_only" = "Pro members can customize the app's accent colors.";
+"settings_pro_badge" = "Pro";
 "settings_color_theme_classic" = "Classic";
 "settings_color_theme_sunrise" = "Sunrise";
 "settings_color_theme_forest" = "Forest";

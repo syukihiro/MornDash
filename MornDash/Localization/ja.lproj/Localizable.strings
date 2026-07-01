@@ -137,7 +137,9 @@
 
 /* SettingsView */
 "settings_start_time" = "開始時間";
+"settings_start_time_label" = "開始時刻";
 "settings_start_time_daily" = "毎日";
+"settings_routine_section" = "ルーティン";
 "settings_tasks" = "タスク";
 "settings_tasks_footer" = "すべてのタスクを完了するとアプリが解除されます。日をまたぐとリセットされます。\nタスク名をタップして変更できます。";
 "settings_task_placeholder" = "タスク";
@@ -149,7 +151,7 @@
 "tasks_rename_accessibility" = "タスク名を変更";
 "tasks_delete_accessibility" = "タスクを削除";
 "tasks_edit_done_accessibility" = "編集を終了";
-"settings_blocking" = "ブロック設定";
+"settings_blocking" = "ブロック";
 "settings_blocked_apps" = "制限するアプリ";
 "settings_categories_pro_only" = "アプリのカテゴリはProでのみ保存できます。無料プランでは個別のアプリまたはWebサイトを選んでください。";
 "settings_items_unit" = "個";
@@ -162,6 +164,7 @@
 "settings_color_theme_section" = "カラーテーマ";
 "settings_color_theme" = "カラーテーマ";
 "settings_color_theme_pro_only" = "Proメンバーはアプリのアクセントカラーを変更できます。";
+"settings_pro_badge" = "Pro";
 "settings_color_theme_classic" = "クラシック";
 "settings_color_theme_sunrise" = "サンライズ";
 "settings_color_theme_forest" = "フォレスト";

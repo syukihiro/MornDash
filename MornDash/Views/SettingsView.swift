@@ -21,32 +21,11 @@ struct SettingsView: View {
             Form {
                 subscriptionSection
 
-                startTimeSection
+                routineSection
 
-                Section {
-                    Button(action: openAppPicker) {
-                        HStack {
-                            Text("settings_blocked_apps")
-                            Spacer()
-                            Text(blockedAppsCountLabel)
-                                .foregroundColor(.secondary)
-                            Image(systemName: "chevron.right")
-                                .foregroundColor(.secondary)
-                                .font(.caption)
-                        }
-                    }
-                    .foregroundColor(.primary)
-                } header: {
-                    Text("settings_blocking")
-                } footer: {
-                    if !subscriptionManager.isPro {
-                        Text("settings_categories_pro_only")
-                    }
-                }
+                blockingSection
 
-                appearanceSection
-
-                colorThemeSection
+                displaySection
 
                 legalSection
             }
@@ -85,9 +64,9 @@ struct SettingsView: View {
         }
     }
 
-    // MARK: - Appearance
+    // MARK: - Display
 
-    private var appearanceSection: some View {
+    private var displaySection: some View {
         Section {
             Picker(selection: appearanceModeBinding) {
                 ForEach(AppearanceMode.allCases) { mode in
@@ -96,9 +75,53 @@ struct SettingsView: View {
             } label: {
                 Text("settings_appearance")
             }
+
+            if subscriptionManager.isPro {
+                colorThemePickerRow
+            } else {
+                proLockRow(titleKey: "settings_color_theme")
+            }
         } header: {
             Text("settings_appearance_section")
         }
+    }
+
+    private var colorThemePickerRow: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            Text("settings_color_theme")
+                .font(.body)
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme))
+
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: 14) {
+                    ForEach(AccentTheme.allCases) { theme in
+                        colorThemeOption(theme)
+                    }
+                }
+            }
+        }
+        .padding(.vertical, 4)
+    }
+
+    private func proLockRow(titleKey: LocalizedStringKey) -> some View {
+        Button(action: { showPaywall = true }) {
+            HStack {
+                Text(titleKey)
+                Spacer()
+                Text("settings_pro_badge")
+                    .font(.system(size: 11, weight: .semibold))
+                    .foregroundColor(accentTheme.idleColor)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 3)
+                    .background(
+                        Capsule().fill(accentTheme.idleColor.opacity(0.12))
+                    )
+                Image(systemName: "lock.fill")
+                    .font(.system(size: 12))
+                    .foregroundColor(accentTheme.idleColor)
+            }
+        }
+        .foregroundColor(.primary)
     }
 
     private var appearanceModeBinding: Binding<AppearanceMode> {
@@ -112,35 +135,27 @@ struct SettingsView: View {
         AccentTheme(rawValue: accentThemeRaw) ?? .default
     }
 
-    private var colorThemeSection: some View {
+    // MARK: - Blocking
+
+    private var blockingSection: some View {
         Section {
-            if subscriptionManager.isPro {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 14) {
-                        ForEach(AccentTheme.allCases) { theme in
-                            colorThemeOption(theme)
-                        }
-                    }
-                    .padding(.vertical, 6)
+            Button(action: openAppPicker) {
+                HStack {
+                    Text("settings_blocked_apps")
+                    Spacer()
+                    Text(blockedAppsCountLabel)
+                        .foregroundColor(.secondary)
+                    Image(systemName: "chevron.right")
+                        .foregroundColor(.secondary)
+                        .font(.caption)
                 }
-                .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
-            } else {
-                Button(action: { showPaywall = true }) {
-                    HStack {
-                        Text("settings_color_theme")
-                        Spacer()
-                        Image(systemName: "lock.fill")
-                            .font(.system(size: 12))
-                            .foregroundColor(accentTheme.idleColor)
-                    }
-                }
-                .foregroundColor(.primary)
             }
+            .foregroundColor(.primary)
         } header: {
-            Text("settings_color_theme_section")
+            Text("settings_blocking")
         } footer: {
             if !subscriptionManager.isPro {
-                Text("settings_color_theme_pro_only")
+                Text("settings_categories_pro_only")
             }
         }
     }
@@ -218,17 +233,16 @@ struct SettingsView: View {
         .foregroundColor(.primary)
     }
 
-    // MARK: - Subscription section
+    // MARK: - Subscription
 
     private var subscriptionSection: some View {
         Section {
             subscriptionBanner
                 .listRowBackground(Color.clear)
-                .listRowInsets(EdgeInsets(top: 6, leading: 12, bottom: 6, trailing: 12))
+                .listRowInsets(EdgeInsets(top: 6, leading: 0, bottom: 10, trailing: 0))
                 .listRowSeparator(.hidden)
-        } header: {
-            Text("settings_subscription_section")
         }
+        .listSectionMargins(.horizontal, 8)
     }
 
     @ViewBuilder
@@ -248,43 +262,115 @@ struct SettingsView: View {
         }
     }
 
-    private var subscriptionAppLogo: some View {
-        Image("AppLogo")
-            .resizable()
-            .scaledToFill()
-            .frame(width: 44, height: 44)
-            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-            .overlay(
-                RoundedRectangle(cornerRadius: 10, style: .continuous)
-                    .strokeBorder(
-                        LinearGradient(
-                            colors: [.yellow.opacity(0.45), accentTheme.idleColor.opacity(0.75)],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        ),
-                        lineWidth: 1
+    private var subscriptionUpgradeGradient: [Color] {
+        let colors = accentTheme.idleGradientColors
+        if colorScheme == .dark {
+            return [
+                colors[0].opacity(0.95),
+                Color(red: 0.58, green: 0.30, blue: 0.05),
+                Color(red: 0.10, green: 0.07, blue: 0.05),
+            ]
+        }
+        return [
+            colors[0].opacity(0.34),
+            colors[1].opacity(0.24),
+            Color(red: 1.0, green: 0.95, blue: 0.88),
+        ]
+    }
+
+    private var subscriptionProGradient: [Color] {
+        if colorScheme == .dark {
+            return [
+                accentTheme.idleColor.opacity(0.34),
+                Color(red: 0.12, green: 0.10, blue: 0.08),
+            ]
+        }
+        return [
+            accentTheme.idleColor.opacity(0.18),
+            Color(red: 1.0, green: 0.97, blue: 0.93),
+        ]
+    }
+
+    private var upgradeBannerTitleColor: Color {
+        colorScheme == .dark
+            ? .white
+            : Color(red: 0.20, green: 0.09, blue: 0.02)
+    }
+
+    private var upgradeBannerSubtitleColor: Color {
+        colorScheme == .dark
+            ? Color.white.opacity(0.9)
+            : Color(red: 0.36, green: 0.18, blue: 0.05)
+    }
+
+    private var upgradeBanner: some View {
+        HStack(alignment: .center, spacing: 12) {
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(spacing: 7) {
+                    Image(systemName: "sparkles")
+                        .font(.system(size: 15, weight: .semibold))
+                    Text("settings_card_free_title")
+                        .font(.system(size: 18, weight: .bold))
+                }
+                .foregroundColor(upgradeBannerTitleColor)
+
+                Text("settings_card_free_subtitle")
+                    .font(.system(size: 14, weight: .medium))
+                    .foregroundColor(upgradeBannerSubtitleColor)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
+            Spacer(minLength: 8)
+
+            Image(systemName: "chevron.right")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(upgradeBannerSubtitleColor.opacity(0.85))
+        }
+        .padding(.horizontal, 20)
+        .padding(.vertical, 20)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: subscriptionUpgradeGradient,
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
                     )
-            )
-            .shadow(color: accentTheme.idleColor.opacity(0.35), radius: 8)
+                )
+                .overlay {
+                    if colorScheme == .dark {
+                        RoundedRectangle(cornerRadius: 18, style: .continuous)
+                            .fill(Color.black.opacity(0.12))
+                    }
+                }
+                .shadow(
+                    color: accentTheme.idleColor.opacity(colorScheme == .dark ? 0.32 : 0.18),
+                    radius: colorScheme == .dark ? 14 : 10,
+                    y: 5
+                )
+        )
     }
 
     private var proBanner: some View {
-        HStack(spacing: 14) {
-            subscriptionAppLogo
+        HStack(alignment: .center, spacing: 12) {
+            VStack(alignment: .leading, spacing: 5) {
+                Text("settings_card_pro_title")
+                    .font(.system(size: 17, weight: .semibold))
+                    .foregroundColor(MornDashColors.labelPrimary(colorScheme))
 
-            VStack(alignment: .leading, spacing: 3) {
-                Text("subscription_pro_title")
-                    .font(.system(size: 15, weight: .semibold))
-                    .foregroundColor(MornDashColors.primaryText(colorScheme))
                 if let plan = subscriptionManager.currentPlan {
                     Text(LocalizedStringKey(plan.displayNameKey))
-                        .font(.system(size: 12))
-                        .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.55))
-                        .tracking(0.5)
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundColor(MornDashColors.labelSecondary(colorScheme))
+                } else {
+                    Text("settings_card_pro_subtitle")
+                        .font(.system(size: 13, weight: .medium))
+                        .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                 }
             }
 
-            Spacer(minLength: 0)
+            Spacer(minLength: 8)
 
             HStack(spacing: 5) {
                 Circle()
@@ -292,96 +378,55 @@ struct SettingsView: View {
                     .frame(width: 6, height: 6)
                 Text("subscription_active")
                     .font(.system(size: 11, weight: .semibold))
-                    .tracking(0.8)
-                    .foregroundColor(MornDashColors.primaryText(colorScheme, opacity: 0.85))
             }
+            .foregroundColor(colorScheme == .dark ? accentTheme.idleColor : Color(red: 0.45, green: 0.22, blue: 0.04))
             .padding(.horizontal, 10)
             .padding(.vertical, 5)
             .background(
-                Capsule().fill(Color.white.opacity(0.06))
-            )
-            .overlay(
-                Capsule().strokeBorder(accentTheme.idleColor.opacity(0.25), lineWidth: 1)
+                Capsule().fill(accentTheme.idleColor.opacity(colorScheme == .dark ? 0.16 : 0.14))
             )
 
             Image(systemName: "chevron.right")
-                .font(.system(size: 11, weight: .semibold))
-                .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.35))
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundColor(MornDashColors.labelTertiary(colorScheme))
         }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 14)
+        .padding(.horizontal, 20)
+        .padding(.vertical, 18)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(MornDashColors.cardFill(colorScheme))
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(
+                    LinearGradient(
+                        colors: subscriptionProGradient,
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
                 .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .strokeBorder(accentTheme.idleColor.opacity(0.2), lineWidth: 1)
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .strokeBorder(accentTheme.idleColor.opacity(colorScheme == .dark ? 0.32 : 0.24), lineWidth: 1)
                 )
         )
     }
 
-    private var upgradeBanner: some View {
-        HStack(spacing: 14) {
-            subscriptionAppLogo
-
-            VStack(alignment: .leading, spacing: 3) {
-                Text("subscription_pro_title")
-                    .font(.system(size: 15, weight: .semibold))
-                    .foregroundColor(MornDashColors.primaryText(colorScheme))
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.8)
-                Text("settings_status_free")
-                    .font(.system(size: 12))
-                    .foregroundColor(MornDashColors.secondaryText(colorScheme, opacity: 0.55))
-                    .tracking(0.5)
-                    .lineLimit(1)
-            }
-
-            Spacer(minLength: 8)
-
-            Text("settings_upgrade_to_pro")
-                .font(.system(size: 12, weight: .semibold))
-                .tracking(0.3)
-                .foregroundColor(accentTheme.idleColor)
-                .lineLimit(1)
-                .minimumScaleFactor(0.8)
-                .fixedSize(horizontal: true, vertical: false)
-                .padding(.horizontal, 12)
-                .padding(.vertical, 7)
-                .background(
-                    Capsule().fill(accentTheme.idleColor.opacity(0.12))
-                )
-                .overlay(
-                    Capsule().strokeBorder(accentTheme.idleColor.opacity(0.4), lineWidth: 1)
-                )
-        }
-        .padding(.horizontal, 16)
-        .padding(.vertical, 14)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(MornDashColors.cardFill(colorScheme))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 16)
-                        .strokeBorder(accentTheme.idleColor.opacity(0.25), lineWidth: 1)
-                )
-        )
-    }
-
-    // MARK: - Start time section
+    // MARK: - Routine
 
     @ViewBuilder
-    private var startTimeSection: some View {
+    private var routineSection: some View {
         Section {
+            if !(viewModel.config.weekdaySchedulingEnabled && subscriptionManager.isPro) {
+                startTimeRow
+            }
+
             weekdayToggleRow
+
             if viewModel.config.weekdaySchedulingEnabled && subscriptionManager.isPro {
                 ForEach(weekdayDisplayOrder, id: \.self) { idx in
                     weekdayPickerRow(idx: idx)
                 }
-            } else {
-                startTimeRow
             }
         } header: {
-            Text("settings_start_time")
+            Text("settings_routine_section")
         }
     }
 
@@ -392,16 +437,7 @@ struct SettingsView: View {
                 Text("settings_weekday_scheduling")
             }
         } else {
-            Button(action: { showPaywall = true }) {
-                HStack {
-                    Text("settings_weekday_scheduling")
-                    Spacer()
-                    Image(systemName: "lock.fill")
-                        .font(.system(size: 12))
-                        .foregroundColor(accentTheme.idleColor)
-                }
-            }
-            .foregroundColor(.primary)
+            proLockRow(titleKey: "settings_weekday_scheduling")
         }
     }
 
@@ -478,12 +514,12 @@ struct SettingsView: View {
     private var startTimeRow: some View {
         NavigationLink {
             StartTimePickerView(selection: startTimeBinding)
-                .navigationTitle(Text("settings_start_time"))
+                .navigationTitle(Text("settings_start_time_label"))
                 .navigationBarTitleDisplayMode(.inline)
                 .mornDashNavigationBarStyle()
         } label: {
             HStack {
-                Text("settings_start_time_daily")
+                Text("settings_start_time_label")
                 Spacer()
                 Text(startTimeLabel)
                     .foregroundColor(.secondary)
