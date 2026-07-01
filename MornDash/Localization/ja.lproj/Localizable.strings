@@ -282,6 +282,13 @@
 "paywall_savings_format" = "%d%% お得";
 "paywall_cta_continue" = "続ける";
 "paywall_cta_free_trial" = "無料体験を始める";
+"paywall_trial_badge_first_week" = "初回1週間無料";
+"paywall_trial_disclosure_format" = "年間プラン（初回限定）の方：%1$@の無料体験後、年額%2$@で自動更新されます。体験終了の24時間前までに解約しない場合、料金が請求されます。";
+"trial_period_one_week" = "1週間";
+"trial_period_days_format" = "%d日間";
+"trial_period_weeks_format" = "%d週間";
+"trial_period_months_format" = "%dヶ月";
+"trial_period_years_format" = "%d年";
 "paywall_terms" = "利用規約";
 "paywall_privacy" = "プライバシーポリシー";
 "paywall_commercial" = "特商法表記";
@@ -303,7 +310,7 @@
 "subscription_terms_auto_renew" = "現在の期間が終了する24時間前までに自動更新を解除しない場合、サブスクリプションは自動更新されます。";
 "subscription_terms_charge" = "現在の期間終了の24時間前以内にアカウントへ更新料金が請求されます。";
 "subscription_terms_manage" = "購入後はアカウント設定からサブスクリプションを管理し、自動更新をオフにできます。";
-"subscription_terms_trial" = "無料体験期間が提供されている場合、サブスクリプション購入時点で未使用分は失効します。";
+"subscription_terms_trial" = "無料体験は年間プランの初回購入時のみ、新規の方に1週間提供されます。週間・月間プランには適用されません。体験期間の未使用分は購入時に失効し、体験終了の24時間前までに解約しない場合、年額料金が請求されます。";
 
 /* Workout */
 "workout_preset_squats_title" = "スクワット %d回";

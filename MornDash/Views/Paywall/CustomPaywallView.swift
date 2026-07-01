@@ -206,19 +206,13 @@ struct CustomPaywallView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 4) {
-                    HStack(spacing: 8) {
-                        Text(planTitleKey(for: package))
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(MornDashColors.labelPrimary(colorScheme))
-                        if isAnnual {
-                            Text("paywall_badge_best_value")
-                                .font(.system(size: 10, weight: .bold))
-                                .tracking(0.5)
-                                .foregroundColor(.black)
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 3)
-                                .background(
-                                    Capsule().fill(
+                    if isAnnual || PaywallTrialFormatting.badgeText(for: package) != nil {
+                        HStack(spacing: 6) {
+                            if isAnnual {
+                                planBadge(
+                                    text: NSLocalizedString("paywall_badge_best_value", comment: ""),
+                                    foreground: .black,
+                                    background: AnyShapeStyle(
                                         LinearGradient(
                                             colors: accentTheme.idleGradientColors,
                                             startPoint: .leading,
@@ -226,14 +220,30 @@ struct CustomPaywallView: View {
                                         )
                                     )
                                 )
+                            }
+                            if let trialBadge = PaywallTrialFormatting.badgeText(for: package) {
+                                planBadge(
+                                    text: trialBadge,
+                                    foreground: accentTheme.idleColor,
+                                    background: AnyShapeStyle(accentTheme.idleColor.opacity(0.15))
+                                )
+                            }
                         }
                     }
+
+                    Text(planTitleKey(for: package))
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(MornDashColors.labelPrimary(colorScheme))
+                        .lineLimit(1)
+
                     Text(perPeriodLabel(for: package))
                         .font(.system(size: 12))
                         .foregroundColor(MornDashColors.labelTertiary(colorScheme))
+                        .lineLimit(1)
                 }
+                .layoutPriority(1)
 
-                Spacer(minLength: 0)
+                Spacer(minLength: 8)
 
                 VStack(alignment: .trailing, spacing: 2) {
                     Text(package.storeProduct.localizedPriceString)
@@ -245,6 +255,7 @@ struct CustomPaywallView: View {
                             .foregroundColor(.green)
                     }
                 }
+                .fixedSize(horizontal: true, vertical: false)
             }
             .padding(16)
             .background(
@@ -261,6 +272,22 @@ struct CustomPaywallView: View {
             )
         }
         .buttonStyle(.plain)
+    }
+
+    private func planBadge(
+        text: String,
+        foreground: Color,
+        background: AnyShapeStyle
+    ) -> some View {
+        Text(text)
+            .font(.system(size: 10, weight: .bold))
+            .tracking(0.3)
+            .foregroundColor(foreground)
+            .lineLimit(1)
+            .fixedSize(horizontal: true, vertical: false)
+            .padding(.horizontal, 8)
+            .padding(.vertical, 3)
+            .background(Capsule().fill(background))
     }
 
     private func planTitleKey(for package: Package) -> LocalizedStringKey {
@@ -312,6 +339,15 @@ struct CustomPaywallView: View {
             .disabled(currentSelection() == nil || isPurchasing)
             .opacity(currentSelection() == nil ? 0.4 : 1.0)
 
+            if let pkg = currentSelection(),
+               let disclosure = PaywallTrialFormatting.disclosureText(for: pkg) {
+                Text(disclosure)
+                    .font(.system(size: 10))
+                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+            }
+
             HStack(spacing: 18) {
                 Button(action: restore) {
                     HStack(spacing: 6) {
@@ -341,7 +377,7 @@ struct CustomPaywallView: View {
 
     private var ctaTitle: LocalizedStringKey {
         guard let pkg = currentSelection() else { return "paywall_cta_continue" }
-        if pkg.storeProduct.introductoryDiscount?.paymentMode == .freeTrial {
+        if PaywallTrialFormatting.isAnnualFreeTrial(pkg) {
             return "paywall_cta_free_trial"
         }
         return "paywall_cta_continue"

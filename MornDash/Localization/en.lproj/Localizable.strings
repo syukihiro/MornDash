@@ -282,6 +282,13 @@
 "paywall_savings_format" = "Save %d%%";
 "paywall_cta_continue" = "Continue";
 "paywall_cta_free_trial" = "Start Free Trial";
+"paywall_trial_badge_first_week" = "1st week free";
+"paywall_trial_disclosure_format" = "%1$@ free trial for first-time annual subscribers, then %2$@/year. Auto-renews unless canceled at least 24 hours before the trial ends.";
+"trial_period_one_week" = "1 week";
+"trial_period_days_format" = "%d days";
+"trial_period_weeks_format" = "%d week(s)";
+"trial_period_months_format" = "%d month(s)";
+"trial_period_years_format" = "%d year(s)";
 "paywall_terms" = "Terms of Use";
 "paywall_privacy" = "Privacy Policy";
 "paywall_commercial" = "Commercial Transactions";
@@ -303,7 +310,7 @@
 "subscription_terms_auto_renew" = "Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period.";
 "subscription_terms_charge" = "Your account will be charged for renewal within 24 hours prior to the end of the current period.";
 "subscription_terms_manage" = "Subscriptions can be managed and auto-renewal turned off via your Account Settings after purchase.";
-"subscription_terms_trial" = "Any unused portion of a free trial period, if offered, will be forfeited when you purchase a subscription.";
+"subscription_terms_trial" = "The annual plan includes a one-time 1-week free trial for eligible new subscribers only. Weekly and monthly plans do not include a free trial. Any unused portion of the free trial is forfeited when you subscribe, and you will be charged the annual price when the trial ends unless you cancel at least 24 hours beforehand.";
 
 /* Workout */
 "workout_preset_squats_title" = "%d Squats";
