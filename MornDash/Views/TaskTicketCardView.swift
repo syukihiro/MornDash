@@ -121,7 +121,7 @@ struct TaskTicketCardView: View {
     private var ticketContent: some View {
         HStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 4) {
-                Text(String(format: "No.%02d", index + 1))
+                Text(String(format: NSLocalizedString("task_ticket_number_format", comment: ""), index + 1))
                     .font(.system(size: 11, weight: .bold, design: .monospaced))
                 Text(dateStamp)
                     .font(.system(size: 9, design: .monospaced))
@@ -257,7 +257,7 @@ private struct DoneStamp: View {
     @State private var opacity: Double = 0
 
     var body: some View {
-        Text("DONE")
+        Text("task_ticket_done_stamp")
             .font(.system(size: 13, weight: .heavy, design: .monospaced))
             .tracking(3)
             .foregroundColor(.red.opacity(0.78))

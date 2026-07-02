@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "ਸੈਟਿੰਗਾਂ";
+"common_done" = "ਹੋ ਗਿਆ";
+"common_cancel" = "ਰੱਦ ਕਰੋ";
+"common_select" = "ਚੁਣੋ";
+"common_next" = "ਅਗਲਾ";
+"common_continue" = "ਜਾਰੀ ਰੱਖੋ";
+"common_back" = "ਪਿੱਛੇ";
+"common_skip" = "ਛੱਡੋ";
+"common_start" = "ਸ਼ੁਰੂ ਕਰੋ";
+
+/* MainView (idle) */
+"main_next_block" = "ਅਗਲਾ ਬਲਾਕ";
+"main_completed_eyebrow" = "ਸਭ ਹੋ ਗਿਆ";
+"main_completed_title" = "ਅੱਜ ਲਈ ਹੋ ਗਿਆ";
+"main_completed_subtitle" = "ਆਪਣੇ ਬਾਕੀ ਦਿਨ ਦਾ ਆਨੰਦ ਮਾਣੋ.";
+"main_completed_streak_unit" = "ਦਿਨ ਦੀ ਸਟ੍ਰੀਕ";
+"main_completed_message_3" = "ਤੁਹਾਡੀ ਆਦਤ ਬਣ ਰਹੀ ਹੈ। ਇਸ ਨੂੰ ਕੱਲ੍ਹ ਨੂੰ ਜਾਰੀ ਰੱਖੋ.";
+"main_completed_message_7" = "ਪੂਰਾ ਹਫ਼ਤਾ। ਤੁਸੀਂ ਅਸਲੀ ਸੌਦਾ ਹੋ।";
+"main_completed_message_30" = "ਨਾ ਰੁਕਣ ਵਾਲੀ ਇਕਸਾਰਤਾ। ਆਪਣੇ ਆਪ 'ਤੇ ਮਾਣ ਕਰੋ.";
+"main_completed_message_100" = "ਸਬੂਤ ਦੇ 100 ਦਿਨ. ਹੁਣ ਤੁਹਾਨੂੰ ਕੁਝ ਨਹੀਂ ਰੋਕ ਸਕਦਾ।";
+"main_completed_week_progress" = "%d / ਇਸ ਹਫ਼ਤੇ 7 ਦਿਨ";
+"main_completed_best_streak" = "ਵਧੀਆ: %d";
+"main_completed_next_block" = "ਅਗਲਾ ਬਲਾਕ %@";
+"main_todays_tasks" = "ਅੱਜ ਦੇ ਕਾਰਜ";
+"main_todays_tasks_done" = "ਸਾਰੇ ਸੰਪੂਰਨ";
+"main_no_tasks" = "ਅਜੇ ਕੋਈ ਕਾਰਜ ਨਹੀਂ। ਟਾਸਕ ਟੈਬ ਤੋਂ ਕੁਝ ਸ਼ਾਮਲ ਕਰੋ।";
+
+"routine_celebration_eyebrow" = "ਸਭ ਹੋ ਗਿਆ";
+"routine_celebration_title" = "ਤੁਸੀਂ ਇਹ ਕੀਤਾ!";
+"routine_celebration_message" = "ਅੱਜ ਲਈ ਸਾਰੇ ਕੰਮ ਪੂਰੇ ਹਨ।\nਆਪਣੀ ਆਜ਼ਾਦੀ ਦਾ ਆਨੰਦ ਮਾਣੋ।";
+"routine_celebration_continue" = "ਜਾਰੀ ਰੱਖੋ";
+"routine_celebration_compact_title" = "ਅੱਜ ਲਈ ਸਭ ਕੁਝ ਕੀਤਾ";
+
+/* Tabs */
+"tab_home" = "ਘਰ";
+"tab_tasks" = "ਕਾਰਜ";
+"tab_stats" = "ਅੰਕੜੇ";
+"tab_settings" = "ਸੈਟਿੰਗਾਂ";
+
+/* Streak / Stats */
+"streak_days_format" = "%d ਦਿਨ ਦੀ ਲੜੀ";
+"stats_streak_day_unit_singular" = "ਦਿਨ";
+"stats_streak_day_unit_plural" = "ਦਿਨ";
+"stats_current_streak" = "ਦਿਨ ਦੀ ਸਟ੍ਰੀਕ";
+"stats_longest_streak" = "ਵਧੀਆ ਸਟ੍ਰੀਕ";
+"stats_total_completed" = "ਕੁੱਲ ਦਿਨ";
+"stats_week_progress_short" = "%d / ਇਸ ਹਫ਼ਤੇ 7 ਦਿਨ";
+"stats_next_milestone" = "ਅਗਲਾ ਮੀਲ ਪੱਥਰ";
+"stats_next_milestone_days" = "%2$d ਦਿਨ ਤੋਂ %1$@";
+"stats_summary_footer" = "ਸਰਵੋਤਮ %d · ਕੁੱਲ %d ਦਿਨ";
+"stats_all_badges_unlocked" = "ਸਾਰੇ ਬੈਜ ਅਨਲੌਕ ਕੀਤੇ ਗਏ";
+"stats_last_7_days" = "ਪਿਛਲੇ 7 ਦਿਨ";
+"stats_month_calendar" = "ਇਸ ਮਹੀਨੇ";
+"stats_contributions" = "ਗਤੀਵਿਧੀ";
+"stats_badges" = "ਬੈਜ";
+"stats_no_data" = "ਆਪਣੀ ਸਟ੍ਰੀਕ ਸ਼ੁਰੂ ਕਰਨ ਲਈ ਇੱਕ ਦਿਨ ਲਈ ਆਪਣੇ ਸਾਰੇ ਕੰਮ ਪੂਰੇ ਕਰੋ।";
+"stats_blocked_usage_today" = "ਬਲੌਕ ਕੀਤੀਆਂ ਐਪਾਂ · ਅੱਜ";
+"stats_blocked_usage_no_selection" = "ਬਲੌਕ ਕਰਨ ਲਈ ਅਜੇ ਤੱਕ ਕੋਈ ਐਪਾਂ ਨਹੀਂ ਚੁਣੀਆਂ ਗਈਆਂ ਹਨ।";
+"stats_emergency_unlocks" = "ਐਮਰਜੈਂਸੀ ਅਨਲੌਕ";
+"stats_emergency_unlocks_count_unit" = "ਵਾਰ";
+"stats_emergency_unlocks_this_week" = "ਇਸ ਹਫ਼ਤੇ";
+"stats_emergency_unlocks_this_month" = "ਇਸ ਮਹੀਨੇ";
+"stats_emergency_unlocks_past_year" = "ਪਿਛਲੇ ਸਾਲ";
+"stats_emergency_unlocks_total" = "ਕੁੱਲ";
+"stats_emergency_unlocks_last" = "ਆਖਰੀ: %@";
+"stats_emergency_unlocks_none" = "ਅਜੇ ਤੱਕ ਕੋਈ ਐਮਰਜੈਂਸੀ ਅਨਲੌਕ ਨਹੀਂ ਹੈ।";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "ਤੁਲਨਾ";
+"stats_emergency_compare_week" = "ਪਿਛਲੇ ਹਫ਼ਤੇ ਬਨਾਮ";
+"stats_emergency_compare_month" = "ਪਿਛਲੇ ਮਹੀਨੇ ਬਨਾਮ";
+"stats_emergency_compare_year" = "ਪਿਛਲੇ ਸਾਲ ਬਨਾਮ";
+"stats_emergency_compare_lock_title" = "ਆਪਣੇ ਅਨਲੌਕ ਰੁਝਾਨ ਨੂੰ ਟਰੈਕ ਕਰੋ";
+"stats_emergency_compare_lock_message" = "Pro ਇਹ ਦਿਖਾਉਂਦਾ ਹੈ ਕਿ ਤੁਹਾਡੇ ਐਮਰਜੈਂਸੀ ਅਨਲੌਕ ਪਿਛਲੇ ਹਫ਼ਤੇ, ਪਿਛਲੇ ਮਹੀਨੇ ਅਤੇ ਪਿਛਲੇ ਸਾਲ ਦੀ ਤੁਲਨਾ ਵਿੱਚ ਕਿਵੇਂ ਹਨ।";
+"stats_blocked_duration" = "ਬਲਾਕ / ਦਿਨ";
+"stats_blocked_duration_this_week" = "ਇਸ ਹਫ਼ਤੇ";
+"stats_blocked_duration_past_year" = "ਪਿਛਲੇ ਸਾਲ";
+"stats_blocked_duration_per_day_suffix" = "/ ਦਿਨ";
+"stats_blocked_duration_none" = "ਅਜੇ ਤੱਕ ਕੋਈ ਬਲੌਕ ਕੀਤਾ ਸਮਾਂ ਰਿਕਾਰਡ ਨਹੀਂ ਕੀਤਾ ਗਿਆ।";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "ਟਾਸਕ ਬ੍ਰੇਕਡਾਊਨ";
+"stats_task_period_month" = "ਇਸ ਮਹੀਨੇ";
+"stats_task_period_year" = "ਇਸ ਸਾਲ";
+"stats_task_consistency_format" = "%d / %d ਦਿਨ";
+"stats_task_no_data_month" = "ਉਹਨਾਂ ਨੂੰ ਇੱਥੇ ਦੇਖਣ ਲਈ ਇਸ ਮਹੀਨੇ ਦੇ ਕੰਮਾਂ ਦੀ ਜਾਂਚ ਕਰੋ।";
+"stats_task_no_data_year" = "ਉਹਨਾਂ ਨੂੰ ਇੱਥੇ ਦੇਖਣ ਲਈ ਇਸ ਸਾਲ ਦੇ ਕੰਮਾਂ ਦੀ ਜਾਂਚ ਕਰੋ।";
+"stats_task_compare" = "ਤੁਲਨਾ ਕਰੋ";
+"stats_task_compare_lock_title" = "ਸਮੇਂ ਦੇ ਨਾਲ ਆਪਣੀ ਤਰੱਕੀ ਦੇਖੋ";
+"stats_task_compare_lock_message" = "Pro ਦਿਖਾਉਂਦਾ ਹੈ ਕਿ ਹਰੇਕ ਕੰਮ ਪਿਛਲੇ ਮਹੀਨੇ ਜਾਂ ਸਾਲ ਨਾਲ ਕਿਵੇਂ ਤੁਲਨਾ ਕਰਦਾ ਹੈ।";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "ਤੁਲਨਾ";
+"stats_blocked_compare_week" = "ਪਿਛਲੇ ਹਫ਼ਤੇ ਬਨਾਮ";
+"stats_blocked_compare_month" = "ਪਿਛਲੇ ਮਹੀਨੇ ਬਨਾਮ";
+"stats_blocked_compare_year" = "ਪਿਛਲੇ ਸਾਲ ਬਨਾਮ";
+"stats_blocked_compare_no_baseline" = "-";
+"stats_blocked_compare_lock_title" = "ਆਪਣੇ ਹਫ਼ਤੇ, ਮਹੀਨੇ, ਸਾਲ ਦੀ ਤੁਲਨਾ ਕਰੋ";
+"stats_blocked_compare_lock_message" = "Pro ਇਹ ਦਿਖਾਉਂਦਾ ਹੈ ਕਿ ਇਹ ਹਫ਼ਤਾ, ਮਹੀਨਾ, ਅਤੇ ਸਾਲ ਪਿਛਲੇ ਦੇ ਮੁਕਾਬਲੇ ਕਿਵੇਂ ਵਧਦਾ ਹੈ।";
+"stats_blocked_compare_unlock_button" = "Pro ਨਾਲ ਅਨਲੌਕ ਕਰੋ";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro ਰਿਪੋਰਟਾਂ";
+"stats_pro_section_upsell_desc" = "ਸਾਰੀਆਂ ਪੀਰੀਅਡ-ਓਵਰ-ਪੀਰੀਅਡ ਤੁਲਨਾ ਰਿਪੋਰਟਾਂ ਨੂੰ ਅਨਲੌਕ ਕਰੋ।";
+
+/* Badges */
+"badge_3day" = "3 ਦਿਨ\nਸਟਾਰਟਰ";
+"badge_7day" = "ਹਫ਼ਤਾ\nਯੋਧਾ";
+"badge_30day" = "ਮਹੀਨਾ\nਮਾਸਟਰ";
+"badge_100day" = "ਸਦੀ\nਚੈਂਪੀਅਨ";
+"badge_365day" = "ਸਾਲ\nਦੰਤਕਥਾ";
+"badge_celebration_eyebrow" = "ਬੈਜ ਅਨਲੌਕ ਕੀਤਾ ਗਿਆ";
+"badge_celebration_continue" = "ਜਾਰੀ ਰੱਖੋ";
+
+/* BlockingView */
+"blocking_header" = "ਬਲੌਕ ਕੀਤਾ";
+"blocking_subtitle" = "ਅਨਲੌਕ ਕਰਨ ਲਈ ਆਪਣੇ ਕੰਮ ਪੂਰੇ ਕਰੋ।";
+"blocking_give_up" = "ਐਮਰਜੈਂਸੀ ਅਨਲੌਕ";
+"blocking_give_up_confirm_title" = "ਕੀ ਐਮਰਜੈਂਸੀ ਲਈ ਅਨਲੌਕ ਕਰਨਾ ਹੈ?";
+"blocking_give_up_confirm_message" = "ਸਿਰਫ ਐਮਰਜੈਂਸੀ ਵਿੱਚ ਹੀ ਵਰਤੋ। ਅੱਜ ਦੇ ਕੰਮ ਅਣ-ਚੈੱਕ ਰਹਿਣਗੇ, ਅਤੇ ਬਲੌਕ ਕਰਨਾ ਕੱਲ੍ਹ ਮੁੜ-ਸ਼ੁਰੂ ਹੋ ਜਾਵੇਗਾ।";
+"blocking_give_up_confirm_button" = "ਐਮਰਜੈਂਸੀ ਅਨਲੌਕ";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "ਐਮਰਜੈਂਸੀ ਅਨਲੌਕ";
+"emergency_unlock_subtitle" = "ਕੀ ਤੁਸੀਂ ਪੱਕਾ ਅਨਲੌਕ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?";
+"emergency_unlock_bullet_today" = "ਅੱਜ ਦੇ ਕੰਮ ਅਨਿਯਮਿਤ ਰਹਿਣਗੇ।";
+"emergency_unlock_bullet_tomorrow" = "ਬਲਾਕਿੰਗ ਕੱਲ੍ਹ ਸਵੇਰੇ ਮੁੜ ਸ਼ੁਰੂ ਹੋਵੇਗੀ।";
+"emergency_unlock_bullet_streak" = "ਤੁਹਾਡੀ ਲੜੀ ਟੁੱਟ ਸਕਦੀ ਹੈ।";
+"emergency_unlock_slide_label" = "ਅਨਲੌਕ ਕਰਨ ਲਈ ਸਲਾਈਡ ਕਰੋ";
+"emergency_unlock_cancel" = "ਕੋਈ ਗੱਲ ਨਹੀਂ";
+
+/* SettingsView */
+"settings_start_time" = "ਸ਼ੁਰੂਆਤੀ ਸਮਾਂ";
+"settings_start_time_label" = "ਸ਼ੁਰੂਆਤੀ ਸਮਾਂ";
+"settings_start_time_daily" = "ਰੋਜ਼ਾਨਾ";
+"settings_routine_section" = "ਰੁਟੀਨ";
+"settings_tasks" = "ਕਾਰਜ";
+"settings_tasks_footer" = "ਬਲੌਕ ਕੀਤੀਆਂ ਐਪਾਂ ਨੂੰ ਅਨਲੌਕ ਕਰਨ ਲਈ ਸਾਰੇ ਕਾਰਜ ਪੂਰੇ ਕਰੋ। ਕੰਮ ਹਰ ਰੋਜ਼ ਰੀਸੈੱਟ ਹੁੰਦੇ ਹਨ।\nਕਿਸੇ ਕੰਮ ਦਾ ਨਾਮ ਬਦਲਣ ਲਈ ਇਸ 'ਤੇ ਟੈਪ ਕਰੋ।";
+"settings_task_placeholder" = "ਟਾਸਕ";
+"settings_add_task_placeholder" = "ਇੱਕ ਕਾਰਜ ਸ਼ਾਮਲ ਕਰੋ";
+"tasks_add_sheet_title" = "ਕਾਰਜ ਸ਼ਾਮਲ ਕਰੋ";
+"tasks_add_accessibility" = "ਕਾਰਜ ਸ਼ਾਮਲ ਕਰੋ";
+"tasks_add_timer_toggle" = "ਇੱਕ ਟਾਈਮਰ ਸੈੱਟ ਕਰੋ";
+"tasks_rename_sheet_title" = "ਟਾਸਕ ਦਾ ਨਾਮ ਬਦਲੋ";
+"tasks_rename_accessibility" = "ਕਾਰਜ ਦਾ ਨਾਮ ਬਦਲੋ";
+"tasks_delete_accessibility" = "ਕਾਰਜਾਂ ਨੂੰ ਮਿਟਾਓ";
+"tasks_edit_done_accessibility" = "ਸੰਪਾਦਨ ਕੀਤਾ";
+"settings_blocking" = "ਬਲਾਕਿੰਗ";
+"settings_blocked_apps" = "ਬਲੌਕ ਕੀਤੀਆਂ ਐਪਾਂ";
+"settings_blocked_apps_pro_upsell_title" = "Pro ਨਾਲ ਅਸੀਮਤ ਬਲਾਕ ਕਰੋ";
+"settings_blocked_apps_pro_upsell_subtitle" = "ਜਿੰਨੇ ਮਰਜ਼ੀ ਐਪਾਂ, ਸ਼੍ਰੇਣੀਆਂ ਅਤੇ ਵੈੱਬਸਾਈਟਾਂ ਚੁਣੋ।";
+"settings_blocked_apps_upsell_feature_categories" = "ਇੱਕ ਵਾਰ ਵਿੱਚ ਪੂਰੀ ਐਪ ਸ਼੍ਰੇਣੀਆਂ ਨੂੰ ਬਲੌਕ ਕਰੋ";
+"settings_blocked_apps_upsell_feature_websites" = "ਵੈੱਬਸਾਈਟਾਂ ਨੂੰ ਵੀ ਬਲਾਕ ਕਰੋ";
+"settings_blocked_apps_upsell_continue_free" = "ਮੁਫ਼ਤ ਯੋਜਨਾ 'ਤੇ ਜਾਰੀ ਰੱਖੋ (%d ਤੱਕ)";
+"settings_categories_pro_only" = "ਐਪ ਸ਼੍ਰੇਣੀਆਂ ਨੂੰ ਸਿਰਫ਼ Pro ਨਾਲ ਸੁਰੱਖਿਅਤ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ। ਮੁਫ਼ਤ ਯੋਜਨਾ 'ਤੇ, ਵਿਅਕਤੀਗਤ ਐਪਸ ਜਾਂ ਵੈੱਬਸਾਈਟਾਂ ਚੁਣੋ।";
+"settings_items_unit" = "ਆਈਟਮਾਂ";
+"settings_weekday_scheduling" = "ਹਫ਼ਤੇ ਦੇ ਦਿਨ ਦੀ ਸਮਾਂ-ਸਾਰਣੀ";
+"settings_appearance_section" = "ਦਿੱਖ";
+"settings_appearance" = "ਥੀਮ";
+"settings_appearance_system" = "ਸਿਸਟਮ";
+"settings_appearance_light" = "ਚਾਨਣ";
+"settings_appearance_dark" = "ਹਨੇਰਾ";
+"settings_color_theme_section" = "ਰੰਗ ਥੀਮ";
+"settings_color_theme" = "ਰੰਗ ਥੀਮ";
+"settings_color_theme_pro_only" = "Pro ਮੈਂਬਰ ਐਪ ਦੇ ਲਹਿਜ਼ੇ ਦੇ ਰੰਗਾਂ ਨੂੰ ਅਨੁਕੂਲਿਤ ਕਰ ਸਕਦੇ ਹਨ।";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "ਕਲਾਸਿਕ";
+"settings_color_theme_sunrise" = "ਸੂਰਜ ਚੜ੍ਹਨਾ";
+"settings_color_theme_forest" = "ਜੰਗਲ";
+"settings_color_theme_ocean" = "ਸਾਗਰ";
+"settings_color_theme_lavender" = "ਲਵੈਂਡਰ";
+"settings_color_theme_rose" = "ਗੁਲਾਬ";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "SNS ਅਤੇ ਸਮਾਂ ਬਰਬਾਦ ਕਰਨ ਵਾਲੀਆਂ ਐਪਾਂ ਲਈ ਆਪਣਾ ਦਿਨ ਗੁਆ ​​ਰਹੇ ਹੋ?";
+"onboarding_problem_desc" = "ਜੋ ਐਪਾਂ ਤੁਸੀਂ ਬਿਨਾਂ ਸੋਚੇ-ਸਮਝੇ ਖੋਲ੍ਹਦੇ ਹੋ, ਉਹਨਾਂ ਵਿੱਚ ਘੰਟਿਆਂ ਦਾ ਵਾਧਾ ਹੁੰਦਾ ਹੈ — ਅਤੇ ਤੁਹਾਡਾ ਸਾਰਾ ਦਿਨ ਖਿਸਕ ਜਾਂਦਾ ਹੈ।";
+"onboarding_problem_point_scroll" = "ਆਟੋਪਾਇਲਟ 'ਤੇ ਸੋਸ਼ਲ ਫੀਡ ਖੋਲ੍ਹਣਾ";
+"onboarding_problem_point_time" = "ਘੰਟੇ ਹਰ ਰੋਜ਼ ਐਪਸ ਵਿੱਚ ਪਿਘਲਦੇ ਹਨ";
+"onboarding_problem_point_mood" = "ਜੋ ਤੁਸੀਂ ਅਸਲ ਵਿੱਚ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ ਉਸ ਨੂੰ ਕਦੇ ਨਾ ਪ੍ਰਾਪਤ ਕਰੋ";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "MornDash ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ";
+"onboarding_how_desc" = "ਤੁਹਾਡੇ ਨਿਰਧਾਰਤ ਸਮੇਂ ਤੋਂ, ਸਮਾਂ ਬਰਬਾਦ ਕਰਨ ਵਾਲੀਆਂ ਐਪਾਂ ਬਾਕੀ ਦਿਨ ਲਈ ਲਾਕ ਰਹਿੰਦੀਆਂ ਹਨ।";
+"onboarding_how_step1_title" = "ਤੁਹਾਡੇ ਨਿਰਧਾਰਤ ਸਮੇਂ 'ਤੇ";
+"onboarding_how_step1_desc" = "ਬਲਾਕਿੰਗ ਹਰ ਦਿਨ ਆਟੋਮੈਟਿਕਲੀ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ";
+"onboarding_how_step2_title" = "ਐਪਸ ਲੌਕ ਡਾਊਨ";
+"onboarding_how_step2_desc" = "ਤੁਹਾਡੇ ਵੱਲੋਂ ਚੁਣੀਆਂ ਗਈਆਂ ਐਪਾਂ ਸਾਰਾ ਦਿਨ ਲੌਕ ਰਹਿੰਦੀਆਂ ਹਨ";
+"onboarding_how_step3_title" = "ਕਾਰਜ ਉਹਨਾਂ ਨੂੰ ਅਨਲੌਕ ਕਰਦੇ ਹਨ";
+"onboarding_how_step3_desc" = "ਬਲਾਕ ਨੂੰ ਜਾਰੀ ਕਰਨ ਲਈ ਆਪਣੇ ਚੁਣੇ ਹੋਏ ਕੰਮਾਂ ਨੂੰ ਪੂਰਾ ਕਰੋ";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Screen Time ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ";
+"onboarding_permission_desc" = "ਐਪਾਂ ਨੂੰ ਬਲੌਕ ਕਰਨ ਲਈ, MornDash ਨੂੰ Apple ਦੇ Screen Time ਤੱਕ ਪਹੁੰਚ ਦੀ ਲੋੜ ਹੈ।";
+"onboarding_permission_note" = "ਹਰ ਚੀਜ਼ ਤੁਹਾਡੀ ਡਿਵਾਈਸ 'ਤੇ ਰਹਿੰਦੀ ਹੈ। MornDash ਕਿਤੇ ਵੀ ਤੁਹਾਡਾ ਡੇਟਾ ਨਹੀਂ ਭੇਜਦਾ ਹੈ।";
+"onboarding_param_screentime" = "Screen Time ਨੂੰ ਸਮਰੱਥ ਬਣਾਓ";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "ਬਲੌਕ ਕਰਨ ਲਈ ਐਪਸ ਚੁਣੋ";
+"onboarding_apps_desc" = "ਕੱਲ੍ਹ ਦੀ ਸੂਚੀ ਵਿੱਚੋਂ ਜੇਕਰ ਦਿਖਾਇਆ ਗਿਆ ਹੈ, ਜਾਂ ਚੁਣੋ ਐਪਸ ਦੀ ਵਰਤੋਂ ਕਰੋ।";
+"onboarding_apps_yesterday_label" = "ਕੱਲ੍ਹ";
+"onboarding_apps_free_footer" = "ਮੁਫ਼ਤ: %d ਆਈਟਮਾਂ ਤੱਕ। ਸ਼੍ਰੇਣੀਆਂ ਨੂੰ Pro ਦੀ ਲੋੜ ਹੈ।";
+"onboarding_select_apps" = "ਐਪਸ ਚੁਣੋ";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dਘੰ";
+"onboarding_usage_m_only_format" = "%dਮ";
+"onboarding_usage_under_one_m" = "<1 ਮਿ";
+"onboarding_items_selected" = "%d ਆਈਟਮਾਂ ਚੁਣੀਆਂ ਗਈਆਂ";
+"onboarding_items_selected_with_limit" = "%d / %d ਆਈਟਮਾਂ ਚੁਣੀਆਂ ਗਈਆਂ";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "ਇਹ ਕਦੋਂ ਸ਼ੁਰੂ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ?";
+"onboarding_time_desc" = "ਇਸ ਸਮੇਂ ਤੋਂ ਹਰ ਰੋਜ਼, ਤੁਹਾਡੀਆਂ ਚੁਣੀਆਂ ਗਈਆਂ ਐਪਾਂ ਲੌਕ ਰਹਿੰਦੀਆਂ ਹਨ।";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "ਆਪਣੇ ਅਨਲੌਕ ਕਾਰਜਾਂ ਨੂੰ ਸੈੱਟ ਕਰੋ";
+"onboarding_tasks_desc" = "ਦਿਨ ਲਈ ਆਪਣੀਆਂ ਐਪਾਂ ਨੂੰ ਅਨਲੌਕ ਕਰਨ ਲਈ ਸਾਰੇ ਕਾਰਜਾਂ ਨੂੰ ਪੂਰਾ ਕਰੋ।";
+"onboarding_tasks_your_list" = "ਤੁਹਾਡੇ ਕੰਮ";
+"onboarding_tasks_suggestions" = "ਸੁਝਾਅ";
+"onboarding_tasks_custom" = "ਆਪਣਾ ਲਿਖੋ";
+"onboarding_tasks_empty" = "ਅਜੇ ਕੋਈ ਕਾਰਜ ਨਹੀਂ";
+"onboarding_tasks_empty_hint" = "ਕਾਰਜ ਸ਼ਾਮਲ ਕਰਨ ਲਈ ਹੇਠਾਂ ਦਿੱਤੇ ਸੁਝਾਅ 'ਤੇ ਟੈਪ ਕਰੋ";
+"onboarding_tasks_ritual_count" = "%d ਕਾਰਜ";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "ਆਪਣਾ ਸਮਾਂ ਵਾਪਸ ਲਓ।";
+"onboarding_motivation_desc" = "ਆਪਣੇ ਘੰਟੇ ਆਪਣੀ ਜ਼ਿੰਦਗੀ 'ਤੇ ਬਿਤਾਓ, ਨਾ ਕਿ ਤੁਹਾਡੀ ਫੀਡ 'ਤੇ।\nਛੋਟੀਆਂ ਜਿੱਤਾਂ ਉਸ ਵਿਅਕਤੀ ਨੂੰ ਬਣਾਉਂਦੀਆਂ ਹਨ ਜੋ ਤੁਸੀਂ ਬਣਨਾ ਚਾਹੁੰਦੇ ਹੋ।";
+"onboarding_motivation_point_focus" = "ਸਾਰਾ ਦਿਨ ਫੋਕਸ ਰਹੋ";
+"onboarding_motivation_point_calm" = "ਅੰਤ ਵਿੱਚ ਉਹ ਚੀਜ਼ ਪ੍ਰਾਪਤ ਕਰੋ ਜੋ ਅਸਲ ਵਿੱਚ ਮਹੱਤਵਪੂਰਨ ਹੈ";
+"onboarding_motivation_point_self" = "ਆਪਣੇ ਸਭ ਤੋਂ ਵਧੀਆ ਸਵੈ ਦੇ ਨੇੜੇ ਇੱਕ ਕਦਮ";
+"onboarding_finish" = "ਸ਼ੁਰੂ ਕਰੋ";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "ਖਿੱਚੋ";
+"onboarding_preset_bed" = "ਮੇਰਾ ਬਿਸਤਰਾ ਬਣਾਓ";
+"onboarding_preset_meditate" = "5 ਮਿੰਟ ਮੈਡੀਟੇਸ਼ਨ ਕਰੋ";
+"onboarding_preset_journal" = "ਮੇਰੇ ਜਰਨਲ ਵਿੱਚ ਲਿਖੋ";
+"onboarding_preset_read" = "10 ਪੰਨੇ ਪੜ੍ਹੋ";
+"onboarding_preset_run" = "ਇੱਕ ਦੌੜ ਲਈ ਜਾਓ";
+
+/* Default tasks */
+"default_task_stretch" = "ਖਿੱਚੋ";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "ਗਾਹਕੀ";
+"settings_status_pro" = "Pro · ਰੀਨਿਊ %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "ਮੁਫਤ ਯੋਜਨਾ";
+"settings_upgrade_to_pro" = "Pro ਵਿੱਚ ਅੱਪਗ੍ਰੇਡ ਕਰੋ";
+"settings_restore_purchase" = "ਖਰੀਦ ਨੂੰ ਰੀਸਟੋਰ ਕਰੋ";
+"settings_manage_subscription" = "ਗਾਹਕੀ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ";
+"settings_restore_success_title" = "ਬਹਾਲ ਕੀਤਾ";
+"settings_restore_success_message" = "ਤੁਹਾਡੀ Pro ਗਾਹਕੀ ਕਿਰਿਆਸ਼ੀਲ ਹੈ।";
+"settings_restore_failure_title" = "ਰੀਸਟੋਰ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ";
+"settings_restore_failure_message" = "ਇਸ ਐਪਲ ਆਈਡੀ ਲਈ ਕੋਈ ਕਿਰਿਆਸ਼ੀਲ ਗਾਹਕੀ ਨਹੀਂ ਮਿਲੀ।";
+"settings_restore_error_title" = "ਰੀਸਟੋਰ ਕਰਨਾ ਅਸਫਲ ਰਿਹਾ";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "ਅਸੀਮਤ ਕਾਰਜ";
+"paywall_feature_unlimited_blocked_apps" = "ਬਲੌਕ ਕਰਨ ਲਈ ਅਸੀਮਤ ਐਪਸ ਅਤੇ ਸ਼੍ਰੇਣੀਆਂ";
+"paywall_feature_multi_schedule" = "ਮਲਟੀਪਲ ਬਲਾਕ ਅਨੁਸੂਚੀ";
+"paywall_feature_color_themes" = "ਕਸਟਮ ਰੰਗ ਥੀਮ";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "ਮੁਫਤ ਯੋਜਨਾ %d ਕਾਰਜਾਂ ਤੱਕ ਦਾ ਸਮਰਥਨ ਕਰਦੀ ਹੈ।\nਅਸੀਮਤ ਕਾਰਜਾਂ ਲਈ Pro ਵਿੱਚ ਅੱਪਗ੍ਰੇਡ ਕਰੋ।";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "ਸਵੇਰ ਲਈ ਵਧੇਰੇ ਆਜ਼ਾਦੀ ਜੋ ਤੁਸੀਂ ਚਾਹੁੰਦੇ ਹੋ।";
+"settings_card_pro_title" = "Pro ਮੈਂਬਰ";
+"settings_card_pro_subtitle" = "MornDash ਦਾ ਸਮਰਥਨ ਕਰਨ ਲਈ ਧੰਨਵਾਦ।";
+"settings_legal_section" = "ਕਾਨੂੰਨੀ";
+"settings_commercial_transactions" = "ਨਿਰਧਾਰਤ ਵਪਾਰਕ ਲੈਣ-ਦੇਣ";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "ਆਪਣੇ ਸਵੇਰ ਦੇ ਅਭਿਆਸ ਵਿੱਚ ਡੂੰਘਾਈ ਨਾਲ ਜਾਓ।\nਹੇਠਾਂ ਸਭ ਕੁਝ ਅਨਲੌਕ ਕਰੋ।";
+"paywall_plan_weekly" = "ਹਫਤਾਵਾਰੀ";
+"paywall_plan_monthly" = "ਮਹੀਨਾਵਾਰ";
+"paywall_plan_annual" = "ਸਾਲਾਨਾ";
+"paywall_per_week" = "ਹਰ ਹਫ਼ਤੇ ਰੀਨਿਊ ਹੁੰਦਾ ਹੈ";
+"paywall_per_month" = "ਹਰ ਮਹੀਨੇ ਰੀਨਿਊ ਕੀਤਾ ਜਾਂਦਾ ਹੈ";
+"paywall_per_year" = "ਹਰ ਸਾਲ ਨਵਿਆਇਆ ਜਾਂਦਾ ਹੈ";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "%d%% ਬਚਾਓ";
+"paywall_cta_continue" = "ਜਾਰੀ ਰੱਖੋ";
+"paywall_cta_free_trial" = "ਮੁਫ਼ਤ ਅਜ਼ਮਾਇਸ਼ ਸ਼ੁਰੂ ਕਰੋ";
+"paywall_trial_badge_first_week" = "ਪਹਿਲਾ ਹਫ਼ਤਾ ਮੁਫ਼ਤ";
+"paywall_trial_disclosure_format" = "ਪਹਿਲੀ ਵਾਰ ਸਾਲਾਨਾ ਗਾਹਕਾਂ ਲਈ %1$@ ਮੁਫ਼ਤ ਅਜ਼ਮਾਇਸ਼, ਫਿਰ %2$@/ਸਾਲ। ਆਟੋ-ਨਵੀਨੀਕਰਨ ਜਦੋਂ ਤੱਕ ਟਰਾਇਲ ਖਤਮ ਹੋਣ ਤੋਂ ਘੱਟੋ-ਘੱਟ 24 ਘੰਟੇ ਪਹਿਲਾਂ ਰੱਦ ਨਹੀਂ ਕੀਤਾ ਜਾਂਦਾ।";
+"trial_period_one_week" = "1 ਹਫ਼ਤਾ";
+"trial_period_days_format" = "%d ਦਿਨ";
+"trial_period_weeks_format" = "%d ਹਫ਼ਤੇ";
+"trial_period_months_format" = "%d ਮਹੀਨਾ(ਮਹੀਨੇ)";
+"trial_period_years_format" = "%d ਸਾਲ";
+"paywall_terms" = "ਵਰਤੋ ਦੀਆਂ ਸ਼ਰਤਾਂ";
+"paywall_privacy" = "ਪਰਾਈਵੇਟ ਨੀਤੀ";
+"paywall_commercial" = "ਵਪਾਰਕ ਲੈਣ-ਦੇਣ";
+"paywall_offerings_unavailable" = "ਯੋਜਨਾਵਾਂ ਨੂੰ ਲੋਡ ਨਹੀਂ ਕੀਤਾ ਜਾ ਸਕਿਆ। ਆਪਣੇ ਕਨੈਕਸ਼ਨ ਦੀ ਜਾਂਚ ਕਰੋ।";
+"paywall_retry" = "ਫਿਰ ਕੋਸ਼ਿਸ਼ ਕਰੋ";
+"paywall_error_title" = "ਕੁਝ ਗਲਤ ਹੋ ਗਿਆ";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "ਆਪਣੇ ਸਵੇਰ ਦੇ ਅਭਿਆਸ ਵਿੱਚ ਡੂੰਘਾਈ ਨਾਲ ਜਾਓ। ਸਾਰੀਆਂ ਵਿਸ਼ੇਸ਼ਤਾਵਾਂ ਅਨਲੌਕ ਕੀਤੀਆਂ ਗਈਆਂ।";
+"subscription_active" = "ਕਿਰਿਆਸ਼ੀਲ";
+"subscription_next_renewal" = "ਅਗਲਾ ਨਵੀਨੀਕਰਨ";
+"subscription_manage_in_store" = "App Store ਵਿੱਚ ਪ੍ਰਬੰਧਿਤ ਕਰੋ";
+"subscription_cancel" = "ਗਾਹਕੀ ਰੱਦ ਕਰੋ";
+"subscription_cancel_alert_title" = "Proਰੱਦ ਕਰਨਾ ਚਾਹੁੰਦੇ ਹੋ?";
+"subscription_cancel_alert_message" = "ਤੁਹਾਨੂੰ ਤੁਹਾਡੇ App Store ਗਾਹਕੀ ਪ੍ਰਬੰਧਨ ਪੰਨੇ 'ਤੇ ਰੀਡਾਇਰੈਕਟ ਕੀਤਾ ਜਾਵੇਗਾ।";
+"subscription_cancel_alert_proceed" = "ਖੋਲ੍ਹੋ App Store";
+"subscription_terms_heading" = "ਗਾਹਕੀ ਦੀਆਂ ਸ਼ਰਤਾਂ";
+"subscription_terms_auto_renew" = "ਗਾਹਕੀ ਸਵੈਚਲਿਤ ਤੌਰ 'ਤੇ ਰੀਨਿਊ ਹੋ ਜਾਂਦੀ ਹੈ ਜਦੋਂ ਤੱਕ ਮੌਜੂਦਾ ਮਿਆਦ ਦੀ ਸਮਾਪਤੀ ਤੋਂ ਘੱਟੋ-ਘੱਟ 24 ਘੰਟੇ ਪਹਿਲਾਂ ਸਵੈ-ਨਵੀਨੀਕਰਨ ਬੰਦ ਨਹੀਂ ਹੁੰਦਾ।";
+"subscription_terms_charge" = "ਮੌਜੂਦਾ ਮਿਆਦ ਦੀ ਸਮਾਪਤੀ ਤੋਂ 24 ਘੰਟਿਆਂ ਦੇ ਅੰਦਰ ਤੁਹਾਡੇ ਖਾਤੇ ਨੂੰ ਨਵਿਆਉਣ ਲਈ ਚਾਰਜ ਕੀਤਾ ਜਾਵੇਗਾ।";
+"subscription_terms_manage" = "ਗਾਹਕੀਆਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ ਅਤੇ ਖਰੀਦ ਤੋਂ ਬਾਅਦ ਤੁਹਾਡੀਆਂ ਖਾਤਾ ਸੈਟਿੰਗਾਂ ਰਾਹੀਂ ਸਵੈ-ਨਵੀਨੀਕਰਨ ਨੂੰ ਬੰਦ ਕੀਤਾ ਜਾ ਸਕਦਾ ਹੈ।";
+"subscription_terms_trial" = "ਸਾਲਾਨਾ ਪਲਾਨ ਵਿੱਚ ਸਿਰਫ਼ ਯੋਗ ਨਵੇਂ ਗਾਹਕਾਂ ਲਈ ਇੱਕ-ਵਾਰ 1-ਹਫ਼ਤੇ ਦੀ ਮੁਫ਼ਤ ਅਜ਼ਮਾਇਸ਼ ਸ਼ਾਮਲ ਹੈ। ਹਫ਼ਤਾਵਾਰੀ ਅਤੇ ਮਾਸਿਕ ਯੋਜਨਾਵਾਂ ਵਿੱਚ ਇੱਕ ਮੁਫ਼ਤ ਅਜ਼ਮਾਇਸ਼ ਸ਼ਾਮਲ ਨਹੀਂ ਹੈ। ਜਦੋਂ ਤੁਸੀਂ ਸਬਸਕ੍ਰਾਈਬ ਕਰਦੇ ਹੋ ਤਾਂ ਮੁਫਤ ਅਜ਼ਮਾਇਸ਼ ਦਾ ਕੋਈ ਵੀ ਅਣਵਰਤਿਆ ਹਿੱਸਾ ਜ਼ਬਤ ਕਰ ਲਿਆ ਜਾਂਦਾ ਹੈ, ਅਤੇ ਜਦੋਂ ਤੱਕ ਤੁਸੀਂ ਘੱਟੋ-ਘੱਟ 24 ਘੰਟੇ ਪਹਿਲਾਂ ਰੱਦ ਨਹੀਂ ਕਰਦੇ ਹੋ, ਤਾਂ ਟ੍ਰਾਇਲ ਖਤਮ ਹੋਣ 'ਤੇ ਤੁਹਾਡੇ ਤੋਂ ਸਾਲਾਨਾ ਕੀਮਤ ਵਸੂਲੀ ਜਾਵੇਗੀ।";
+
+/* Workout */
+"workout_preset_squats_title" = "%d ਸਕੁਐਟਸ";
+"workout_preset_ai_badge" = "AI · ਪ੍ਰੋ";
+"workout_reps_picker_title" = "squat reps ਚੁਣੋ";
+"workout_reps_picker_stepper_format" = "%d ਪ੍ਰਤੀਨਿਧੀ";
+"workout_reps_picker_placeholder" = "ਪ੍ਰਤੀਨਿਧ ਦਾਖਲ ਕਰੋ (1-999)";
+"workout_reps_picker_invalid" = "1 ਅਤੇ 999 ਦੇ ਵਿਚਕਾਰ ਕੋਈ ਨੰਬਰ ਦਾਖਲ ਕਰੋ";
+"workout_reps_picker_add_button" = "ਇਸ ਕਾਰਜ ਨੂੰ ਸ਼ਾਮਲ ਕਰੋ";
+"workout_status_recognizing" = "ਪਛਾਣ ਰਿਹਾ ਹੈ...";
+"workout_status_no_body" = "ਫਰੇਮ ਵਿੱਚ ਕਦਮ";
+"workout_status_adjust" = "ਆਪਣੀ ਸਥਿਤੀ ਨੂੰ ਵਿਵਸਥਿਤ ਕਰੋ";
+"workout_status_start" = "ਸ਼ੁਰੂ ਕਰੋ!";
+"workout_status_down" = "ਹੇਠਾਂ!";
+"workout_status_good" = "ਵਧੀਆ!";
+"workout_simulator_notice" = "ਸਿਮੂਲੇਟਰ ਵਿੱਚ ਕੈਮਰਾ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਸੰਪੂਰਨਤਾ ਦੀ ਨਕਲ ਕਰਨ ਲਈ ਟੈਪ ਕਰੋ।";
+"workout_simulator_complete" = "ਮੁਕੰਮਲ ਵਜੋਂ ਨਿਸ਼ਾਨਦੇਹੀ ਕਰੋ";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "ਅਧਿਐਨ %d ਮਿੰਟ";
+"focus_preset_pcwork_title" = "PC ਕੰਮ %d ਮਿੰਟ";
+"focus_preset_study_label" = "ਅਧਿਐਨ";
+"focus_preset_pcwork_label" = "ਪੀਸੀ ਕੰਮ";
+"focus_preset_ai_badge" = "AI · ਪ੍ਰੋ";
+"focus_status_detected" = "ਫੋਕਸ ਕੀਤਾ";
+"focus_status_no_face" = "ਕੈਮਰੇ ਤੋਂ ਦੂਰ ਰਹੋ";
+"focus_status_multiple_faces" = "ਕਈ ਲੋਕਾਂ ਦਾ ਪਤਾ ਲੱਗਾ";
+"focus_status_low_quality" = "ਰੋਸ਼ਨੀ ਬਹੁਤ ਘੱਟ ਹੈ";
+"focus_status_bad_angle" = "ਕੈਮਰੇ ਦਾ ਸਾਹਮਣਾ ਕਰੋ";
+"focus_status_face_too_small" = "ਨੇੜੇ ਜਾਓ";
+"focus_hint_setup_title" = "ਆਪਣਾ ਫ਼ੋਨ ਸੈੱਟਅੱਪ ਕਰੋ";
+"focus_hint_setup_body" = "Prop ਆਪਣੇ ਫ਼ੋਨ ਨੂੰ ਇੱਕ ਸਟੈਂਡ 'ਤੇ ਰੱਖੋ ਤਾਂ ਜੋ ਤੁਹਾਡਾ ਚਿਹਰਾ ਫ੍ਰੇਮ ਵਿੱਚ ਫਿੱਟ ਹੋਵੇ।";
+"focus_hint_setup_close" = "ਮਿਲ ਗਿਆ";
+"focus_privacy_notice" = "ਵੀਡੀਓ ਇਸ ਡਿਵਾਈਸ 'ਤੇ ਰਹਿੰਦਾ ਹੈ";
+"focus_session_remaining" = "ਬਾਕੀ";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d ਮਿੰਟ";
+"tasks_timer_seconds_short_format" = "%d ਸਕਿੰਟ";
+"tasks_timer_duration_min_sec_format" = "%d ਮਿੰਟ %02d ਸਕਿੰਟ";
+"tasks_timer_minutes_label" = "ਮਿੰਟ";
+"tasks_timer_seconds_label" = "ਸਕਿੰਟ";
+"tasks_timer_minutes_placeholder" = "ਮਿੰਟ (1–180)";
+"tasks_timer_sheet_title" = "ਟਾਈਮਰ ਸੈਟਿੰਗਾਂ";
+"tasks_timer_sheet_hint" = "ਮਿੰਟ ਅਤੇ ਸਕਿੰਟ ਸੈੱਟ ਕਰੋ। ਟਾਈਮਰ ਖਤਮ ਹੋਣ 'ਤੇ ਕੰਮ ਪੂਰਾ ਹੋ ਜਾਂਦਾ ਹੈ।";
+"tasks_timer_remove" = "ਟਾਈਮਰ ਹਟਾਓ";
+"tasks_timer_save" = "ਸੇਵ ਕਰੋ";
+"timer_session_title" = "ਟਾਈਮਰ";
+"timer_session_hint" = "ਚੱਲਦੇ ਸਮੇਂ ਸਕ੍ਰੀਨ ਜਾਗਦੀ ਰਹਿੰਦੀ ਹੈ";
+"timer_session_start" = "ਸ਼ੁਰੂ ਕਰੋ";
+"timer_session_pause" = "ਵਿਰਾਮ";
+
+/* Task ticket */
+"task_ticket_number_format" = "ਨੰਬਰ%02d";
+"task_ticket_done_stamp" = "ਹੋ ਗਿਆ";

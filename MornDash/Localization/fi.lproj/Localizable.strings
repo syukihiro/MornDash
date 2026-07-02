@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "Asetukset";
+"common_done" = "Tehty";
+"common_cancel" = "Peruuttaa";
+"common_select" = "Valitse";
+"common_next" = "Seuraavaksi";
+"common_continue" = "Jatkaa";
+"common_back" = "Takaisin";
+"common_skip" = "Ohita";
+"common_start" = "Aloita";
+
+/* MainView (idle) */
+"main_next_block" = "SEURAAVA BLOCK";
+"main_completed_eyebrow" = "KAIKKI VALMIS";
+"main_completed_title" = "Tehty tälle päivälle";
+"main_completed_subtitle" = "Nauti loppupäivästäsi.";
+"main_completed_streak_unit" = "PÄIVÄPÄIVÄ";
+"main_completed_message_3" = "Tottumuksesi on muotoutumassa. Jatka samaan malliin huomenna.";
+"main_completed_message_7" = "Täysi viikko. Olet todellinen juttu.";
+"main_completed_message_30" = "Pysäyttämätön johdonmukaisuus. Ole ylpeä itsestäsi.";
+"main_completed_message_100" = "100 päivää todisteita. Mikään ei voi estää sinua nyt.";
+"main_completed_week_progress" = "%d / 7 päivää tällä viikolla";
+"main_completed_best_streak" = "Paras: %d";
+"main_completed_next_block" = "Seuraava lohko %@";
+"main_todays_tasks" = "PÄIVÄN TEHTÄVÄT";
+"main_todays_tasks_done" = "KAIKKI VALMIS";
+"main_no_tasks" = "Ei vielä tehtäviä. Lisää joitakin Tehtävät-välilehdeltä.";
+
+"routine_celebration_eyebrow" = "KAIKKI VALMIS";
+"routine_celebration_title" = "Sinä teit sen!";
+"routine_celebration_message" = "Kaikki tehtävät suoritettu tältä päivältä.\nNauti vapaudesta.";
+"routine_celebration_continue" = "Jatkaa";
+"routine_celebration_compact_title" = "Kaikki tehty tälle päivälle";
+
+/* Tabs */
+"tab_home" = "Kotiin";
+"tab_tasks" = "Tehtävät";
+"tab_stats" = "Tilastot";
+"tab_settings" = "Asetukset";
+
+/* Streak / Stats */
+"streak_days_format" = "%d päivän sarja";
+"stats_streak_day_unit_singular" = "päivä";
+"stats_streak_day_unit_plural" = "päivää";
+"stats_current_streak" = "PÄIVÄPÄIVÄ";
+"stats_longest_streak" = "PARAS TARJO";
+"stats_total_completed" = "PÄIVÄÄ YHTEENSÄ";
+"stats_week_progress_short" = "%d / 7 päivää tällä viikolla";
+"stats_next_milestone" = "SEURAAVA VIRTAPALVELU";
+"stats_next_milestone_days" = "%2$d päivää - %1$@";
+"stats_summary_footer" = "Paras %d · Yhteensä %d päivää";
+"stats_all_badges_unlocked" = "Kaikki merkit avattu";
+"stats_last_7_days" = "VIIMEISET 7 PÄIVÄÄ";
+"stats_month_calendar" = "TÄSSÄ KUUSESSA";
+"stats_contributions" = "AKTIIVISUUS";
+"stats_badges" = "TUNNUKSET";
+"stats_no_data" = "Suorita kaikki tehtäväsi päivän aikana aloittaaksesi sarjasi.";
+"stats_blocked_usage_today" = "ESTETTY SOVELLUKSET · TÄNÄÄN";
+"stats_blocked_usage_no_selection" = "Estettyjä sovelluksia ei ole vielä valittu.";
+"stats_emergency_unlocks" = "Hätälukituksen avaukset";
+"stats_emergency_unlocks_count_unit" = "kertaa";
+"stats_emergency_unlocks_this_week" = "Tällä viikolla";
+"stats_emergency_unlocks_this_month" = "Tämä kuukausi";
+"stats_emergency_unlocks_past_year" = "Viime vuosi";
+"stats_emergency_unlocks_total" = "Kokonais";
+"stats_emergency_unlocks_last" = "Viimeisin: %@";
+"stats_emergency_unlocks_none" = "Ei vielä hätäavauksia.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "Vertailu";
+"stats_emergency_compare_week" = "vs viime viikko";
+"stats_emergency_compare_month" = "viime kuuhun verrattuna";
+"stats_emergency_compare_year" = "vs viime vuosi";
+"stats_emergency_compare_lock_title" = "Seuraa avaustrendiäsi";
+"stats_emergency_compare_lock_message" = "Pro näyttää, kuinka hätäavauksiasi verrataan viime viikkoon, viime kuuhun ja viime vuoteen.";
+"stats_blocked_duration" = "Estetty / päivä";
+"stats_blocked_duration_this_week" = "Tällä viikolla";
+"stats_blocked_duration_past_year" = "Viime vuosi";
+"stats_blocked_duration_per_day_suffix" = "/ päivä";
+"stats_blocked_duration_none" = "Estettyä aikaa ei ole vielä tallennettu.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "TEHTÄVIEN ERITTELY";
+"stats_task_period_month" = "Tämä kuukausi";
+"stats_task_period_year" = "Tänä vuonna";
+"stats_task_consistency_format" = "%d / %d päivää";
+"stats_task_no_data_month" = "Tarkista tämän kuun tehtävät nähdäksesi ne täällä.";
+"stats_task_no_data_year" = "Katso tämän vuoden tehtävät nähdäksesi ne täältä.";
+"stats_task_compare" = "Vertaa";
+"stats_task_compare_lock_title" = "Katso edistymistäsi ajan mittaan";
+"stats_task_compare_lock_message" = "Pro näyttää, miten kukin tehtävä verrattuna edelliseen kuukauteen tai vuoteen.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "Vertailu";
+"stats_blocked_compare_week" = "vs viime viikko";
+"stats_blocked_compare_month" = "viime kuuhun verrattuna";
+"stats_blocked_compare_year" = "vs viime vuosi";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "Vertaa viikkoa, kuukautta, vuotta";
+"stats_blocked_compare_lock_message" = "Pro näyttää, kuinka tämä viikko, kuukausi ja vuosi eroavat edellisestä.";
+"stats_blocked_compare_unlock_button" = "Avaa lukitus termillä Pro";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro Raportit";
+"stats_pro_section_upsell_desc" = "Avaa kaikki kauden vertailuraportit.";
+
+/* Badges */
+"badge_3day" = "3 päivää\nAloittaja";
+"badge_7day" = "Viikko\nSoturi";
+"badge_30day" = "Kuukausi\nMestari";
+"badge_100day" = "vuosisadalla\nMestari";
+"badge_365day" = "vuosi\nLegenda";
+"badge_celebration_eyebrow" = "TUNNUS AVAIN";
+"badge_celebration_continue" = "Jatkaa";
+
+/* BlockingView */
+"blocking_header" = "ESTETTY";
+"blocking_subtitle" = "Suorita tehtäväsi avataksesi lukituksen.";
+"blocking_give_up" = "Hätälukituksen avaus";
+"blocking_give_up_confirm_title" = "Avaa lukitus hätätilanteessa?";
+"blocking_give_up_confirm_message" = "Käytä vain hätätilanteissa. Tämän päivän tehtävät pysyvät valitsemattomina, ja esto jatkuu huomenna.";
+"blocking_give_up_confirm_button" = "Hätälukituksen avaus";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "Hätälukituksen avaus";
+"emergency_unlock_subtitle" = "Haluatko varmasti avata lukituksen?";
+"emergency_unlock_bullet_today" = "Tämän päivän tehtävät jäävät valitsematta.";
+"emergency_unlock_bullet_tomorrow" = "Esto jatkuu huomenna aamulla.";
+"emergency_unlock_bullet_streak" = "Putosi voi katketa.";
+"emergency_unlock_slide_label" = "Avaa lukitus liu'uttamalla";
+"emergency_unlock_cancel" = "Älä välitä";
+
+/* SettingsView */
+"settings_start_time" = "Aloitusaika";
+"settings_start_time_label" = "Aloitusaika";
+"settings_start_time_daily" = "Päivittäin";
+"settings_routine_section" = "Rutiini";
+"settings_tasks" = "Tehtävät";
+"settings_tasks_footer" = "Avaa estettyjen sovellusten lukitus suorittamalla kaikki tehtävät. Tehtävät nollataan joka päivä.\nNapauta tehtävän nimeä nimetäksesi sen uudelleen.";
+"settings_task_placeholder" = "Tehtävä";
+"settings_add_task_placeholder" = "Lisää tehtävä";
+"tasks_add_sheet_title" = "Lisää tehtävä";
+"tasks_add_accessibility" = "Lisää tehtävä";
+"tasks_add_timer_toggle" = "Aseta ajastin";
+"tasks_rename_sheet_title" = "Nimeä tehtävä uudelleen";
+"tasks_rename_accessibility" = "Nimeä tehtävä uudelleen";
+"tasks_delete_accessibility" = "Poista tehtäviä";
+"tasks_edit_done_accessibility" = "Muokkaus tehty";
+"settings_blocking" = "Estäminen";
+"settings_blocked_apps" = "Estetyt sovellukset";
+"settings_blocked_apps_pro_upsell_title" = "Estä rajoittamaton käyttö termillä Pro";
+"settings_blocked_apps_pro_upsell_subtitle" = "Valitse niin monta sovellusta, luokkaa ja verkkosivustoa kuin haluat.";
+"settings_blocked_apps_upsell_feature_categories" = "Estä kokonaisia ​​sovellusluokkia kerralla";
+"settings_blocked_apps_upsell_feature_websites" = "Estä myös verkkosivustot";
+"settings_blocked_apps_upsell_continue_free" = "Jatka ilmaisella tilauksella (jopa %d)";
+"settings_categories_pro_only" = "Sovellusluokkia voidaan tallentaa vain termillä Pro. Valitse ilmaisessa paketissa yksittäisiä sovelluksia tai verkkosivustoja.";
+"settings_items_unit" = "kohteita";
+"settings_weekday_scheduling" = "Arkipäivän aikataulu";
+"settings_appearance_section" = "Ulkonäkö";
+"settings_appearance" = "Teema";
+"settings_appearance_system" = "Järjestelmä";
+"settings_appearance_light" = "Kevyt";
+"settings_appearance_dark" = "Tumma";
+"settings_color_theme_section" = "Väriteema";
+"settings_color_theme" = "Väriteema";
+"settings_color_theme_pro_only" = "Pro -jäsenet voivat muokata sovelluksen korostusvärejä.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "Klassinen";
+"settings_color_theme_sunrise" = "Auringonnousu";
+"settings_color_theme_forest" = "Metsä";
+"settings_color_theme_ocean" = "Valtameri";
+"settings_color_theme_lavender" = "Laventeli";
+"settings_color_theme_rose" = "Ruusu";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "Menetätkö päiväsi SNS ja aikaa vieville sovelluksille?";
+"onboarding_problem_desc" = "Ajattelematta avaamasi sovellukset lisäävät tunteja – ja koko päiväsi lipsahtaa pois.";
+"onboarding_problem_point_scroll" = "Sosiaalisten syötteiden avaaminen autopilotilla";
+"onboarding_problem_point_time" = "Tunnit sulavat sovelluksiin joka päivä";
+"onboarding_problem_point_mood" = "Älä koskaan pääse siihen, mitä todella haluat tehdä";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "Miten MornDash toimii";
+"onboarding_how_desc" = "Asetetusta ajasta lähtien aikaa vievät sovellukset pysyvät lukittuina loppupäivän ajan.";
+"onboarding_how_step1_title" = "Asettamaasi aikaan";
+"onboarding_how_step1_desc" = "Esto käynnistyy automaattisesti joka päivä";
+"onboarding_how_step2_title" = "Sovellukset lukittuvat";
+"onboarding_how_step2_desc" = "Valitsemasi sovellukset pysyvät lukittuina koko päivän";
+"onboarding_how_step3_title" = "Tehtävät vapauttavat ne";
+"onboarding_how_step3_desc" = "Suorita valitsemasi tehtävät vapauttaaksesi lohkon";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Ota käyttöön Screen Time";
+"onboarding_permission_desc" = "Sovellusten estämiseksi MornDash tarvitsee pääsyn Applen termiin Screen Time.";
+"onboarding_permission_note" = "Kaikki jää laitteellesi. MornDash ei lähetä tietojasi minnekään.";
+"onboarding_param_screentime" = "Ota käyttöön Screen Time";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "Valitse estettävät sovellukset";
+"onboarding_apps_desc" = "Eilisestä luettelosta, jos se näkyy, tai käytä Valitse sovellukset.";
+"onboarding_apps_yesterday_label" = "Eilen";
+"onboarding_apps_free_footer" = "Ilmainen: jopa %d tuotetta. Luokat tarvitsevat Pro.";
+"onboarding_select_apps" = "Valitse Sovellukset";
+"onboarding_usage_hm_format" = "%dh %dmin";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%dm";
+"onboarding_usage_under_one_m" = "<1 kk";
+"onboarding_items_selected" = "%d kohdetta valittu";
+"onboarding_items_selected_with_limit" = "%d / %d kohdetta valittu";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "Milloin sen pitäisi alkaa?";
+"onboarding_time_desc" = "Tästä lähtien joka päivä valitsemasi sovellukset pysyvät lukittuina.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "Aseta lukituksen avaustehtävät";
+"onboarding_tasks_desc" = "Suorita kaikki tehtävät avataksesi sovelluksesi päivälle.";
+"onboarding_tasks_your_list" = "Sinun tehtäväsi";
+"onboarding_tasks_suggestions" = "ehdotuksia";
+"onboarding_tasks_custom" = "Kirjoita omasi";
+"onboarding_tasks_empty" = "Ei vielä tehtäviä";
+"onboarding_tasks_empty_hint" = "Lisää tehtäviä napauttamalla alla olevaa ehdotusta";
+"onboarding_tasks_ritual_count" = "%d tehtäviä";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "Ota aikasi takaisin.";
+"onboarding_motivation_desc" = "Käytä tuntejasi elämääsi, älä syötteeseen.\nPienet voitot rakentavat ihmisen, jonka haluat olla.";
+"onboarding_motivation_point_focus" = "Pysy keskittyneenä koko päivän";
+"onboarding_motivation_point_calm" = "Päästä vihdoin siihen, mikä on todella tärkeää";
+"onboarding_motivation_point_self" = "Askeleen lähempänä parasta itseäsi";
+"onboarding_finish" = "Aloita";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "Venyttää";
+"onboarding_preset_bed" = "Peitä sänkyni";
+"onboarding_preset_meditate" = "Meditoi 5 minuuttia";
+"onboarding_preset_journal" = "Kirjoita päiväkirjaani";
+"onboarding_preset_read" = "Lue 10 sivua";
+"onboarding_preset_run" = "Mennä lenkille";
+
+/* Default tasks */
+"default_task_stretch" = "Venyttää";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "Tilaus";
+"settings_status_pro" = "Pro · uusii %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "Ilmainen suunnitelma";
+"settings_upgrade_to_pro" = "Päivitä termiin Pro";
+"settings_restore_purchase" = "Palauta ostos";
+"settings_manage_subscription" = "Hallinnoi tilausta";
+"settings_restore_success_title" = "Palautettu";
+"settings_restore_success_message" = "Pro-tilauksesi on aktiivinen.";
+"settings_restore_failure_title" = "Ei voitu palauttaa";
+"settings_restore_failure_message" = "Tälle Apple ID:lle ei löytynyt aktiivista tilausta.";
+"settings_restore_error_title" = "Palautus epäonnistui";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "Rajattomasti tehtäviä";
+"paywall_feature_unlimited_blocked_apps" = "Rajoittamaton määrä estäviä sovelluksia ja luokkia";
+"paywall_feature_multi_schedule" = "Useita estoaikatauluja";
+"paywall_feature_color_themes" = "Mukautetut väriteemat";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "Ilmainen suunnitelma tukee jopa %d tehtävää.\nPäivitä termiin Pro, niin saat rajattomasti tehtäviä.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "Lisää vapautta haluamillesi aamuille.";
+"settings_card_pro_title" = "Pro Jäsen";
+"settings_card_pro_subtitle" = "Kiitos, että tuet termiä MornDash.";
+"settings_legal_section" = "Laillinen";
+"settings_commercial_transactions" = "Määritetyt kaupalliset tapahtumat";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "Go deeper into your morning practice.\nAvaa kaikki alla.";
+"paywall_plan_weekly" = "Viikoittain";
+"paywall_plan_monthly" = "Kuukausittain";
+"paywall_plan_annual" = "Vuosittainen";
+"paywall_per_week" = "Uusitaan joka viikko";
+"paywall_per_month" = "Uusitaan joka kuukausi";
+"paywall_per_year" = "Uusitaan joka vuosi";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "Säästä %d%%";
+"paywall_cta_continue" = "Jatkaa";
+"paywall_cta_free_trial" = "Aloita ilmainen kokeilu";
+"paywall_trial_badge_first_week" = "1. viikko ilmainen";
+"paywall_trial_disclosure_format" = "%1$@ ilmainen kokeiluversio ensimmäistä kertaa vuositilaajille, sen jälkeen %2$@/vuosi. Uusiutuu automaattisesti, ellei sitä peruuteta vähintään 24 tuntia ennen kokeilujakson päättymistä.";
+"trial_period_one_week" = "1 viikko";
+"trial_period_days_format" = "%d päivää";
+"trial_period_weeks_format" = "%d viikkoa";
+"trial_period_months_format" = "%d kuukautta";
+"trial_period_years_format" = "%d vuotta";
+"paywall_terms" = "Käyttöehdot";
+"paywall_privacy" = "Tietosuojakäytäntö";
+"paywall_commercial" = "Kaupalliset liiketoimet";
+"paywall_offerings_unavailable" = "Suunnitelmia ei voitu ladata. Tarkista yhteys.";
+"paywall_retry" = "Yritä uudelleen";
+"paywall_error_title" = "Jotain meni pieleen";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "Mene syvemmälle aamuharjoitteluun. Kaikki ominaisuudet avattu.";
+"subscription_active" = "Aktiivinen";
+"subscription_next_renewal" = "Seuraava uusinta";
+"subscription_manage_in_store" = "Hallinnoi App Store";
+"subscription_cancel" = "Peruuta tilaus";
+"subscription_cancel_alert_title" = "Prohalutaanko peruuttaa?";
+"subscription_cancel_alert_message" = "Sinut ohjataan App Store -tilausten hallintasivulle.";
+"subscription_cancel_alert_proceed" = "Avaa App Store";
+"subscription_terms_heading" = "Tilausehdot";
+"subscription_terms_auto_renew" = "Tilaus uusiutuu automaattisesti, ellei automaattista uusimista ole kytketty pois päältä vähintään 24 tuntia ennen nykyisen jakson päättymistä.";
+"subscription_terms_charge" = "Tiliäsi veloitetaan uusimisesta 24 tunnin sisällä ennen nykyisen jakson päättymistä.";
+"subscription_terms_manage" = "Tilauksia voi hallita ja automaattinen uusiminen poistaa käytöstä tiliasetuksissasi oston jälkeen.";
+"subscription_terms_trial" = "Vuosisuunnitelma sisältää kertaluonteisen 1 viikon ilmaisen kokeilujakson vain ehdot täyttäville uusille tilaajille. Viikko- ja kuukausisuunnitelmat eivät sisällä ilmaista kokeilujaksoa. Ilmaisen kokeilujakson käyttämätön osa menetetään tilauksen yhteydessä, ja sinulta veloitetaan vuosihinta kokeilujakson päätyttyä, ellet peruuta tilausta vähintään 24 tuntia ennen tilausta.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d Kyykky";
+"workout_preset_ai_badge" = "AI · PRO";
+"workout_reps_picker_title" = "Valitse kyykkytoistot";
+"workout_reps_picker_stepper_format" = "%d toistoa";
+"workout_reps_picker_placeholder" = "Anna toistot (1-999)";
+"workout_reps_picker_invalid" = "Syötä numero väliltä 1–999";
+"workout_reps_picker_add_button" = "Lisää tämä tehtävä";
+"workout_status_recognizing" = "Tunnustetaan...";
+"workout_status_no_body" = "Astu kehykseen";
+"workout_status_adjust" = "Säädä asentoasi";
+"workout_status_start" = "Aloita!";
+"workout_status_down" = "Alas!";
+"workout_status_good" = "Mukava!";
+"workout_simulator_notice" = "Kamera ei ole käytettävissä simulaattorissa. Napauta simuloidaksesi valmistumista.";
+"workout_simulator_complete" = "Merkitse valmiiksi";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "Opiskelu %d min";
+"focus_preset_pcwork_title" = "PC-työ %d min";
+"focus_preset_study_label" = "Opiskelu";
+"focus_preset_pcwork_label" = "PC työ";
+"focus_preset_ai_badge" = "AI · PRO";
+"focus_status_detected" = "Keskittynyt";
+"focus_status_no_face" = "Astu pois kamerasta";
+"focus_status_multiple_faces" = "Useita ihmisiä havaittu";
+"focus_status_low_quality" = "Valaistus on liian heikko";
+"focus_status_bad_angle" = "Suuntaa kameraan päin";
+"focus_status_face_too_small" = "Siirry lähemmäs";
+"focus_hint_setup_title" = "Määritä puhelimesi";
+"focus_hint_setup_body" = "Prop aseta puhelimesi telineeseen, jotta kasvosi mahtuvat kehykseen.";
+"focus_hint_setup_close" = "Selvä";
+"focus_privacy_notice" = "Video jää tälle laitteelle";
+"focus_session_remaining" = "Jäljellä";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d min";
+"tasks_timer_seconds_short_format" = "%d sek";
+"tasks_timer_duration_min_sec_format" = "%d min %02d s";
+"tasks_timer_minutes_label" = "Minuutit";
+"tasks_timer_seconds_label" = "Sekuntia";
+"tasks_timer_minutes_placeholder" = "Minuutit (1–180)";
+"tasks_timer_sheet_title" = "Ajastimen asetukset";
+"tasks_timer_sheet_hint" = "Aseta minuutit ja sekunnit. Tehtävä on valmis, kun ajastin päättyy.";
+"tasks_timer_remove" = "Poista ajastin";
+"tasks_timer_save" = "Tallentaa";
+"timer_session_title" = "AJASTIN";
+"timer_session_hint" = "Näyttö pysyy hereillä ajon aikana";
+"timer_session_start" = "Aloita";
+"timer_session_pause" = "Tauko";
+
+/* Task ticket */
+"task_ticket_number_format" = "Ei.%02d";
+"task_ticket_done_stamp" = "TEHTY";

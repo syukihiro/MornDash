@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "Nastavenia";
+"common_done" = "Hotovo";
+"common_cancel" = "Zrušiť";
+"common_select" = "Vyberte";
+"common_next" = "Ďalej";
+"common_continue" = "Pokračovať";
+"common_back" = "Späť";
+"common_skip" = "Preskočiť";
+"common_start" = "Začíname";
+
+/* MainView (idle) */
+"main_next_block" = "ĎALŠÍ BLOK";
+"main_completed_eyebrow" = "VŠETKO HOTOVO";
+"main_completed_title" = "Na dnes hotovo";
+"main_completed_subtitle" = "Užite si zvyšok dňa.";
+"main_completed_streak_unit" = "DAY STREAK";
+"main_completed_message_3" = "Váš zvyk sa formuje. Pokračujte aj zajtra.";
+"main_completed_message_7" = "Celý týždeň. Ty si to pravé.";
+"main_completed_message_30" = "Nezastaviteľná konzistencia. Buďte na seba hrdí.";
+"main_completed_message_100" = "100 dní dôkazu. Teraz ťa už nič nemôže zastaviť.";
+"main_completed_week_progress" = "%d / 7 dní tento týždeň";
+"main_completed_best_streak" = "Najlepšie: %d";
+"main_completed_next_block" = "Ďalší blok %@";
+"main_todays_tasks" = "DNEŠNÉ ÚLOHY";
+"main_todays_tasks_done" = "VŠETKO KOMPLETNÉ";
+"main_no_tasks" = "Zatiaľ žiadne úlohy. Pridajte nejaké na karte Úlohy.";
+
+"routine_celebration_eyebrow" = "VŠETKO HOTOVO";
+"routine_celebration_title" = "Podarilo sa ti to!";
+"routine_celebration_message" = "Všetky úlohy pre dnešok dokončené.\nUžite si slobodu.";
+"routine_celebration_continue" = "Pokračovať";
+"routine_celebration_compact_title" = "Na dnes všetko hotové";
+
+/* Tabs */
+"tab_home" = "Domov";
+"tab_tasks" = "Úlohy";
+"tab_stats" = "Štatistiky";
+"tab_settings" = "Nastavenia";
+
+/* Streak / Stats */
+"streak_days_format" = "%d denná séria";
+"stats_streak_day_unit_singular" = "deň";
+"stats_streak_day_unit_plural" = "dní";
+"stats_current_streak" = "DAY STREAK";
+"stats_longest_streak" = "NAJLEPŠÍ STREAK";
+"stats_total_completed" = "CELKOVÝ POČET DNÍ";
+"stats_week_progress_short" = "%d / 7 dní tento týždeň";
+"stats_next_milestone" = "ĎALŠÍ MÍĽNIK";
+"stats_next_milestone_days" = "%2$d dní až %1$@";
+"stats_summary_footer" = "Najlepšie %d · Celkom %d dní";
+"stats_all_badges_unlocked" = "Všetky odznaky sú odomknuté";
+"stats_last_7_days" = "POSLEDNÝCH 7 DNÍ";
+"stats_month_calendar" = "TENTO MESIAC";
+"stats_contributions" = "AKTIVITA";
+"stats_badges" = "ODZNAKY";
+"stats_no_data" = "Dokončite všetky svoje úlohy na jeden deň, aby ste mohli začať svoju sériu.";
+"stats_blocked_usage_today" = "BLOKOVANÉ APLIKÁCIE · DNES";
+"stats_blocked_usage_no_selection" = "Zatiaľ nie sú vybraté žiadne aplikácie na blokovanie.";
+"stats_emergency_unlocks" = "Núdzové odblokovanie";
+"stats_emergency_unlocks_count_unit" = "krát";
+"stats_emergency_unlocks_this_week" = "Tento týždeň";
+"stats_emergency_unlocks_this_month" = "Tento mesiac";
+"stats_emergency_unlocks_past_year" = "Minulý rok";
+"stats_emergency_unlocks_total" = "Celkom";
+"stats_emergency_unlocks_last" = "Naposledy: %@";
+"stats_emergency_unlocks_none" = "Zatiaľ žiadne núdzové odomknutie.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "Porovnanie";
+"stats_emergency_compare_week" = "vs minulý týždeň";
+"stats_emergency_compare_month" = "v porovnaní s minulým mesiacom";
+"stats_emergency_compare_year" = "oproti minulému roku";
+"stats_emergency_compare_lock_title" = "Sledujte svoj trend odomykania";
+"stats_emergency_compare_lock_message" = "Pro ukazuje, aké sú vaše núdzové odomknutia v porovnaní s minulým týždňom, minulým mesiacom a minulým rokom.";
+"stats_blocked_duration" = "Blokované / deň";
+"stats_blocked_duration_this_week" = "Tento týždeň";
+"stats_blocked_duration_past_year" = "Minulý rok";
+"stats_blocked_duration_per_day_suffix" = "/ deň";
+"stats_blocked_duration_none" = "Zatiaľ nie je zaznamenaný žiadny blokovaný čas.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "ROZDELENIE ÚLOH";
+"stats_task_period_month" = "Tento mesiac";
+"stats_task_period_year" = "Tento rok";
+"stats_task_consistency_format" = "%d / %d dní";
+"stats_task_no_data_month" = "Začiarknutím úloh tohto mesiaca ich zobrazíte tu.";
+"stats_task_no_data_year" = "Začiarknite úlohy v tomto roku, aby ste ich videli tu.";
+"stats_task_compare" = "Porovnaj";
+"stats_task_compare_lock_title" = "Pozrite si svoj pokrok v priebehu času";
+"stats_task_compare_lock_message" = "Pro zobrazuje porovnanie jednotlivých úloh s predchádzajúcim mesiacom alebo rokom.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "Porovnanie";
+"stats_blocked_compare_week" = "vs minulý týždeň";
+"stats_blocked_compare_month" = "v porovnaní s minulým mesiacom";
+"stats_blocked_compare_year" = "oproti minulému roku";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "Porovnajte svoj týždeň, mesiac, rok";
+"stats_blocked_compare_lock_message" = "Pro ukazuje, ako sa tento týždeň, mesiac a rok drží v porovnaní s predchádzajúcimi.";
+"stats_blocked_compare_unlock_button" = "Odomknite pomocou Pro";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro správy";
+"stats_pro_section_upsell_desc" = "Odomknite všetky prehľady porovnávania medzi jednotlivými obdobiami.";
+
+/* Badges */
+"badge_3day" = "3 deň\nŠtartér";
+"badge_7day" = "týždeň\nbojovník";
+"badge_30day" = "mesiac\nMajster";
+"badge_100day" = "storočia\nšampión";
+"badge_365day" = "rok\nLegenda";
+"badge_celebration_eyebrow" = "ODZNAK ODOMKNUTÝ";
+"badge_celebration_continue" = "Pokračovať";
+
+/* BlockingView */
+"blocking_header" = "BLOKOVANÉ";
+"blocking_subtitle" = "Dokončite svoje úlohy na odomknutie.";
+"blocking_give_up" = "Núdzové odomknutie";
+"blocking_give_up_confirm_title" = "Odomknúť pre prípad núdze?";
+"blocking_give_up_confirm_message" = "Používajte len v núdzových prípadoch. Dnešné úlohy zostanú nezačiarknuté a blokovanie sa obnoví zajtra.";
+"blocking_give_up_confirm_button" = "Núdzové odomknutie";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "Núdzové odomknutie";
+"emergency_unlock_subtitle" = "Naozaj chcete odomknúť?";
+"emergency_unlock_bullet_today" = "Dnešné úlohy zostanú nezačiarknuté.";
+"emergency_unlock_bullet_tomorrow" = "Blokovanie bude pokračovať zajtra ráno.";
+"emergency_unlock_bullet_streak" = "Váš pruh môže byť prerušený.";
+"emergency_unlock_slide_label" = "Posunutím odomknete";
+"emergency_unlock_cancel" = "Nevadí";
+
+/* SettingsView */
+"settings_start_time" = "Čas začiatku";
+"settings_start_time_label" = "Čas začiatku";
+"settings_start_time_daily" = "Denne";
+"settings_routine_section" = "Rutina";
+"settings_tasks" = "Úlohy";
+"settings_tasks_footer" = "Dokončite všetky úlohy na odomknutie blokovaných aplikácií. Úlohy sa obnovujú každý deň.\nKlepnutím na názov úlohy ju premenujete.";
+"settings_task_placeholder" = "Úloha";
+"settings_add_task_placeholder" = "Pridajte úlohu";
+"tasks_add_sheet_title" = "Pridať úlohu";
+"tasks_add_accessibility" = "Pridať úlohu";
+"tasks_add_timer_toggle" = "Nastavte časovač";
+"tasks_rename_sheet_title" = "Premenovať úlohu";
+"tasks_rename_accessibility" = "Premenovať úlohu";
+"tasks_delete_accessibility" = "Odstrániť úlohy";
+"tasks_edit_done_accessibility" = "Úprava dokončená";
+"settings_blocking" = "Blokovanie";
+"settings_blocked_apps" = "Blokované aplikácie";
+"settings_blocked_apps_pro_upsell_title" = "Blokovať neobmedzene pomocou Pro";
+"settings_blocked_apps_pro_upsell_subtitle" = "Vyberte si toľko aplikácií, kategórií a webových stránok, koľko chcete.";
+"settings_blocked_apps_upsell_feature_categories" = "Blokovať celé kategórie aplikácií naraz";
+"settings_blocked_apps_upsell_feature_websites" = "Blokujte aj webové stránky";
+"settings_blocked_apps_upsell_continue_free" = "Pokračujte v bezplatnom pláne (až do %d)";
+"settings_categories_pro_only" = "Kategórie aplikácií je možné uložiť iba pomocou Pro. V bezplatnom pláne si vyberte jednotlivé aplikácie alebo webové stránky.";
+"settings_items_unit" = "položky";
+"settings_weekday_scheduling" = "Plán pracovných dní";
+"settings_appearance_section" = "Vzhľad";
+"settings_appearance" = "Téma";
+"settings_appearance_system" = "Systém";
+"settings_appearance_light" = "Svetlo";
+"settings_appearance_dark" = "Tmavý";
+"settings_color_theme_section" = "Farebný motív";
+"settings_color_theme" = "Farebný motív";
+"settings_color_theme_pro_only" = "Členovia Pro si môžu prispôsobiť farby zvýraznenia aplikácie.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "klasické";
+"settings_color_theme_sunrise" = "Východ slnka";
+"settings_color_theme_forest" = "les";
+"settings_color_theme_ocean" = "oceán";
+"settings_color_theme_lavender" = "Levanduľa";
+"settings_color_theme_rose" = "Rose";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "Strácate svoj deň SNS a aplikáciami, ktoré strácajú čas?";
+"onboarding_problem_desc" = "Aplikácie, ktoré otvárate bez premýšľania, zaberajú hodiny – a celý deň vám utečie.";
+"onboarding_problem_point_scroll" = "Otváranie sociálnych kanálov pomocou autopilota";
+"onboarding_problem_point_time" = "Každý deň sa hodiny pretavujú do aplikácií";
+"onboarding_problem_point_mood" = "Nikdy sa nedostanete k tomu, čo skutočne chcete robiť";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "Ako funguje MornDash";
+"onboarding_how_desc" = "Od nastaveného času zostanú aplikácie, ktoré strácajú čas, uzamknuté po zvyšok dňa.";
+"onboarding_how_step1_title" = "Vo vami nastavenom čase";
+"onboarding_how_step1_desc" = "Blokovanie sa spustí automaticky každý deň";
+"onboarding_how_step2_title" = "Aplikácie sa uzamknú";
+"onboarding_how_step2_desc" = "Aplikácie, ktoré si vyberiete, zostanú uzamknuté celý deň";
+"onboarding_how_step3_title" = "Odblokujú ich úlohy";
+"onboarding_how_step3_desc" = "Dokončite zvolené úlohy a uvoľnite blok";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Povoliť Screen Time";
+"onboarding_permission_desc" = "Na blokovanie aplikácií potrebuje MornDash prístup k Screen Time spoločnosti Apple.";
+"onboarding_permission_note" = "Všetko zostane na vašom zariadení. MornDash vaše údaje nikam neposiela.";
+"onboarding_param_screentime" = "Povoliť Screen Time";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "Vyberte aplikácie, ktoré chcete zablokovať";
+"onboarding_apps_desc" = "Zo včerajšieho zoznamu, ak je zobrazený, alebo použite možnosť Vybrať aplikácie.";
+"onboarding_apps_yesterday_label" = "včera";
+"onboarding_apps_free_footer" = "Zadarmo: až %d položiek. Kategórie potrebujú Pro.";
+"onboarding_select_apps" = "Vyberte položku Aplikácie";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%dm";
+"onboarding_usage_under_one_m" = "<1 m";
+"onboarding_items_selected" = "Počet vybratých položiek: %d";
+"onboarding_items_selected_with_limit" = "Počet vybratých položiek: %d / %d";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "Kedy by sa malo začať?";
+"onboarding_time_desc" = "Od tohto času každý deň zostanú vybraté aplikácie uzamknuté.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "Nastavte si úlohy odomknutia";
+"onboarding_tasks_desc" = "Dokončite všetky úlohy a odomknite aplikácie na daný deň.";
+"onboarding_tasks_your_list" = "Vaše úlohy";
+"onboarding_tasks_suggestions" = "Návrhy";
+"onboarding_tasks_custom" = "Napíšte svoj vlastný";
+"onboarding_tasks_empty" = "Zatiaľ žiadne úlohy";
+"onboarding_tasks_empty_hint" = "Klepnutím na návrh nižšie pridáte úlohy";
+"onboarding_tasks_ritual_count" = "%d úloh";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "Vráťte si čas.";
+"onboarding_motivation_desc" = "Trávte hodiny nad svojím životom, nie nad krmivom.\nMalé výhry budujú osobu, ktorou chcete byť.";
+"onboarding_motivation_point_focus" = "Zostaňte sústredení celý deň";
+"onboarding_motivation_point_calm" = "Dostaňte sa konečne k tomu, na čom skutočne záleží";
+"onboarding_motivation_point_self" = "O krok bližšie k svojmu najlepšiemu ja";
+"onboarding_finish" = "Začíname";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "Natiahnuť";
+"onboarding_preset_bed" = "Ustel mi posteľ";
+"onboarding_preset_meditate" = "Meditujte 5 minút";
+"onboarding_preset_journal" = "Napíšte mi do denníka";
+"onboarding_preset_read" = "Prečítajte si 10 strán";
+"onboarding_preset_run" = "Choď si zabehať";
+
+/* Default tasks */
+"default_task_stretch" = "Natiahnuť";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "Predplatné";
+"settings_status_pro" = "Pro · obnovuje %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "Voľný plán";
+"settings_upgrade_to_pro" = "Inovovať na Pro";
+"settings_restore_purchase" = "Obnoviť nákup";
+"settings_manage_subscription" = "Spravovať predplatné";
+"settings_restore_success_title" = "Obnovené";
+"settings_restore_success_message" = "Váš odber Pro je aktívny.";
+"settings_restore_failure_title" = "Nepodarilo sa obnoviť";
+"settings_restore_failure_message" = "Pre toto Apple ID sa nenašlo žiadne aktívne predplatné.";
+"settings_restore_error_title" = "Obnovenie zlyhalo";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "Neobmedzené úlohy";
+"paywall_feature_unlimited_blocked_apps" = "Neobmedzený počet aplikácií a kategórií na blokovanie";
+"paywall_feature_multi_schedule" = "Plány viacerých blokov";
+"paywall_feature_color_themes" = "Vlastné farebné motívy";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "Bezplatný plán podporuje až %d úloh.\nInovujte na Pro pre neobmedzené úlohy.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "Viac slobody pre rána, ktoré chcete.";
+"settings_card_pro_title" = "Pro člen";
+"settings_card_pro_subtitle" = "Ďakujeme za podporu MornDash.";
+"settings_legal_section" = "Právne";
+"settings_commercial_transactions" = "Špecifikované obchodné transakcie";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "Choďte hlbšie do svojej rannej praxe.\nOdomknite všetko nižšie.";
+"paywall_plan_weekly" = "Týždenne";
+"paywall_plan_monthly" = "Mesačne";
+"paywall_plan_annual" = "Ročný";
+"paywall_per_week" = "Obnovuje sa každý týždeň";
+"paywall_per_month" = "Obnovuje sa každý mesiac";
+"paywall_per_year" = "Obnovuje sa každý rok";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "Ušetrite %d%%";
+"paywall_cta_continue" = "Pokračovať";
+"paywall_cta_free_trial" = "Spustiť bezplatnú skúšobnú verziu";
+"paywall_trial_badge_first_week" = "1. týždeň zdarma";
+"paywall_trial_disclosure_format" = "%1$@ bezplatná skúšobná verzia pre prvých ročných predplatiteľov, potom %2$@/rok. Automaticky sa obnoví, pokiaľ nezrušíte aspoň 24 hodín pred skončením skúšobnej verzie.";
+"trial_period_one_week" = "1 týždeň";
+"trial_period_days_format" = "%d dní";
+"trial_period_weeks_format" = "%d týždňov";
+"trial_period_months_format" = "%d mesiacov";
+"trial_period_years_format" = "%d rokov";
+"paywall_terms" = "Podmienky používania";
+"paywall_privacy" = "Zásady ochrany osobných údajov";
+"paywall_commercial" = "Obchodné transakcie";
+"paywall_offerings_unavailable" = "Plány sa nepodarilo načítať. Skontrolujte pripojenie.";
+"paywall_retry" = "Skúste znova";
+"paywall_error_title" = "Niečo sa pokazilo";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "Choďte hlbšie do svojej rannej praxe. Všetky funkcie sú odomknuté.";
+"subscription_active" = "Aktívne";
+"subscription_next_renewal" = "Ďalšia obnova";
+"subscription_manage_in_store" = "Spravovať v App Store";
+"subscription_cancel" = "Zrušiť predplatné";
+"subscription_cancel_alert_title" = "Prochcete zrušiť?";
+"subscription_cancel_alert_message" = "Budete presmerovaní na stránku správy odberov App Store.";
+"subscription_cancel_alert_proceed" = "Otvoriť App Store";
+"subscription_terms_heading" = "Podmienky predplatného";
+"subscription_terms_auto_renew" = "Predplatné sa automaticky obnoví, pokiaľ sa automatické obnovenie nevypne aspoň 24 hodín pred koncom aktuálneho obdobia.";
+"subscription_terms_charge" = "Váš účet bude účtovaný za obnovenie do 24 hodín pred koncom aktuálneho obdobia.";
+"subscription_terms_manage" = "Predplatné je možné spravovať a po zakúpení vypnúť automatické obnovenie prostredníctvom nastavení účtu.";
+"subscription_terms_trial" = "Ročný plán zahŕňa jednorazovú 1-týždňovú bezplatnú skúšobnú verziu iba pre oprávnených nových predplatiteľov. Týždenné a mesačné plány nezahŕňajú bezplatnú skúšobnú verziu. Ak sa prihlásite na odber, akákoľvek nevyužitá časť bezplatnej skúšobnej verzie prepadne a po skončení skúšobnej verzie vám bude účtovaná ročná cena, pokiaľ odber nezrušíte aspoň 24 hodín vopred.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d Drepy";
+"workout_preset_ai_badge" = "AI · PRO";
+"workout_reps_picker_title" = "Vyberte si opakovanie drepu";
+"workout_reps_picker_stepper_format" = "%d opakovaní";
+"workout_reps_picker_placeholder" = "Zadajte opakovania (1 – 999)";
+"workout_reps_picker_invalid" = "Zadajte číslo od 1 do 999";
+"workout_reps_picker_add_button" = "Pridajte túto úlohu";
+"workout_status_recognizing" = "Rozoznáva sa...";
+"workout_status_no_body" = "Vstúpte do rámu";
+"workout_status_adjust" = "Upravte svoju polohu";
+"workout_status_start" = "Začnite!";
+"workout_status_down" = "Dole!";
+"workout_status_good" = "Pekne!";
+"workout_simulator_notice" = "Kamera nie je v simulátore dostupná. Klepnutím simulujete dokončenie.";
+"workout_simulator_complete" = "Označiť ako dokončené";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "Štúdia %d min";
+"focus_preset_pcwork_title" = "Práca s PC %d min";
+"focus_preset_study_label" = "Štúdium";
+"focus_preset_pcwork_label" = "Práca s PC";
+"focus_preset_ai_badge" = "AI · PRO";
+"focus_status_detected" = "Sústredené";
+"focus_status_no_face" = "Odstúpte od fotoaparátu";
+"focus_status_multiple_faces" = "Bolo zistených viacero ľudí";
+"focus_status_low_quality" = "Osvetlenie je príliš slabé";
+"focus_status_bad_angle" = "Postavte sa čelom k fotoaparátu";
+"focus_status_face_too_small" = "Presuňte sa bližšie";
+"focus_hint_setup_title" = "Nastavte si telefón";
+"focus_hint_setup_body" = "Propoložte telefón na stojan, aby sa vaša tvár zmestila do rámu.";
+"focus_hint_setup_close" = "Dobre";
+"focus_privacy_notice" = "Video zostane na tomto zariadení";
+"focus_session_remaining" = "Zostávajúce";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d min";
+"tasks_timer_seconds_short_format" = "%d s";
+"tasks_timer_duration_min_sec_format" = "%d min %02d s";
+"tasks_timer_minutes_label" = "Minúty";
+"tasks_timer_seconds_label" = "sekúnd";
+"tasks_timer_minutes_placeholder" = "Minúty (1 – 180)";
+"tasks_timer_sheet_title" = "Nastavenia časovača";
+"tasks_timer_sheet_hint" = "Nastavte minúty a sekundy. Úloha sa dokončí, keď skončí časovač.";
+"tasks_timer_remove" = "Odstráňte časovač";
+"tasks_timer_save" = "Uložiť";
+"timer_session_title" = "ČASOVAČ";
+"timer_session_hint" = "Obrazovka zostane počas behu prebudená";
+"timer_session_start" = "Štart";
+"timer_session_pause" = "Pauza";
+
+/* Task ticket */
+"task_ticket_number_format" = "Nie.%02d";
+"task_ticket_done_stamp" = "HOTOVO";

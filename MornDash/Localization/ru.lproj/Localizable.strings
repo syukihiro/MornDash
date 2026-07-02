@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "Настройки";
+"common_done" = "Сделанный";
+"common_cancel" = "Отмена";
+"common_select" = "Выбирать";
+"common_next" = "Следующий";
+"common_continue" = "Продолжать";
+"common_back" = "Назад";
+"common_skip" = "Пропускать";
+"common_start" = "Начать";
+
+/* MainView (idle) */
+"main_next_block" = "СЛЕДУЮЩИЙ БЛОК";
+"main_completed_eyebrow" = "ВСЕ ГОТОВО";
+"main_completed_title" = "Готово на сегодня";
+"main_completed_subtitle" = "Наслаждайтесь остатком дня.";
+"main_completed_streak_unit" = "ДЕНЬ СТРИК";
+"main_completed_message_3" = "Ваша привычка обретает форму. Продолжайте в том же духе завтра.";
+"main_completed_message_7" = "Полная неделя. Ты настоящая сделка.";
+"main_completed_message_30" = "Непреодолимая последовательность. Гордитесь собой.";
+"main_completed_message_100" = "100 дней доказательств. Ничто не сможет остановить тебя сейчас.";
+"main_completed_week_progress" = "%d / 7 дней на этой неделе";
+"main_completed_best_streak" = "Лучшее: %d";
+"main_completed_next_block" = "Следующий блок %@";
+"main_todays_tasks" = "ЗАДАЧИ СЕГОДНЯ";
+"main_todays_tasks_done" = "ВСЕ ЗАВЕРШЕНО";
+"main_no_tasks" = "Заданий пока нет. Добавьте некоторые из вкладки «Задачи».";
+
+"routine_celebration_eyebrow" = "ВСЕ ГОТОВО";
+"routine_celebration_title" = "Вы сделали это!";
+"routine_celebration_message" = "Все задачи на сегодня выполнены.\nНаслаждайтесь своей свободой.";
+"routine_celebration_continue" = "Продолжать";
+"routine_celebration_compact_title" = "На сегодня все сделано";
+
+/* Tabs */
+"tab_home" = "Дом";
+"tab_tasks" = "Задачи";
+"tab_stats" = "Статистика";
+"tab_settings" = "Настройки";
+
+/* Streak / Stats */
+"streak_days_format" = "%d дневная серия";
+"stats_streak_day_unit_singular" = "день";
+"stats_streak_day_unit_plural" = "дни";
+"stats_current_streak" = "ДЕНЬ СТРИК";
+"stats_longest_streak" = "ЛУЧШАЯ СТРИК";
+"stats_total_completed" = "ВСЕГО ДНЕЙ";
+"stats_week_progress_short" = "%d / 7 дней на этой неделе";
+"stats_next_milestone" = "СЛЕДУЮЩАЯ ВЕХА";
+"stats_next_milestone_days" = "От %2$d дней до %1$@";
+"stats_summary_footer" = "Лучшее %d · Всего %d дней";
+"stats_all_badges_unlocked" = "Все значки разблокированы";
+"stats_last_7_days" = "ПОСЛЕДНИЕ 7 ДНЕЙ";
+"stats_month_calendar" = "В ЭТОМ МЕСЯЦЕ";
+"stats_contributions" = "АКТИВНОСТЬ";
+"stats_badges" = "ЗНАЧКИ";
+"stats_no_data" = "Выполните все задания за день, чтобы начать серию.";
+"stats_blocked_usage_today" = "ЗАБЛОКИРОВАННЫЕ ПРИЛОЖЕНИЯ · СЕГОДНЯ";
+"stats_blocked_usage_no_selection" = "Приложения для блокировки пока не выбраны.";
+"stats_emergency_unlocks" = "Аварийная разблокировка";
+"stats_emergency_unlocks_count_unit" = "раз";
+"stats_emergency_unlocks_this_week" = "На этой неделе";
+"stats_emergency_unlocks_this_month" = "В этом месяце";
+"stats_emergency_unlocks_past_year" = "Прошлый год";
+"stats_emergency_unlocks_total" = "Общий";
+"stats_emergency_unlocks_last" = "Последний: %@";
+"stats_emergency_unlocks_none" = "Аварийных разблокировок пока нет.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "Сравнение";
+"stats_emergency_compare_week" = "против прошлой недели";
+"stats_emergency_compare_month" = "по сравнению с прошлым месяцем";
+"stats_emergency_compare_year" = "против прошлого года";
+"stats_emergency_compare_lock_title" = "Отслеживайте тенденцию разблокировки";
+"stats_emergency_compare_lock_message" = "Pro показывает, как ваши экстренные разблокировки сравниваются с прошлой неделей, прошлым месяцем и прошлым годом.";
+"stats_blocked_duration" = "Заблокировано/день";
+"stats_blocked_duration_this_week" = "На этой неделе";
+"stats_blocked_duration_past_year" = "Прошлый год";
+"stats_blocked_duration_per_day_suffix" = "/ день";
+"stats_blocked_duration_none" = "Время блокировки пока не зафиксировано.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "РАЗБИВКА ЗАДАЧ";
+"stats_task_period_month" = "В этом месяце";
+"stats_task_period_year" = "В этом году";
+"stats_task_consistency_format" = "%d / %d дней";
+"stats_task_no_data_month" = "Отметьте задачи в этом месяце, чтобы увидеть их здесь.";
+"stats_task_no_data_year" = "Отметьте задачи этого года, чтобы увидеть их здесь.";
+"stats_task_compare" = "Сравнивать";
+"stats_task_compare_lock_title" = "Наблюдайте за своим прогрессом с течением времени";
+"stats_task_compare_lock_message" = "Pro показывает, как каждая задача сравнивается с предыдущим месяцем или годом.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "Сравнение";
+"stats_blocked_compare_week" = "против прошлой недели";
+"stats_blocked_compare_month" = "по сравнению с прошлым месяцем";
+"stats_blocked_compare_year" = "против прошлого года";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "Сравните свою неделю, месяц, год";
+"stats_blocked_compare_lock_message" = "Pro показывает, как эта неделя, месяц и год складываются по сравнению с предыдущими.";
+"stats_blocked_compare_unlock_button" = "Разблокировать с помощью Pro";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro Отчеты";
+"stats_pro_section_upsell_desc" = "Разблокируйте все отчеты сравнения периодов.";
+
+/* Badges */
+"badge_3day" = "3 день\nСтартер";
+"badge_7day" = "неделя\nВоин";
+"badge_30day" = "Месяц\nМастер";
+"badge_100day" = "Века\nЧемпион";
+"badge_365day" = "Год\nЛегенда";
+"badge_celebration_eyebrow" = "ЗНАК РАЗБЛОКИРОВАН";
+"badge_celebration_continue" = "Продолжать";
+
+/* BlockingView */
+"blocking_header" = "ЗАБЛОКИРОВАНО";
+"blocking_subtitle" = "Выполните свои задачи, чтобы разблокировать.";
+"blocking_give_up" = "Аварийная разблокировка";
+"blocking_give_up_confirm_title" = "Разблокировать для экстренной ситуации?";
+"blocking_give_up_confirm_message" = "Используйте только в экстренных случаях. Сегодняшние задачи останутся непроверенными, а блокировка возобновится завтра.";
+"blocking_give_up_confirm_button" = "Аварийная разблокировка";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "Аварийная разблокировка";
+"emergency_unlock_subtitle" = "Вы уверены, что хотите разблокировать?";
+"emergency_unlock_bullet_today" = "Сегодняшние задачи останутся непроверенными.";
+"emergency_unlock_bullet_tomorrow" = "Блокировка возобновится завтра утром.";
+"emergency_unlock_bullet_streak" = "Ваша полоса может быть прервана.";
+"emergency_unlock_slide_label" = "Сдвиньте, чтобы разблокировать";
+"emergency_unlock_cancel" = "Неважно";
+
+/* SettingsView */
+"settings_start_time" = "Время начала";
+"settings_start_time_label" = "Время начала";
+"settings_start_time_daily" = "Ежедневно";
+"settings_routine_section" = "Рутина";
+"settings_tasks" = "Задачи";
+"settings_tasks_footer" = "Выполните все задачи, чтобы разблокировать заблокированные приложения. Задачи сбрасываются каждый день.\nКоснитесь имени задачи, чтобы переименовать ее.";
+"settings_task_placeholder" = "Задача";
+"settings_add_task_placeholder" = "Добавить задачу";
+"tasks_add_sheet_title" = "Добавить задачу";
+"tasks_add_accessibility" = "Добавить задачу";
+"tasks_add_timer_toggle" = "Установить таймер";
+"tasks_rename_sheet_title" = "Переименовать задачу";
+"tasks_rename_accessibility" = "Переименовать задачу";
+"tasks_delete_accessibility" = "Удаление задач";
+"tasks_edit_done_accessibility" = "Закончено редактирование";
+"settings_blocking" = "Блокировка";
+"settings_blocked_apps" = "Заблокированные приложения";
+"settings_blocked_apps_pro_upsell_title" = "Блокируйте безлимит с помощью Pro";
+"settings_blocked_apps_pro_upsell_subtitle" = "Выбирайте столько приложений, категорий и веб-сайтов, сколько захотите.";
+"settings_blocked_apps_upsell_feature_categories" = "Блокируйте сразу целые категории приложений";
+"settings_blocked_apps_upsell_feature_websites" = "Блокируйте и сайты";
+"settings_blocked_apps_upsell_continue_free" = "Продолжайте использовать бесплатный план (до %d)";
+"settings_categories_pro_only" = "Категории приложений можно сохранить только с помощью Pro. В бесплатном плане выберите отдельные приложения или веб-сайты.";
+"settings_items_unit" = "предметы";
+"settings_weekday_scheduling" = "Расписание будних дней";
+"settings_appearance_section" = "Появление";
+"settings_appearance" = "Тема";
+"settings_appearance_system" = "Система";
+"settings_appearance_light" = "Свет";
+"settings_appearance_dark" = "Темный";
+"settings_color_theme_section" = "Цветовая тема";
+"settings_color_theme" = "Цветовая тема";
+"settings_color_theme_pro_only" = "Участники Pro могут настраивать акцентные цвета приложения.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "Классический";
+"settings_color_theme_sunrise" = "Восход";
+"settings_color_theme_forest" = "Лес";
+"settings_color_theme_ocean" = "Океан";
+"settings_color_theme_lavender" = "Лаванда";
+"settings_color_theme_rose" = "Роза";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "Теряете свой день из-за SNS и приложений, тратящих время?";
+"onboarding_problem_desc" = "Приложения, которые вы открываете, не задумываясь, занимают часы — и весь ваш день ускользает.";
+"onboarding_problem_point_scroll" = "Открытие социальных сетей на автопилоте";
+"onboarding_problem_point_time" = "Часы тают в приложениях каждый день";
+"onboarding_problem_point_mood" = "Никогда не добираешься до того, что ты на самом деле хочешь сделать";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "Как работает MornDash";
+"onboarding_how_desc" = "С установленного вами времени приложения, тратящие время, остаются заблокированными до конца дня.";
+"onboarding_how_step1_title" = "В назначенное вами время";
+"onboarding_how_step1_desc" = "Блокировка включается автоматически каждый день.";
+"onboarding_how_step2_title" = "Приложения заблокированы";
+"onboarding_how_step2_desc" = "Выбранные вами приложения остаются заблокированными весь день";
+"onboarding_how_step3_title" = "Задачи разблокируют их";
+"onboarding_how_step3_desc" = "Завершите выбранные задачи, чтобы освободить блок.";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Включить Screen Time";
+"onboarding_permission_desc" = "Чтобы заблокировать приложения, MornDash необходим доступ к Screen Time от Apple.";
+"onboarding_permission_note" = "Все остается на вашем устройстве. MornDash никуда не отправляет ваши данные.";
+"onboarding_param_screentime" = "Включить Screen Time";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "Выберите приложения для блокировки";
+"onboarding_apps_desc" = "Из вчерашнего списка, если он отображается, или используйте «Выбрать приложения».";
+"onboarding_apps_yesterday_label" = "Вчера";
+"onboarding_apps_free_footer" = "Бесплатно: до %d предметов. Категории нуждаются в Pro.";
+"onboarding_select_apps" = "Выберите приложения";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%dм";
+"onboarding_usage_under_one_m" = "<1 м";
+"onboarding_items_selected" = "Выбрано %d элементов";
+"onboarding_items_selected_with_limit" = "Выбрано %d / %d элементов";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "Когда это должно начаться?";
+"onboarding_time_desc" = "С этого момента выбранные вами приложения будут оставаться заблокированными каждый день.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "Установите задачи разблокировки";
+"onboarding_tasks_desc" = "Выполните все задачи, чтобы разблокировать приложения на день.";
+"onboarding_tasks_your_list" = "Ваши задачи";
+"onboarding_tasks_suggestions" = "Предложения";
+"onboarding_tasks_custom" = "Напишите свой собственный";
+"onboarding_tasks_empty" = "Заданий пока нет";
+"onboarding_tasks_empty_hint" = "Нажмите на предложение ниже, чтобы добавить задачи.";
+"onboarding_tasks_ritual_count" = "%d задач";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "Верните свое время.";
+"onboarding_motivation_desc" = "Тратьте часы на свою жизнь, а не на ленту.\nМаленькие победы формируют человека, которым вы хотите быть.";
+"onboarding_motivation_point_focus" = "Будьте сосредоточены весь день";
+"onboarding_motivation_point_calm" = "Наконец-то доберитесь до того, что действительно важно";
+"onboarding_motivation_point_self" = "На шаг ближе к лучшему себе";
+"onboarding_finish" = "Начать";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "Потягиваться";
+"onboarding_preset_bed" = "Застели мне кровать";
+"onboarding_preset_meditate" = "Медитируйте 5 минут";
+"onboarding_preset_journal" = "Напишите в моем журнале";
+"onboarding_preset_read" = "Прочтите 10 страниц.";
+"onboarding_preset_run" = "Перейти на пробежку";
+
+/* Default tasks */
+"default_task_stretch" = "Потягиваться";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "Подписка";
+"settings_status_pro" = "Pro · обновляет %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "Бесплатный план";
+"settings_upgrade_to_pro" = "Обновите до Pro";
+"settings_restore_purchase" = "Восстановить покупку";
+"settings_manage_subscription" = "Управление подпиской";
+"settings_restore_success_title" = "Восстановлен";
+"settings_restore_success_message" = "Ваша подписка Pro активна.";
+"settings_restore_failure_title" = "Не удалось восстановить";
+"settings_restore_failure_message" = "Для этого Apple ID не найдено активной подписки.";
+"settings_restore_error_title" = "Восстановление не удалось";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "Неограниченное количество задач";
+"paywall_feature_unlimited_blocked_apps" = "Неограниченное количество приложений и категорий для блокировки";
+"paywall_feature_multi_schedule" = "Несколько расписаний блоков";
+"paywall_feature_color_themes" = "Пользовательские цветовые темы";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "Бесплатный план поддерживает до %d задач.\nОбновите до Pro для неограниченного количества задач.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "Больше свободы по утрам.";
+"settings_card_pro_title" = "Pro Участник";
+"settings_card_pro_subtitle" = "Спасибо за поддержку MornDash.";
+"settings_legal_section" = "Юридический";
+"settings_commercial_transactions" = "Указанные коммерческие операции";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "Углубитесь в свою утреннюю практику.\nРазблокируйте все ниже.";
+"paywall_plan_weekly" = "Еженедельно";
+"paywall_plan_monthly" = "Ежемесячно";
+"paywall_plan_annual" = "Ежегодный";
+"paywall_per_week" = "Обновляется каждую неделю";
+"paywall_per_month" = "Обновляется каждый месяц";
+"paywall_per_year" = "Обновляется каждый год";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "Сэкономьте %d%%";
+"paywall_cta_continue" = "Продолжать";
+"paywall_cta_free_trial" = "Начать бесплатную пробную версию";
+"paywall_trial_badge_first_week" = "1-я неделя бесплатно";
+"paywall_trial_disclosure_format" = "%1$@ бесплатная пробная версия для впервые приобретающих годовую подписку, затем %2$@ в год. Автоматическое продление, если оно не отменено как минимум за 24 часа до окончания пробного периода.";
+"trial_period_one_week" = "1 неделя";
+"trial_period_days_format" = "%d дней";
+"trial_period_weeks_format" = "%d нед.";
+"trial_period_months_format" = "%d месяца(ев)";
+"trial_period_years_format" = "%d год(а)";
+"paywall_terms" = "Условия эксплуатации";
+"paywall_privacy" = "политика конфиденциальности";
+"paywall_commercial" = "Коммерческие сделки";
+"paywall_offerings_unavailable" = "Не удалось загрузить планы. Проверьте свое соединение.";
+"paywall_retry" = "Попробуйте еще раз";
+"paywall_error_title" = "Что-то пошло не так";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "Углубитесь в свою утреннюю практику. Все функции разблокированы.";
+"subscription_active" = "Активный";
+"subscription_next_renewal" = "Следующее продление";
+"subscription_manage_in_store" = "Управление в App Store";
+"subscription_cancel" = "Отменить подписку";
+"subscription_cancel_alert_title" = "Proперейти к отмене?";
+"subscription_cancel_alert_message" = "Вы будете перенаправлены на страницу управления подпиской App Store.";
+"subscription_cancel_alert_proceed" = "Открыть App Store";
+"subscription_terms_heading" = "Условия подписки";
+"subscription_terms_auto_renew" = "Подписка продлевается автоматически, если автоматическое продление не отключено как минимум за 24 часа до окончания текущего периода.";
+"subscription_terms_charge" = "С вашего счета будет снята плата за продление в течение 24 часов до окончания текущего периода.";
+"subscription_terms_manage" = "Подписками можно управлять, а автоматическое продление можно отключить в настройках учетной записи после покупки.";
+"subscription_terms_trial" = "Годовой план включает однократную недельную бесплатную пробную версию только для соответствующих критериям новых подписчиков. Еженедельные и ежемесячные планы не включают бесплатную пробную версию. Любая неиспользованная часть бесплатной пробной версии аннулируется при подписке, и по окончании пробной версии с вас будет взиматься годовая стоимость, если вы не отмените ее как минимум за 24 часа до этого.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d Приседания";
+"workout_preset_ai_badge" = "AI · ПРО";
+"workout_reps_picker_title" = "Выбирайте повторения приседаний";
+"workout_reps_picker_stepper_format" = "%d повторений";
+"workout_reps_picker_placeholder" = "Введите повторения (1-999)";
+"workout_reps_picker_invalid" = "Введите число от 1 до 999";
+"workout_reps_picker_add_button" = "Добавить эту задачу";
+"workout_status_recognizing" = "Признавая...";
+"workout_status_no_body" = "Войди в кадр";
+"workout_status_adjust" = "Отрегулируйте свое положение";
+"workout_status_start" = "Начинать!";
+"workout_status_down" = "Вниз!";
+"workout_status_good" = "Хороший!";
+"workout_simulator_notice" = "Камера недоступна в симуляторе. Нажмите, чтобы имитировать завершение.";
+"workout_simulator_complete" = "Отметить как завершенное";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "Исследование %d мин.";
+"focus_preset_pcwork_title" = "Работа на ПК %d мин.";
+"focus_preset_study_label" = "Изучать";
+"focus_preset_pcwork_label" = "Работа на ПК";
+"focus_preset_ai_badge" = "AI · ПРО";
+"focus_status_detected" = "Сосредоточенный";
+"focus_status_no_face" = "Отойдите от камеры";
+"focus_status_multiple_faces" = "Обнаружено несколько человек";
+"focus_status_low_quality" = "Освещение слишком слабое";
+"focus_status_bad_angle" = "Лицом к камере";
+"focus_status_face_too_small" = "Подойдите ближе";
+"focus_hint_setup_title" = "Настройте свой телефон";
+"focus_hint_setup_body" = "Prop поставьте телефон на подставку так, чтобы ваше лицо поместилось в кадр.";
+"focus_hint_setup_close" = "Понятно";
+"focus_privacy_notice" = "Видео останется на этом устройстве";
+"focus_session_remaining" = "Оставшийся";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d мин.";
+"tasks_timer_seconds_short_format" = "%d сек.";
+"tasks_timer_duration_min_sec_format" = "%d мин %02d сек";
+"tasks_timer_minutes_label" = "Минуты";
+"tasks_timer_seconds_label" = "Секунды";
+"tasks_timer_minutes_placeholder" = "Минуты (1–180)";
+"tasks_timer_sheet_title" = "Настройки таймера";
+"tasks_timer_sheet_hint" = "Установите минуты и секунды. Задача завершается, когда таймер завершает работу.";
+"tasks_timer_remove" = "Удалить таймер";
+"tasks_timer_save" = "Сохранять";
+"timer_session_title" = "ТАЙМЕР";
+"timer_session_hint" = "Экран не спит во время работы";
+"timer_session_start" = "Начинать";
+"timer_session_pause" = "Пауза";
+
+/* Task ticket */
+"task_ticket_number_format" = "№%02d";
+"task_ticket_done_stamp" = "СДЕЛАННЫЙ";

@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "postavke";
+"common_done" = "Gotovo";
+"common_cancel" = "Otkazati";
+"common_select" = "Odaberite";
+"common_next" = "Sljedeći";
+"common_continue" = "Nastaviti";
+"common_back" = "Nazad";
+"common_skip" = "Preskočiti";
+"common_start" = "Započnite";
+
+/* MainView (idle) */
+"main_next_block" = "SLJEDEĆI BLOK";
+"main_completed_eyebrow" = "SVE GOTOVO";
+"main_completed_title" = "Gotovo za danas";
+"main_completed_subtitle" = "Uživajte u ostatku dana.";
+"main_completed_streak_unit" = "NIZ DANA";
+"main_completed_message_3" = "Vaša navika poprima oblik. Nastavi tako i sutra.";
+"main_completed_message_7" = "Puni tjedan. Ti si prava stvar.";
+"main_completed_message_30" = "Nezaustavljiva dosljednost. Budite ponosni na sebe.";
+"main_completed_message_100" = "100 dana dokaza. Sada te ništa ne može zaustaviti.";
+"main_completed_week_progress" = "%d / 7 dana ovaj tjedan";
+"main_completed_best_streak" = "Najbolji: %d";
+"main_completed_next_block" = "Sljedeći blok %@";
+"main_todays_tasks" = "DANAŠNJI ZADACI";
+"main_todays_tasks_done" = "SVE KOMPLETNO";
+"main_no_tasks" = "Još nema zadataka. Dodajte neke s kartice Zadaci.";
+
+"routine_celebration_eyebrow" = "SVE GOTOVO";
+"routine_celebration_title" = "Uspio si!";
+"routine_celebration_message" = "Svi zadaci za danas završeni.\nUživaj u svojoj slobodi.";
+"routine_celebration_continue" = "Nastaviti";
+"routine_celebration_compact_title" = "Gotovo za danas";
+
+/* Tabs */
+"tab_home" = "Dom";
+"tab_tasks" = "Zadaci";
+"tab_stats" = "Statistika";
+"tab_settings" = "postavke";
+
+/* Streak / Stats */
+"streak_days_format" = "%d dana u nizu";
+"stats_streak_day_unit_singular" = "dan";
+"stats_streak_day_unit_plural" = "dana";
+"stats_current_streak" = "NIZ DANA";
+"stats_longest_streak" = "NAJBOLJI NIZ";
+"stats_total_completed" = "UKUPNO DANA";
+"stats_week_progress_short" = "%d / 7 dana ovaj tjedan";
+"stats_next_milestone" = "SLJEDEĆA PREKRETNICA";
+"stats_next_milestone_days" = "%2$d dana do %1$@";
+"stats_summary_footer" = "Najbolji %d · Ukupno %d dana";
+"stats_all_badges_unlocked" = "Sve su značke otključane";
+"stats_last_7_days" = "POSLJEDNJIH 7 DANA";
+"stats_month_calendar" = "OVAJ MJESEC";
+"stats_contributions" = "AKTIVNOST";
+"stats_badges" = "ZNAČKE";
+"stats_no_data" = "Dovršite sve svoje zadatke za jedan dan kako biste započeli svoj niz.";
+"stats_blocked_usage_today" = "BLOKIRANJE APLIKACIJA · DANAS";
+"stats_blocked_usage_no_selection" = "Još nije odabrana nijedna aplikacija za blokiranje.";
+"stats_emergency_unlocks" = "Hitno otključavanje";
+"stats_emergency_unlocks_count_unit" = "puta";
+"stats_emergency_unlocks_this_week" = "Ovaj tjedan";
+"stats_emergency_unlocks_this_month" = "Ovaj mjesec";
+"stats_emergency_unlocks_past_year" = "Prošle godine";
+"stats_emergency_unlocks_total" = "Ukupno";
+"stats_emergency_unlocks_last" = "Posljednji: %@";
+"stats_emergency_unlocks_none" = "Još nema otključavanja u hitnim slučajevima.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "Usporedba";
+"stats_emergency_compare_week" = "u odnosu na prošli tjedan";
+"stats_emergency_compare_month" = "u odnosu na prošli mjesec";
+"stats_emergency_compare_year" = "u odnosu na prošlu godinu";
+"stats_emergency_compare_lock_title" = "Pratite svoj trend otključavanja";
+"stats_emergency_compare_lock_message" = "Pro pokazuje kakva su vaša hitna otključavanja u usporedbi s prošlim tjednom, prošlim mjesecom i prošlom godinom.";
+"stats_blocked_duration" = "Blokirano / dan";
+"stats_blocked_duration_this_week" = "Ovaj tjedan";
+"stats_blocked_duration_past_year" = "Prošle godine";
+"stats_blocked_duration_per_day_suffix" = "/ dan";
+"stats_blocked_duration_none" = "Još nije zabilježeno blokirano vrijeme.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "RASPJELA ZADATKA";
+"stats_task_period_month" = "Ovaj mjesec";
+"stats_task_period_year" = "Ove godine";
+"stats_task_consistency_format" = "%d / %d dana";
+"stats_task_no_data_month" = "Označite zadatke ovog mjeseca da biste ih vidjeli ovdje.";
+"stats_task_no_data_year" = "Označite zadatke ove godine kako biste ih vidjeli ovdje.";
+"stats_task_compare" = "Usporedi";
+"stats_task_compare_lock_title" = "Pogledajte svoj napredak tijekom vremena";
+"stats_task_compare_lock_message" = "Pro pokazuje kakav je svaki zadatak u usporedbi s prethodnim mjesecom ili godinom.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "Usporedba";
+"stats_blocked_compare_week" = "u odnosu na prošli tjedan";
+"stats_blocked_compare_month" = "u odnosu na prošli mjesec";
+"stats_blocked_compare_year" = "u odnosu na prošlu godinu";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "Usporedite svoj tjedan, mjesec, godinu";
+"stats_blocked_compare_lock_message" = "Pro pokazuje kakav je odnos ovog tjedna, mjeseca i godine prema prošloj.";
+"stats_blocked_compare_unlock_button" = "Otključaj s Pro";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro Izvješća";
+"stats_pro_section_upsell_desc" = "Otključajte sva usporedna izvješća između razdoblja.";
+
+/* Badges */
+"badge_3day" = "3 dan\nstarter";
+"badge_7day" = "tjedan\nRatnik";
+"badge_30day" = "mjesec\ngospodaru";
+"badge_100day" = "stoljeća\nprvak";
+"badge_365day" = "godine\nLegenda";
+"badge_celebration_eyebrow" = "ZNAČKA OTKLJUČANA";
+"badge_celebration_continue" = "Nastaviti";
+
+/* BlockingView */
+"blocking_header" = "BLOKIRAN";
+"blocking_subtitle" = "Dovršite svoje zadatke za otključavanje.";
+"blocking_give_up" = "Otključavanje u hitnim slučajevima";
+"blocking_give_up_confirm_title" = "Otključati za hitne slučajeve?";
+"blocking_give_up_confirm_message" = "Koristite samo u hitnim slučajevima. Današnji zadaci ostat će neoznačeni, a blokiranje će se nastaviti sutra.";
+"blocking_give_up_confirm_button" = "Otključavanje u hitnim slučajevima";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "Otključavanje u hitnim slučajevima";
+"emergency_unlock_subtitle" = "Jeste li sigurni da želite otključati?";
+"emergency_unlock_bullet_today" = "Današnji zadaci ostat će neprovjereni.";
+"emergency_unlock_bullet_tomorrow" = "Blokada će se nastaviti sutra ujutro.";
+"emergency_unlock_bullet_streak" = "Vaš niz bi mogao biti prekinut.";
+"emergency_unlock_slide_label" = "Povucite za otključavanje";
+"emergency_unlock_cancel" = "Nema veze";
+
+/* SettingsView */
+"settings_start_time" = "Vrijeme početka";
+"settings_start_time_label" = "Vrijeme početka";
+"settings_start_time_daily" = "Dnevno";
+"settings_routine_section" = "Rutina";
+"settings_tasks" = "Zadaci";
+"settings_tasks_footer" = "Dovršite sve zadatke za otključavanje blokiranih aplikacija. Zadaci se poništavaju svaki dan.\nDodirnite naziv zadatka da biste ga preimenovali.";
+"settings_task_placeholder" = "Zadatak";
+"settings_add_task_placeholder" = "Dodajte zadatak";
+"tasks_add_sheet_title" = "Dodaj zadatak";
+"tasks_add_accessibility" = "Dodaj zadatak";
+"tasks_add_timer_toggle" = "Postavite mjerač vremena";
+"tasks_rename_sheet_title" = "Preimenuj zadatak";
+"tasks_rename_accessibility" = "Preimenuj zadatak";
+"tasks_delete_accessibility" = "Brisanje zadataka";
+"tasks_edit_done_accessibility" = "Završeno uređivanje";
+"settings_blocking" = "Blokiranje";
+"settings_blocked_apps" = "Blokirane aplikacije";
+"settings_blocked_apps_pro_upsell_title" = "Neograničeno blokiraj s Pro";
+"settings_blocked_apps_pro_upsell_subtitle" = "Odaberite onoliko aplikacija, kategorija i web stranica koliko želite.";
+"settings_blocked_apps_upsell_feature_categories" = "Blokirajte cijele kategorije aplikacija odjednom";
+"settings_blocked_apps_upsell_feature_websites" = "Blokirajte i web stranice";
+"settings_blocked_apps_upsell_continue_free" = "Nastavite s besplatnim planom (do %d)";
+"settings_categories_pro_only" = "Kategorije aplikacija mogu se spremiti samo s Pro. U besplatnom paketu odaberite pojedinačne aplikacije ili web stranice.";
+"settings_items_unit" = "stavke";
+"settings_weekday_scheduling" = "Raspored radnim danima";
+"settings_appearance_section" = "Izgled";
+"settings_appearance" = "Tema";
+"settings_appearance_system" = "sustav";
+"settings_appearance_light" = "Svjetlo";
+"settings_appearance_dark" = "tamno";
+"settings_color_theme_section" = "Tema boja";
+"settings_color_theme" = "Tema boja";
+"settings_color_theme_pro_only" = "Članovi Pro mogu prilagoditi akcentne boje aplikacije.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "klasična";
+"settings_color_theme_sunrise" = "Izlazak sunca";
+"settings_color_theme_forest" = "Šuma";
+"settings_color_theme_ocean" = "Ocean";
+"settings_color_theme_lavender" = "Lavanda";
+"settings_color_theme_rose" = "Ruža";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "Gubite dan zbog SNS i aplikacija koje gube vrijeme?";
+"onboarding_problem_desc" = "Aplikacije koje otvorite bez razmišljanja zbrajaju sate — i cijeli vam dan izmiče.";
+"onboarding_problem_point_scroll" = "Otvaranje društvenih izvora na autopilotu";
+"onboarding_problem_point_time" = "Sati se svaki dan pretapaju u aplikacije";
+"onboarding_problem_point_mood" = "Nikad ne stignete do onoga što zapravo želite učiniti";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "Kako funkcionira MornDash";
+"onboarding_how_desc" = "Od postavljenog vremena, aplikacije koje gube vrijeme ostaju zaključane ostatak dana.";
+"onboarding_how_step1_title" = "U zadano vrijeme";
+"onboarding_how_step1_desc" = "Blokiranje se uključuje automatski svaki dan";
+"onboarding_how_step2_title" = "Zaključavanje aplikacija";
+"onboarding_how_step2_desc" = "Aplikacije koje odaberete ostaju zaključane cijeli dan";
+"onboarding_how_step3_title" = "Zadaci ih otključavaju";
+"onboarding_how_step3_desc" = "Završite svoje odabrane zadatke da otpustite blok";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Omogući Screen Time";
+"onboarding_permission_desc" = "Za blokiranje aplikacija, MornDash treba pristup Appleovom Screen Time.";
+"onboarding_permission_note" = "Sve ostaje na vašem uređaju. MornDash ne šalje vaše podatke nigdje.";
+"onboarding_param_screentime" = "Omogući Screen Time";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "Odaberite aplikacije za blokiranje";
+"onboarding_apps_desc" = "S jučerašnjeg popisa ako je prikazan ili upotrijebite Odaberite aplikacije.";
+"onboarding_apps_yesterday_label" = "Jučer";
+"onboarding_apps_free_footer" = "Besplatno: do %d stavki. Za kategorije je potreban Pro.";
+"onboarding_select_apps" = "Odaberite Aplikacije";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%dmj";
+"onboarding_usage_under_one_m" = "<1m";
+"onboarding_items_selected" = "Odabrano %d stavki";
+"onboarding_items_selected_with_limit" = "Odabrano %d / %d stavki";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "Kada treba početi?";
+"onboarding_time_desc" = "Od tog vremena svaki dan vaše odabrane aplikacije ostaju zaključane.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "Postavite svoje zadatke otključavanja";
+"onboarding_tasks_desc" = "Dovršite sve zadatke da otključate svoje aplikacije za taj dan.";
+"onboarding_tasks_your_list" = "Vaši zadaci";
+"onboarding_tasks_suggestions" = "Prijedlozi";
+"onboarding_tasks_custom" = "Napiši svoj";
+"onboarding_tasks_empty" = "Još nema zadataka";
+"onboarding_tasks_empty_hint" = "Dodirnite prijedlog u nastavku za dodavanje zadataka";
+"onboarding_tasks_ritual_count" = "%d zadataka";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "Vratite svoje vrijeme.";
+"onboarding_motivation_desc" = "Potrošite sate na svoj život, a ne na hranu.\nMale pobjede grade osobu kakva želite biti.";
+"onboarding_motivation_point_focus" = "Ostanite fokusirani cijeli dan";
+"onboarding_motivation_point_calm" = "Napokon dođite do onoga što je stvarno važno";
+"onboarding_motivation_point_self" = "Jedan korak bliže sebi";
+"onboarding_finish" = "Započnite";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "Istegnite se";
+"onboarding_preset_bed" = "Napravi mi krevet";
+"onboarding_preset_meditate" = "Meditirajte 5 minuta";
+"onboarding_preset_journal" = "Zapiši u moj dnevnik";
+"onboarding_preset_read" = "Procitaj 10 stranica";
+"onboarding_preset_run" = "Idi na trčanje";
+
+/* Default tasks */
+"default_task_stretch" = "Istegnite se";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "Pretplata";
+"settings_status_pro" = "Pro · obnavlja %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "Besplatni plan";
+"settings_upgrade_to_pro" = "Nadogradite na Pro";
+"settings_restore_purchase" = "Obnovi kupnju";
+"settings_manage_subscription" = "Upravljanje pretplatom";
+"settings_restore_success_title" = "Obnovljena";
+"settings_restore_success_message" = "Vaša Pro pretplata je aktivna.";
+"settings_restore_failure_title" = "Nije moguće vratiti";
+"settings_restore_failure_message" = "Nije pronađena aktivna pretplata za ovaj Apple ID.";
+"settings_restore_error_title" = "Vraćanje nije uspjelo";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "Neograničeni zadaci";
+"paywall_feature_unlimited_blocked_apps" = "Neograničen broj aplikacija i kategorija za blokiranje";
+"paywall_feature_multi_schedule" = "Više blok rasporeda";
+"paywall_feature_color_themes" = "Prilagođene teme boja";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "Besplatni plan podržava do %d zadataka.\nNadogradite na Pro za neograničene zadatke.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "Više slobode za jutra kakva želite.";
+"settings_card_pro_title" = "Pro Član";
+"settings_card_pro_subtitle" = "Hvala na podršci MornDash.";
+"settings_legal_section" = "Pravno";
+"settings_commercial_transactions" = "Određene komercijalne transakcije";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "Uđite dublje u svoju jutarnju praksu.\nOtključajte sve ispod.";
+"paywall_plan_weekly" = "Tjedni";
+"paywall_plan_monthly" = "Mjesečno";
+"paywall_plan_annual" = "Godišnji";
+"paywall_per_week" = "Obnavlja se svaki tjedan";
+"paywall_per_month" = "Obnavlja se svaki mjesec";
+"paywall_per_year" = "Obnavlja se svake godine";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "Uštedite %d%%";
+"paywall_cta_continue" = "Nastaviti";
+"paywall_cta_free_trial" = "Započni besplatnu probu";
+"paywall_trial_badge_first_week" = "1. tjedan besplatno";
+"paywall_trial_disclosure_format" = "%1$@ besplatno probno razdoblje za prve godišnje pretplatnike, zatim %2$@ godišnje. Automatski se obnavlja osim ako se ne otkaže najmanje 24 sata prije završetka probe.";
+"trial_period_one_week" = "1 tjedan";
+"trial_period_days_format" = "%d dana";
+"trial_period_weeks_format" = "%d tjedan(a)";
+"trial_period_months_format" = "%d mjesec(a)";
+"trial_period_years_format" = "%d godina(e)";
+"paywall_terms" = "Uvjeti korištenja";
+"paywall_privacy" = "Politika privatnosti";
+"paywall_commercial" = "Komercijalne transakcije";
+"paywall_offerings_unavailable" = "Nije moguće učitati planove. Provjerite vezu.";
+"paywall_retry" = "Pokušajte ponovno";
+"paywall_error_title" = "Nešto nije u redu";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "Uđite dublje u svoju jutarnju praksu. Sve su značajke otključane.";
+"subscription_active" = "Aktivan";
+"subscription_next_renewal" = "Sljedeća obnova";
+"subscription_manage_in_store" = "Upravljanje u App Store";
+"subscription_cancel" = "Otkaži pretplatu";
+"subscription_cancel_alert_title" = "Pronastaviti otkazati?";
+"subscription_cancel_alert_message" = "Bit ćete preusmjereni na svoju stranicu za upravljanje pretplatom App Store.";
+"subscription_cancel_alert_proceed" = "Otvori App Store";
+"subscription_terms_heading" = "Uvjeti pretplate";
+"subscription_terms_auto_renew" = "Pretplata se automatski obnavlja osim ako se automatska obnova ne isključi najmanje 24 sata prije kraja tekućeg razdoblja.";
+"subscription_terms_charge" = "Vaš će račun biti naplaćen za obnovu unutar 24 sata prije kraja tekućeg razdoblja.";
+"subscription_terms_manage" = "Pretplatama se može upravljati i automatska obnova se može isključiti putem postavki računa nakon kupnje.";
+"subscription_terms_trial" = "Godišnji plan uključuje jednokratnu 1-tjednu besplatnu probu samo za nove pretplatnike koji ispunjavaju uvjete. Tjedni i mjesečni planovi ne uključuju besplatno probno razdoblje. Svaki neiskorišteni dio besplatnog probnog razdoblja oduzima se kada se pretplatite, a naplatit će vam se godišnja cijena kada probno razdoblje završi, osim ako ne otkažete najmanje 24 sata prije.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d Čučnjevi";
+"workout_preset_ai_badge" = "AI · PRO";
+"workout_reps_picker_title" = "Odaberite ponavljanja čučnjeva";
+"workout_reps_picker_stepper_format" = "%d ponavljanja";
+"workout_reps_picker_placeholder" = "Unesite ponavljanja (1-999)";
+"workout_reps_picker_invalid" = "Unesite broj između 1 i 999";
+"workout_reps_picker_add_button" = "Dodajte ovaj zadatak";
+"workout_status_recognizing" = "Prepoznavanje...";
+"workout_status_no_body" = "Uđite u kadar";
+"workout_status_adjust" = "Prilagodite svoj položaj";
+"workout_status_start" = "Start!";
+"workout_status_down" = "dolje!";
+"workout_status_good" = "Lijepo!";
+"workout_simulator_notice" = "Kamera nije dostupna u simulatoru. Dodirnite za simulaciju završetka.";
+"workout_simulator_complete" = "Označi kao dovršeno";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "Studija %d min";
+"focus_preset_pcwork_title" = "Rad na računalu %d min";
+"focus_preset_study_label" = "Studija";
+"focus_preset_pcwork_label" = "Rad na računalu";
+"focus_preset_ai_badge" = "AI · PRO";
+"focus_status_detected" = "Usredotočen";
+"focus_status_no_face" = "Odmaknite se od kamere";
+"focus_status_multiple_faces" = "Otkriveno više osoba";
+"focus_status_low_quality" = "Osvjetljenje je preslabo";
+"focus_status_bad_angle" = "Okrenite se prema kameri";
+"focus_status_face_too_small" = "Primakni se bliže";
+"focus_hint_setup_title" = "Postavite svoj telefon";
+"focus_hint_setup_body" = "Prop svoj telefon na postolje tako da vaše lice stane u okvir.";
+"focus_hint_setup_close" = "shvaćam";
+"focus_privacy_notice" = "Video ostaje na ovom uređaju";
+"focus_session_remaining" = "Preostalo";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d min";
+"tasks_timer_seconds_short_format" = "%d s";
+"tasks_timer_duration_min_sec_format" = "%d min %02d s";
+"tasks_timer_minutes_label" = "minuta";
+"tasks_timer_seconds_label" = "sekundi";
+"tasks_timer_minutes_placeholder" = "Minute (1–180)";
+"tasks_timer_sheet_title" = "Postavke mjerača vremena";
+"tasks_timer_sheet_hint" = "Postavite minute i sekunde. Zadatak je dovršen kada mjerač vremena završi.";
+"tasks_timer_remove" = "Ukloni mjerač vremena";
+"tasks_timer_save" = "Uštedjeti";
+"timer_session_title" = "TIMER";
+"timer_session_hint" = "Zaslon ostaje budan tijekom rada";
+"timer_session_start" = "Start";
+"timer_session_pause" = "Pauza";
+
+/* Task ticket */
+"task_ticket_number_format" = "Br.%02d";
+"task_ticket_done_stamp" = "GOTOVO";

@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "Setări";
+"common_done" = "Făcut";
+"common_cancel" = "Anula";
+"common_select" = "Selecta";
+"common_next" = "Următorul";
+"common_continue" = "Continua";
+"common_back" = "Spate";
+"common_skip" = "Sari peste";
+"common_start" = "Începeți";
+
+/* MainView (idle) */
+"main_next_block" = "URMĂTORUL BLOC";
+"main_completed_eyebrow" = "TOTUL FĂCUT";
+"main_completed_title" = "Gata pentru azi";
+"main_completed_subtitle" = "Bucurați-vă de restul zilei.";
+"main_completed_streak_unit" = "SURSA DE ZI";
+"main_completed_message_3" = "Obiceiul tău prinde contur. Continuă-o și mâine.";
+"main_completed_message_7" = "O săptămână întreagă. Tu ești adevărata afacere.";
+"main_completed_message_30" = "Consecvență de neoprit. Fii mândru de tine.";
+"main_completed_message_100" = "100 de zile de dovadă. Nimic nu te poate opri acum.";
+"main_completed_week_progress" = "%d / 7 zile în această săptămână";
+"main_completed_best_streak" = "Cel mai bun: %d";
+"main_completed_next_block" = "Următorul bloc %@";
+"main_todays_tasks" = "SARCINI DE AZI";
+"main_todays_tasks_done" = "TOTUL COMPLET";
+"main_no_tasks" = "Nicio sarcină încă. Adăugați câteva din fila Sarcini.";
+
+"routine_celebration_eyebrow" = "TOTUL FĂCUT";
+"routine_celebration_title" = "Ai făcut-o!";
+"routine_celebration_message" = "Toate sarcinile finalizate pentru azi.\nBucură-te de libertatea ta.";
+"routine_celebration_continue" = "Continua";
+"routine_celebration_compact_title" = "Toate gata pentru azi";
+
+/* Tabs */
+"tab_home" = "Acasă";
+"tab_tasks" = "Sarcini";
+"tab_stats" = "Statistici";
+"tab_settings" = "Setări";
+
+/* Streak / Stats */
+"streak_days_format" = "%d zile consecutive";
+"stats_streak_day_unit_singular" = "zi";
+"stats_streak_day_unit_plural" = "zile";
+"stats_current_streak" = "SURSA DE ZI";
+"stats_longest_streak" = "CEL MAI BUN STREAK";
+"stats_total_completed" = "TOTAL DE ZILE";
+"stats_week_progress_short" = "%d / 7 zile în această săptămână";
+"stats_next_milestone" = "Următoarea etapă de reper";
+"stats_next_milestone_days" = "%2$d zile până la %1$@";
+"stats_summary_footer" = "Cele mai bune %d · Total %d zile";
+"stats_all_badges_unlocked" = "Toate insignele au fost deblocate";
+"stats_last_7_days" = "ULTIMELE 7 ZILE";
+"stats_month_calendar" = "LUNA ACEASTA";
+"stats_contributions" = "ACTIVITATE";
+"stats_badges" = "insigne";
+"stats_no_data" = "Completează-ți toate sarcinile pentru o zi pentru a-ți începe seria.";
+"stats_blocked_usage_today" = "APLICAȚII BLOCATE · AZI";
+"stats_blocked_usage_no_selection" = "Încă nu au fost selectate aplicații pentru blocare.";
+"stats_emergency_unlocks" = "Deblocări de urgență";
+"stats_emergency_unlocks_count_unit" = "ori";
+"stats_emergency_unlocks_this_week" = "În această săptămână";
+"stats_emergency_unlocks_this_month" = "Luna aceasta";
+"stats_emergency_unlocks_past_year" = "Anul trecut";
+"stats_emergency_unlocks_total" = "Total";
+"stats_emergency_unlocks_last" = "Ultima: %@";
+"stats_emergency_unlocks_none" = "Nu există încă deblocări de urgență.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "Comparaţie";
+"stats_emergency_compare_week" = "vs saptamana trecuta";
+"stats_emergency_compare_month" = "vs luna trecuta";
+"stats_emergency_compare_year" = "vs anul trecut";
+"stats_emergency_compare_lock_title" = "Urmăriți tendința de deblocare";
+"stats_emergency_compare_lock_message" = "Pro arată cum deblochările dvs. de urgență se compară cu săptămâna trecută, cu luna trecută și cu anul trecut.";
+"stats_blocked_duration" = "Blocat/zi";
+"stats_blocked_duration_this_week" = "În această săptămână";
+"stats_blocked_duration_past_year" = "Anul trecut";
+"stats_blocked_duration_per_day_suffix" = "/ zi";
+"stats_blocked_duration_none" = "Nu s-a înregistrat încă un timp blocat.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "DEfalcarea sarcinilor";
+"stats_task_period_month" = "Luna aceasta";
+"stats_task_period_year" = "Anul acesta";
+"stats_task_consistency_format" = "%d / %d zile";
+"stats_task_no_data_month" = "Bifați sarcinile din această lună pentru a le vedea aici.";
+"stats_task_no_data_year" = "Bifați sarcinile din acest an pentru a le vedea aici.";
+"stats_task_compare" = "Comparaţie";
+"stats_task_compare_lock_title" = "Vezi progresul tău în timp";
+"stats_task_compare_lock_message" = "Pro arată cum se compară fiecare sarcină cu luna sau anul precedent.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "Comparaţie";
+"stats_blocked_compare_week" = "vs saptamana trecuta";
+"stats_blocked_compare_month" = "vs luna trecuta";
+"stats_blocked_compare_year" = "vs anul trecut";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "Comparați săptămâna, luna, anul";
+"stats_blocked_compare_lock_message" = "Pro arată cum se compară săptămâna, luna și anul acesta față de ultimul.";
+"stats_blocked_compare_unlock_button" = "Deblocați cu Pro";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro Rapoarte";
+"stats_pro_section_upsell_desc" = "Deblocați toate rapoartele de comparație perioadă peste perioadă.";
+
+/* Badges */
+"badge_3day" = "3 zi\nStarter";
+"badge_7day" = "Săptămâna\nRăzboinic";
+"badge_30day" = "luna\nMaestre";
+"badge_100day" = "Secolul\nCampion";
+"badge_365day" = "Anul\nLegendă";
+"badge_celebration_eyebrow" = "BADGE DEBLOCATĂ";
+"badge_celebration_continue" = "Continua";
+
+/* BlockingView */
+"blocking_header" = "BLOCAT";
+"blocking_subtitle" = "Finalizați sarcinile pentru a debloca.";
+"blocking_give_up" = "Deblocare de urgență";
+"blocking_give_up_confirm_title" = "Deblocați pentru o urgență?";
+"blocking_give_up_confirm_message" = "Utilizați numai în situații de urgență. Sarcinile de astăzi vor rămâne neverificate, iar blocarea va fi reluată mâine.";
+"blocking_give_up_confirm_button" = "Deblocare de urgență";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "Deblocare de urgență";
+"emergency_unlock_subtitle" = "Sigur doriți să deblocați?";
+"emergency_unlock_bullet_today" = "Sarcinile de astăzi vor rămâne neverificate.";
+"emergency_unlock_bullet_tomorrow" = "Blocarea va relua mâine dimineață.";
+"emergency_unlock_bullet_streak" = "Dâra ta poate fi întreruptă.";
+"emergency_unlock_slide_label" = "Glisați pentru a debloca";
+"emergency_unlock_cancel" = "Nu face nimic";
+
+/* SettingsView */
+"settings_start_time" = "Ora de începere";
+"settings_start_time_label" = "Ora de începere";
+"settings_start_time_daily" = "Zilnic";
+"settings_routine_section" = "Rutină";
+"settings_tasks" = "Sarcini";
+"settings_tasks_footer" = "Finalizați toate sarcinile pentru a debloca aplicațiile blocate. Sarcinile se resetează în fiecare zi.\nAtingeți numele unei sarcini pentru a o redenumi.";
+"settings_task_placeholder" = "Sarcină";
+"settings_add_task_placeholder" = "Adăugați o sarcină";
+"tasks_add_sheet_title" = "Adăugați o sarcină";
+"tasks_add_accessibility" = "Adăugați sarcină";
+"tasks_add_timer_toggle" = "Setați un cronometru";
+"tasks_rename_sheet_title" = "Redenumiți sarcina";
+"tasks_rename_accessibility" = "Redenumiți sarcina";
+"tasks_delete_accessibility" = "Ștergeți sarcini";
+"tasks_edit_done_accessibility" = "Editare gata";
+"settings_blocking" = "Blocare";
+"settings_blocked_apps" = "Aplicații blocate";
+"settings_blocked_apps_pro_upsell_title" = "Blocare nelimitată cu Pro";
+"settings_blocked_apps_pro_upsell_subtitle" = "Alegeți câte aplicații, categorii și site-uri web doriți.";
+"settings_blocked_apps_upsell_feature_categories" = "Blocați simultan categorii întregi de aplicații";
+"settings_blocked_apps_upsell_feature_websites" = "Blocați și site-urile web";
+"settings_blocked_apps_upsell_continue_free" = "Continuați cu planul gratuit (până la %d)";
+"settings_categories_pro_only" = "Categoriile de aplicații pot fi salvate numai cu Pro. În planul gratuit, alegeți aplicații sau site-uri web individuale.";
+"settings_items_unit" = "articole";
+"settings_weekday_scheduling" = "Programul zilei lucrătoare";
+"settings_appearance_section" = "Aspect";
+"settings_appearance" = "Temă";
+"settings_appearance_system" = "Sistem";
+"settings_appearance_light" = "Aprinde";
+"settings_appearance_dark" = "Întuneric";
+"settings_color_theme_section" = "Tema de culoare";
+"settings_color_theme" = "Tema de culoare";
+"settings_color_theme_pro_only" = "Membrii Pro pot personaliza culorile de accent ale aplicației.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "Clasic";
+"settings_color_theme_sunrise" = "Răsărit de soare";
+"settings_color_theme_forest" = "Pădure";
+"settings_color_theme_ocean" = "Ocean";
+"settings_color_theme_lavender" = "Lavandă";
+"settings_color_theme_rose" = "Trandafir";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "Îți pierzi ziua din cauza SNS și a aplicațiilor care irosesc timpul?";
+"onboarding_problem_desc" = "Aplicațiile pe care le deschizi fără să stai pe gânduri însumează ore și toată ziua îți scapă.";
+"onboarding_problem_point_scroll" = "Deschiderea fluxurilor sociale pe pilot automat";
+"onboarding_problem_point_time" = "Ore care se topesc în aplicații în fiecare zi";
+"onboarding_problem_point_mood" = "Să nu ajungi niciodată la ceea ce vrei cu adevărat să faci";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "Cum funcționează MornDash";
+"onboarding_how_desc" = "Din timpul stabilit, aplicațiile care irosesc timpul rămân blocate pentru restul zilei.";
+"onboarding_how_step1_title" = "La ora stabilită";
+"onboarding_how_step1_desc" = "Blocarea intervine automat în fiecare zi";
+"onboarding_how_step2_title" = "Aplicațiile se blochează";
+"onboarding_how_step2_desc" = "Aplicațiile pe care le alegeți rămân blocate toată ziua";
+"onboarding_how_step3_title" = "Sarcinile le deblochează";
+"onboarding_how_step3_desc" = "Termină sarcinile alese pentru a elibera blocul";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Activați Screen Time";
+"onboarding_permission_desc" = "Pentru a bloca aplicații, MornDash are nevoie de acces la Screen Time Apple.";
+"onboarding_permission_note" = "Totul rămâne pe dispozitivul tău. MornDash nu vă trimite datele nicăieri.";
+"onboarding_param_screentime" = "Activați Screen Time";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "Alegeți aplicațiile de blocat";
+"onboarding_apps_desc" = "Din lista de ieri, dacă este afișată, sau utilizați Selectați aplicații.";
+"onboarding_apps_yesterday_label" = "Ieri";
+"onboarding_apps_free_footer" = "Gratuit: până la %d articole. Categoriile au nevoie de Pro.";
+"onboarding_select_apps" = "Selectați Aplicații";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%dm";
+"onboarding_usage_under_one_m" = "<1m";
+"onboarding_items_selected" = "%d elemente selectate";
+"onboarding_items_selected_with_limit" = "%d / %d elemente selectate";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "Când ar trebui să înceapă?";
+"onboarding_time_desc" = "De la această oră în fiecare zi, aplicațiile alese de dvs. rămân blocate.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "Setați sarcinile de deblocare";
+"onboarding_tasks_desc" = "Finalizați toate sarcinile pentru a vă debloca aplicațiile pentru ziua respectivă.";
+"onboarding_tasks_your_list" = "Sarcinile tale";
+"onboarding_tasks_suggestions" = "Sugestii";
+"onboarding_tasks_custom" = "Scrie-ți pe al tău";
+"onboarding_tasks_empty" = "Nicio sarcină încă";
+"onboarding_tasks_empty_hint" = "Atingeți o sugestie de mai jos pentru a adăuga sarcini";
+"onboarding_tasks_ritual_count" = "%d sarcini";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "Luați-vă timpul înapoi.";
+"onboarding_motivation_desc" = "Petrece-ți orele în viața ta, nu în hrana ta.\nCâștigurile mici construiesc persoana care vrei să fii.";
+"onboarding_motivation_point_focus" = "Rămâi concentrat toată ziua";
+"onboarding_motivation_point_calm" = "În sfârșit, ajungeți la ceea ce contează cu adevărat";
+"onboarding_motivation_point_self" = "Un pas mai aproape de cel mai bun sine al tău";
+"onboarding_finish" = "Începeți";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "Întinde";
+"onboarding_preset_bed" = "Fă-mi patul";
+"onboarding_preset_meditate" = "Meditați timp de 5 minute";
+"onboarding_preset_journal" = "Scrie in jurnalul meu";
+"onboarding_preset_read" = "Citiți 10 pagini";
+"onboarding_preset_run" = "Mergi la alergat";
+
+/* Default tasks */
+"default_task_stretch" = "Întinde";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "Abonament";
+"settings_status_pro" = "Pro · reînnoiește %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "Plan gratuit";
+"settings_upgrade_to_pro" = "Treceți la Pro";
+"settings_restore_purchase" = "Restabiliți achiziția";
+"settings_manage_subscription" = "Gestionați abonamentul";
+"settings_restore_success_title" = "Restaurat";
+"settings_restore_success_message" = "Abonamentul dvs. Pro este activ.";
+"settings_restore_failure_title" = "Nu s-a putut restabili";
+"settings_restore_failure_message" = "Nu a fost găsit niciun abonament activ pentru acest ID Apple.";
+"settings_restore_error_title" = "Restaurarea a eșuat";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "Sarcini nelimitate";
+"paywall_feature_unlimited_blocked_apps" = "Aplicații și categorii nelimitate de blocat";
+"paywall_feature_multi_schedule" = "Programe de blocuri multiple";
+"paywall_feature_color_themes" = "Teme de culoare personalizate";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "Planul gratuit acceptă până la %d sarcini.\nFaceți upgrade la Pro pentru sarcini nelimitate.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "Mai multă libertate pentru diminețile dorite.";
+"settings_card_pro_title" = "Pro Membru";
+"settings_card_pro_subtitle" = "Vă mulțumim pentru susținerea MornDash.";
+"settings_legal_section" = "Legal";
+"settings_commercial_transactions" = "Tranzacții comerciale specificate";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "Aprofundează-ți practica de dimineață.\nDeblochează totul de mai jos.";
+"paywall_plan_weekly" = "Săptămânal";
+"paywall_plan_monthly" = "Lunar";
+"paywall_plan_annual" = "Anual";
+"paywall_per_week" = "Se reînnoiește în fiecare săptămână";
+"paywall_per_month" = "Se reînnoiește în fiecare lună";
+"paywall_per_year" = "Se reînnoiește în fiecare an";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "Economisiți %d%%";
+"paywall_cta_continue" = "Continua";
+"paywall_cta_free_trial" = "Începeți proba gratuită";
+"paywall_trial_badge_first_week" = "Prima săptămână gratuită";
+"paywall_trial_disclosure_format" = "%1$@ încercare gratuită pentru abonații anuali pentru prima dată, apoi %2$@/an. Se reînnoiește automat dacă nu este anulat cu cel puțin 24 de ore înainte de încheierea perioadei de încercare.";
+"trial_period_one_week" = "1 saptamana";
+"trial_period_days_format" = "%d zile";
+"trial_period_weeks_format" = "%d săptămâni";
+"trial_period_months_format" = "%d lună(i)";
+"trial_period_years_format" = "%d ani";
+"paywall_terms" = "Termeni de utilizare";
+"paywall_privacy" = "Politica de confidențialitate";
+"paywall_commercial" = "Tranzacții comerciale";
+"paywall_offerings_unavailable" = "Nu s-au putut încărca planurile. Verificați-vă conexiunea.";
+"paywall_retry" = "Încearcă din nou";
+"paywall_error_title" = "Ceva a mers prost";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "Aprofundează-ți practica de dimineață. Toate funcțiile deblocate.";
+"subscription_active" = "Activ";
+"subscription_next_renewal" = "Următoarea reînnoire";
+"subscription_manage_in_store" = "Gestionați în App Store";
+"subscription_cancel" = "Anulați abonamentul";
+"subscription_cancel_alert_title" = "Prorenunțați să anulați?";
+"subscription_cancel_alert_message" = "Veți fi redirecționat către pagina dvs. de gestionare a abonamentului App Store.";
+"subscription_cancel_alert_proceed" = "Deschide App Store";
+"subscription_terms_heading" = "Termenii abonamentului";
+"subscription_terms_auto_renew" = "Abonamentul se reînnoiește automat, cu excepția cazului în care reînnoirea automată este dezactivată cu cel puțin 24 de ore înainte de sfârșitul perioadei curente.";
+"subscription_terms_charge" = "Contul dvs. va fi taxat pentru reînnoire cu 24 de ore înainte de sfârșitul perioadei curente.";
+"subscription_terms_manage" = "Abonamentele pot fi gestionate și reînnoirea automată dezactivată prin Setările contului după cumpărare.";
+"subscription_terms_trial" = "Planul anual include o singură perioadă de încercare gratuită de 1 săptămână numai pentru noii abonați eligibili. Planurile săptămânale și lunare nu includ o perioadă de încercare gratuită. Orice parte nefolosită a perioadei de încercare gratuită se pierde atunci când vă abonați și veți fi taxat cu prețul anual la încheierea perioadei de încercare, cu excepția cazului în care anulați cu cel puțin 24 de ore înainte.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d Genuflexiuni";
+"workout_preset_ai_badge" = "AI · PRO";
+"workout_reps_picker_title" = "Alege repetări ghemuite";
+"workout_reps_picker_stepper_format" = "%d repetări";
+"workout_reps_picker_placeholder" = "Introduceți repetări (1-999)";
+"workout_reps_picker_invalid" = "Introduceți un număr între 1 și 999";
+"workout_reps_picker_add_button" = "Adăugați această sarcină";
+"workout_status_recognizing" = "Recunoașterea...";
+"workout_status_no_body" = "Intră în cadru";
+"workout_status_adjust" = "Reglați-vă poziția";
+"workout_status_start" = "Început!";
+"workout_status_down" = "Jos!";
+"workout_status_good" = "Frumos!";
+"workout_simulator_notice" = "Camera nu este disponibilă în simulator. Atingeți pentru a simula finalizarea.";
+"workout_simulator_complete" = "Marcați ca fiind complet";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "Studiu %d min";
+"focus_preset_pcwork_title" = "Funcționare la PC %d min";
+"focus_preset_study_label" = "Studiu";
+"focus_preset_pcwork_label" = "Lucru la PC";
+"focus_preset_ai_badge" = "AI · PRO";
+"focus_status_detected" = "Concentrat";
+"focus_status_no_face" = "Îndepărtează-te de cameră";
+"focus_status_multiple_faces" = "Au fost detectate mai multe persoane";
+"focus_status_low_quality" = "Iluminarea este prea scăzută";
+"focus_status_bad_angle" = "Înfruntați camera";
+"focus_status_face_too_small" = "Apropie-te";
+"focus_hint_setup_title" = "Configurați-vă telefonul";
+"focus_hint_setup_body" = "Propuneți telefonul pe un suport, astfel încât fața să se potrivească în cadru.";
+"focus_hint_setup_close" = "Am înţeles";
+"focus_privacy_notice" = "Videoclipul rămâne pe acest dispozitiv";
+"focus_session_remaining" = "Rămânând";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d min";
+"tasks_timer_seconds_short_format" = "%d sec";
+"tasks_timer_duration_min_sec_format" = "%d min %02d sec";
+"tasks_timer_minutes_label" = "Minute";
+"tasks_timer_seconds_label" = "secunde";
+"tasks_timer_minutes_placeholder" = "Minute (1–180)";
+"tasks_timer_sheet_title" = "Setări temporizator";
+"tasks_timer_sheet_hint" = "Setați minute și secunde. Sarcina se finalizează când cronometrul se termină.";
+"tasks_timer_remove" = "Scoateți temporizatorul";
+"tasks_timer_save" = "Salva";
+"timer_session_title" = "TIMER";
+"timer_session_hint" = "Ecranul rămâne treaz în timp ce rulează";
+"timer_session_start" = "Început";
+"timer_session_pause" = "Pauză";
+
+/* Task ticket */
+"task_ticket_number_format" = "nr.%02d";
+"task_ticket_done_stamp" = "FĂCUT";

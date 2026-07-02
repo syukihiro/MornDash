@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "Configuració";
+"common_done" = "Fet";
+"common_cancel" = "Cancel·la";
+"common_select" = "Seleccioneu";
+"common_next" = "A continuació";
+"common_continue" = "Continua";
+"common_back" = "Enrere";
+"common_skip" = "Saltar";
+"common_start" = "Comença";
+
+/* MainView (idle) */
+"main_next_block" = "SEGÜENT BLOC";
+"main_completed_eyebrow" = "TOT FET";
+"main_completed_title" = "Fet per avui";
+"main_completed_subtitle" = "Gaudeix de la resta del teu dia.";
+"main_completed_streak_unit" = "RATXA DEL DIA";
+"main_completed_message_3" = "El teu hàbit va prenent forma. Continueu així demà.";
+"main_completed_message_7" = "Una setmana sencera. Tu ets el veritable negoci.";
+"main_completed_message_30" = "Coherència imparable. Sigues orgullós de tu mateix.";
+"main_completed_message_100" = "100 dies de prova. Res no et pot aturar ara.";
+"main_completed_week_progress" = "%d / 7 dies aquesta setmana";
+"main_completed_best_streak" = "Millor: %d";
+"main_completed_next_block" = "Següent bloc %@";
+"main_todays_tasks" = "TASQUES D'Avui";
+"main_todays_tasks_done" = "TOT COMPLET";
+"main_no_tasks" = "Encara no hi ha tasques. Afegiu-ne alguns des de la pestanya Tasques.";
+
+"routine_celebration_eyebrow" = "TOT FET";
+"routine_celebration_title" = "Ho has fet!";
+"routine_celebration_message" = "Totes les tasques completades per avui.\nGaudeix de la teva llibertat.";
+"routine_celebration_continue" = "Continua";
+"routine_celebration_compact_title" = "Tot fet per avui";
+
+/* Tabs */
+"tab_home" = "Casa";
+"tab_tasks" = "Tasques";
+"tab_stats" = "Estadístiques";
+"tab_settings" = "Configuració";
+
+/* Streak / Stats */
+"streak_days_format" = "%d ratxa de dies";
+"stats_streak_day_unit_singular" = "dia";
+"stats_streak_day_unit_plural" = "dies";
+"stats_current_streak" = "RATXA DEL DIA";
+"stats_longest_streak" = "MILLOR RATXA";
+"stats_total_completed" = "TOTAL DE DIES";
+"stats_week_progress_short" = "%d / 7 dies aquesta setmana";
+"stats_next_milestone" = "PROPERA FITA";
+"stats_next_milestone_days" = "%2$d dies a %1$@";
+"stats_summary_footer" = "Millors %d · Total %d dies";
+"stats_all_badges_unlocked" = "Totes les insígnies desbloquejades";
+"stats_last_7_days" = "ÚLTIMS 7 DIES";
+"stats_month_calendar" = "AQUEST MES";
+"stats_contributions" = "ACTIVITAT";
+"stats_badges" = "INSITINYS";
+"stats_no_data" = "Completa totes les teves tasques durant un dia per començar la teva ratxa.";
+"stats_blocked_usage_today" = "APLICACIONS BLOQUEJADES · AVUI";
+"stats_blocked_usage_no_selection" = "Encara no s'ha seleccionat cap aplicació per bloquejar.";
+"stats_emergency_unlocks" = "Desbloqueig d'emergència";
+"stats_emergency_unlocks_count_unit" = "vegades";
+"stats_emergency_unlocks_this_week" = "Aquesta setmana";
+"stats_emergency_unlocks_this_month" = "Aquest mes";
+"stats_emergency_unlocks_past_year" = "L'any passat";
+"stats_emergency_unlocks_total" = "Total";
+"stats_emergency_unlocks_last" = "Últim: %@";
+"stats_emergency_unlocks_none" = "Encara no hi ha cap desbloqueig d'emergència.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "Comparació";
+"stats_emergency_compare_week" = "vs la setmana passada";
+"stats_emergency_compare_month" = "vs el mes passat";
+"stats_emergency_compare_year" = "vs l'any passat";
+"stats_emergency_compare_lock_title" = "Feu un seguiment de la vostra tendència de desbloqueig";
+"stats_emergency_compare_lock_message" = "Pro mostra com es comparen els desbloquejos d'emergència amb la setmana passada, el mes passat i l'any passat.";
+"stats_blocked_duration" = "Bloquejat/dia";
+"stats_blocked_duration_this_week" = "Aquesta setmana";
+"stats_blocked_duration_past_year" = "L'any passat";
+"stats_blocked_duration_per_day_suffix" = "/ dia";
+"stats_blocked_duration_none" = "Encara no s'ha registrat cap hora bloquejada.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "DESGRACIÓ DE TASQUES";
+"stats_task_period_month" = "Aquest mes";
+"stats_task_period_year" = "Aquest any";
+"stats_task_consistency_format" = "%d / %d dies";
+"stats_task_no_data_month" = "Marqueu les tasques d'aquest mes per veure-les aquí.";
+"stats_task_no_data_year" = "Marqueu les tasques d'aquest any per veure-les aquí.";
+"stats_task_compare" = "Compara";
+"stats_task_compare_lock_title" = "Vegeu el vostre progrés al llarg del temps";
+"stats_task_compare_lock_message" = "Pro mostra com es compara cada tasca amb el mes o any anterior.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "Comparació";
+"stats_blocked_compare_week" = "vs la setmana passada";
+"stats_blocked_compare_month" = "vs el mes passat";
+"stats_blocked_compare_year" = "vs l'any passat";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "Compara la teva setmana, mes, any";
+"stats_blocked_compare_lock_message" = "Pro mostra com aquesta setmana, mes i any es comparen amb l'últim.";
+"stats_blocked_compare_unlock_button" = "Desbloqueja amb Pro";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro Informes";
+"stats_pro_section_upsell_desc" = "Desbloquegeu tots els informes de comparació període per període.";
+
+/* Badges */
+"badge_3day" = "3 Dia\nArrancador";
+"badge_7day" = "Setmana\nGuerrer";
+"badge_30day" = "Mes\nMestre";
+"badge_100day" = "segle\nCampió";
+"badge_365day" = "Any\nLlegenda";
+"badge_celebration_eyebrow" = "INSINYIA DESBLOQUEADA";
+"badge_celebration_continue" = "Continua";
+
+/* BlockingView */
+"blocking_header" = "BLOQUEAT";
+"blocking_subtitle" = "Completa les teves tasques per desbloquejar.";
+"blocking_give_up" = "Desbloqueig d'emergència";
+"blocking_give_up_confirm_title" = "Desbloquejar per a una emergència?";
+"blocking_give_up_confirm_message" = "Utilitzar només en cas d'emergència. Les tasques d'avui es mantindran sense marcar i el bloqueig es reprendrà demà.";
+"blocking_give_up_confirm_button" = "Desbloqueig d'emergència";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "Desbloqueig d'emergència";
+"emergency_unlock_subtitle" = "Esteu segur que voleu desbloquejar?";
+"emergency_unlock_bullet_today" = "Les tasques d'avui romandran sense control.";
+"emergency_unlock_bullet_tomorrow" = "El bloqueig es reprendrà demà al matí.";
+"emergency_unlock_bullet_streak" = "La teva ratxa es pot trencar.";
+"emergency_unlock_slide_label" = "Llisca per desbloquejar";
+"emergency_unlock_cancel" = "No importa";
+
+/* SettingsView */
+"settings_start_time" = "Hora d'inici";
+"settings_start_time_label" = "Hora d'inici";
+"settings_start_time_daily" = "Diàriament";
+"settings_routine_section" = "Rutina";
+"settings_tasks" = "Tasques";
+"settings_tasks_footer" = "Completa totes les tasques per desbloquejar aplicacions bloquejades. Les tasques es restableixen cada dia.\nToqueu el nom d'una tasca per canviar-li el nom.";
+"settings_task_placeholder" = "Tasca";
+"settings_add_task_placeholder" = "Afegeix una tasca";
+"tasks_add_sheet_title" = "Afegeix una tasca";
+"tasks_add_accessibility" = "Afegeix una tasca";
+"tasks_add_timer_toggle" = "Estableix un temporitzador";
+"tasks_rename_sheet_title" = "Canvia el nom de la tasca";
+"tasks_rename_accessibility" = "Canvia el nom de la tasca";
+"tasks_delete_accessibility" = "Eliminar tasques";
+"tasks_edit_done_accessibility" = "Edició acabada";
+"settings_blocking" = "Bloqueig";
+"settings_blocked_apps" = "Aplicacions bloquejades";
+"settings_blocked_apps_pro_upsell_title" = "Bloqueja il·limitat amb Pro";
+"settings_blocked_apps_pro_upsell_subtitle" = "Trieu tantes aplicacions, categories i llocs web com vulgueu.";
+"settings_blocked_apps_upsell_feature_categories" = "Bloqueja categories d'aplicacions senceres alhora";
+"settings_blocked_apps_upsell_feature_websites" = "Bloqueja també llocs web";
+"settings_blocked_apps_upsell_continue_free" = "Continueu amb el pla gratuït (fins a %d)";
+"settings_categories_pro_only" = "Les categories d'aplicacions només es poden desar amb Pro. Al pla gratuït, trieu aplicacions o llocs web individuals.";
+"settings_items_unit" = "elements";
+"settings_weekday_scheduling" = "Horari entre setmana";
+"settings_appearance_section" = "Aparença";
+"settings_appearance" = "Tema";
+"settings_appearance_system" = "Sistema";
+"settings_appearance_light" = "Llum";
+"settings_appearance_dark" = "Fosc";
+"settings_color_theme_section" = "Tema de color";
+"settings_color_theme" = "Tema de color";
+"settings_color_theme_pro_only" = "Els membres de Pro poden personalitzar els colors d'accent de l'aplicació.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "Clàssic";
+"settings_color_theme_sunrise" = "Sortida del sol";
+"settings_color_theme_forest" = "Bosc";
+"settings_color_theme_ocean" = "Oceà";
+"settings_color_theme_lavender" = "Lavanda";
+"settings_color_theme_rose" = "Rosa";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "Vols perdre el teu dia amb SNS i aplicacions que fan perdre el temps?";
+"onboarding_problem_desc" = "Les aplicacions que obriu sense pensar-s'ho sumen hores, i tot el vostre dia s'escapa.";
+"onboarding_problem_point_scroll" = "Obertura de canals socials amb pilot automàtic";
+"onboarding_problem_point_time" = "Hores que es fonen en aplicacions cada dia";
+"onboarding_problem_point_mood" = "No arribar mai al que realment vols fer";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "Com funciona MornDash";
+"onboarding_how_desc" = "Des del temps establert, les aplicacions que fan perdre el temps es mantenen bloquejades durant la resta del dia.";
+"onboarding_how_step1_title" = "A l'hora establerta";
+"onboarding_how_step1_desc" = "El bloqueig entra automàticament cada dia";
+"onboarding_how_step2_title" = "Les aplicacions es bloquegen";
+"onboarding_how_step2_desc" = "Les aplicacions que trieu romanen bloquejades tot el dia";
+"onboarding_how_step3_title" = "Les tasques els desbloquegen";
+"onboarding_how_step3_desc" = "Acabeu les tasques escollides per alliberar el bloc";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Activa Screen Time";
+"onboarding_permission_desc" = "Per bloquejar aplicacions, MornDash necessita accedir al Screen Time d'Apple.";
+"onboarding_permission_note" = "Tot es manté al teu dispositiu. MornDash no envia les teves dades enlloc.";
+"onboarding_param_screentime" = "Activa Screen Time";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "Trieu aplicacions per bloquejar";
+"onboarding_apps_desc" = "De la llista d'ahir si es mostra, o utilitzeu Select Apps.";
+"onboarding_apps_yesterday_label" = "Ahir";
+"onboarding_apps_free_footer" = "Gratuït: fins a %d articles. Les categories necessiten Pro.";
+"onboarding_select_apps" = "Seleccioneu Aplicacions";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%dm";
+"onboarding_usage_under_one_m" = "<1 m";
+"onboarding_items_selected" = "%d elements seleccionats";
+"onboarding_items_selected_with_limit" = "%d / %d elements seleccionats";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "Quan hauria de començar?";
+"onboarding_time_desc" = "A partir d'aquesta hora cada dia, les aplicacions escollides romandran bloquejades.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "Estableix les teves tasques de desbloqueig";
+"onboarding_tasks_desc" = "Acaba totes les tasques per desbloquejar les teves aplicacions del dia.";
+"onboarding_tasks_your_list" = "Les teves tasques";
+"onboarding_tasks_suggestions" = "Suggeriments";
+"onboarding_tasks_custom" = "Escriu el teu";
+"onboarding_tasks_empty" = "Encara no hi ha tasques";
+"onboarding_tasks_empty_hint" = "Toqueu un suggeriment a continuació per afegir tasques";
+"onboarding_tasks_ritual_count" = "%d tasques";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "Recupera el teu temps.";
+"onboarding_motivation_desc" = "Dedica les teves hores a la teva vida, no al teu feed.\nLes petites victòries construeixen la persona que vols ser.";
+"onboarding_motivation_point_focus" = "Mantingueu-vos concentrat tot el dia";
+"onboarding_motivation_point_calm" = "Finalment arribar al que realment importa";
+"onboarding_motivation_point_self" = "Un pas més a prop del teu millor jo";
+"onboarding_finish" = "Comença";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "Estirar";
+"onboarding_preset_bed" = "Fer el meu llit";
+"onboarding_preset_meditate" = "Medita durant 5 minuts";
+"onboarding_preset_journal" = "Escriu al meu diari";
+"onboarding_preset_read" = "Llegeix 10 pàgines";
+"onboarding_preset_run" = "Anar a córrer";
+
+/* Default tasks */
+"default_task_stretch" = "Estirar";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "Subscripció";
+"settings_status_pro" = "Pro · renova %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "Pla gratuït";
+"settings_upgrade_to_pro" = "Actualitza a Pro";
+"settings_restore_purchase" = "Restaurar la compra";
+"settings_manage_subscription" = "Gestiona la subscripció";
+"settings_restore_success_title" = "Restaurat";
+"settings_restore_success_message" = "La teva subscripció Pro està activa.";
+"settings_restore_failure_title" = "No s'ha pogut restaurar";
+"settings_restore_failure_message" = "No s'ha trobat cap subscripció activa per a aquest ID d'Apple.";
+"settings_restore_error_title" = "La restauració ha fallat";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "Tasques il·limitades";
+"paywall_feature_unlimited_blocked_apps" = "Aplicacions i categories il·limitades per bloquejar";
+"paywall_feature_multi_schedule" = "Horaris de blocs múltiples";
+"paywall_feature_color_themes" = "Temes de colors personalitzats";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "El pla gratuït admet fins a %d tasques.\nActualitza a Pro per a tasques il·limitades.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "Més llibertat pels matins que vulguis.";
+"settings_card_pro_title" = "Pro Membre";
+"settings_card_pro_subtitle" = "Gràcies per donar suport a MornDash.";
+"settings_legal_section" = "Legal";
+"settings_commercial_transactions" = "Transaccions comercials especificades";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "Aprofundeix en la teva pràctica matinal.\nDesbloqueja tot a continuació.";
+"paywall_plan_weekly" = "Setmanalment";
+"paywall_plan_monthly" = "Mensualment";
+"paywall_plan_annual" = "Anual";
+"paywall_per_week" = "Es renova cada setmana";
+"paywall_per_month" = "Es renova cada mes";
+"paywall_per_year" = "Es renova cada any";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "Estalvia un %d%%";
+"paywall_cta_continue" = "Continua";
+"paywall_cta_free_trial" = "Inicieu la prova gratuïta";
+"paywall_trial_badge_first_week" = "1a setmana gratuïta";
+"paywall_trial_disclosure_format" = "%1$@ prova gratuïta per als subscriptors anuals per primera vegada, després %2$@/any. Es renova automàticament tret que es cancel·li almenys 24 hores abans que finalitzi la prova.";
+"trial_period_one_week" = "1 setmana";
+"trial_period_days_format" = "%d dies";
+"trial_period_weeks_format" = "%d setmanes";
+"trial_period_months_format" = "%d mesos";
+"trial_period_years_format" = "%d any(s)";
+"paywall_terms" = "Condicions d'ús";
+"paywall_privacy" = "Política de privadesa";
+"paywall_commercial" = "Transaccions comercials";
+"paywall_offerings_unavailable" = "No s'han pogut carregar els plans. Comproveu la vostra connexió.";
+"paywall_retry" = "Torna-ho a provar";
+"paywall_error_title" = "Alguna cosa va fallar";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "Aprofundeix en la teva pràctica matinal. Totes les funcions desbloquejades.";
+"subscription_active" = "Actius";
+"subscription_next_renewal" = "Propera renovació";
+"subscription_manage_in_store" = "Gestiona en App Store";
+"subscription_cancel" = "Cancel·la la subscripció";
+"subscription_cancel_alert_title" = "Propermet cancel·lar?";
+"subscription_cancel_alert_message" = "Se us redirigirà a la vostra pàgina de gestió de subscripcions App Store.";
+"subscription_cancel_alert_proceed" = "Obre App Store";
+"subscription_terms_heading" = "Condicions de subscripció";
+"subscription_terms_auto_renew" = "La subscripció es renova automàticament tret que la renovació automàtica estigui desactivada almenys 24 hores abans del final del període actual.";
+"subscription_terms_charge" = "Es cobrarà el vostre compte per renovació dins de les 24 hores anteriors al final del període actual.";
+"subscription_terms_manage" = "Les subscripcions es poden gestionar i la renovació automàtica es pot desactivar mitjançant la configuració del vostre compte després de la compra.";
+"subscription_terms_trial" = "El pla anual inclou una prova gratuïta d'una setmana només per als nous subscriptors elegibles. Els plans setmanals i mensuals no inclouen una prova gratuïta. Qualsevol part no utilitzada de la prova gratuïta es perd quan us subscriviu i se us cobrarà el preu anual quan finalitzi la prova, tret que cancel·leu almenys 24 hores abans.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d Squats";
+"workout_preset_ai_badge" = "AI · PRO";
+"workout_reps_picker_title" = "Trieu repeticions a la gatzoneta";
+"workout_reps_picker_stepper_format" = "%d repeticions";
+"workout_reps_picker_placeholder" = "Introduïu repeticions (1-999)";
+"workout_reps_picker_invalid" = "Introduïu un número entre 1 i 999";
+"workout_reps_picker_add_button" = "Afegeix aquesta tasca";
+"workout_status_recognizing" = "Reconeixent...";
+"workout_status_no_body" = "Entra al marc";
+"workout_status_adjust" = "Ajusta la teva posició";
+"workout_status_start" = "Comença!";
+"workout_status_down" = "A baix!";
+"workout_status_good" = "Bonic!";
+"workout_simulator_notice" = "La càmera no està disponible al simulador. Toqueu per simular la finalització.";
+"workout_simulator_complete" = "Marca com a complet";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "Estudi %d min";
+"focus_preset_pcwork_title" = "Treball amb PC %d min";
+"focus_preset_study_label" = "Estudiar";
+"focus_preset_pcwork_label" = "Treball amb PC";
+"focus_preset_ai_badge" = "AI · PRO";
+"focus_status_detected" = "Centrat";
+"focus_status_no_face" = "Allunyeu-vos de la càmera";
+"focus_status_multiple_faces" = "S'han detectat diverses persones";
+"focus_status_low_quality" = "La il·luminació és massa baixa";
+"focus_status_bad_angle" = "De cara a la càmera";
+"focus_status_face_too_small" = "Apropa't";
+"focus_hint_setup_title" = "Configura el teu telèfon";
+"focus_hint_setup_body" = "Proposa el teu telèfon en un suport perquè la teva cara encaixi al marc.";
+"focus_hint_setup_close" = "Ho entenc";
+"focus_privacy_notice" = "El vídeo es manté en aquest dispositiu";
+"focus_session_remaining" = "Restant";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d min";
+"tasks_timer_seconds_short_format" = "%d seg";
+"tasks_timer_duration_min_sec_format" = "%d min %02d seg";
+"tasks_timer_minutes_label" = "Minuts";
+"tasks_timer_seconds_label" = "Segons";
+"tasks_timer_minutes_placeholder" = "Minuts (1–180)";
+"tasks_timer_sheet_title" = "Configuració del temporitzador";
+"tasks_timer_sheet_hint" = "Estableix minuts i segons. La tasca es completa quan acaba el temporitzador.";
+"tasks_timer_remove" = "Elimina el temporitzador";
+"tasks_timer_save" = "Desa";
+"timer_session_title" = "TEMPORIZADOR";
+"timer_session_hint" = "La pantalla es manté activa mentre s'executa";
+"timer_session_start" = "Comença";
+"timer_session_pause" = "Pausa";
+
+/* Task ticket */
+"task_ticket_number_format" = "No.%02d";
+"task_ticket_done_stamp" = "FET";

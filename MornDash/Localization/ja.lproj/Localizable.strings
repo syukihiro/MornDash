@@ -370,3 +370,7 @@
 "timer_session_hint" = "実行中は画面をスリープさせません";
 "timer_session_start" = "開始";
 "timer_session_pause" = "一時停止";
+
+/* Task ticket */
+"task_ticket_number_format" = "No.%02d";
+"task_ticket_done_stamp" = "完了";
