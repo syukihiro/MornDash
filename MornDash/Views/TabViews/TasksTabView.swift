@@ -166,9 +166,6 @@ struct TasksTabView: View {
                 .onDelete { offsets in
                     viewModel.taskStore.remove(at: offsets)
                 }
-            } footer: {
-                Text("settings_tasks_footer")
-                    .foregroundColor(MornDashColors.labelTertiary(colorScheme))
             }
 
             Section {

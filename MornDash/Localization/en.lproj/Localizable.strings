@@ -268,7 +268,7 @@
 "paywall_feature_color_themes" = "Custom color themes";
 
 /* Premium gates */
-"gate_tasks_lock_message" = "Free plan supports up to %d tasks. Upgrade to add more.";
+"gate_tasks_lock_message" = "Free plan supports up to %d tasks.\nUpgrade to Pro for unlimited tasks.";
 /* Settings subscription card */
 "settings_card_free_title" = "MornDash Pro";
 "settings_card_free_subtitle" = "More freedom for the mornings you want.";
