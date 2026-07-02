@@ -35,6 +35,7 @@ struct ContentView: View {
             }
         }
         .task {
+            subscriptionManager.syncFirebaseAttribution()
             await subscriptionManager.refresh()
             blockManager.applyFreePlanCategoryRestrictionIfNeeded()
         }

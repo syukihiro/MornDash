@@ -1,4 +1,5 @@
 import Combine
+import FirebaseAnalytics
 import Foundation
 import RevenueCat
 
@@ -26,8 +27,20 @@ final class SubscriptionManager: NSObject, ObservableObject {
 
         Purchases.configure(withAPIKey: RevenueCatConfig.apiKey)
         Purchases.shared.delegate = self
+        syncFirebaseAttribution()
 
         Task { await refresh() }
+    }
+
+    /// Links this device to Firebase Analytics so RevenueCat can forward purchase lifecycle events.
+    func syncFirebaseAttribution() {
+        guard let appInstanceID = Analytics.appInstanceID() else {
+            #if DEBUG
+            print("[SubscriptionManager] Firebase app instance ID not yet available")
+            #endif
+            return
+        }
+        Purchases.shared.attribution.setFirebaseAppInstanceID(appInstanceID)
     }
 
     func refresh() async {
