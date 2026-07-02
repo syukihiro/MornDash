@@ -280,6 +280,7 @@
 /* Custom paywall */
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "Πηγαίνετε βαθύτερα στην πρωινή σας πρακτική.\nΞεκλειδώστε τα πάντα παρακάτω.";
+"paywall_onboarding_subtitle" = "Η πρωινή σας ρουτίνα είναι έτοιμη.\nΔοκιμάστε το Pro δωρεάν την πρώτη εβδομάδα.";
 "paywall_plan_weekly" = "Εβδομαδιαίος";
 "paywall_plan_monthly" = "Μηνιαίος";
 "paywall_plan_annual" = "Ετήσιος";

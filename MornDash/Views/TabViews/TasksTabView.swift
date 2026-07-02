@@ -56,7 +56,7 @@ struct TasksTabView: View {
                     }
                 }
             }
-            .paywallSheet(isPresented: $showPaywall)
+            .paywallSheet(isPresented: $showPaywall, source: .tasks)
             .sheet(isPresented: $showAddTaskSheet) {
                 addTaskSheet
             }

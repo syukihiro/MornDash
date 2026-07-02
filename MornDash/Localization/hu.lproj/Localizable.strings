@@ -280,6 +280,7 @@
 /* Custom paywall */
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "Menj mélyebben a reggeli gyakorlatodba.\nNyisson meg mindent lent.";
+"paywall_onboarding_subtitle" = "A reggeli rutinod készen áll.\nPróbáld ki a Prót ingyen az első héten.";
 "paywall_plan_weekly" = "Heti";
 "paywall_plan_monthly" = "Havi";
 "paywall_plan_annual" = "Évi";

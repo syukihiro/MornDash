@@ -280,6 +280,7 @@
 /* Custom paywall */
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "మీ ఉదయం అభ్యాసంలోకి లోతుగా వెళ్ళండి.\nదిగువన ఉన్న అన్నింటినీ అన్‌లాక్ చేయండి.";
+"paywall_onboarding_subtitle" = "మీ ఉదయపు దినచర్య సిద్ధంగా ఉంది.\nమొదటి వారం Proని ఉచితంగా ప్రయత్నించండి.";
 "paywall_plan_weekly" = "వారానికోసారి";
 "paywall_plan_monthly" = "నెలవారీ";
 "paywall_plan_annual" = "వార్షిక";

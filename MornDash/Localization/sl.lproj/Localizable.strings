@@ -280,6 +280,7 @@
 /* Custom paywall */
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "Poglobite se v svojo jutranjo vadbo.\nOdkleni vse spodaj.";
+"paywall_onboarding_subtitle" = "Vaša jutranja rutina je pripravljena.\nPreizkusite Pro brezplačno prvi teden.";
 "paywall_plan_weekly" = "Tedensko";
 "paywall_plan_monthly" = "Mesečno";
 "paywall_plan_annual" = "Letna";

@@ -53,7 +53,7 @@ struct SettingsView: View {
                     onUpgrade: { showPaywall = true }
                 )
             }
-            .paywallSheet(isPresented: $showPaywall)
+            .paywallSheet(isPresented: $showPaywall, source: .settings)
         }
     }
 

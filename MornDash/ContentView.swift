@@ -13,9 +13,11 @@ struct ContentView: View {
     @StateObject private var blockManager = BlockManager()
 
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @AppStorage("hasShownPostOnboardingPaywall") private var hasShownPostOnboardingPaywall = false
 
     @State private var showGlow = false
     @State private var selectedTab: Int = 0
+    @State private var showPostOnboardingPaywall = false
     @Environment(\.scenePhase) private var scenePhase
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.accentTheme) private var accentTheme
@@ -40,6 +42,11 @@ struct ContentView: View {
             if !isPro {
                 blockManager.applyFreePlanCategoryRestrictionIfNeeded()
             }
+        }
+        .onChange(of: hasCompletedOnboarding) { _, completed in
+            guard completed, !subscriptionManager.isPro, !hasShownPostOnboardingPaywall else { return }
+            hasShownPostOnboardingPaywall = true
+            showPostOnboardingPaywall = true
         }
     }
 
@@ -105,6 +112,7 @@ struct ContentView: View {
                 onDismiss: { viewModel.dismissPendingBadge() }
             )
         }
+        .paywallFullScreenCover(isPresented: $showPostOnboardingPaywall, source: .onboarding)
     }
 
     private var homeTab: some View {

@@ -125,6 +125,10 @@ class HomeViewModel: ObservableObject {
                 streakStore.recordCompletionToday()
                 recordTodaysBlockedDuration()
                 let streak = streakStore.currentStreak
+                AnalyticsService.logRoutineCompleted(
+                    streak: streak,
+                    isFirstEver: streakStore.totalCompleted == 1
+                )
                 routineCelebrationStyle = RoutineCelebrationStyle.forCompletion(
                     streak: streak,
                     isFirstCompletionEver: streakStore.totalCompleted == 1
@@ -162,6 +166,7 @@ class HomeViewModel: ObservableObject {
     }
 
     func giveUp(blockManager: BlockManager) {
+        AnalyticsService.logGiveUp(streak: streakStore.currentStreak)
         SharedStorage.defaults.set(Date(), forKey: SharedStorage.Keys.lastGiveUpDate)
         emergencyUnlockStore.record()
         recordTodaysBlockedDuration()

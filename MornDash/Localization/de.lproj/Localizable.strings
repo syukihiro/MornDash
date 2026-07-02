@@ -280,6 +280,7 @@
 /* Custom paywall */
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "Gehen Sie tiefer in Ihr Morgentraining ein.\nSchalten Sie unten alles frei.";
+"paywall_onboarding_subtitle" = "Deine Morgenroutine ist bereit.\nTeste Pro die erste Woche kostenlos.";
 "paywall_plan_weekly" = "Wöchentlich";
 "paywall_plan_monthly" = "Monatlich";
 "paywall_plan_annual" = "Jährlich";

@@ -280,6 +280,7 @@
 /* Custom paywall */
 "paywall_title" = "__TERMO0__ __TERMO1__";
 "paywall_subtitle" = "Aprofunde-se em sua prática matinal.\nDesbloqueie tudo abaixo.";
+"paywall_onboarding_subtitle" = "A sua rotina matinal está pronta.\nExperimente o Pro grátis na primeira semana.";
 "paywall_plan_weekly" = "Semanalmente";
 "paywall_plan_monthly" = "Mensal";
 "paywall_plan_annual" = "Anual";

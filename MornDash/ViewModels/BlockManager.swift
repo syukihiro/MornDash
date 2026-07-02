@@ -27,6 +27,12 @@ class BlockManager: ObservableObject {
         self.selection = SharedStorage.loadSelection()
     }
 
+    var blockedItemCount: Int {
+        selection.applicationTokens.count
+            + selection.categoryTokens.count
+            + selection.webDomainTokens.count
+    }
+
     func requestAuthorization() async {
         do {
             try await AuthorizationCenter.shared.requestAuthorization(for: .individual)

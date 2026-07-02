@@ -44,6 +44,12 @@ struct OnboardingView: View {
                     default:
                         OnboardingMotivationView {
                             viewModel.applySchedule(blockManager: blockManager)
+                            AnalyticsService.logOnboardingCompleted(
+                                blockedAppsCount: blockManager.blockedItemCount,
+                                taskCount: viewModel.taskStore.tasks.count,
+                                startHour: viewModel.config.startHour,
+                                startMinute: viewModel.config.startMinute
+                            )
                             withAnimation { isCompleted = true }
                         }
                     }
@@ -55,6 +61,10 @@ struct OnboardingView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .padding(.horizontal)
             }
+        }
+        .onAppear { AnalyticsService.logOnboardingStepViewed(step: currentStep) }
+        .onChange(of: currentStep) { _, step in
+            AnalyticsService.logOnboardingStepViewed(step: step)
         }
     }
 
@@ -511,7 +521,10 @@ struct OnboardingPermissionView: View {
 
             Spacer()
 
-            PrimaryButton(title: "common_continue", isEnabled: screenTimeAuthorized, action: nextAction)
+            PrimaryButton(title: "common_continue", isEnabled: screenTimeAuthorized, action: {
+                AnalyticsService.logOnboardingPermissionGranted()
+                nextAction()
+            })
         }
         .padding(.vertical, 20)
     }
@@ -647,7 +660,7 @@ struct OnboardingAppsView: View {
                     }
             }
         }
-        .paywallSheet(isPresented: $showPaywall)
+        .paywallSheet(isPresented: $showPaywall, source: .onboardingApps)
         .onAppear {
             reloadUsageRowsFromCache()
             scheduleUsageCacheReload()
@@ -923,7 +936,7 @@ struct OnboardingTasksView: View {
             )
         }
         .padding(.vertical, 8)
-        .paywallSheet(isPresented: $showPaywall)
+        .paywallSheet(isPresented: $showPaywall, source: .onboardingTasks)
         .onAppear { ensureDefaultStretchSelected() }
     }
 

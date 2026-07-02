@@ -280,6 +280,7 @@
 /* Custom paywall */
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "Đi sâu hơn vào việc luyện tập buổi sáng của bạn.\nMở khóa mọi thứ bên dưới.";
+"paywall_onboarding_subtitle" = "Thói quen buổi sáng của bạn đã sẵn sàng.\nDùng thử Pro miễn phí trong tuần đầu tiên.";
 "paywall_plan_weekly" = "hàng tuần";
 "paywall_plan_monthly" = "hàng tháng";
 "paywall_plan_annual" = "Hàng năm";

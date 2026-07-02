@@ -280,6 +280,7 @@
 /* Custom paywall */
 "paywall_title" = "__學期0__ __學期1__";
 "paywall_subtitle" = "更深入地進行早晨的練習。\n解鎖以下所有內容。";
+"paywall_onboarding_subtitle" = "您的晨間例程已就緒。\n第一週免費試用 Pro。";
 "paywall_plan_weekly" = "每週";
 "paywall_plan_monthly" = "每月";
 "paywall_plan_annual" = "年度的";

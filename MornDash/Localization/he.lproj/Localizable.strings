@@ -280,6 +280,7 @@
 /* Custom paywall */
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "היכנסו עמוק יותר לתרגול הבוקר שלכם.\nבטל את הנעילה של הכל למטה.";
+"paywall_onboarding_subtitle" = "שגרת הבוקר שלך מוכנה.\nנסה את Pro בחינם בשבוע הראשון.";
 "paywall_plan_weekly" = "שְׁבוּעִי";
 "paywall_plan_monthly" = "יַרחוֹן";
 "paywall_plan_annual" = "שְׁנָתִי";

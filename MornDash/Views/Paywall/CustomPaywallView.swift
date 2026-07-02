@@ -2,6 +2,8 @@ import SwiftUI
 import RevenueCat
 
 struct CustomPaywallView: View {
+    let source: PaywallSource
+
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
@@ -11,6 +13,11 @@ struct CustomPaywallView: View {
     @State private var isPurchasing = false
     @State private var errorMessage: PaywallErrorMessage?
     @State private var isRestoring = false
+    @State private var didCompletePurchase = false
+
+    init(source: PaywallSource = .other) {
+        self.source = source
+    }
 
     var body: some View {
         ZStack {
@@ -32,6 +39,12 @@ struct CustomPaywallView: View {
             }
         }
         .task { await loadIfNeeded() }
+        .onAppear { AnalyticsService.logPaywallShown(source: source) }
+        .onDisappear {
+            if !didCompletePurchase {
+                AnalyticsService.logPaywallDismissed(source: source)
+            }
+        }
         .alert(item: $errorMessage) { msg in
             Alert(
                 title: Text("paywall_error_title"),
@@ -65,7 +78,7 @@ struct CustomPaywallView: View {
     private var topBar: some View {
         HStack {
             Spacer()
-            Button(action: { dismiss() }) {
+            Button(action: dismissPaywall) {
                 Image(systemName: "xmark")
                     .font(.system(size: 14, weight: .semibold))
                     .foregroundColor(MornDashColors.labelSecondary(colorScheme))
@@ -105,7 +118,7 @@ struct CustomPaywallView: View {
                 .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 .multilineTextAlignment(.center)
 
-            Text("paywall_subtitle")
+            Text(source == .onboarding ? "paywall_onboarding_subtitle" : "paywall_subtitle")
                 .font(.system(size: 14))
                 .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                 .multilineTextAlignment(.center)
@@ -471,29 +484,50 @@ struct CustomPaywallView: View {
 
     // MARK: - Actions
 
+    private func planName(for package: Package) -> String {
+        switch package.packageType {
+        case .weekly: return "weekly"
+        case .monthly: return "monthly"
+        case .annual: return "annual"
+        default: return package.identifier
+        }
+    }
+
+    private func dismissPaywall() {
+        dismiss()
+    }
+
     private func purchase() {
         guard let pkg = currentSelection() else { return }
+        let plan = planName(for: pkg)
+        AnalyticsService.logPaywallPurchaseTapped(source: source, plan: plan)
         isPurchasing = true
         Task {
             defer { isPurchasing = false }
             do {
                 let completed = try await subscriptionManager.purchase(pkg)
                 if completed, subscriptionManager.isPro {
+                    didCompletePurchase = true
+                    AnalyticsService.logPaywallPurchaseSuccess(source: source, plan: plan)
                     dismiss()
                 }
             } catch {
+                AnalyticsService.logPaywallPurchaseFailed(source: source, plan: plan)
                 errorMessage = PaywallErrorMessage(text: error.localizedDescription)
             }
         }
     }
 
     private func restore() {
+        AnalyticsService.logPaywallRestoreTapped(source: source)
         isRestoring = true
         Task {
             defer { isRestoring = false }
             do {
                 try await subscriptionManager.restore()
                 if subscriptionManager.isPro {
+                    didCompletePurchase = true
+                    AnalyticsService.logPaywallRestoreSuccess(source: source)
                     dismiss()
                 } else {
                     errorMessage = PaywallErrorMessage(

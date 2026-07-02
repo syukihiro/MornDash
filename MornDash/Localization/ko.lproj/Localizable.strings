@@ -280,6 +280,7 @@
 /* Custom paywall */
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "아침 연습에 더 깊이 들어가 보세요.\n아래의 모든 것을 잠금 해제하세요.";
+"paywall_onboarding_subtitle" = "아침 루틴이 준비되었습니다.\n첫 주는 Pro를 무료로 사용해 보세요.";
 "paywall_plan_weekly" = "주간";
 "paywall_plan_monthly" = "월간 간행물";
 "paywall_plan_annual" = "연간";

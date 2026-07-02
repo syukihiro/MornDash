@@ -51,7 +51,7 @@ struct StatsTabView: View {
             }
             .navigationTitle(Text("tab_stats"))
             .mornDashNavigationBarStyle()
-            .paywallSheet(isPresented: $showPaywall)
+            .paywallSheet(isPresented: $showPaywall, source: .stats)
         }
     }
 

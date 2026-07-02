@@ -75,6 +75,7 @@ final class SubscriptionManager: NSObject, ObservableObject {
     private func apply(_ info: CustomerInfo) {
         customerInfo = info
         isPro = info.entitlements[RevenueCatConfig.proEntitlement]?.isActive == true
+        AnalyticsService.setIsPro(isPro)
     }
 
     var proExpirationDate: Date? {
