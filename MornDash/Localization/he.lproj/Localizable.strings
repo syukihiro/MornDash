@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "וֶרֶד";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "מאבד את היום שלך ל-SNS ולאפליקציות מבזבזות זמן?";
+"onboarding_problem_title" = "מאבד את היום שלך לרשתות החברתיות ולאפליקציות מבזבזות זמן?";
 "onboarding_problem_desc" = "האפליקציות שאתה פותח בלי לחשוב מסתכמות לשעות - וכל היום שלך חומק.";
 "onboarding_problem_point_scroll" = "פתיחת עדכונים חברתיים על טייס אוטומטי";
 "onboarding_problem_point_time" = "שעות נמסות לאפליקציות בכל יום";

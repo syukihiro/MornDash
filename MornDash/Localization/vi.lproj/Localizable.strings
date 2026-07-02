@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Hoa hồng";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Mất một ngày của bạn vì SNS và các ứng dụng lãng phí thời gian?";
+"onboarding_problem_title" = "Mất cả ngày vì mạng xã hội và các ứng dụng lãng phí thời gian?";
 "onboarding_problem_desc" = "Các ứng dụng bạn mở mà không cần suy nghĩ sẽ kéo dài hàng giờ — và cả ngày của bạn sẽ trôi đi.";
 "onboarding_problem_point_scroll" = "Mở nguồn cấp dữ liệu xã hội trên chế độ lái tự động";
 "onboarding_problem_point_time" = "Hàng giờ tan chảy vào ứng dụng mỗi ngày";

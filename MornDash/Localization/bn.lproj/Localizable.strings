@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "গোলাপ";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "SNS এবং সময় নষ্টকারী অ্যাপের কাছে আপনার দিন হারাচ্ছেন?";
+"onboarding_problem_title" = "সোশ্যাল মিডিয়া এবং সময় নষ্টকারী অ্যাপের পেছনে আপনার দিন হারাচ্ছেন?";
 "onboarding_problem_desc" = "আপনি চিন্তা না করে যে অ্যাপগুলি খোলেন তা ঘণ্টার পর ঘণ্টা যোগ করে — এবং আপনার পুরো দিন চলে যায়।";
 "onboarding_problem_point_scroll" = "অটোপাইলটে সামাজিক ফিড খোলা হচ্ছে";
 "onboarding_problem_point_time" = "প্রতিদিন অ্যাপে ঘণ্টা গলে যাচ্ছে";

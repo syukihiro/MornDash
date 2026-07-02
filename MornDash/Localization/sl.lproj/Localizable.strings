@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Rose";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Izgubljate dan zaradi SNS in aplikacij, ki zapravljajo čas?";
+"onboarding_problem_title" = "Izgubljate dan zaradi družbenih omrežij in aplikacij, ki zapravljajo čas?";
 "onboarding_problem_desc" = "Aplikacije, ki jih odprete brez razmišljanja, seštejejo ure — in ves dan vam uide.";
 "onboarding_problem_point_scroll" = "Odpiranje socialnih virov na avtopilotu";
 "onboarding_problem_point_time" = "Ure, ki se vsak dan stopijo v aplikacije";
@@ -302,7 +302,7 @@
 "paywall_commercial" = "Komercialne transakcije";
 "paywall_offerings_unavailable" = "Načrtov ni bilo mogoče naložiti. Preverite povezavo.";
 "paywall_retry" = "Poskusi znova";
-"paywall_error_title" = "Nekaj ​​je šlo narobe";
+"paywall_error_title" = "Nekaj je šlo narobe";
 
 /* Subscription details */
 "subscription_pro_title" = "MornDash Pro";

@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Ruža";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Gubite dan zbog SNS i aplikacija koje gube vrijeme?";
+"onboarding_problem_title" = "Gubite dan zbog društvenih mreža i aplikacija koje troše vrijeme?";
 "onboarding_problem_desc" = "Aplikacije koje otvorite bez razmišljanja zbrajaju sate — i cijeli vam dan izmiče.";
 "onboarding_problem_point_scroll" = "Otvaranje društvenih izvora na autopilotu";
 "onboarding_problem_point_time" = "Sati se svaki dan pretapaju u aplikacije";

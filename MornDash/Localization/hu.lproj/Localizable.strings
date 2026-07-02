@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Rózsa";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Elveszíti a napot a SNS és az időpazarló alkalmazások miatt?";
+"onboarding_problem_title" = "Elveszíted a napodat a közösségi média és az időpazarló alkalmazások miatt?";
 "onboarding_problem_desc" = "A gondolkodás nélkül megnyitott alkalmazások órákat tesznek ki – és az egész napod elszalad.";
 "onboarding_problem_point_scroll" = "Közösségi hírcsatornák megnyitása robotpilóta segítségével";
 "onboarding_problem_point_time" = "Órák olvadnak az alkalmazásokba minden nap";

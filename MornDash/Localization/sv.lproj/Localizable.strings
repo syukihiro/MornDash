@@ -21,7 +21,7 @@
 "main_completed_subtitle" = "Njut av resten av dagen.";
 "main_completed_streak_unit" = "DAG STREAK";
 "main_completed_message_3" = "Din vana tar form. Fortsätt med det imorgon.";
-"main_completed_message_7" = "En hel vecka. Du är the real deal.";
+"main_completed_message_7" = "En hel vecka. Du menar allvar.";
 "main_completed_message_30" = "Ostoppbar konsistens. Var stolt över dig själv.";
 "main_completed_message_100" = "100 dagars bevis. Inget kan stoppa dig nu.";
 "main_completed_week_progress" = "%d / 7 dagar denna vecka";
@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Ros";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Förlorar du din dag till SNS och tidsödande appar?";
+"onboarding_problem_title" = "Förlorar du din dag till sociala medier och tidsödande appar?";
 "onboarding_problem_desc" = "Apparna du öppnar utan att tänka på räknar ihop till timmar – och hela dagen försvinner.";
 "onboarding_problem_point_scroll" = "Öppna sociala flöden på autopilot";
 "onboarding_problem_point_time" = "Timmar smälter in i appar varje dag";

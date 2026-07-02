@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "ଗୋଲାପ |";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "ଆପଣଙ୍କ ଦିନ SNS ଏବଂ ସମୟ ନଷ୍ଟ କରୁଥିବା ଆପ୍ସକୁ ହରାଇବା?";
+"onboarding_problem_title" = "ଆପଣ ସୋସିଆଲ ମିଡିଆ ଏବଂ ସମୟ ନଷ୍ଟ କରୁଥିବା ଆପ୍ସରେ ନିଜ ଦିନ ହରାଉଛନ୍ତି କି?";
 "onboarding_problem_desc" = "ଚିନ୍ତା ନକରି ଆପଣ ଖୋଲିଥିବା ଆପଗୁଡିକ ଘଣ୍ଟା ପର୍ଯ୍ୟନ୍ତ ଯୋଗ କରେ - ଏବଂ ଆପଣଙ୍କର ପୁରା ଦିନ ଖସିଯାଏ |";
 "onboarding_problem_point_scroll" = "ଅଟୋପିଲଟ ଉପରେ ସାମାଜିକ ଫିଡ୍ ଖୋଲିବା |";
 "onboarding_problem_point_time" = "ପ୍ରତିଦିନ ଆପ୍ସରେ ଘଣ୍ଟା ତରଳି ଯାଉଛି |";
@@ -287,11 +287,11 @@
 "paywall_per_month" = "ପ୍ରତି ମାସରେ ନବୀକରଣ କରନ୍ତୁ |";
 "paywall_per_year" = "ପ୍ରତିବର୍ଷ ନବୀକରଣ କରେ |";
 "paywall_badge_best_value" = "BEST VALUE";
-"paywall_savings_format" = "__PH0 __ %% ସଞ୍ଚୟ କରନ୍ତୁ |";
+"paywall_savings_format" = "%d%% ସଞ୍ଚୟ କରନ୍ତୁ |";
 "paywall_cta_continue" = "ଜାରି ରଖ |";
 "paywall_cta_free_trial" = "ମାଗଣା ପରୀକ୍ଷା ଆରମ୍ଭ କରନ୍ତୁ |";
 "paywall_trial_badge_first_week" = "ପ୍ରଥମ ସପ୍ତାହ ମାଗଣା |";
-"paywall_trial_disclosure_format" = "ପ୍ରଥମ ଥର ବାର୍ଷିକ ଗ୍ରାହକମାନଙ୍କ ପାଇଁ %1$@ ମାଗଣା ପରୀକ୍ଷା, ତାପରେ __PH1 __ / ବର୍ଷ | ପରୀକ୍ଷା ଶେଷ ହେବାର ଅତି କମରେ 24 ଘଣ୍ଟା ପୂର୍ବରୁ ବାତିଲ ନହେବା ପର୍ଯ୍ୟନ୍ତ ଅଟୋ-ନବୀକରଣ |";
+"paywall_trial_disclosure_format" = "ପ୍ରଥମ ଥର ବାର୍ଷିକ ଗ୍ରାହକମାନଙ୍କ ପାଇଁ %1$@ ମାଗଣା ପରୀକ୍ଷା, ତାପରେ %2$@ / ବର୍ଷ | ପରୀକ୍ଷା ଶେଷ ହେବାର ଅତି କମରେ 24 ଘଣ୍ଟା ପୂର୍ବରୁ ବାତିଲ ନହେବା ପର୍ଯ୍ୟନ୍ତ ଅଟୋ-ନବୀକରଣ |";
 "trial_period_one_week" = "1 ସପ୍ତାହ |";
 "trial_period_days_format" = "%d ଦିନ |";
 "trial_period_weeks_format" = "%d ସପ୍ତାହ (ଗୁଡିକ)";

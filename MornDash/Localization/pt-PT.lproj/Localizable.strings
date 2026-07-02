@@ -21,7 +21,7 @@
 "main_completed_subtitle" = "Aproveite o resto do seu dia.";
 "main_completed_streak_unit" = "DIÁRIA";
 "main_completed_message_3" = "Seu hábito está tomando forma. Continue amanhã.";
-"main_completed_message_7" = "Uma semana inteira. Você é o verdadeiro negócio.";
+"main_completed_message_7" = "Uma semana inteira. Levas isto a sério.";
 "main_completed_message_30" = "Consistência imparável. Tenha orgulho de si mesmo.";
 "main_completed_message_100" = "100 dias de prova. Nada pode pará-lo agora.";
 "main_completed_week_progress" = "%d / 7 dias esta semana";
@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Rosa";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Perdendo o dia com SNS e aplicativos que desperdiçam tempo?";
+"onboarding_problem_title" = "A perder o dia com as redes sociais e aplicações que desperdiçam tempo?";
 "onboarding_problem_desc" = "Os aplicativos que você abre sem pensar somam horas – e o seu dia inteiro passa.";
 "onboarding_problem_point_scroll" = "Abrindo feeds sociais no piloto automático";
 "onboarding_problem_point_time" = "Horas se transformando em aplicativos todos os dias";

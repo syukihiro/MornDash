@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "ਗੁਲਾਬ";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "SNS ਅਤੇ ਸਮਾਂ ਬਰਬਾਦ ਕਰਨ ਵਾਲੀਆਂ ਐਪਾਂ ਲਈ ਆਪਣਾ ਦਿਨ ਗੁਆ ​​ਰਹੇ ਹੋ?";
+"onboarding_problem_title" = "ਸੋਸ਼ਲ ਮੀਡੀਆ ਅਤੇ ਸਮਾਂ ਬਰਬਾਦ ਕਰਨ ਵਾਲੀਆਂ ਐਪਾਂ 'ਤੇ ਆਪਣਾ ਦਿਨ ਗੁਆ ਰਹੇ ਹੋ?";
 "onboarding_problem_desc" = "ਜੋ ਐਪਾਂ ਤੁਸੀਂ ਬਿਨਾਂ ਸੋਚੇ-ਸਮਝੇ ਖੋਲ੍ਹਦੇ ਹੋ, ਉਹਨਾਂ ਵਿੱਚ ਘੰਟਿਆਂ ਦਾ ਵਾਧਾ ਹੁੰਦਾ ਹੈ — ਅਤੇ ਤੁਹਾਡਾ ਸਾਰਾ ਦਿਨ ਖਿਸਕ ਜਾਂਦਾ ਹੈ।";
 "onboarding_problem_point_scroll" = "ਆਟੋਪਾਇਲਟ 'ਤੇ ਸੋਸ਼ਲ ਫੀਡ ਖੋਲ੍ਹਣਾ";
 "onboarding_problem_point_time" = "ਘੰਟੇ ਹਰ ਰੋਜ਼ ਐਪਸ ਵਿੱਚ ਪਿਘਲਦੇ ਹਨ";

@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "玫瑰";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "因 SNS 和浪费时间的应用程序而浪费了一天的时间？";
+"onboarding_problem_title" = "因社交媒体和消磨时间的应用而虚度一天？";
 "onboarding_problem_desc" = "你不假思索地打开的应用程序加起来长达几个小时——你的一整天就这样溜走了。";
 "onboarding_problem_point_scroll" = "在自动驾驶仪上打开社交源";
 "onboarding_problem_point_time" = "每天的时间融入应用程序";
@@ -229,7 +229,7 @@
 
 /* Onboarding — step 7: motivation */
 "onboarding_motivation_title" = "收回你的时间。";
-"onboarding_motivation_desc" = "把时间花在你的生活上，而不是你的饲料上。\n小的胜利可以塑造你想成为的人。";
+"onboarding_motivation_desc" = "把时间花在你的生活上，而不是刷信息流。\n小的胜利可以塑造你想成为的人。";
 "onboarding_motivation_point_focus" = "一整天保持专注";
 "onboarding_motivation_point_calm" = "终于明白真正重要的事情了";
 "onboarding_motivation_point_self" = "离最好的自己又近了一步";

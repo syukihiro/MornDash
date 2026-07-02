@@ -21,7 +21,7 @@
 "main_completed_subtitle" = "Ciesz się resztą dnia.";
 "main_completed_streak_unit" = "STRAMA DNIA";
 "main_completed_message_3" = "Twój nawyk nabiera kształtu. Kontynuuj to jutro.";
-"main_completed_message_7" = "Pełny tydzień. Jesteś prawdziwą okazją.";
+"main_completed_message_7" = "Pełny tydzień. Naprawdę się przykładasz.";
 "main_completed_message_30" = "Konsystencja nie do zatrzymania. Bądź z siebie dumny.";
 "main_completed_message_100" = "100 dni dowodu. Nic nie może Cię teraz powstrzymać.";
 "main_completed_week_progress" = "%d / 7 dni w tym tygodniu";
@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Róża";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Tracisz dzień na SNS i aplikacje marnujące czas?";
+"onboarding_problem_title" = "Tracisz dzień na media społecznościowe i aplikacje marnujące czas?";
 "onboarding_problem_desc" = "Aplikacje, które otwierasz bez zastanowienia, wydłużają godziny, a cały dzień ucieka Ci w niepamięć.";
 "onboarding_problem_point_scroll" = "Otwieranie kanałów społecznościowych na autopilocie";
 "onboarding_problem_point_time" = "Codziennie godziny wtapiają się w aplikacje";

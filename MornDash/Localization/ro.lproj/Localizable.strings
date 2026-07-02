@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Trandafir";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Îți pierzi ziua din cauza SNS și a aplicațiilor care irosesc timpul?";
+"onboarding_problem_title" = "Îți pierzi ziua din cauza rețelelor sociale și a aplicațiilor care irosesc timpul?";
 "onboarding_problem_desc" = "Aplicațiile pe care le deschizi fără să stai pe gânduri însumează ore și toată ziua îți scapă.";
 "onboarding_problem_point_scroll" = "Deschiderea fluxurilor sociale pe pilot automat";
 "onboarding_problem_point_time" = "Ore care se topesc în aplicații în fiecare zi";

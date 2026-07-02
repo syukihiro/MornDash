@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "గులాబీ";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "SNSకి మీ రోజును కోల్పోతున్నారా మరియు యాప్‌ల సమయాన్ని వృధా చేస్తున్నారా?";
+"onboarding_problem_title" = "సోషల్ మీడియా మరియు సమయాన్ని వృధా చేసే యాప్‌లతో మీ రోజును కోల్పోతున్నారా?";
 "onboarding_problem_desc" = "మీరు ఆలోచించకుండా తెరిచే యాప్‌లు గంటల తరబడి పెరుగుతాయి - మరియు మీ రోజంతా జారిపోతుంది.";
 "onboarding_problem_point_scroll" = "ఆటోపైలట్‌లో సామాజిక ఫీడ్‌లను తెరవడం";
 "onboarding_problem_point_time" = "ప్రతిరోజూ యాప్‌లలో గంటలు కరిగిపోతున్నాయి";

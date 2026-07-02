@@ -18,10 +18,10 @@
 "main_next_block" = "NÆSTE BLOK";
 "main_completed_eyebrow" = "ALT UDFØRT";
 "main_completed_title" = "Færdig for i dag";
-"main_completed_subtitle" = "Nyd resten af ​​dagen.";
+"main_completed_subtitle" = "Nyd resten af dagen.";
 "main_completed_streak_unit" = "DAG STREAK";
 "main_completed_message_3" = "Din vane tager form. Fortsæt med det i morgen.";
-"main_completed_message_7" = "En hel uge. Du er den rigtige vare.";
+"main_completed_message_7" = "En hel uge. Du mener det alvorligt.";
 "main_completed_message_30" = "Ustoppelig konsistens. Vær stolt af dig selv.";
 "main_completed_message_100" = "100 dages bevis. Intet kan stoppe dig nu.";
 "main_completed_week_progress" = "%d / 7 dage i denne uge";
@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Rose";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Taber du din dag til SNS og tidsspildende apps?";
+"onboarding_problem_title" = "Taber du din dag til sociale medier og tidsspildende apps?";
 "onboarding_problem_desc" = "De apps, du åbner uden at tænke over, tæller op til timer - og hele din dag forsvinder.";
 "onboarding_problem_point_scroll" = "Åbning af sociale feeds på autopilot";
 "onboarding_problem_point_time" = "Timer smelter sammen i apps hver dag";
@@ -186,7 +186,7 @@
 
 /* Onboarding — step 2: how it works */
 "onboarding_how_title" = "Sådan fungerer MornDash";
-"onboarding_how_desc" = "Fra dit indstillede tidspunkt forbliver tidsspildende apps låst resten af ​​dagen.";
+"onboarding_how_desc" = "Fra dit indstillede tidspunkt forbliver tidsspildende apps låst resten af dagen.";
 "onboarding_how_step1_title" = "På dit indstillede tidspunkt";
 "onboarding_how_step1_desc" = "Blokering starter automatisk hver dag";
 "onboarding_how_step2_title" = "Apps låser";
@@ -315,8 +315,8 @@
 "subscription_cancel_alert_message" = "Du vil blive omdirigeret til din App Store abonnementsadministrationsside.";
 "subscription_cancel_alert_proceed" = "Åbn App Store";
 "subscription_terms_heading" = "Abonnementsbetingelser";
-"subscription_terms_auto_renew" = "Abonnementet fornyes automatisk, medmindre automatisk fornyelse er slået fra mindst 24 timer før udgangen af ​​den aktuelle periode.";
-"subscription_terms_charge" = "Din konto vil blive debiteret for fornyelse inden for 24 timer før udgangen af ​​den aktuelle periode.";
+"subscription_terms_auto_renew" = "Abonnementet fornyes automatisk, medmindre automatisk fornyelse er slået fra mindst 24 timer før udgangen af den aktuelle periode.";
+"subscription_terms_charge" = "Din konto vil blive debiteret for fornyelse inden for 24 timer før udgangen af den aktuelle periode.";
 "subscription_terms_manage" = "Abonnementer kan administreres og automatisk fornyelse slås fra via dine kontoindstillinger efter køb.";
 "subscription_terms_trial" = "Årsplanen inkluderer kun en engangs 1-uges gratis prøveperiode for kvalificerede nye abonnenter. Ugentlige og månedlige planer inkluderer ikke en gratis prøveperiode. Enhver ubrugt del af den gratis prøveperiode fortabes, når du abonnerer, og du vil blive opkrævet den årlige pris, når prøveperioden slutter, medmindre du annullerer mindst 24 timer i forvejen.";
 

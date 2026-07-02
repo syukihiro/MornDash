@@ -21,7 +21,7 @@
 "main_completed_subtitle" = "Наслаждайтесь остатком дня.";
 "main_completed_streak_unit" = "ДЕНЬ СТРИК";
 "main_completed_message_3" = "Ваша привычка обретает форму. Продолжайте в том же духе завтра.";
-"main_completed_message_7" = "Полная неделя. Ты настоящая сделка.";
+"main_completed_message_7" = "Целая неделя. Ты настроен серьёзно.";
 "main_completed_message_30" = "Непреодолимая последовательность. Гордитесь собой.";
 "main_completed_message_100" = "100 дней доказательств. Ничто не сможет остановить тебя сейчас.";
 "main_completed_week_progress" = "%d / 7 дней на этой неделе";
@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Роза";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Теряете свой день из-за SNS и приложений, тратящих время?";
+"onboarding_problem_title" = "Теряете свой день из-за соцсетей и приложений, тратящих время?";
 "onboarding_problem_desc" = "Приложения, которые вы открываете, не задумываясь, занимают часы — и весь ваш день ускользает.";
 "onboarding_problem_point_scroll" = "Открытие социальных сетей на автопилоте";
 "onboarding_problem_point_time" = "Часы тают в приложениях каждый день";

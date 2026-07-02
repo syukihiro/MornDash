@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Rose";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Losing your day to SNS and time-wasting apps?";
+"onboarding_problem_title" = "Losing your day to social media and time-wasting apps?";
 "onboarding_problem_desc" = "The apps you open without thinking add up to hours — and your whole day slips away.";
 "onboarding_problem_point_scroll" = "Opening social feeds on autopilot";
 "onboarding_problem_point_time" = "Hours melting into apps every day";

@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Rose";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Strácate svoj deň SNS a aplikáciami, ktoré strácajú čas?";
+"onboarding_problem_title" = "Strácate svoj deň na sociálnych sieťach a aplikáciách, ktoré strácajú čas?";
 "onboarding_problem_desc" = "Aplikácie, ktoré otvárate bez premýšľania, zaberajú hodiny – a celý deň vám utečie.";
 "onboarding_problem_point_scroll" = "Otváranie sociálnych kanálov pomocou autopilota";
 "onboarding_problem_point_time" = "Každý deň sa hodiny pretavujú do aplikácií";

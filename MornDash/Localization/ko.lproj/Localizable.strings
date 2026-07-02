@@ -21,7 +21,7 @@
 "main_completed_subtitle" = "남은 하루도 잘 보내세요.";
 "main_completed_streak_unit" = "하루 연속";
 "main_completed_message_3" = "당신의 습관이 구체화되고 있습니다. 내일 계속하세요.";
-"main_completed_message_7" = "일주일. 당신은 진짜 거래입니다.";
+"main_completed_message_7" = "일주일 완주. 진심이 느껴져요.";
 "main_completed_message_30" = "멈출 수 없는 일관성. 자신을 자랑스러워하십시오.";
 "main_completed_message_100" = "100일 증명. 이제 아무것도 당신을 막을 수 없습니다.";
 "main_completed_week_progress" = "%d / 이번 주 7일";
@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "장미";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "SNS로 하루를 허비하고 앱을 낭비하고 계십니까?";
+"onboarding_problem_title" = "SNS와 시간 낭비 앱으로 하루를 허비하고 계신가요?";
 "onboarding_problem_desc" = "아무 생각 없이 앱을 열면 몇 시간이 걸리고 하루 종일 시간이 흘러갑니다.";
 "onboarding_problem_point_scroll" = "자동 조종 장치에서 소셜 피드 열기";
 "onboarding_problem_point_time" = "매일 앱에 녹아드는 시간들";

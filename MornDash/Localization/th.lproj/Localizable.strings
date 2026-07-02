@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "ดอกกุหลาบ";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "เสียเวลาไปกับ SNS และแอปที่เสียเวลาใช่หรือไม่";
+"onboarding_problem_title" = "เสียเวลาทั้งวันไปกับโซเชียลมีเดียและแอปที่ทำให้เสียเวลาใช่ไหม?";
 "onboarding_problem_desc" = "แอพที่คุณเปิดโดยไม่ต้องคิดเพิ่มเป็นชั่วโมง — แล้วทั้งวันของคุณก็ผ่านไป";
 "onboarding_problem_point_scroll" = "กำลังเปิดฟีดโซเชียลบนระบบอัตโนมัติ";
 "onboarding_problem_point_time" = "ชั่วโมงที่หลอมละลายเป็นแอพทุกวัน";

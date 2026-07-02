@@ -18,10 +18,10 @@
 "main_next_block" = "BLOCCO PROSSIMO";
 "main_completed_eyebrow" = "TUTTO FATTO";
 "main_completed_title" = "Fatto per oggi";
-"main_completed_subtitle" = "Goditi il ​​resto della giornata.";
+"main_completed_subtitle" = "Goditi il resto della giornata.";
 "main_completed_streak_unit" = "GIORNATA CONTINUA";
 "main_completed_message_3" = "La tua abitudine sta prendendo forma. Continua così domani.";
-"main_completed_message_7" = "Una settimana intera. Tu sei il vero affare.";
+"main_completed_message_7" = "Una settimana intera. Fai sul serio.";
 "main_completed_message_30" = "Consistenza inarrestabile. Sii orgoglioso di te stesso.";
 "main_completed_message_100" = "100 giorni di prova. Niente può fermarti adesso.";
 "main_completed_week_progress" = "%d / 7 giorni questa settimana";
@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Rosa";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Perdere la giornata a causa di SNS e di app che ti fanno perdere tempo?";
+"onboarding_problem_title" = "Perdi la giornata a causa dei social e di app che ti fanno perdere tempo?";
 "onboarding_problem_desc" = "Le app che apri senza pensarci si accumulano in ore e l'intera giornata scivola via.";
 "onboarding_problem_point_scroll" = "Apertura dei feed social con il pilota automatico";
 "onboarding_problem_point_time" = "Ore che si fondono nelle app ogni giorno";
@@ -228,7 +228,7 @@
 "onboarding_tasks_ritual_count" = "%d attività";
 
 /* Onboarding — step 7: motivation */
-"onboarding_motivation_title" = "Riprenditi il ​​tuo tempo.";
+"onboarding_motivation_title" = "Riprenditi il tuo tempo.";
 "onboarding_motivation_desc" = "Dedica le tue ore alla tua vita, non al tuo feed.\nLe piccole vittorie costruiscono la persona che vuoi essere.";
 "onboarding_motivation_point_focus" = "Rimani concentrato tutto il giorno";
 "onboarding_motivation_point_calm" = "Arrivi finalmente a ciò che conta davvero";

@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "وَردَة";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "هل تضيع يومك أمام SNS وتطبيقات إضاعة الوقت؟";
+"onboarding_problem_title" = "هل تضيع يومك أمام وسائل التواصل الاجتماعي وتطبيقات إضاعة الوقت؟";
 "onboarding_problem_desc" = "التطبيقات التي تفتحها دون تفكير تضيف ما يصل إلى ساعات، ويضيع يومك بأكمله.";
 "onboarding_problem_point_scroll" = "فتح الخلاصات الاجتماعية على الطيار الآلي";
 "onboarding_problem_point_time" = "ساعات تذوب في التطبيقات كل يوم";

@@ -21,7 +21,7 @@
 "main_completed_subtitle" = "Profitez du reste de votre journée.";
 "main_completed_streak_unit" = "SÉRIE DE JOUR";
 "main_completed_message_3" = "Votre habitude prend forme. Continuez ainsi demain.";
-"main_completed_message_7" = "Une semaine complète. Vous êtes la vraie affaire.";
+"main_completed_message_7" = "Une semaine complète. Vous assurez vraiment.";
 "main_completed_message_30" = "Une cohérence imparable. Soyez fier de vous.";
 "main_completed_message_100" = "100 jours de preuve. Plus rien ne peut vous arrêter maintenant.";
 "main_completed_week_progress" = "%d / 7 jours cette semaine";
@@ -178,11 +178,11 @@
 "settings_color_theme_rose" = "Rose";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Vous perdez votre journée à cause de SNS et d'applications qui vous font perdre du temps ?";
+"onboarding_problem_title" = "Vous perdez votre journée à cause des réseaux sociaux et d'applications qui vous font perdre du temps ?";
 "onboarding_problem_desc" = "Les applications que vous ouvrez sans réfléchir totalisent des heures et votre journée entière s'écoule.";
 "onboarding_problem_point_scroll" = "Ouverture des flux sociaux sur le pilote automatique";
 "onboarding_problem_point_time" = "Des heures qui se fondent dans les applications chaque jour";
-"onboarding_problem_point_mood" = "Ne jamais arriver à ce que tu veux réellement faire";
+"onboarding_problem_point_mood" = "Ne jamais arriver à ce que vous voulez réellement faire";
 
 /* Onboarding — step 2: how it works */
 "onboarding_how_title" = "Comment fonctionne MornDash";

@@ -21,9 +21,9 @@
 "main_completed_subtitle" = "Genießen Sie den Rest Ihres Tages.";
 "main_completed_streak_unit" = "Tagessträhne";
 "main_completed_message_3" = "Deine Gewohnheit nimmt Gestalt an. Mach weiter so morgen.";
-"main_completed_message_7" = "Eine ganze Woche. Du bist der echte Deal.";
-"main_completed_message_30" = "Unaufhaltsame Konstanz. Sei stolz auf dich.";
-"main_completed_message_100" = "100 Tage Beweis. Nichts kann dich jetzt aufhalten.";
+"main_completed_message_7" = "Eine ganze Woche. Sie meinen es wirklich ernst.";
+"main_completed_message_30" = "Unaufhaltsame Konstanz. Seien Sie stolz auf sich.";
+"main_completed_message_100" = "100 Tage Beweis. Nichts kann Sie jetzt aufhalten.";
 "main_completed_week_progress" = "%d / 7 Tage diese Woche";
 "main_completed_best_streak" = "Am besten: %d";
 "main_completed_next_block" = "Nächster Block %@";
@@ -59,7 +59,7 @@
 "stats_month_calendar" = "DIESEN MONAT";
 "stats_contributions" = "AKTIVITÄT";
 "stats_badges" = "ABZEICHEN";
-"stats_no_data" = "Erledige einen Tag lang alle deine Aufgaben, um deinen Streak zu starten.";
+"stats_no_data" = "Erledigen Sie einen Tag lang alle Aufgaben, um Ihren Streak zu starten.";
 "stats_blocked_usage_today" = "BLOCKIERTE APPS · HEUTE";
 "stats_blocked_usage_no_selection" = "Noch keine Apps zum Blockieren ausgewählt.";
 "stats_emergency_unlocks" = "Notentriegelung";
@@ -120,7 +120,7 @@
 
 /* BlockingView */
 "blocking_header" = "GESPERRT";
-"blocking_subtitle" = "Schließe deine Aufgaben ab, um sie freizuschalten.";
+"blocking_subtitle" = "Schließen Sie Ihre Aufgaben ab, um sie freizuschalten.";
 "blocking_give_up" = "Notentriegelung";
 "blocking_give_up_confirm_title" = "Für einen Notfall entsperren?";
 "blocking_give_up_confirm_message" = "Nur in Notfällen verwenden. Die heutigen Aufgaben bleiben unkontrolliert und die Blockierung wird morgen wieder aufgenommen.";
@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Rose";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Verlieren Sie Ihren Tag durch SNS und zeitraubende Apps?";
+"onboarding_problem_title" = "Verlieren Sie Ihren Tag an soziale Medien und zeitfressende Apps?";
 "onboarding_problem_desc" = "Die Apps, die Sie ohne nachzudenken öffnen, summieren sich zu Stunden – und der ganze Tag vergeht wie im Flug.";
 "onboarding_problem_point_scroll" = "Öffnen von Social-Feeds im Autopiloten";
 "onboarding_problem_point_time" = "Jeden Tag verschmelzen Stunden mit Apps";
@@ -229,7 +229,7 @@
 
 /* Onboarding — step 7: motivation */
 "onboarding_motivation_title" = "Nehmen Sie sich Ihre Zeit zurück.";
-"onboarding_motivation_desc" = "Verbringen Sie Ihre Stunden mit Ihrem Leben, nicht mit Ihrem Futter.\nKleine Erfolge bilden die Person aus, die Sie sein möchten.";
+"onboarding_motivation_desc" = "Verbringen Sie Ihre Stunden mit Ihrem Leben, nicht mit Ihrem Feed.\nKleine Erfolge bilden die Person aus, die Sie sein möchten.";
 "onboarding_motivation_point_focus" = "Bleiben Sie den ganzen Tag konzentriert";
 "onboarding_motivation_point_calm" = "Kommen Sie endlich zum Wesentlichen";
 "onboarding_motivation_point_self" = "Einen Schritt näher zu Ihrem besten Selbst";
@@ -279,7 +279,7 @@
 
 /* Custom paywall */
 "paywall_title" = "MornDash Pro";
-"paywall_subtitle" = "Gehen Sie tiefer in Ihr Morgentraining ein.\nSchalte unten alles frei.";
+"paywall_subtitle" = "Gehen Sie tiefer in Ihr Morgentraining ein.\nSchalten Sie unten alles frei.";
 "paywall_plan_weekly" = "Wöchentlich";
 "paywall_plan_monthly" = "Monatlich";
 "paywall_plan_annual" = "Jährlich";
@@ -347,7 +347,7 @@
 "focus_status_no_face" = "Gehen Sie von der Kamera weg";
 "focus_status_multiple_faces" = "Mehrere Personen erkannt";
 "focus_status_low_quality" = "Die Beleuchtung ist zu schwach";
-"focus_status_bad_angle" = "Stelle dich der Kamera";
+"focus_status_bad_angle" = "Schauen Sie in die Kamera";
 "focus_status_face_too_small" = "Gehen Sie näher heran";
 "focus_hint_setup_title" = "Richten Sie Ihr Telefon ein";
 "focus_hint_setup_body" = "ProStellen Sie Ihr Telefon auf einen Ständer, sodass Ihr Gesicht in den Rahmen passt.";

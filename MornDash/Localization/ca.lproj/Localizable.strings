@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Rosa";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Vols perdre el teu dia amb SNS i aplicacions que fan perdre el temps?";
+"onboarding_problem_title" = "Perds el teu dia amb les xarxes socials i aplicacions que et fan perdre el temps?";
 "onboarding_problem_desc" = "Les aplicacions que obriu sense pensar-s'ho sumen hores, i tot el vostre dia s'escapa.";
 "onboarding_problem_point_scroll" = "Obertura de canals socials amb pilot automàtic";
 "onboarding_problem_point_time" = "Hores que es fonen en aplicacions cada dia";

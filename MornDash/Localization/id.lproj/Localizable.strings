@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Mawar";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Kehilangan hari Anda karena SNS dan aplikasi yang membuang-buang waktu?";
+"onboarding_problem_title" = "Kehilangan hari Anda karena media sosial dan aplikasi yang membuang-buang waktu?";
 "onboarding_problem_desc" = "Aplikasi yang Anda buka tanpa berpikir panjang akan bertambah hingga berjam-jam — dan seluruh hari Anda berlalu begitu saja.";
 "onboarding_problem_point_scroll" = "Membuka umpan sosial dengan autopilot";
 "onboarding_problem_point_time" = "Berjam-jam menyatu dengan aplikasi setiap hari";

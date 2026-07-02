@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "ગુલાબ";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "તમારો દિવસ SNS અને સમય બગાડતી એપ્લિકેશનો માટે ગુમાવી રહ્યાં છો?";
+"onboarding_problem_title" = "તમારો દિવસ સોશિયલ મીડિયા અને સમય બગાડતી એપ્લિકેશનો પાછળ ગુમાવી રહ્યાં છો?";
 "onboarding_problem_desc" = "તમે વિચાર્યા વગર ખોલો છો તે એપ્સ કલાકો સુધી ઉમેરે છે — અને તમારો આખો દિવસ સરકી જાય છે.";
 "onboarding_problem_point_scroll" = "ઓટોપાયલટ પર સામાજિક ફીડ્સ ખોલી રહ્યા છીએ";
 "onboarding_problem_point_time" = "કલાકો દરરોજ એપ્લિકેશન્સમાં ગલન થાય છે";

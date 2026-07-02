@@ -115,7 +115,7 @@
 "badge_30day" = "Ay\nUsta";
 "badge_100day" = "Yüzyıl\nŞampiyon";
 "badge_365day" = "Yıl\nEfsane";
-"badge_celebration_eyebrow" = "ROZETİN KİLİDİ ​​AÇILDI";
+"badge_celebration_eyebrow" = "ROZETİN KİLİDİ AÇILDI";
 "badge_celebration_continue" = "Devam etmek";
 
 /* BlockingView */
@@ -136,8 +136,8 @@
 "emergency_unlock_cancel" = "Boş ver";
 
 /* SettingsView */
-"settings_start_time" = "Başlangıç ​​Zamanı";
-"settings_start_time_label" = "Başlangıç ​​Zamanı";
+"settings_start_time" = "Başlangıç Zamanı";
+"settings_start_time_label" = "Başlangıç Zamanı";
 "settings_start_time_daily" = "Günlük";
 "settings_routine_section" = "Rutin";
 "settings_tasks" = "Görevler";
@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Gül";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Gününüzü SNS ve zaman kaybettiren uygulamalarla mı kaybediyorsunuz?";
+"onboarding_problem_title" = "Gününüzü sosyal medya ve zaman kaybettiren uygulamalarla mı kaybediyorsunuz?";
 "onboarding_problem_desc" = "Düşünmeden açtığınız uygulamaların toplamı saatlerce sürüyor ve tüm gününüz kayıp gidiyor.";
 "onboarding_problem_point_scroll" = "Otomatik pilotta sosyal yayınları açma";
 "onboarding_problem_point_time" = "Her gün uygulamalara saatler eriyor";

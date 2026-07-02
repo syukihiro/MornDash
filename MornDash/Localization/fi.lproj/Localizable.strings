@@ -155,7 +155,7 @@
 "settings_blocked_apps" = "Estetyt sovellukset";
 "settings_blocked_apps_pro_upsell_title" = "Estä rajoittamaton käyttö termillä Pro";
 "settings_blocked_apps_pro_upsell_subtitle" = "Valitse niin monta sovellusta, luokkaa ja verkkosivustoa kuin haluat.";
-"settings_blocked_apps_upsell_feature_categories" = "Estä kokonaisia ​​sovellusluokkia kerralla";
+"settings_blocked_apps_upsell_feature_categories" = "Estä kokonaisia sovellusluokkia kerralla";
 "settings_blocked_apps_upsell_feature_websites" = "Estä myös verkkosivustot";
 "settings_blocked_apps_upsell_continue_free" = "Jatka ilmaisella tilauksella (jopa %d)";
 "settings_categories_pro_only" = "Sovellusluokkia voidaan tallentaa vain termillä Pro. Valitse ilmaisessa paketissa yksittäisiä sovelluksia tai verkkosivustoja.";
@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Ruusu";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Menetätkö päiväsi SNS ja aikaa vieville sovelluksille?";
+"onboarding_problem_title" = "Menetätkö päiväsi somen ja aikaa vievien sovellusten takia?";
 "onboarding_problem_desc" = "Ajattelematta avaamasi sovellukset lisäävät tunteja – ja koko päiväsi lipsahtaa pois.";
 "onboarding_problem_point_scroll" = "Sosiaalisten syötteiden avaaminen autopilotilla";
 "onboarding_problem_point_time" = "Tunnit sulavat sovelluksiin joka päivä";

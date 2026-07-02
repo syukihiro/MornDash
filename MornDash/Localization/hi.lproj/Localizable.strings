@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "गुलाब";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "SNS और समय बर्बाद करने वाले ऐप्स के कारण अपना दिन बर्बाद कर रहे हैं?";
+"onboarding_problem_title" = "सोशल मीडिया और समय बर्बाद करने वाले ऐप्स के कारण अपना दिन बर्बाद कर रहे हैं?";
 "onboarding_problem_desc" = "जो ऐप्स आप बिना सोचे-समझे खोलते हैं, उनमें घंटों का समय लग जाता है - और आपका पूरा दिन निकल जाता है।";
 "onboarding_problem_point_scroll" = "ऑटोपायलट पर सामाजिक फ़ीड खोलना";
 "onboarding_problem_point_time" = "हर दिन ऐप्स में घंटों का समय बर्बाद हो रहा है";

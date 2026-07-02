@@ -178,7 +178,7 @@
 "settings_color_theme_rose" = "Τριαντάφυλλο";
 
 /* Onboarding — step 1: problem */
-"onboarding_problem_title" = "Χάνετε τη μέρα σας με SNS και εφαρμογές που χάνουν χρόνο;";
+"onboarding_problem_title" = "Χάνετε τη μέρα σας με τα μέσα κοινωνικής δικτύωσης και εφαρμογές που χάνουν χρόνο;";
 "onboarding_problem_desc" = "Οι εφαρμογές που ανοίγετε χωρίς να το σκέφτεστε αθροίζονται σε ώρες — και ολόκληρη η ημέρα σας ξεφεύγει.";
 "onboarding_problem_point_scroll" = "Άνοιγμα ροών κοινωνικής δικτύωσης στον αυτόματο πιλότο";
 "onboarding_problem_point_time" = "Ώρες μετατρέπονται σε εφαρμογές κάθε μέρα";
