@@ -121,6 +121,7 @@
 /* BlockingView */
 "blocking_header" = "BLOCKED";
 "blocking_subtitle" = "Complete your tasks to unlock.";
+"blocking_slide_hint" = "Swipe right to complete";
 "blocking_give_up" = "Emergency unlock";
 "blocking_give_up_confirm_title" = "Unlock for an emergency?";
 "blocking_give_up_confirm_message" = "Use only in emergencies. Today's tasks will stay unchecked, and blocking will resume tomorrow.";

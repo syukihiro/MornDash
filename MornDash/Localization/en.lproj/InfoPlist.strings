@@ -1,1 +1,1 @@
-"NSCameraUsageDescription" = "MornDash uses the camera to count squats so you can complete morning workout tasks.";
+"NSCameraUsageDescription" = "MornDash uses the camera to count squats during workout tasks and to verify focus during study or PC-work sessions. All processing happens on-device; nothing is recorded or uploaded.";

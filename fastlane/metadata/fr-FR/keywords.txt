@@ -1,0 +1,1 @@
+routine,habitude,focus,productivite,reveil,discipline,bloqueur,etude,telephone,limite,matin

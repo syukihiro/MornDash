@@ -8,6 +8,8 @@ struct BlockingView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.accentTheme) private var accentTheme
 
+    @AppStorage("hasSeenBlockingSlideHint") private var hasSeenBlockingSlideHint = false
+
     @State private var showGiveUpConfirm = false
     @State private var activeWorkoutTaskID: UUID?
     @State private var activeTimerTaskID: UUID?
@@ -45,27 +47,18 @@ struct BlockingView: View {
             ScrollView {
                 VStack(spacing: 10) {
                     ForEach(sortedTasks, id: \.task.id) { item in
+                        if shouldShowSlideHint(for: item.task) {
+                            SlideHintLabel()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal, 4)
+                                .padding(.bottom, 2)
+                                .transition(.opacity.combined(with: .move(edge: .top)))
+                        }
+
                         TaskTicketCardView(
                             task: item.task,
                             index: item.index,
-                            onPunch: {
-                                guard !item.task.isCompletedToday else { return }
-                                if item.task.isFocusTask {
-                                    activeFocusTaskID = item.task.id
-                                    return
-                                }
-                                if item.task.isWorkoutTask {
-                                    activeWorkoutTaskID = item.task.id
-                                    return
-                                }
-                                if item.task.hasTimer {
-                                    activeTimerTaskID = item.task.id
-                                    return
-                                }
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                    viewModel.toggleTask(item.task.id, blockManager: blockManager)
-                                }
-                            }
+                            onPunch: { handleTaskPunch(item.task) }
                         )
                     }
                 }
@@ -90,9 +83,7 @@ struct BlockingView: View {
             WorkoutSessionView(
                 task: task,
                 onComplete: {
-                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                        viewModel.toggleTask(task.id, blockManager: blockManager)
-                    }
+                    completeTask(task.id)
                 },
                 onCancel: {}
             )
@@ -101,9 +92,7 @@ struct BlockingView: View {
             TimerSessionView(
                 task: task,
                 onComplete: {
-                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                        viewModel.toggleTask(task.id, blockManager: blockManager)
-                    }
+                    completeTask(task.id)
                 },
                 onCancel: {}
             )
@@ -112,9 +101,7 @@ struct BlockingView: View {
             FocusSessionView(
                 task: task,
                 onComplete: {
-                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                        viewModel.toggleTask(task.id, blockManager: blockManager)
-                    }
+                    completeTask(task.id)
                     viewModel.taskStore.clearFocusSession(task.id)
                 },
                 onCancel: {
@@ -151,6 +138,38 @@ struct BlockingView: View {
             }
     }
 
+    private var firstIncompleteTaskID: UUID? {
+        sortedTasks.first(where: { !$0.task.isCompletedToday })?.task.id
+    }
+
+    private func shouldShowSlideHint(for task: TaskItem) -> Bool {
+        !hasSeenBlockingSlideHint && task.id == firstIncompleteTaskID
+    }
+
+    private func handleTaskPunch(_ task: TaskItem) {
+        guard !task.isCompletedToday else { return }
+        if task.isFocusTask {
+            activeFocusTaskID = task.id
+            return
+        }
+        if task.isWorkoutTask {
+            activeWorkoutTaskID = task.id
+            return
+        }
+        if task.hasTimer {
+            activeTimerTaskID = task.id
+            return
+        }
+        completeTask(task.id)
+    }
+
+    private func completeTask(_ id: UUID) {
+        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+            viewModel.toggleTask(id, blockManager: blockManager)
+        }
+        hasSeenBlockingSlideHint = true
+    }
+
     private var timerTaskBinding: Binding<TaskItem?> {
         Binding(
             get: {
@@ -173,6 +192,42 @@ struct BlockingView: View {
                 activeFocusTaskID = newValue?.id
             }
         )
+    }
+}
+
+private struct SlideHintLabel: View {
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
+
+    @State private var floats = false
+
+    var body: some View {
+        HStack(spacing: 6) {
+            Text("blocking_slide_hint")
+                .font(.system(size: 13, weight: .semibold))
+                .foregroundColor(accentTheme.idleColor)
+
+            Image(systemName: "chevron.right")
+                .font(.system(size: 11, weight: .heavy))
+                .foregroundColor(accentTheme.idleColor.opacity(0.9))
+        }
+        .padding(.horizontal, 12)
+        .padding(.vertical, 6)
+        .background(
+            Capsule()
+                .fill(accentTheme.idleColor.opacity(colorScheme == .dark ? 0.16 : 0.12))
+                .overlay(
+                    Capsule()
+                        .strokeBorder(accentTheme.idleColor.opacity(0.35), lineWidth: 1)
+                )
+        )
+        .offset(y: floats ? -3 : 3)
+        .shadow(color: accentTheme.idleColor.opacity(floats ? 0.35 : 0.15), radius: floats ? 8 : 4)
+        .onAppear {
+            withAnimation(.easeInOut(duration: 1.6).repeatForever(autoreverses: true)) {
+                floats = true
+            }
+        }
     }
 }
 

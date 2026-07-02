@@ -2,13 +2,9 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>audio</string>
-	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSCameraUsageDescription</key>
-	<string>Used to detect workout movements and to verify focus during study/PC work sessions.</string>
+	<string>MornDash uses the camera to count squats during workout tasks and to verify focus during study or PC-work sessions. All processing happens on-device; nothing is recorded or uploaded.</string>
 </dict>
 </plist>

@@ -14,7 +14,7 @@
 		E2A1B2C3D4E5F60001000004 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = E2A1B2C3D4E5F60001000002 /* RevenueCat */; };
 		E2A1B2C3D4E5F60001000005 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = E2A1B2C3D4E5F60001000003 /* RevenueCatUI */; };
 		E2A1B2C3D4E5F60002000002 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E2A1B2C3D4E5F60002000001 /* FirebaseCore */; };
-		E2A1B2C3D4E5F60002000004 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = E2A1B2C3D4E5F60002000003 /* FirebaseAnalytics */; };
+		E2A1B2C3D4E5F60002000004 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = E2A1B2C3D4E5F60002000003 /* FirebaseAnalyticsCore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,7 +141,7 @@
 				E2A1B2C3D4E5F60001000004 /* RevenueCat in Frameworks */,
 				E2A1B2C3D4E5F60001000005 /* RevenueCatUI in Frameworks */,
 				E2A1B2C3D4E5F60002000002 /* FirebaseCore in Frameworks */,
-				E2A1B2C3D4E5F60002000004 /* FirebaseAnalytics in Frameworks */,
+				E2A1B2C3D4E5F60002000004 /* FirebaseAnalyticsCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +248,7 @@
 				E2A1B2C3D4E5F60001000002 /* RevenueCat */,
 				E2A1B2C3D4E5F60001000003 /* RevenueCatUI */,
 				E2A1B2C3D4E5F60002000001 /* FirebaseCore */,
-				E2A1B2C3D4E5F60002000003 /* FirebaseAnalytics */,
+				E2A1B2C3D4E5F60002000003 /* FirebaseAnalyticsCore */,
 			);
 			productName = MornDash;
 			productReference = E27449B72F17D1B200413322 /* MornDash.app */;
@@ -279,55 +279,17 @@
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				ar,
 				Base,
-				bn,
-				ca,
-				cs,
-				da,
 				de,
-				el,
 				en,
-				"en-AU",
-				"en-CA",
-				"en-GB",
 				es,
 				"es-MX",
-				fi,
 				fr,
-				"fr-CA",
-				gu,
-				he,
-				hi,
-				hr,
-				hu,
-				id,
 				it,
 				ja,
-				kn,
 				ko,
-				ml,
-				mr,
-				ms,
-				nb,
-				nl,
-				or,
-				pa,
-				pl,
 				"pt-BR",
-				"pt-PT",
-				ro,
 				ru,
-				sk,
-				sl,
-				sv,
-				ta,
-				te,
-				th,
-				tr,
-				uk,
-				ur,
-				vi,
 				"zh-Hans",
 				"zh-Hant",
 			);
@@ -851,10 +813,10 @@
 			package = E23032662FAA0CD00006F1C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
 		};
-		E2A1B2C3D4E5F60002000003 /* FirebaseAnalytics */ = {
+		E2A1B2C3D4E5F60002000003 /* FirebaseAnalyticsCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E23032662FAA0CD00006F1C8 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
+			productName = FirebaseAnalyticsCore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

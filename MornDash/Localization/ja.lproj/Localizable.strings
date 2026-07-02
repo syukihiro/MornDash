@@ -121,6 +121,7 @@
 /* BlockingView */
 "blocking_header" = "ブロック中";
 "blocking_subtitle" = "タスクをすべて完了すると解除されます。";
+"blocking_slide_hint" = "右にスライドして完了";
 "blocking_give_up" = "緊急時の解除";
 "blocking_give_up_confirm_title" = "緊急で解除しますか？";
 "blocking_give_up_confirm_message" = "緊急時のみご利用ください。今日のチェックはそのままで、明日からまたブロックが始まります。";
