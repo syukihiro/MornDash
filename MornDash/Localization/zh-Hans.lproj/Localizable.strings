@@ -106,7 +106,7 @@
 "stats_blocked_compare_unlock_button" = "使用 Pro 解锁";
 
 /* Pro section (stats tab footer) */
-"stats_pro_section_title" = "__学期1__ 报告";
+"stats_pro_section_title" = "Pro 报告";
 "stats_pro_section_upsell_desc" = "解锁所有期间比较报告。";
 
 /* Badges */
@@ -170,7 +170,7 @@
 "settings_color_theme_section" = "颜色主题";
 "settings_color_theme" = "颜色主题";
 "settings_color_theme_pro_only" = "Pro 成员可以自定义应用程序的强调色。";
-"settings_pro_badge" = "__学期1__";
+"settings_pro_badge" = "Pro";
 "settings_color_theme_classic" = "经典的";
 "settings_color_theme_sunrise" = "日出";
 "settings_color_theme_forest" = "森林";
@@ -250,9 +250,9 @@
 /* Subscription / Settings */
 "settings_subscription_section" = "订阅";
 "settings_status_pro" = "Pro · 续订 %@";
-"settings_status_pro_no_date" = "__学期1__";
+"settings_status_pro_no_date" = "Pro";
 "settings_status_free" = "免费计划";
-"settings_upgrade_to_pro" = "升级到__学期1__";
+"settings_upgrade_to_pro" = "升级到Pro";
 "settings_restore_purchase" = "恢复购买";
 "settings_manage_subscription" = "管理订阅";
 "settings_restore_success_title" = "已恢复";
@@ -260,7 +260,7 @@
 "settings_restore_failure_title" = "无法恢复";
 "settings_restore_failure_message" = "未找到此 Apple ID 的有效订阅。";
 "settings_restore_error_title" = "恢复失败";
-"common_ok" = "__第七学期__";
+"common_ok" = "OK";
 
 /* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
 "paywall_feature_unlimited_tasks" = "无限任务";
@@ -271,15 +271,15 @@
 /* Premium gates */
 "gate_tasks_lock_message" = "免费计划最多支持 %d 任务。\n升级到 Pro 即可执行无限任务。";
 /* Settings subscription card */
-"settings_card_free_title" = "__学期0__ __学期1__";
+"settings_card_free_title" = "MornDash Pro";
 "settings_card_free_subtitle" = "为您想要的早晨提供更多自由。";
-"settings_card_pro_title" = "__学期1__ 会员";
+"settings_card_pro_title" = "Pro 会员";
 "settings_card_pro_subtitle" = "感谢您支持MornDash。";
 "settings_legal_section" = "合法的";
 "settings_commercial_transactions" = "特定商业交易";
 
 /* Custom paywall */
-"paywall_title" = "__学期0__ __学期1__";
+"paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "更深入地进行早晨的练习。\n解锁以下所有内容。";
 "paywall_onboarding_subtitle" = "您的晨间例程已就绪。\n第一周免费试用 Pro。";
 "paywall_plan_weekly" = "每周";
@@ -288,7 +288,7 @@
 "paywall_per_week" = "每周更新";
 "paywall_per_month" = "每月更新";
 "paywall_per_year" = "每年都会更新";
-"paywall_badge_best_value" = "__第八学期__";
+"paywall_badge_best_value" = "BEST VALUE";
 "paywall_savings_format" = "保存 %d%%";
 "paywall_cta_continue" = "继续";
 "paywall_cta_free_trial" = "开始免费试用";
@@ -307,7 +307,7 @@
 "paywall_error_title" = "出了点问题";
 
 /* Subscription details */
-"subscription_pro_title" = "__学期0__ __学期1__";
+"subscription_pro_title" = "MornDash Pro";
 "subscription_pro_description" = "更深入地进行早晨的练习。所有功能均已解锁。";
 "subscription_active" = "积极的";
 "subscription_next_renewal" = "下次续订";
@@ -315,7 +315,7 @@
 "subscription_cancel" = "取消订阅";
 "subscription_cancel_alert_title" = "Pro需要取消吗？";
 "subscription_cancel_alert_message" = "您将被重定向到 App Store 订阅管理页面。";
-"subscription_cancel_alert_proceed" = "打开__学期2__";
+"subscription_cancel_alert_proceed" = "打开App Store";
 "subscription_terms_heading" = "订阅条款";
 "subscription_terms_auto_renew" = "除非在当前周期结束前至少 24 小时关闭自动续订，否则订阅会自动续订。";
 "subscription_terms_charge" = "您的帐户将在当前期限结束前 24 小时内收取续订费用。";
@@ -324,7 +324,7 @@
 
 /* Workout */
 "workout_preset_squats_title" = "%d 深蹲";
-"workout_preset_ai_badge" = "__第五学期__ · PRO";
+"workout_preset_ai_badge" = "AI · PRO";
 "workout_reps_picker_title" = "选择深蹲次数";
 "workout_reps_picker_stepper_format" = "%d 代表";
 "workout_reps_picker_placeholder" = "输入次数 (1-999)";
@@ -344,7 +344,7 @@
 "focus_preset_pcwork_title" = "PC 工作 %d 分钟";
 "focus_preset_study_label" = "学习";
 "focus_preset_pcwork_label" = "电脑工作";
-"focus_preset_ai_badge" = "__第五学期__ · PRO";
+"focus_preset_ai_badge" = "AI · PRO";
 "focus_status_detected" = "专注";
 "focus_status_no_face" = "远离相机";
 "focus_status_multiple_faces" = "检测到多人";
@@ -352,7 +352,7 @@
 "focus_status_bad_angle" = "面对相机";
 "focus_status_face_too_small" = "靠近一点";
 "focus_hint_setup_title" = "设置您的手机";
-"focus_hint_setup_body" = "__术语1__将您的手机放在支架上，以便您的脸部适合框架。";
+"focus_hint_setup_body" = "将您的手机放在支架上，让您的脸部进入取景框。";
 "focus_hint_setup_close" = "知道了";
 "focus_privacy_notice" = "视频保留在此设备上";
 "focus_session_remaining" = "其余的";

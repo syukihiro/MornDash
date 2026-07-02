@@ -170,7 +170,7 @@
 "settings_color_theme_section" = "Tema de cores";
 "settings_color_theme" = "Tema de cores";
 "settings_color_theme_pro_only" = "Os membros do Pro podem personalizar as cores de destaque do aplicativo.";
-"settings_pro_badge" = "__TERMO1__";
+"settings_pro_badge" = "Pro";
 "settings_color_theme_classic" = "Clássico";
 "settings_color_theme_sunrise" = "Nascer do sol";
 "settings_color_theme_forest" = "Floresta";
@@ -250,7 +250,7 @@
 /* Subscription / Settings */
 "settings_subscription_section" = "Subscrição";
 "settings_status_pro" = "Pro · renova %@";
-"settings_status_pro_no_date" = "__TERMO1__";
+"settings_status_pro_no_date" = "Pro";
 "settings_status_free" = "Plano grátis";
 "settings_upgrade_to_pro" = "Atualizar para Pro";
 "settings_restore_purchase" = "Restaurar compra";
@@ -260,7 +260,7 @@
 "settings_restore_failure_title" = "Não foi possível restaurar";
 "settings_restore_failure_message" = "Nenhuma assinatura ativa foi encontrada para este ID Apple.";
 "settings_restore_error_title" = "Falha na restauração";
-"common_ok" = "__TERMO7__";
+"common_ok" = "OK";
 
 /* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
 "paywall_feature_unlimited_tasks" = "Tarefas ilimitadas";
@@ -271,7 +271,7 @@
 /* Premium gates */
 "gate_tasks_lock_message" = "O plano gratuito suporta até %d tarefas.\nAtualize para Pro para tarefas ilimitadas.";
 /* Settings subscription card */
-"settings_card_free_title" = "__TERMO0__ __TERMO1__";
+"settings_card_free_title" = "MornDash Pro";
 "settings_card_free_subtitle" = "Mais liberdade para as manhãs que você deseja.";
 "settings_card_pro_title" = "Pro Membro";
 "settings_card_pro_subtitle" = "Obrigado por apoiar MornDash.";
@@ -279,7 +279,7 @@
 "settings_commercial_transactions" = "Transações Comerciais Especificadas";
 
 /* Custom paywall */
-"paywall_title" = "__TERMO0__ __TERMO1__";
+"paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "Aprofunde-se em sua prática matinal.\nDesbloqueie tudo abaixo.";
 "paywall_onboarding_subtitle" = "Sua rotina matinal está pronta.\nExperimente o Pro grátis na primeira semana.";
 "paywall_plan_weekly" = "Semanalmente";
@@ -288,7 +288,7 @@
 "paywall_per_week" = "Renova toda semana";
 "paywall_per_month" = "Renova todos os meses";
 "paywall_per_year" = "Renova todos os anos";
-"paywall_badge_best_value" = "__TERMO8__";
+"paywall_badge_best_value" = "BEST VALUE";
 "paywall_savings_format" = "Economize %d%%";
 "paywall_cta_continue" = "Continuar";
 "paywall_cta_free_trial" = "Comece o teste gratuito";
@@ -307,7 +307,7 @@
 "paywall_error_title" = "Algo deu errado";
 
 /* Subscription details */
-"subscription_pro_title" = "__TERMO0__ __TERMO1__";
+"subscription_pro_title" = "MornDash Pro";
 "subscription_pro_description" = "Aprofunde-se em sua prática matinal. Todos os recursos desbloqueados.";
 "subscription_active" = "Ativo";
 "subscription_next_renewal" = "Próxima renovação";
@@ -324,7 +324,7 @@
 
 /* Workout */
 "workout_preset_squats_title" = "%d Agachamento";
-"workout_preset_ai_badge" = "__TERMO5__ · PRO";
+"workout_preset_ai_badge" = "AI · PRO";
 "workout_reps_picker_title" = "Escolha repetições de agachamento";
 "workout_reps_picker_stepper_format" = "%d repetições";
 "workout_reps_picker_placeholder" = "Insira as repetições (1-999)";
@@ -344,7 +344,7 @@
 "focus_preset_pcwork_title" = "Trabalho do PC %d min";
 "focus_preset_study_label" = "Estudar";
 "focus_preset_pcwork_label" = "Trabalho no PC";
-"focus_preset_ai_badge" = "__TERMO5__ · PRO";
+"focus_preset_ai_badge" = "AI · PRO";
 "focus_status_detected" = "Focado";
 "focus_status_no_face" = "Afaste-se da câmera";
 "focus_status_multiple_faces" = "Várias pessoas detectadas";
@@ -352,7 +352,7 @@
 "focus_status_bad_angle" = "Enfrente a câmera";
 "focus_status_face_too_small" = "Aproxime-se";
 "focus_hint_setup_title" = "Configure seu telefone";
-"focus_hint_setup_body" = "Procoloque seu telefone em um suporte para que seu rosto caiba na moldura.";
+"focus_hint_setup_body" = "Coloque seu telefone em um suporte para que seu rosto caiba na moldura.";
 "focus_hint_setup_close" = "Entendi";
 "focus_privacy_notice" = "O vídeo permanece neste dispositivo";
 "focus_session_remaining" = "Restante";

@@ -352,7 +352,7 @@
 "focus_status_bad_angle" = "Лицом к камере";
 "focus_status_face_too_small" = "Подойдите ближе";
 "focus_hint_setup_title" = "Настройте свой телефон";
-"focus_hint_setup_body" = "Prop поставьте телефон на подставку так, чтобы ваше лицо поместилось в кадр.";
+"focus_hint_setup_body" = "Поставьте телефон на подставку так, чтобы ваше лицо поместилось в кадр.";
 "focus_hint_setup_close" = "Понятно";
 "focus_privacy_notice" = "Видео останется на этом устройстве";
 "focus_session_remaining" = "Оставшийся";

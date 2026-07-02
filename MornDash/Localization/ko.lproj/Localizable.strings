@@ -352,7 +352,7 @@
 "focus_status_bad_angle" = "카메라를 바라보세요";
 "focus_status_face_too_small" = "더 가까이 다가가세요";
 "focus_hint_setup_title" = "휴대전화 설정";
-"focus_hint_setup_body" = "Prop 얼굴이 프레임에 맞도록 휴대전화를 스탠드 위에 올려 놓습니다.";
+"focus_hint_setup_body" = "얼굴이 프레임에 맞도록 휴대전화를 스탠드 위에 올려놓으세요.";
 "focus_hint_setup_close" = "알았어요";
 "focus_privacy_notice" = "동영상이 이 기기에 유지됩니다.";
 "focus_session_remaining" = "남은";

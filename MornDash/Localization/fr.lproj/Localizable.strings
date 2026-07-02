@@ -352,7 +352,7 @@
 "focus_status_bad_angle" = "Face à la caméra";
 "focus_status_face_too_small" = "Rapprochez-vous";
 "focus_hint_setup_title" = "Configurez votre téléphone";
-"focus_hint_setup_body" = "Proposez votre téléphone sur un support pour que votre visage tienne dans le cadre.";
+"focus_hint_setup_body" = "Posez votre téléphone sur un support pour que votre visage tienne dans le cadre.";
 "focus_hint_setup_close" = "J'ai compris";
 "focus_privacy_notice" = "La vidéo reste sur cet appareil";
 "focus_session_remaining" = "Restant";
