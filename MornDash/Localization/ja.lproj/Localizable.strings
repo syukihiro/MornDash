@@ -153,6 +153,11 @@
 "tasks_edit_done_accessibility" = "編集を終了";
 "settings_blocking" = "ブロック";
 "settings_blocked_apps" = "制限するアプリ";
+"settings_blocked_apps_pro_upsell_title" = "Proで無制限にブロック";
+"settings_blocked_apps_pro_upsell_subtitle" = "アプリ・カテゴリ・Webサイトを好きなだけ選べます";
+"settings_blocked_apps_upsell_feature_categories" = "アプリのカテゴリをまとめてブロック";
+"settings_blocked_apps_upsell_feature_websites" = "Webサイトもブロック対象に";
+"settings_blocked_apps_upsell_continue_free" = "無料プランで続ける（最大%d個）";
 "settings_categories_pro_only" = "アプリのカテゴリはProでのみ保存できます。無料プランでは個別のアプリまたはWebサイトを選んでください。";
 "settings_items_unit" = "個";
 "settings_weekday_scheduling" = "曜日別スケジュール";

@@ -153,6 +153,11 @@
 "tasks_edit_done_accessibility" = "Done editing";
 "settings_blocking" = "Blocking";
 "settings_blocked_apps" = "Blocked Apps";
+"settings_blocked_apps_pro_upsell_title" = "Block unlimited with Pro";
+"settings_blocked_apps_pro_upsell_subtitle" = "Choose as many apps, categories, and websites as you like.";
+"settings_blocked_apps_upsell_feature_categories" = "Block entire app categories at once";
+"settings_blocked_apps_upsell_feature_websites" = "Block websites too";
+"settings_blocked_apps_upsell_continue_free" = "Continue on free plan (up to %d)";
 "settings_categories_pro_only" = "App categories can only be saved with Pro. On the free plan, pick individual apps or websites.";
 "settings_items_unit" = "items";
 "settings_weekday_scheduling" = "Weekday Schedule";

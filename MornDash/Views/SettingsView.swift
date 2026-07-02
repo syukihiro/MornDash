@@ -46,19 +46,12 @@ struct SettingsView: View {
                 viewModel.applySchedule(blockManager: blockManager)
             }
             .sheet(isPresented: $showAppSelection, onDismiss: handleBlockedAppsPickerDismiss) {
-                NavigationStack {
-                    FamilyActivityPicker(selection: $pickerDraft)
-                        .navigationTitle(Text("settings_blocked_apps"))
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .topBarTrailing) {
-                                Button(NSLocalizedString("common_done", comment: "")) {
-                                    showAppSelection = false
-                                }
-                            }
-                        }
-                }
-                .preferredColorScheme((AppearanceMode(rawValue: appearanceModeRaw) ?? .dark).preferredColorScheme)
+                BlockedAppsPickerSheet(
+                    selection: $pickerDraft,
+                    isPro: subscriptionManager.isPro,
+                    appearanceModeRaw: appearanceModeRaw,
+                    onUpgrade: { showPaywall = true }
+                )
             }
             .paywallSheet(isPresented: $showPaywall)
         }
@@ -153,10 +146,6 @@ struct SettingsView: View {
             .foregroundColor(.primary)
         } header: {
             Text("settings_blocking")
-        } footer: {
-            if !subscriptionManager.isPro {
-                Text("settings_categories_pro_only")
-            }
         }
     }
 
@@ -612,5 +601,218 @@ struct SettingsView: View {
 
     private func selectionItemCount(_ selection: FamilyActivitySelection) -> Int {
         selection.applicationTokens.count + selection.categoryTokens.count + selection.webDomainTokens.count
+    }
+}
+
+private struct BlockedAppsPickerSheet: View {
+    @Binding var selection: FamilyActivitySelection
+    let isPro: Bool
+    let appearanceModeRaw: String
+    let onUpgrade: () -> Void
+
+    @State private var showPicker = false
+
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
+    @Environment(\.dismiss) private var dismiss
+
+    private var showsPicker: Bool {
+        isPro || showPicker
+    }
+
+    var body: some View {
+        NavigationStack {
+            Group {
+                if showsPicker {
+                    FamilyActivityPicker(selection: $selection)
+                } else {
+                    BlockedAppsProUpsellScreen(
+                        onUpgrade: onUpgrade,
+                        onContinue: { showPicker = true }
+                    )
+                }
+            }
+            .navigationTitle(Text("settings_blocked_apps"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    if showsPicker {
+                        Button(NSLocalizedString("common_done", comment: "")) {
+                            dismiss()
+                        }
+                    } else {
+                        Button {
+                            showPicker = true
+                        } label: {
+                            Image(systemName: "xmark")
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundColor(MornDashColors.labelSecondary(colorScheme))
+                                .frame(width: 32, height: 32)
+                                .background(Circle().fill(MornDashColors.fieldBackground(colorScheme)))
+                        }
+                        .accessibilityLabel(Text("settings_blocked_apps"))
+                    }
+                }
+            }
+        }
+        .preferredColorScheme((AppearanceMode(rawValue: appearanceModeRaw) ?? .dark).preferredColorScheme)
+    }
+}
+
+private struct BlockedAppsProUpsellScreen: View {
+    let onUpgrade: () -> Void
+    let onContinue: () -> Void
+
+    @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
+
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 28) {
+                hero
+
+                VStack(spacing: 10) {
+                    Text("settings_blocked_apps_pro_upsell_title")
+                        .font(.system(size: 26, weight: .bold, design: .rounded))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(MornDashColors.labelPrimary(colorScheme))
+
+                    Text("settings_blocked_apps_pro_upsell_subtitle")
+                        .font(.system(size: 15, weight: .medium))
+                        .multilineTextAlignment(.center)
+                        .lineSpacing(4)
+                        .foregroundColor(MornDashColors.labelSecondary(colorScheme))
+                }
+                .padding(.horizontal, 8)
+
+                VStack(spacing: 0) {
+                    upsellFeatureRow(
+                        icon: "app.badge.checkmark.fill",
+                        textKey: "paywall_feature_unlimited_blocked_apps"
+                    )
+                    Divider().background(MornDashColors.divider(colorScheme))
+                    upsellFeatureRow(
+                        icon: "square.grid.2x2.fill",
+                        textKey: "settings_blocked_apps_upsell_feature_categories"
+                    )
+                    Divider().background(MornDashColors.divider(colorScheme))
+                    upsellFeatureRow(
+                        icon: "globe",
+                        textKey: "settings_blocked_apps_upsell_feature_websites"
+                    )
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                        .fill(MornDashColors.cardFill(colorScheme))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                .strokeBorder(
+                                    accentTheme.idleColor.opacity(colorScheme == .dark ? 0.2 : 0.18),
+                                    lineWidth: 1
+                                )
+                        )
+                )
+
+                VStack(spacing: 14) {
+                    Button(action: onUpgrade) {
+                        HStack(spacing: 8) {
+                            Image(systemName: "sparkles")
+                                .font(.system(size: 14, weight: .semibold))
+                            Text("settings_upgrade_to_pro")
+                                .font(.system(size: 16, weight: .semibold))
+                        }
+                        .foregroundColor(colorScheme == .dark ? .black : .white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(
+                            Capsule().fill(
+                                LinearGradient(
+                                    colors: accentTheme.idleGradientColors,
+                                    startPoint: .leading,
+                                    endPoint: .trailing
+                                )
+                            )
+                        )
+                    }
+                    .buttonStyle(.plain)
+
+                    Button(action: onContinue) {
+                        Text(
+                            String(
+                                format: NSLocalizedString("settings_blocked_apps_upsell_continue_free", comment: ""),
+                                RevenueCatConfig.freeBlockedAppsLimit
+                            )
+                        )
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundColor(MornDashColors.labelSecondary(colorScheme))
+                    }
+                    .buttonStyle(.plain)
+                }
+                .padding(.top, 8)
+            }
+            .padding(.horizontal, 24)
+            .padding(.top, 20)
+            .padding(.bottom, 32)
+        }
+        .mornDashScreenBackground()
+    }
+
+    private var hero: some View {
+        ZStack {
+            Circle()
+                .fill(
+                    RadialGradient(
+                        colors: [
+                            accentTheme.idleColor.opacity(colorScheme == .dark ? 0.45 : 0.32),
+                            accentTheme.idleColor.opacity(0.05),
+                        ],
+                        center: .center,
+                        startRadius: 8,
+                        endRadius: 72
+                    )
+                )
+                .frame(width: 132, height: 132)
+                .blur(radius: 4)
+
+            Circle()
+                .fill(accentTheme.idleColor.opacity(colorScheme == .dark ? 0.14 : 0.12))
+                .frame(width: 96, height: 96)
+                .overlay(
+                    Circle().strokeBorder(
+                        accentTheme.idleColor.opacity(colorScheme == .dark ? 0.35 : 0.28),
+                        lineWidth: 1.5
+                    )
+                )
+
+            Image(systemName: "infinity")
+                .font(.system(size: 40, weight: .semibold))
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: accentTheme.idleGradientColors,
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+        }
+        .padding(.top, 8)
+    }
+
+    private func upsellFeatureRow(icon: String, textKey: LocalizedStringKey) -> some View {
+        HStack(alignment: .top, spacing: 14) {
+            Image(systemName: icon)
+                .font(.system(size: 16, weight: .semibold))
+                .foregroundColor(accentTheme.idleColor)
+                .frame(width: 24, alignment: .center)
+                .padding(.top, 1)
+
+            Text(textKey)
+                .font(.system(size: 15, weight: .medium))
+                .foregroundColor(MornDashColors.labelPrimary(colorScheme))
+                .fixedSize(horizontal: false, vertical: true)
+
+            Spacer(minLength: 0)
+        }
+        .padding(.horizontal, 18)
+        .padding(.vertical, 16)
     }
 }
