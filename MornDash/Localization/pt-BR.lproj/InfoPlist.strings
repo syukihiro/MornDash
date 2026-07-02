@@ -1,1 +1,3 @@
 "NSCameraUsageDescription" = "O MornDash usa a câmera para contar agachamentos nas tarefas de treino e para verificar sua concentração durante as sessões de estudo ou trabalho no computador. Todo o processamento acontece no seu dispositivo; nada é gravado ou enviado.";
+
+"NSPhotoLibraryAddUsageDescription" = "O MornDash salva o cartão da sua sequência na sua fototeca quando você escolhe «Salvar imagem».";

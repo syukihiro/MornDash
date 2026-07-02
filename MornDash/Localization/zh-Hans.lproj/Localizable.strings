@@ -376,3 +376,8 @@
 /* Task ticket */
 "task_ticket_number_format" = "编号%02d";
 "task_ticket_done_stamp" = "完毕";
+
+/* Streak share card */
+"share_card_eyebrow" = "今日达成";
+"share_card_preview_title" = "我的 MornDash 连续记录";
+"share_streak_button" = "分享连续记录";

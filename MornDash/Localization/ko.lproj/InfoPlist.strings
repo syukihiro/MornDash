@@ -1,1 +1,3 @@
 "NSCameraUsageDescription" = "MornDash는 운동 작업 중 스쿼트 횟수를 세고, 공부·PC 작업 세션 동안 집중 상태를 확인하기 위해 카메라를 사용합니다. 모든 처리는 기기 내에서 이루어지며, 영상이 녹화되거나 전송되지 않습니다.";
+
+"NSPhotoLibraryAddUsageDescription" = "「이미지 저장」을 선택하면 MornDash가 연속 기록 카드를 사진 보관함에 저장합니다.";

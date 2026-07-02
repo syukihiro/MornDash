@@ -280,6 +280,14 @@ struct RoutineCompleteCelebrationView: View {
 
             Spacer()
 
+            if streak > 0 {
+                StreakShareButton(streak: streak)
+                    .opacity(phase == .settled ? 1 : 0)
+                    .offset(y: phase == .settled ? 0 : 20)
+                    .animation(.easeOut(duration: 0.5).delay(1.05), value: phase)
+                    .padding(.bottom, 4)
+            }
+
             Button(action: onDismiss) {
                 Text("routine_celebration_continue")
                     .font(.system(size: 15, weight: .semibold))

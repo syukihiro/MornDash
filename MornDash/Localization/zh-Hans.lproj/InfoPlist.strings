@@ -1,1 +1,3 @@
 "NSCameraUsageDescription" = "MornDash 使用摄像头在锻炼任务中计算深蹲次数，并在学习或电脑工作专注时段确认您保持专注。所有处理均在设备本地完成，不会录制或上传任何画面。";
+
+"NSPhotoLibraryAddUsageDescription" = "当您选择「存储图像」时，MornDash 会将连续记录卡片保存到您的照片图库。";

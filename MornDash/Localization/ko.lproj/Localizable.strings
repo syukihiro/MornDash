@@ -376,3 +376,8 @@
 /* Task ticket */
 "task_ticket_number_format" = "번호%02d";
 "task_ticket_done_stamp" = "완료";
+
+/* Streak share card */
+"share_card_eyebrow" = "루틴 완료";
+"share_card_preview_title" = "내 MornDash 연속 기록";
+"share_streak_button" = "연속 기록 공유";

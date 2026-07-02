@@ -376,3 +376,8 @@
 /* Task ticket */
 "task_ticket_number_format" = "N°%02d";
 "task_ticket_done_stamp" = "FAIT";
+
+/* Streak share card */
+"share_card_eyebrow" = "ROUTINE TERMINÉE";
+"share_card_preview_title" = "Ma série MornDash";
+"share_streak_button" = "Partager la série";

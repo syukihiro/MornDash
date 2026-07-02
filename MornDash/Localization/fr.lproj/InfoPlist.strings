@@ -1,1 +1,3 @@
 "NSCameraUsageDescription" = "MornDash utilise la caméra pour compter les squats lors des tâches d'entraînement et pour vérifier votre concentration pendant les sessions d'étude ou de travail sur ordinateur. Tout est traité sur votre appareil ; rien n'est enregistré ni envoyé.";
+
+"NSPhotoLibraryAddUsageDescription" = "MornDash enregistre votre carte de série dans votre photothèque lorsque vous choisissez « Enregistrer l’image ».";
