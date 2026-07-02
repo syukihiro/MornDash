@@ -1,1 +1,3 @@
 "NSCameraUsageDescription" = "MornDash usa la cámara para contar sentadillas en las tareas de entrenamiento y para comprobar tu concentración durante las sesiones de estudio o trabajo en el PC. Todo se procesa en tu dispositivo; nada se graba ni se sube.";
+
+"NSPhotoLibraryAddUsageDescription" = "MornDash guarda tu tarjeta de racha en tu fototeca cuando eliges «Guardar imagen».";

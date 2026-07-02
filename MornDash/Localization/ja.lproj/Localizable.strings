@@ -376,3 +376,8 @@
 /* Task ticket */
 "task_ticket_number_format" = "No.%02d";
 "task_ticket_done_stamp" = "完了";
+
+/* Streak share card */
+"share_card_eyebrow" = "今日もクリア";
+"share_card_preview_title" = "MornDashのストリーク";
+"share_streak_button" = "ストリークをシェア";

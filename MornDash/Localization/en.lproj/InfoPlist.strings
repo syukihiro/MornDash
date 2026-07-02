@@ -1,1 +1,2 @@
 "NSCameraUsageDescription" = "MornDash uses the camera to count squats during workout tasks and to verify focus during study or PC-work sessions. All processing happens on-device; nothing is recorded or uploaded.";
+"NSPhotoLibraryAddUsageDescription" = "MornDash saves your streak share card to your photo library when you choose \"Save Image\".";

@@ -1,1 +1,3 @@
 "NSCameraUsageDescription" = "MornDash nutzt die Kamera, um bei Trainingsaufgaben Kniebeugen zu zählen und während Lern- oder PC-Arbeitssitzungen Ihre Konzentration zu überprüfen. Die Verarbeitung erfolgt vollständig auf dem Gerät; nichts wird aufgezeichnet oder hochgeladen.";
+
+"NSPhotoLibraryAddUsageDescription" = "MornDash speichert deine Streak-Karte in deiner Fotobibliothek, wenn du „Bild sichern“ auswählst.";

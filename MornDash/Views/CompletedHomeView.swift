@@ -31,7 +31,14 @@ struct CompletedHomeView: View {
             VStack(spacing: 0) {
                 streakHero
                     .padding(.top, 28)
-                    .padding(.bottom, 32)
+                    .padding(.bottom, 20)
+
+                if streak > 0 {
+                    StreakShareButton(streak: streak)
+                        .padding(.bottom, 28)
+                        .opacity(appeared ? 1 : 0)
+                        .animation(.easeOut(duration: 0.6).delay(0.4), value: appeared)
+                }
 
                 weekProgressStrip
                     .padding(.horizontal, 28)
