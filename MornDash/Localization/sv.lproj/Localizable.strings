@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "Inställningar";
+"common_done" = "Gjort";
+"common_cancel" = "Avboka";
+"common_select" = "Välja";
+"common_next" = "Nästa";
+"common_continue" = "Fortsätta";
+"common_back" = "Tillbaka";
+"common_skip" = "Hoppa";
+"common_start" = "Kom igång";
+
+/* MainView (idle) */
+"main_next_block" = "NÄSTA BLOCK";
+"main_completed_eyebrow" = "ALLT KLART";
+"main_completed_title" = "Klart för idag";
+"main_completed_subtitle" = "Njut av resten av dagen.";
+"main_completed_streak_unit" = "DAG STREAK";
+"main_completed_message_3" = "Din vana tar form. Fortsätt med det imorgon.";
+"main_completed_message_7" = "En hel vecka. Du är the real deal.";
+"main_completed_message_30" = "Ostoppbar konsistens. Var stolt över dig själv.";
+"main_completed_message_100" = "100 dagars bevis. Inget kan stoppa dig nu.";
+"main_completed_week_progress" = "%d / 7 dagar denna vecka";
+"main_completed_best_streak" = "Bäst: %d";
+"main_completed_next_block" = "Nästa block %@";
+"main_todays_tasks" = "DAGENS UPPGIFTER";
+"main_todays_tasks_done" = "ALLT KOMPLETT";
+"main_no_tasks" = "Inga uppgifter ännu. Lägg till några från fliken Uppgifter.";
+
+"routine_celebration_eyebrow" = "ALLT KLART";
+"routine_celebration_title" = "Du gjorde det!";
+"routine_celebration_message" = "Alla uppgifter är klara för idag.\nNjut av din frihet.";
+"routine_celebration_continue" = "Fortsätta";
+"routine_celebration_compact_title" = "Allt gjort för idag";
+
+/* Tabs */
+"tab_home" = "Hem";
+"tab_tasks" = "Uppgifter";
+"tab_stats" = "Statistik";
+"tab_settings" = "Inställningar";
+
+/* Streak / Stats */
+"streak_days_format" = "%d dagars rad";
+"stats_streak_day_unit_singular" = "dag";
+"stats_streak_day_unit_plural" = "dagar";
+"stats_current_streak" = "DAG STREAK";
+"stats_longest_streak" = "BÄSTA STREAK";
+"stats_total_completed" = "TOTALT DAGAR";
+"stats_week_progress_short" = "%d / 7 dagar denna vecka";
+"stats_next_milestone" = "NÄSTA MILEPPE";
+"stats_next_milestone_days" = "%2$d dagar till %1$@";
+"stats_summary_footer" = "Bästa %d · Totalt %d dagar";
+"stats_all_badges_unlocked" = "Alla märken är upplåsta";
+"stats_last_7_days" = "SENASTE 7 DAGAR";
+"stats_month_calendar" = "DENNA MÅNAD";
+"stats_contributions" = "AKTIVITET";
+"stats_badges" = "MÄRKEN";
+"stats_no_data" = "Slutför alla dina uppgifter för en dag för att starta din serie.";
+"stats_blocked_usage_today" = "BLOCKERADE APPAR · IDAG";
+"stats_blocked_usage_no_selection" = "Inga appar har valts för blockering än.";
+"stats_emergency_unlocks" = "Nödupplåsningar";
+"stats_emergency_unlocks_count_unit" = "gånger";
+"stats_emergency_unlocks_this_week" = "Denna vecka";
+"stats_emergency_unlocks_this_month" = "Denna månad";
+"stats_emergency_unlocks_past_year" = "Förra året";
+"stats_emergency_unlocks_total" = "Total";
+"stats_emergency_unlocks_last" = "Senaste: %@";
+"stats_emergency_unlocks_none" = "Inga nödupplåsningar ännu.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "Jämförelse";
+"stats_emergency_compare_week" = "mot förra veckan";
+"stats_emergency_compare_month" = "jämfört med förra månaden";
+"stats_emergency_compare_year" = "vs förra året";
+"stats_emergency_compare_lock_title" = "Spåra din upplåsningstrend";
+"stats_emergency_compare_lock_message" = "Pro visar hur dina nödupplåsningar jämförs med förra veckan, förra månaden och förra året.";
+"stats_blocked_duration" = "Blockerad/dag";
+"stats_blocked_duration_this_week" = "Denna vecka";
+"stats_blocked_duration_past_year" = "Förra året";
+"stats_blocked_duration_per_day_suffix" = "/ dag";
+"stats_blocked_duration_none" = "Ingen spärrad tid registrerad ännu.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "UPPDELNING AV UPPGIFT";
+"stats_task_period_month" = "Denna månad";
+"stats_task_period_year" = "I år";
+"stats_task_consistency_format" = "%d / %d dagar";
+"stats_task_no_data_month" = "Bocka av uppgifter den här månaden för att se dem här.";
+"stats_task_no_data_year" = "Bocka av uppgifter i år för att se dem här.";
+"stats_task_compare" = "Jämföra";
+"stats_task_compare_lock_title" = "Se dina framsteg över tid";
+"stats_task_compare_lock_message" = "Pro visar hur varje uppgift står sig jämfört med föregående månad eller år.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "Jämförelse";
+"stats_blocked_compare_week" = "mot förra veckan";
+"stats_blocked_compare_month" = "jämfört med förra månaden";
+"stats_blocked_compare_year" = "mot förra året";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "Jämför din vecka, månad, år";
+"stats_blocked_compare_lock_message" = "Pro visar hur denna vecka, månad och år står sig mot den senaste.";
+"stats_blocked_compare_unlock_button" = "Lås upp med Pro";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro Rapporter";
+"stats_pro_section_upsell_desc" = "Lås upp alla jämförelserapporter för period över period.";
+
+/* Badges */
+"badge_3day" = "3 dagar\nFörrätt";
+"badge_7day" = "Vecka\nKrigare";
+"badge_30day" = "Månad\nMästare";
+"badge_100day" = "Århundrade\nMästare";
+"badge_365day" = "år\nLegend";
+"badge_celebration_eyebrow" = "MÄRKE ULOÅST";
+"badge_celebration_continue" = "Fortsätta";
+
+/* BlockingView */
+"blocking_header" = "BLOCKERAD";
+"blocking_subtitle" = "Slutför dina uppgifter för att låsa upp.";
+"blocking_give_up" = "Nödupplåsning";
+"blocking_give_up_confirm_title" = "Låsa upp för en nödsituation?";
+"blocking_give_up_confirm_message" = "Använd endast i nödsituationer. Dagens uppgifter kommer att förbli omarkerade och blockeringen kommer att återupptas i morgon.";
+"blocking_give_up_confirm_button" = "Nödupplåsning";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "Nödupplåsning";
+"emergency_unlock_subtitle" = "Är du säker på att du vill låsa upp?";
+"emergency_unlock_bullet_today" = "Dagens uppgifter kommer att förbli okontrollerade.";
+"emergency_unlock_bullet_tomorrow" = "Blockeringen kommer att återupptas i morgon bitti.";
+"emergency_unlock_bullet_streak" = "Din streak kan vara bruten.";
+"emergency_unlock_slide_label" = "Skjut för att låsa upp";
+"emergency_unlock_cancel" = "Strunt i det";
+
+/* SettingsView */
+"settings_start_time" = "Starttid";
+"settings_start_time_label" = "Starttid";
+"settings_start_time_daily" = "Dagligen";
+"settings_routine_section" = "Rutin";
+"settings_tasks" = "Uppgifter";
+"settings_tasks_footer" = "Slutför alla uppgifter för att låsa upp blockerade appar. Uppgifterna återställs varje dag.\nTryck på ett uppgiftsnamn för att byta namn på det.";
+"settings_task_placeholder" = "Uppgift";
+"settings_add_task_placeholder" = "Lägg till en uppgift";
+"tasks_add_sheet_title" = "Lägg till uppgift";
+"tasks_add_accessibility" = "Lägg till uppgift";
+"tasks_add_timer_toggle" = "Ställ in en timer";
+"tasks_rename_sheet_title" = "Byt namn på uppgift";
+"tasks_rename_accessibility" = "Byt namn på uppgift";
+"tasks_delete_accessibility" = "Ta bort uppgifter";
+"tasks_edit_done_accessibility" = "Klar med redigering";
+"settings_blocking" = "Blockering";
+"settings_blocked_apps" = "Blockerade appar";
+"settings_blocked_apps_pro_upsell_title" = "Blockera obegränsat med Pro";
+"settings_blocked_apps_pro_upsell_subtitle" = "Välj så många appar, kategorier och webbplatser du vill.";
+"settings_blocked_apps_upsell_feature_categories" = "Blockera hela appkategorier på en gång";
+"settings_blocked_apps_upsell_feature_websites" = "Blockera webbplatser också";
+"settings_blocked_apps_upsell_continue_free" = "Fortsätt med gratis plan (upp till %d)";
+"settings_categories_pro_only" = "Appkategorier kan endast sparas med Pro. På den kostnadsfria planen väljer du individuella appar eller webbplatser.";
+"settings_items_unit" = "föremål";
+"settings_weekday_scheduling" = "Schema för veckodagar";
+"settings_appearance_section" = "Utseende";
+"settings_appearance" = "Tema";
+"settings_appearance_system" = "System";
+"settings_appearance_light" = "Ljus";
+"settings_appearance_dark" = "Mörk";
+"settings_color_theme_section" = "Färgtema";
+"settings_color_theme" = "Färgtema";
+"settings_color_theme_pro_only" = "Pro-medlemmar kan anpassa appens accentfärger.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "Klassisk";
+"settings_color_theme_sunrise" = "Soluppgång";
+"settings_color_theme_forest" = "Skog";
+"settings_color_theme_ocean" = "Hav";
+"settings_color_theme_lavender" = "Lavendel";
+"settings_color_theme_rose" = "Ros";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "Förlorar du din dag till SNS och tidsödande appar?";
+"onboarding_problem_desc" = "Apparna du öppnar utan att tänka på räknar ihop till timmar – och hela dagen försvinner.";
+"onboarding_problem_point_scroll" = "Öppna sociala flöden på autopilot";
+"onboarding_problem_point_time" = "Timmar smälter in i appar varje dag";
+"onboarding_problem_point_mood" = "Kommer aldrig till det du faktiskt vill göra";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "Hur MornDash fungerar";
+"onboarding_how_desc" = "Från den inställda tiden förblir tidsödande appar låsta resten av dagen.";
+"onboarding_how_step1_title" = "På din inställda tid";
+"onboarding_how_step1_desc" = "Blockering slår in automatiskt varje dag";
+"onboarding_how_step2_title" = "Appar låser sig";
+"onboarding_how_step2_desc" = "Apparna du väljer förblir låsta hela dagen";
+"onboarding_how_step3_title" = "Uppgifter låser upp dem";
+"onboarding_how_step3_desc" = "Slutför dina valda uppgifter för att frigöra blocket";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Aktivera Screen Time";
+"onboarding_permission_desc" = "För att blockera appar behöver MornDash åtkomst till Apples Screen Time.";
+"onboarding_permission_note" = "Allt finns kvar på din enhet. MornDash skickar inte dina data någonstans.";
+"onboarding_param_screentime" = "Aktivera Screen Time";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "Välj appar att blockera";
+"onboarding_apps_desc" = "Från gårdagens lista om den visas, eller använd Välj appar.";
+"onboarding_apps_yesterday_label" = "I går";
+"onboarding_apps_free_footer" = "Gratis: upp till %d föremål. Kategorier behöver Pro.";
+"onboarding_select_apps" = "Välj Appar";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%dm";
+"onboarding_usage_under_one_m" = "<1m";
+"onboarding_items_selected" = "%d objekt markerade";
+"onboarding_items_selected_with_limit" = "%d / %d objekt markerade";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "När ska det börja?";
+"onboarding_time_desc" = "Från denna tidpunkt varje dag förblir dina valda appar låsta.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "Ställ in dina upplåsningsuppgifter";
+"onboarding_tasks_desc" = "Slutför alla uppgifter för att låsa upp dina appar för dagen.";
+"onboarding_tasks_your_list" = "Dina uppgifter";
+"onboarding_tasks_suggestions" = "Förslag";
+"onboarding_tasks_custom" = "Skriv din egen";
+"onboarding_tasks_empty" = "Inga uppgifter ännu";
+"onboarding_tasks_empty_hint" = "Tryck på ett förslag nedan för att lägga till uppgifter";
+"onboarding_tasks_ritual_count" = "%d uppgifter";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "Ta tillbaka din tid.";
+"onboarding_motivation_desc" = "Spendera dina timmar på ditt liv, inte på ditt flöde.\nSmå vinster bygger den person du vill vara.";
+"onboarding_motivation_point_focus" = "Håll fokus hela dagen";
+"onboarding_motivation_point_calm" = "Äntligen komma till det som verkligen betyder något";
+"onboarding_motivation_point_self" = "Ett steg närmare ditt bästa jag";
+"onboarding_finish" = "Kom igång";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "Sträcka";
+"onboarding_preset_bed" = "Bädda min säng";
+"onboarding_preset_meditate" = "Meditera i 5 minuter";
+"onboarding_preset_journal" = "Skriv i min dagbok";
+"onboarding_preset_read" = "Läs 10 sidor";
+"onboarding_preset_run" = "Ut och spring";
+
+/* Default tasks */
+"default_task_stretch" = "Sträcka";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "Prenumeration";
+"settings_status_pro" = "Pro · förnyar %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "Gratis plan";
+"settings_upgrade_to_pro" = "Uppgradera till Pro";
+"settings_restore_purchase" = "Återställ köp";
+"settings_manage_subscription" = "Hantera prenumeration";
+"settings_restore_success_title" = "Återställd";
+"settings_restore_success_message" = "Din Pro-prenumeration är aktiv.";
+"settings_restore_failure_title" = "Det gick inte att återställa";
+"settings_restore_failure_message" = "Ingen aktiv prenumeration hittades för detta Apple-ID.";
+"settings_restore_error_title" = "Återställningen misslyckades";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "Obegränsade uppgifter";
+"paywall_feature_unlimited_blocked_apps" = "Obegränsade appar och kategorier att blockera";
+"paywall_feature_multi_schedule" = "Flera blockscheman";
+"paywall_feature_color_themes" = "Anpassade färgteman";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "Den kostnadsfria planen stöder upp till %d uppgifter.\nUppgradera till Pro för obegränsade uppgifter.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "Mer frihet för de morgnar du vill ha.";
+"settings_card_pro_title" = "Pro Medlem";
+"settings_card_pro_subtitle" = "Tack för att du stödjer MornDash.";
+"settings_legal_section" = "Rättslig";
+"settings_commercial_transactions" = "Angivna kommersiella transaktioner";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "Gå djupare in i din morgonträning.\nLås upp allt nedan.";
+"paywall_plan_weekly" = "Varje vecka";
+"paywall_plan_monthly" = "Månatlig";
+"paywall_plan_annual" = "Årlig";
+"paywall_per_week" = "Förnyas varje vecka";
+"paywall_per_month" = "Förnyas varje månad";
+"paywall_per_year" = "Förnyas varje år";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "Spara %d%%";
+"paywall_cta_continue" = "Fortsätta";
+"paywall_cta_free_trial" = "Starta gratis provperiod";
+"paywall_trial_badge_first_week" = "1:a veckan gratis";
+"paywall_trial_disclosure_format" = "%1$@ gratis provperiod för första gången årligen prenumererar, sedan %2$@/år. Förnyas automatiskt om det inte avbryts minst 24 timmar innan provperioden slutar.";
+"trial_period_one_week" = "1 vecka";
+"trial_period_days_format" = "%d dagar";
+"trial_period_weeks_format" = "%d vecka(r)";
+"trial_period_months_format" = "%d månad(er)";
+"trial_period_years_format" = "%d år";
+"paywall_terms" = "Användarvillkor";
+"paywall_privacy" = "Sekretesspolicy";
+"paywall_commercial" = "Kommersiella transaktioner";
+"paywall_offerings_unavailable" = "Det gick inte att läsa in planer. Kontrollera din anslutning.";
+"paywall_retry" = "Försök igen";
+"paywall_error_title" = "Något gick fel";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "Gå djupare in i din morgonträning. Alla funktioner är upplåsta.";
+"subscription_active" = "Aktiv";
+"subscription_next_renewal" = "Nästa förnyelse";
+"subscription_manage_in_store" = "Hantera i App Store";
+"subscription_cancel" = "Avsluta prenumeration";
+"subscription_cancel_alert_title" = "Prosluta avbryta?";
+"subscription_cancel_alert_message" = "Du omdirigeras till din App Store prenumerationshanteringssida.";
+"subscription_cancel_alert_proceed" = "Öppna App Store";
+"subscription_terms_heading" = "Prenumerationsvillkor";
+"subscription_terms_auto_renew" = "Prenumerationen förnyas automatiskt om inte automatisk förnyelse stängs av minst 24 timmar före slutet av den aktuella perioden.";
+"subscription_terms_charge" = "Ditt konto kommer att debiteras för förnyelse inom 24 timmar före slutet av den aktuella perioden.";
+"subscription_terms_manage" = "Prenumerationer kan hanteras och automatisk förnyelse inaktiveras via dina kontoinställningar efter köp.";
+"subscription_terms_trial" = "Årsplanen inkluderar en 1 veckas gratis provperiod endast för berättigade nya prenumeranter. Vecko- och månadsplaner inkluderar inte en gratis provperiod. Eventuell oanvänd del av den kostnadsfria provperioden är förverkad när du prenumererar, och du kommer att debiteras det årliga priset när provperioden avslutas om du inte avbryter minst 24 timmar i förväg.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d Knäböj";
+"workout_preset_ai_badge" = "AI · PRO";
+"workout_reps_picker_title" = "Välj squat reps";
+"workout_reps_picker_stepper_format" = "%d reps";
+"workout_reps_picker_placeholder" = "Ange reps (1-999)";
+"workout_reps_picker_invalid" = "Ange ett nummer mellan 1 och 999";
+"workout_reps_picker_add_button" = "Lägg till denna uppgift";
+"workout_status_recognizing" = "Känner igen...";
+"workout_status_no_body" = "Gå in i ramen";
+"workout_status_adjust" = "Justera din position";
+"workout_status_start" = "Start!";
+"workout_status_down" = "Ner!";
+"workout_status_good" = "Trevlig!";
+"workout_simulator_notice" = "Kameran är inte tillgänglig i simulatorn. Tryck för att simulera slutförande.";
+"workout_simulator_complete" = "Markera som komplett";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "Studera %d min";
+"focus_preset_pcwork_title" = "PC Arbete %d min";
+"focus_preset_study_label" = "Studera";
+"focus_preset_pcwork_label" = "PC arbete";
+"focus_preset_ai_badge" = "AI · PRO";
+"focus_status_detected" = "Fokuserad";
+"focus_status_no_face" = "Gå bort från kameran";
+"focus_status_multiple_faces" = "Flera personer upptäcktes";
+"focus_status_low_quality" = "Belysningen är för låg";
+"focus_status_bad_angle" = "Vänd dig mot kameran";
+"focus_status_face_too_small" = "Flytta dig närmare";
+"focus_hint_setup_title" = "Konfigurera din telefon";
+"focus_hint_setup_body" = "Prop din telefon på ett stativ så att ditt ansikte passar in i ramen.";
+"focus_hint_setup_close" = "Jag förstår";
+"focus_privacy_notice" = "Videon finns kvar på den här enheten";
+"focus_session_remaining" = "Återstående";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d min";
+"tasks_timer_seconds_short_format" = "%d sek";
+"tasks_timer_duration_min_sec_format" = "%d min %02d sek";
+"tasks_timer_minutes_label" = "Minuter";
+"tasks_timer_seconds_label" = "Sekunder";
+"tasks_timer_minutes_placeholder" = "Minuter (1–180)";
+"tasks_timer_sheet_title" = "Timerinställningar";
+"tasks_timer_sheet_hint" = "Ställ in minuter och sekunder. Uppgiften slutförs när timern är klar.";
+"tasks_timer_remove" = "Ta bort timern";
+"tasks_timer_save" = "Spara";
+"timer_session_title" = "TIMER";
+"timer_session_hint" = "Skärmen förblir vaken när du springer";
+"timer_session_start" = "Start";
+"timer_session_pause" = "Paus";
+
+/* Task ticket */
+"task_ticket_number_format" = "Nej.%02d";
+"task_ticket_done_stamp" = "GJORT";

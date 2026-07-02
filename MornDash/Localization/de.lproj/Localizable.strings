@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "Einstellungen";
+"common_done" = "Erledigt";
+"common_cancel" = "Stornieren";
+"common_select" = "Wählen";
+"common_next" = "Nächste";
+"common_continue" = "Weitermachen";
+"common_back" = "Zurück";
+"common_skip" = "Überspringen";
+"common_start" = "Legen Sie los";
+
+/* MainView (idle) */
+"main_next_block" = "NÄCHSTER BLOCK";
+"main_completed_eyebrow" = "ALLES FERTIG";
+"main_completed_title" = "Für heute erledigt";
+"main_completed_subtitle" = "Genießen Sie den Rest Ihres Tages.";
+"main_completed_streak_unit" = "Tagessträhne";
+"main_completed_message_3" = "Deine Gewohnheit nimmt Gestalt an. Mach weiter so morgen.";
+"main_completed_message_7" = "Eine ganze Woche. Du bist der echte Deal.";
+"main_completed_message_30" = "Unaufhaltsame Konstanz. Sei stolz auf dich.";
+"main_completed_message_100" = "100 Tage Beweis. Nichts kann dich jetzt aufhalten.";
+"main_completed_week_progress" = "%d / 7 Tage diese Woche";
+"main_completed_best_streak" = "Am besten: %d";
+"main_completed_next_block" = "Nächster Block %@";
+"main_todays_tasks" = "HEUTE AUFGABEN";
+"main_todays_tasks_done" = "ALLES KOMPLETT";
+"main_no_tasks" = "Noch keine Aufgaben. Fügen Sie einige über die Registerkarte „Aufgaben“ hinzu.";
+
+"routine_celebration_eyebrow" = "ALLES FERTIG";
+"routine_celebration_title" = "Du hast es geschafft!";
+"routine_celebration_message" = "Alle Aufgaben für heute erledigt.\nGenießen Sie Ihre Freiheit.";
+"routine_celebration_continue" = "Weitermachen";
+"routine_celebration_compact_title" = "Für heute ist alles erledigt";
+
+/* Tabs */
+"tab_home" = "Heim";
+"tab_tasks" = "Aufgaben";
+"tab_stats" = "Statistiken";
+"tab_settings" = "Einstellungen";
+
+/* Streak / Stats */
+"streak_days_format" = "%d Tagessträhne";
+"stats_streak_day_unit_singular" = "Tag";
+"stats_streak_day_unit_plural" = "Tage";
+"stats_current_streak" = "TAGESSTRAHL";
+"stats_longest_streak" = "BESTER STREAK";
+"stats_total_completed" = "TAGE INSGESAMT";
+"stats_week_progress_short" = "%d / 7 Tage diese Woche";
+"stats_next_milestone" = "NÄCHSTER MEILENSTEIN";
+"stats_next_milestone_days" = "%2$d Tage bis %1$@";
+"stats_summary_footer" = "Beste %d · Insgesamt %d Tage";
+"stats_all_badges_unlocked" = "Alle Abzeichen freigeschaltet";
+"stats_last_7_days" = "LETZTE 7 TAGE";
+"stats_month_calendar" = "DIESEN MONAT";
+"stats_contributions" = "AKTIVITÄT";
+"stats_badges" = "ABZEICHEN";
+"stats_no_data" = "Erledige einen Tag lang alle deine Aufgaben, um deinen Streak zu starten.";
+"stats_blocked_usage_today" = "BLOCKIERTE APPS · HEUTE";
+"stats_blocked_usage_no_selection" = "Noch keine Apps zum Blockieren ausgewählt.";
+"stats_emergency_unlocks" = "Notentriegelung";
+"stats_emergency_unlocks_count_unit" = "mal";
+"stats_emergency_unlocks_this_week" = "Diese Woche";
+"stats_emergency_unlocks_this_month" = "Diesen Monat";
+"stats_emergency_unlocks_past_year" = "Letztes Jahr";
+"stats_emergency_unlocks_total" = "Gesamt";
+"stats_emergency_unlocks_last" = "Zuletzt: %@";
+"stats_emergency_unlocks_none" = "Noch keine Notentriegelung.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "Vergleich";
+"stats_emergency_compare_week" = "im Vergleich zur letzten Woche";
+"stats_emergency_compare_month" = "im Vergleich zum letzten Monat";
+"stats_emergency_compare_year" = "im Vergleich zum letzten Jahr";
+"stats_emergency_compare_lock_title" = "Verfolgen Sie Ihren Entsperrtrend";
+"stats_emergency_compare_lock_message" = "Pro zeigt, wie Ihre Notentriegelungen im Vergleich zur letzten Woche, zum letzten Monat und zum letzten Jahr abschneiden.";
+"stats_blocked_duration" = "Gesperrt / Tag";
+"stats_blocked_duration_this_week" = "Diese Woche";
+"stats_blocked_duration_past_year" = "Letztes Jahr";
+"stats_blocked_duration_per_day_suffix" = "/ Tag";
+"stats_blocked_duration_none" = "Es wurde noch keine blockierte Zeit erfasst.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "AUFGABENAUFTEILUNG";
+"stats_task_period_month" = "Diesen Monat";
+"stats_task_period_year" = "Dieses Jahr";
+"stats_task_consistency_format" = "%d / %d Tage";
+"stats_task_no_data_month" = "Kreuzen Sie die Aufgaben dieses Monats an, um sie hier zu sehen.";
+"stats_task_no_data_year" = "Kreuzen Sie die diesjährigen Aufgaben an, um sie hier zu sehen.";
+"stats_task_compare" = "Vergleichen";
+"stats_task_compare_lock_title" = "Sehen Sie Ihren Fortschritt im Laufe der Zeit";
+"stats_task_compare_lock_message" = "Pro zeigt, wie jede Aufgabe im Vergleich zum vorherigen Monat oder Jahr abschneidet.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "Vergleich";
+"stats_blocked_compare_week" = "im Vergleich zur letzten Woche";
+"stats_blocked_compare_month" = "im Vergleich zum letzten Monat";
+"stats_blocked_compare_year" = "im Vergleich zum letzten Jahr";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "Vergleichen Sie Ihre Woche, Ihren Monat, Ihr Jahr";
+"stats_blocked_compare_lock_message" = "Pro zeigt, wie diese Woche, dieser Monat und dieses Jahr im Vergleich zur letzten abschneiden.";
+"stats_blocked_compare_unlock_button" = "Mit Pro entsperren";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro Berichte";
+"stats_pro_section_upsell_desc" = "Schalten Sie alle Vergleichsberichte von Zeit zu Zeit frei.";
+
+/* Badges */
+"badge_3day" = "3 Tage\nAnlasser";
+"badge_7day" = "Woche\nKrieger";
+"badge_30day" = "Monat\nMeister";
+"badge_100day" = "Jahrhundert\nChampion";
+"badge_365day" = "Jahr\nLegende";
+"badge_celebration_eyebrow" = "Abzeichen freigeschaltet";
+"badge_celebration_continue" = "Weitermachen";
+
+/* BlockingView */
+"blocking_header" = "GESPERRT";
+"blocking_subtitle" = "Schließe deine Aufgaben ab, um sie freizuschalten.";
+"blocking_give_up" = "Notentriegelung";
+"blocking_give_up_confirm_title" = "Für einen Notfall entsperren?";
+"blocking_give_up_confirm_message" = "Nur in Notfällen verwenden. Die heutigen Aufgaben bleiben unkontrolliert und die Blockierung wird morgen wieder aufgenommen.";
+"blocking_give_up_confirm_button" = "Notentriegelung";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "Notentriegelung";
+"emergency_unlock_subtitle" = "Sind Sie sicher, dass Sie die Sperre aufheben möchten?";
+"emergency_unlock_bullet_today" = "Die heutigen Aufgaben bleiben ungeprüft.";
+"emergency_unlock_bullet_tomorrow" = "Die Sperrung wird morgen früh wieder aufgenommen.";
+"emergency_unlock_bullet_streak" = "Ihr Streak könnte unterbrochen sein.";
+"emergency_unlock_slide_label" = "Zum Entsperren schieben";
+"emergency_unlock_cancel" = "Egal";
+
+/* SettingsView */
+"settings_start_time" = "Startzeit";
+"settings_start_time_label" = "Startzeit";
+"settings_start_time_daily" = "Täglich";
+"settings_routine_section" = "Routine";
+"settings_tasks" = "Aufgaben";
+"settings_tasks_footer" = "Erledigen Sie alle Aufgaben, um blockierte Apps freizuschalten. Aufgaben werden jeden Tag zurückgesetzt.\nTippen Sie auf einen Aufgabennamen, um ihn umzubenennen.";
+"settings_task_placeholder" = "Aufgabe";
+"settings_add_task_placeholder" = "Fügen Sie eine Aufgabe hinzu";
+"tasks_add_sheet_title" = "Aufgabe hinzufügen";
+"tasks_add_accessibility" = "Aufgabe hinzufügen";
+"tasks_add_timer_toggle" = "Stellen Sie einen Timer ein";
+"tasks_rename_sheet_title" = "Aufgabe umbenennen";
+"tasks_rename_accessibility" = "Aufgabe umbenennen";
+"tasks_delete_accessibility" = "Aufgaben löschen";
+"tasks_edit_done_accessibility" = "Bearbeitung abgeschlossen";
+"settings_blocking" = "Blockierung";
+"settings_blocked_apps" = "Blockierte Apps";
+"settings_blocked_apps_pro_upsell_title" = "Unbegrenzt sperren mit Pro";
+"settings_blocked_apps_pro_upsell_subtitle" = "Wählen Sie so viele Apps, Kategorien und Websites aus, wie Sie möchten.";
+"settings_blocked_apps_upsell_feature_categories" = "Blockieren Sie ganze App-Kategorien auf einmal";
+"settings_blocked_apps_upsell_feature_websites" = "Blockieren Sie auch Websites";
+"settings_blocked_apps_upsell_continue_free" = "Mit dem kostenlosen Plan fortfahren (bis zu %d)";
+"settings_categories_pro_only" = "App-Kategorien können nur mit Pro gespeichert werden. Wählen Sie im kostenlosen Plan einzelne Apps oder Websites aus.";
+"settings_items_unit" = "Artikel";
+"settings_weekday_scheduling" = "Wochentagsplan";
+"settings_appearance_section" = "Aussehen";
+"settings_appearance" = "Thema";
+"settings_appearance_system" = "System";
+"settings_appearance_light" = "Licht";
+"settings_appearance_dark" = "Dunkel";
+"settings_color_theme_section" = "Farbthema";
+"settings_color_theme" = "Farbthema";
+"settings_color_theme_pro_only" = "Pro-Mitglieder können die Akzentfarben der App anpassen.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "Klassiker";
+"settings_color_theme_sunrise" = "Sonnenaufgang";
+"settings_color_theme_forest" = "Wald";
+"settings_color_theme_ocean" = "Ozean";
+"settings_color_theme_lavender" = "Lavendel";
+"settings_color_theme_rose" = "Rose";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "Verlieren Sie Ihren Tag durch SNS und zeitraubende Apps?";
+"onboarding_problem_desc" = "Die Apps, die Sie ohne nachzudenken öffnen, summieren sich zu Stunden – und der ganze Tag vergeht wie im Flug.";
+"onboarding_problem_point_scroll" = "Öffnen von Social-Feeds im Autopiloten";
+"onboarding_problem_point_time" = "Jeden Tag verschmelzen Stunden mit Apps";
+"onboarding_problem_point_mood" = "Sie kommen nie zu dem, was Sie eigentlich tun möchten";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "So funktioniert MornDash";
+"onboarding_how_desc" = "Ab der von Ihnen festgelegten Zeit bleiben zeitraubende Apps für den Rest des Tages gesperrt.";
+"onboarding_how_step1_title" = "Zu Ihrer festgelegten Zeit";
+"onboarding_how_step1_desc" = "Die Blockierung wird jeden Tag automatisch aktiviert";
+"onboarding_how_step2_title" = "Apps werden gesperrt";
+"onboarding_how_step2_desc" = "Die von Ihnen ausgewählten Apps bleiben den ganzen Tag gesperrt";
+"onboarding_how_step3_title" = "Aufgaben schalten sie frei";
+"onboarding_how_step3_desc" = "Beenden Sie die von Ihnen gewählten Aufgaben, um die Blockade aufzuheben";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Screen Time aktivieren";
+"onboarding_permission_desc" = "Um Apps zu blockieren, benötigt MornDash Zugriff auf Apples Screen Time.";
+"onboarding_permission_note" = "Alles bleibt auf Ihrem Gerät. MornDash sendet Ihre Daten nirgendwo hin.";
+"onboarding_param_screentime" = "Screen Time aktivieren";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "Wählen Sie Apps zum Blockieren aus";
+"onboarding_apps_desc" = "Aus der Liste von gestern, falls angezeigt, oder verwenden Sie „Apps auswählen“.";
+"onboarding_apps_yesterday_label" = "Gestern";
+"onboarding_apps_free_footer" = "Kostenlos: bis zu %d Artikel. Kategorien benötigen Pro.";
+"onboarding_select_apps" = "Wählen Sie Apps aus";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%dm";
+"onboarding_usage_under_one_m" = "<1m";
+"onboarding_items_selected" = "%d Elemente ausgewählt";
+"onboarding_items_selected_with_limit" = "%d / %d Elemente ausgewählt";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "Wann soll es losgehen?";
+"onboarding_time_desc" = "Ab diesem Zeitpunkt bleiben Ihre ausgewählten Apps jeden Tag gesperrt.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "Legen Sie Ihre Entsperraufgaben fest";
+"onboarding_tasks_desc" = "Erledigen Sie alle Aufgaben, um Ihre Apps für den Tag freizuschalten.";
+"onboarding_tasks_your_list" = "Ihre Aufgaben";
+"onboarding_tasks_suggestions" = "Vorschläge";
+"onboarding_tasks_custom" = "Schreiben Sie Ihr eigenes";
+"onboarding_tasks_empty" = "Noch keine Aufgaben";
+"onboarding_tasks_empty_hint" = "Tippen Sie unten auf einen Vorschlag, um Aufgaben hinzuzufügen";
+"onboarding_tasks_ritual_count" = "%d Aufgaben";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "Nehmen Sie sich Ihre Zeit zurück.";
+"onboarding_motivation_desc" = "Verbringen Sie Ihre Stunden mit Ihrem Leben, nicht mit Ihrem Futter.\nKleine Erfolge bilden die Person aus, die Sie sein möchten.";
+"onboarding_motivation_point_focus" = "Bleiben Sie den ganzen Tag konzentriert";
+"onboarding_motivation_point_calm" = "Kommen Sie endlich zum Wesentlichen";
+"onboarding_motivation_point_self" = "Einen Schritt näher zu Ihrem besten Selbst";
+"onboarding_finish" = "Legen Sie los";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "Strecken";
+"onboarding_preset_bed" = "Mach mein Bett";
+"onboarding_preset_meditate" = "Meditiere 5 Minuten lang";
+"onboarding_preset_journal" = "Schreibe in mein Tagebuch";
+"onboarding_preset_read" = "Lesen Sie 10 Seiten";
+"onboarding_preset_run" = "Gehen Sie laufen";
+
+/* Default tasks */
+"default_task_stretch" = "Strecken";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "Abonnement";
+"settings_status_pro" = "Pro · erneuert %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "Kostenloser Plan";
+"settings_upgrade_to_pro" = "Upgrade auf Pro";
+"settings_restore_purchase" = "Kauf wiederherstellen";
+"settings_manage_subscription" = "Abonnement verwalten";
+"settings_restore_success_title" = "Restauriert";
+"settings_restore_success_message" = "Ihr Pro-Abonnement ist aktiv.";
+"settings_restore_failure_title" = "Konnte nicht wiederhergestellt werden";
+"settings_restore_failure_message" = "Für diese Apple-ID wurde kein aktives Abonnement gefunden.";
+"settings_restore_error_title" = "Wiederherstellung fehlgeschlagen";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "Unbegrenzte Aufgaben";
+"paywall_feature_unlimited_blocked_apps" = "Unbegrenzte Apps und Kategorien zum Blockieren";
+"paywall_feature_multi_schedule" = "Mehrere Blockfahrpläne";
+"paywall_feature_color_themes" = "Benutzerdefinierte Farbthemen";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "Der kostenlose Plan unterstützt bis zu %d Aufgaben.\nUpgrade auf Pro für unbegrenzte Aufgaben.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "Mehr Freiheit für die Morgen, die Sie sich wünschen.";
+"settings_card_pro_title" = "Pro Mitglied";
+"settings_card_pro_subtitle" = "Vielen Dank für die Unterstützung von MornDash.";
+"settings_legal_section" = "Legal";
+"settings_commercial_transactions" = "Spezifizierte Handelstransaktionen";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "Gehen Sie tiefer in Ihr Morgentraining ein.\nSchalte unten alles frei.";
+"paywall_plan_weekly" = "Wöchentlich";
+"paywall_plan_monthly" = "Monatlich";
+"paywall_plan_annual" = "Jährlich";
+"paywall_per_week" = "Wird jede Woche erneuert";
+"paywall_per_month" = "Wird jeden Monat erneuert";
+"paywall_per_year" = "Wird jedes Jahr erneuert";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "Sparen Sie %d%%";
+"paywall_cta_continue" = "Weitermachen";
+"paywall_cta_free_trial" = "Kostenlose Testversion starten";
+"paywall_trial_badge_first_week" = "1. Woche kostenlos";
+"paywall_trial_disclosure_format" = "%1$@ kostenlose Testversion für erstmalige Jahresabonnenten, dann %2$@/Jahr. Automatische Verlängerung, sofern die Kündigung nicht mindestens 24 Stunden vor Ablauf der Testversion erfolgt.";
+"trial_period_one_week" = "1 Woche";
+"trial_period_days_format" = "%d Tage";
+"trial_period_weeks_format" = "%d Woche(n)";
+"trial_period_months_format" = "%d Monat(e)";
+"trial_period_years_format" = "%d Jahr(e)";
+"paywall_terms" = "Nutzungsbedingungen";
+"paywall_privacy" = "Datenschutzrichtlinie";
+"paywall_commercial" = "Kommerzielle Transaktionen";
+"paywall_offerings_unavailable" = "Pläne konnten nicht geladen werden. Überprüfen Sie Ihre Verbindung.";
+"paywall_retry" = "Versuchen Sie es erneut";
+"paywall_error_title" = "Etwas ist schief gelaufen";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "Gehen Sie tiefer in Ihr Morgentraining ein. Alle Funktionen freigeschaltet.";
+"subscription_active" = "Aktiv";
+"subscription_next_renewal" = "Nächste Erneuerung";
+"subscription_manage_in_store" = "Verwalten in App Store";
+"subscription_cancel" = "Abonnement kündigen";
+"subscription_cancel_alert_title" = "Promit Stornierung fortfahren?";
+"subscription_cancel_alert_message" = "Sie werden zu Ihrer App Store-Abonnementverwaltungsseite weitergeleitet.";
+"subscription_cancel_alert_proceed" = "Öffnen Sie App Store";
+"subscription_terms_heading" = "Abonnementbedingungen";
+"subscription_terms_auto_renew" = "Das Abonnement verlängert sich automatisch, es sei denn, die automatische Verlängerung wird mindestens 24 Stunden vor dem Ende des aktuellen Zeitraums deaktiviert.";
+"subscription_terms_charge" = "Die Verlängerung Ihres Kontos wird innerhalb von 24 Stunden vor dem Ende des aktuellen Zeitraums belastet.";
+"subscription_terms_manage" = "Abonnements können nach dem Kauf über Ihre Kontoeinstellungen verwaltet und die automatische Verlängerung deaktiviert werden.";
+"subscription_terms_trial" = "Der Jahresplan beinhaltet eine einmalige einwöchige kostenlose Testversion, die nur berechtigten Neuabonnenten vorbehalten ist. Wochen- und Monatspläne beinhalten keine kostenlose Testversion. Bei Abschluss des Abonnements verfällt der ungenutzte Teil der kostenlosen Testversion. Nach Ablauf der Testversion wird Ihnen der Jahrespreis in Rechnung gestellt, es sei denn, Sie kündigen mindestens 24 Stunden vorher.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d Kniebeugen";
+"workout_preset_ai_badge" = "AI · PRO";
+"workout_reps_picker_title" = "Wählen Sie Kniebeugenwiederholungen";
+"workout_reps_picker_stepper_format" = "%d Wiederholungen";
+"workout_reps_picker_placeholder" = "Geben Sie Wiederholungen ein (1–999).";
+"workout_reps_picker_invalid" = "Geben Sie eine Zahl zwischen 1 und 999 ein";
+"workout_reps_picker_add_button" = "Fügen Sie diese Aufgabe hinzu";
+"workout_status_recognizing" = "Erkennen...";
+"workout_status_no_body" = "Treten Sie in den Rahmen";
+"workout_status_adjust" = "Passen Sie Ihre Position an";
+"workout_status_start" = "Start!";
+"workout_status_down" = "Runter!";
+"workout_status_good" = "Hübsch!";
+"workout_simulator_notice" = "Die Kamera ist im Simulator nicht verfügbar. Tippen Sie, um den Abschluss zu simulieren.";
+"workout_simulator_complete" = "Als abgeschlossen markieren";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "Studie %d min";
+"focus_preset_pcwork_title" = "PC-Arbeit %d min";
+"focus_preset_study_label" = "Studie";
+"focus_preset_pcwork_label" = "PC-Arbeit";
+"focus_preset_ai_badge" = "AI · PRO";
+"focus_status_detected" = "Konzentriert";
+"focus_status_no_face" = "Gehen Sie von der Kamera weg";
+"focus_status_multiple_faces" = "Mehrere Personen erkannt";
+"focus_status_low_quality" = "Die Beleuchtung ist zu schwach";
+"focus_status_bad_angle" = "Stelle dich der Kamera";
+"focus_status_face_too_small" = "Gehen Sie näher heran";
+"focus_hint_setup_title" = "Richten Sie Ihr Telefon ein";
+"focus_hint_setup_body" = "ProStellen Sie Ihr Telefon auf einen Ständer, sodass Ihr Gesicht in den Rahmen passt.";
+"focus_hint_setup_close" = "Habe es";
+"focus_privacy_notice" = "Das Video bleibt auf diesem Gerät";
+"focus_session_remaining" = "Übrig";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d min";
+"tasks_timer_seconds_short_format" = "%d Sek";
+"tasks_timer_duration_min_sec_format" = "%d Min. %02d Sek";
+"tasks_timer_minutes_label" = "Minuten";
+"tasks_timer_seconds_label" = "Sekunden";
+"tasks_timer_minutes_placeholder" = "Minuten (1–180)";
+"tasks_timer_sheet_title" = "Timer-Einstellungen";
+"tasks_timer_sheet_hint" = "Stellen Sie Minuten und Sekunden ein. Die Aufgabe ist abgeschlossen, wenn der Timer abgelaufen ist.";
+"tasks_timer_remove" = "Timer entfernen";
+"tasks_timer_save" = "Speichern";
+"timer_session_title" = "TIMER";
+"timer_session_hint" = "Der Bildschirm bleibt beim Laufen wach";
+"timer_session_start" = "Start";
+"timer_session_pause" = "Pause";
+
+/* Task ticket */
+"task_ticket_number_format" = "Nr.%02d";
+"task_ticket_done_stamp" = "ERLEDIGT";

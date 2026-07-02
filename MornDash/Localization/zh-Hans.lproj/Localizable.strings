@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "设置";
+"common_done" = "完毕";
+"common_cancel" = "取消";
+"common_select" = "选择";
+"common_next" = "下一个";
+"common_continue" = "继续";
+"common_back" = "后退";
+"common_skip" = "跳过";
+"common_start" = "开始使用";
+
+/* MainView (idle) */
+"main_next_block" = "下一个街区";
+"main_completed_eyebrow" = "全部完成";
+"main_completed_title" = "今天完成";
+"main_completed_subtitle" = "享受你一天剩下的时间。";
+"main_completed_streak_unit" = "日间连胜";
+"main_completed_message_3" = "你的习惯正在形成。明天继续。";
+"main_completed_message_7" = "整整一周。你是货真价实的。";
+"main_completed_message_30" = "不可阻挡的一致性。为自己感到骄傲。";
+"main_completed_message_100" = "100天的证明。现在没有什么可以阻止你。";
+"main_completed_week_progress" = "%d / 本周 7 天";
+"main_completed_best_streak" = "最佳：%d";
+"main_completed_next_block" = "下一个块 %@";
+"main_todays_tasks" = "今天的任务";
+"main_todays_tasks_done" = "全部完成";
+"main_no_tasks" = "还没有任务。从“任务”选项卡添加一些。";
+
+"routine_celebration_eyebrow" = "全部完成";
+"routine_celebration_title" = "你做到了！";
+"routine_celebration_message" = "今天的任务全部完成。\n享受你的自由。";
+"routine_celebration_continue" = "继续";
+"routine_celebration_compact_title" = "今天全部完成";
+
+/* Tabs */
+"tab_home" = "家";
+"tab_tasks" = "任务";
+"tab_stats" = "统计数据";
+"tab_settings" = "设置";
+
+/* Streak / Stats */
+"streak_days_format" = "%d 天连续";
+"stats_streak_day_unit_singular" = "天";
+"stats_streak_day_unit_plural" = "天";
+"stats_current_streak" = "日间连胜";
+"stats_longest_streak" = "最佳连胜";
+"stats_total_completed" = "总天数";
+"stats_week_progress_short" = "%d / 本周 7 天";
+"stats_next_milestone" = "下一个里程碑";
+"stats_next_milestone_days" = "%2$d 天到 %1$@";
+"stats_summary_footer" = "最佳 %d · 总计 %d 天";
+"stats_all_badges_unlocked" = "所有徽章已解锁";
+"stats_last_7_days" = "过去 7 天";
+"stats_month_calendar" = "本月";
+"stats_contributions" = "活动";
+"stats_badges" = "徽章";
+"stats_no_data" = "完成一天的所有任务即可开始你的连胜。";
+"stats_blocked_usage_today" = "今日被封锁的应用程序";
+"stats_blocked_usage_no_selection" = "尚未选择阻止的应用程序。";
+"stats_emergency_unlocks" = "紧急解锁";
+"stats_emergency_unlocks_count_unit" = "次";
+"stats_emergency_unlocks_this_week" = "本星期";
+"stats_emergency_unlocks_this_month" = "本月";
+"stats_emergency_unlocks_past_year" = "去年";
+"stats_emergency_unlocks_total" = "全部的";
+"stats_emergency_unlocks_last" = "最后：%@";
+"stats_emergency_unlocks_none" = "还没有紧急解锁。";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "比较";
+"stats_emergency_compare_week" = "与上周相比";
+"stats_emergency_compare_month" = "与上个月相比";
+"stats_emergency_compare_year" = "与去年相比";
+"stats_emergency_compare_lock_title" = "追踪您的解锁趋势";
+"stats_emergency_compare_lock_message" = "Pro 显示您的紧急解锁情况与上周、上个月和去年相比如何。";
+"stats_blocked_duration" = "阻止/天";
+"stats_blocked_duration_this_week" = "本星期";
+"stats_blocked_duration_past_year" = "去年";
+"stats_blocked_duration_per_day_suffix" = "/ 天";
+"stats_blocked_duration_none" = "尚未记录阻塞时间。";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "任务分解";
+"stats_task_period_month" = "本月";
+"stats_task_period_year" = "今年";
+"stats_task_consistency_format" = "%d / %d 天";
+"stats_task_no_data_month" = "核对本月的任务并在此处查看它们。";
+"stats_task_no_data_year" = "核对今年的任务，然后在此处查看它们。";
+"stats_task_compare" = "比较";
+"stats_task_compare_lock_title" = "查看您随时间的进步";
+"stats_task_compare_lock_message" = "Pro 显示每项任务与上个月或上一年的比较情况。";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "比较";
+"stats_blocked_compare_week" = "与上周相比";
+"stats_blocked_compare_month" = "与上个月相比";
+"stats_blocked_compare_year" = "与去年相比";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "比较您的周、月、年";
+"stats_blocked_compare_lock_message" = "Pro 显示本周、本月和今年与过去相比如何。";
+"stats_blocked_compare_unlock_button" = "使用 Pro 解锁";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "__学期1__ 报告";
+"stats_pro_section_upsell_desc" = "解锁所有期间比较报告。";
+
+/* Badges */
+"badge_3day" = "3天\n入门者";
+"badge_7day" = "周\n战士";
+"badge_30day" = "月份\n大师";
+"badge_100day" = "世纪\n冠军";
+"badge_365day" = "年份\n传奇";
+"badge_celebration_eyebrow" = "徽章已解锁";
+"badge_celebration_continue" = "继续";
+
+/* BlockingView */
+"blocking_header" = "封锁";
+"blocking_subtitle" = "完成任务即可解锁。";
+"blocking_give_up" = "紧急解锁";
+"blocking_give_up_confirm_title" = "紧急情况下解锁？";
+"blocking_give_up_confirm_message" = "仅在紧急情况下使用。今天的任务将保持不变，明天将恢复阻塞。";
+"blocking_give_up_confirm_button" = "紧急解锁";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "紧急解锁";
+"emergency_unlock_subtitle" = "您确定要解锁吗？";
+"emergency_unlock_bullet_today" = "今天的任务将保持不变。";
+"emergency_unlock_bullet_tomorrow" = "封锁将于明天早上恢复。";
+"emergency_unlock_bullet_streak" = "你的连续纪录可能会被打破。";
+"emergency_unlock_slide_label" = "滑动解锁";
+"emergency_unlock_cancel" = "没关系";
+
+/* SettingsView */
+"settings_start_time" = "开始时间";
+"settings_start_time_label" = "开始时间";
+"settings_start_time_daily" = "日常的";
+"settings_routine_section" = "常规";
+"settings_tasks" = "任务";
+"settings_tasks_footer" = "完成所有任务以解锁被阻止的应用程序。任务每天都会重置。\n点击任务名称即可将其重命名。";
+"settings_task_placeholder" = "任务";
+"settings_add_task_placeholder" = "添加任务";
+"tasks_add_sheet_title" = "添加任务";
+"tasks_add_accessibility" = "添加任务";
+"tasks_add_timer_toggle" = "设置计时器";
+"tasks_rename_sheet_title" = "重命名任务";
+"tasks_rename_accessibility" = "重命名任务";
+"tasks_delete_accessibility" = "删除任务";
+"tasks_edit_done_accessibility" = "编辑完成";
+"settings_blocking" = "阻塞";
+"settings_blocked_apps" = "被阻止的应用程序";
+"settings_blocked_apps_pro_upsell_title" = "使用 Pro 阻止无限";
+"settings_blocked_apps_pro_upsell_subtitle" = "选择任意数量的应用程序、类别和网站。";
+"settings_blocked_apps_upsell_feature_categories" = "立即阻止整个应用程序类别";
+"settings_blocked_apps_upsell_feature_websites" = "也阻止网站";
+"settings_blocked_apps_upsell_continue_free" = "继续免费计划（最多 %d）";
+"settings_categories_pro_only" = "应用程序类别只能使用 Pro 保存。在免费计划中，选择单个应用程序或网站。";
+"settings_items_unit" = "项目";
+"settings_weekday_scheduling" = "工作日时间表";
+"settings_appearance_section" = "外貌";
+"settings_appearance" = "主题";
+"settings_appearance_system" = "系统";
+"settings_appearance_light" = "光";
+"settings_appearance_dark" = "黑暗的";
+"settings_color_theme_section" = "颜色主题";
+"settings_color_theme" = "颜色主题";
+"settings_color_theme_pro_only" = "Pro 成员可以自定义应用程序的强调色。";
+"settings_pro_badge" = "__学期1__";
+"settings_color_theme_classic" = "经典的";
+"settings_color_theme_sunrise" = "日出";
+"settings_color_theme_forest" = "森林";
+"settings_color_theme_ocean" = "海洋";
+"settings_color_theme_lavender" = "薰衣草";
+"settings_color_theme_rose" = "玫瑰";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "因 SNS 和浪费时间的应用程序而浪费了一天的时间？";
+"onboarding_problem_desc" = "你不假思索地打开的应用程序加起来长达几个小时——你的一整天就这样溜走了。";
+"onboarding_problem_point_scroll" = "在自动驾驶仪上打开社交源";
+"onboarding_problem_point_time" = "每天的时间融入应用程序";
+"onboarding_problem_point_mood" = "永远做不到你真正想做的事";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "MornDash 如何运作";
+"onboarding_how_desc" = "从您设定的时间开始，浪费时间的应用程序将在一天中的剩余时间内保持锁定状态。";
+"onboarding_how_step1_title" = "在您设定的时间";
+"onboarding_how_step1_desc" = "每天自动阻止踢球";
+"onboarding_how_step2_title" = "应用程序锁定";
+"onboarding_how_step2_desc" = "您选择的应用程序全天保持锁定状态";
+"onboarding_how_step3_title" = "任务解锁它们";
+"onboarding_how_step3_desc" = "完成您选择的任务以释放块";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "启用 Screen Time";
+"onboarding_permission_desc" = "要阻止应用程序，MornDash 需要访问 Apple 的 Screen Time。";
+"onboarding_permission_note" = "一切都保留在您的设备上。 MornDash 不会将您的数据发送到任何地方。";
+"onboarding_param_screentime" = "启用 Screen Time";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "选择要阻止的应用程序";
+"onboarding_apps_desc" = "从昨天的列表（如果显示）中选择，或使用“选择应用程序”。";
+"onboarding_apps_yesterday_label" = "昨天";
+"onboarding_apps_free_footer" = "免费：最多 %d 件物品。类别需要 Pro。";
+"onboarding_select_apps" = "选择应用程序";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%d米";
+"onboarding_usage_under_one_m" = "<1m";
+"onboarding_items_selected" = "已选择 %d 项";
+"onboarding_items_selected_with_limit" = "已选择 %d / %d 项目";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "应该什么时候开始？";
+"onboarding_time_desc" = "从每天的这个时间开始，您选择的应用程序将保持锁定状态。";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "设置您的解锁任务";
+"onboarding_tasks_desc" = "完成当天的所有任务即可解锁您的应用程序。";
+"onboarding_tasks_your_list" = "你的任务";
+"onboarding_tasks_suggestions" = "建议";
+"onboarding_tasks_custom" = "写你自己的";
+"onboarding_tasks_empty" = "还没有任务";
+"onboarding_tasks_empty_hint" = "点按下面的建议即可添加任务";
+"onboarding_tasks_ritual_count" = "%d 任务";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "收回你的时间。";
+"onboarding_motivation_desc" = "把时间花在你的生活上，而不是你的饲料上。\n小的胜利可以塑造你想成为的人。";
+"onboarding_motivation_point_focus" = "一整天保持专注";
+"onboarding_motivation_point_calm" = "终于明白真正重要的事情了";
+"onboarding_motivation_point_self" = "离最好的自己又近了一步";
+"onboarding_finish" = "开始使用";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "拉紧";
+"onboarding_preset_bed" = "整理我的床";
+"onboarding_preset_meditate" = "冥想5分钟";
+"onboarding_preset_journal" = "写在我的日记里";
+"onboarding_preset_read" = "读10页";
+"onboarding_preset_run" = "去跑步";
+
+/* Default tasks */
+"default_task_stretch" = "拉紧";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "订阅";
+"settings_status_pro" = "Pro · 续订 %@";
+"settings_status_pro_no_date" = "__学期1__";
+"settings_status_free" = "免费计划";
+"settings_upgrade_to_pro" = "升级到__学期1__";
+"settings_restore_purchase" = "恢复购买";
+"settings_manage_subscription" = "管理订阅";
+"settings_restore_success_title" = "已恢复";
+"settings_restore_success_message" = "您的 Pro 订阅已激活。";
+"settings_restore_failure_title" = "无法恢复";
+"settings_restore_failure_message" = "未找到此 Apple ID 的有效订阅。";
+"settings_restore_error_title" = "恢复失败";
+"common_ok" = "__第七学期__";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "无限任务";
+"paywall_feature_unlimited_blocked_apps" = "无限的应用程序和类别可阻止";
+"paywall_feature_multi_schedule" = "多块时间表";
+"paywall_feature_color_themes" = "自定义颜色主题";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "免费计划最多支持 %d 任务。\n升级到 Pro 即可执行无限任务。";
+/* Settings subscription card */
+"settings_card_free_title" = "__学期0__ __学期1__";
+"settings_card_free_subtitle" = "为您想要的早晨提供更多自由。";
+"settings_card_pro_title" = "__学期1__ 会员";
+"settings_card_pro_subtitle" = "感谢您支持MornDash。";
+"settings_legal_section" = "合法的";
+"settings_commercial_transactions" = "特定商业交易";
+
+/* Custom paywall */
+"paywall_title" = "__学期0__ __学期1__";
+"paywall_subtitle" = "更深入地进行早晨的练习。\n解锁以下所有内容。";
+"paywall_plan_weekly" = "每周";
+"paywall_plan_monthly" = "每月";
+"paywall_plan_annual" = "年度的";
+"paywall_per_week" = "每周更新";
+"paywall_per_month" = "每月更新";
+"paywall_per_year" = "每年都会更新";
+"paywall_badge_best_value" = "__第八学期__";
+"paywall_savings_format" = "保存 %d%%";
+"paywall_cta_continue" = "继续";
+"paywall_cta_free_trial" = "开始免费试用";
+"paywall_trial_badge_first_week" = "第一周免费";
+"paywall_trial_disclosure_format" = "首次年度订阅者可免费试用%1$@，然后每年%2$@。除非在试用结束前至少 24 小时取消，否则自动续订。";
+"trial_period_one_week" = "1周";
+"trial_period_days_format" = "%d 天";
+"trial_period_weeks_format" = "%d 周";
+"trial_period_months_format" = "%d 个月";
+"trial_period_years_format" = "%d 年";
+"paywall_terms" = "使用条款";
+"paywall_privacy" = "隐私政策";
+"paywall_commercial" = "商业交易";
+"paywall_offerings_unavailable" = "无法加载计划。检查您的连接。";
+"paywall_retry" = "再试一次";
+"paywall_error_title" = "出了点问题";
+
+/* Subscription details */
+"subscription_pro_title" = "__学期0__ __学期1__";
+"subscription_pro_description" = "更深入地进行早晨的练习。所有功能均已解锁。";
+"subscription_active" = "积极的";
+"subscription_next_renewal" = "下次续订";
+"subscription_manage_in_store" = "在 App Store 进行管理";
+"subscription_cancel" = "取消订阅";
+"subscription_cancel_alert_title" = "Pro需要取消吗？";
+"subscription_cancel_alert_message" = "您将被重定向到 App Store 订阅管理页面。";
+"subscription_cancel_alert_proceed" = "打开__学期2__";
+"subscription_terms_heading" = "订阅条款";
+"subscription_terms_auto_renew" = "除非在当前周期结束前至少 24 小时关闭自动续订，否则订阅会自动续订。";
+"subscription_terms_charge" = "您的帐户将在当前期限结束前 24 小时内收取续订费用。";
+"subscription_terms_manage" = "购买后，可以通过您的帐户设置管理订阅并关闭自动续订。";
+"subscription_terms_trial" = "年度计划包括仅适用于符合条件的新订阅者的一次性 1 周免费试用。每周和每月计划不包括免费试用。订阅后，免费试用的任何未使用部分将被没收，并且除非您至少提前 24 小时取消，否则在试用结束时将向您收取年费。";
+
+/* Workout */
+"workout_preset_squats_title" = "%d 深蹲";
+"workout_preset_ai_badge" = "__第五学期__ · PRO";
+"workout_reps_picker_title" = "选择深蹲次数";
+"workout_reps_picker_stepper_format" = "%d 代表";
+"workout_reps_picker_placeholder" = "输入次数 (1-999)";
+"workout_reps_picker_invalid" = "输入 1 到 999 之间的数字";
+"workout_reps_picker_add_button" = "添加此任务";
+"workout_status_recognizing" = "认识到...";
+"workout_status_no_body" = "步入框架";
+"workout_status_adjust" = "调整你的位置";
+"workout_status_start" = "开始！";
+"workout_status_down" = "向下！";
+"workout_status_good" = "好的！";
+"workout_simulator_notice" = "模拟器中的相机不可用。点击以模拟完成。";
+"workout_simulator_complete" = "标记为完成";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "学习 %d 分钟";
+"focus_preset_pcwork_title" = "PC 工作 %d 分钟";
+"focus_preset_study_label" = "学习";
+"focus_preset_pcwork_label" = "电脑工作";
+"focus_preset_ai_badge" = "__第五学期__ · PRO";
+"focus_status_detected" = "专注";
+"focus_status_no_face" = "远离相机";
+"focus_status_multiple_faces" = "检测到多人";
+"focus_status_low_quality" = "照明太低";
+"focus_status_bad_angle" = "面对相机";
+"focus_status_face_too_small" = "靠近一点";
+"focus_hint_setup_title" = "设置您的手机";
+"focus_hint_setup_body" = "__术语1__将您的手机放在支架上，以便您的脸部适合框架。";
+"focus_hint_setup_close" = "知道了";
+"focus_privacy_notice" = "视频保留在此设备上";
+"focus_session_remaining" = "其余的";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d 分钟";
+"tasks_timer_seconds_short_format" = "%d 秒";
+"tasks_timer_duration_min_sec_format" = "%d 分 %02d 秒";
+"tasks_timer_minutes_label" = "分钟";
+"tasks_timer_seconds_label" = "秒数";
+"tasks_timer_minutes_placeholder" = "分钟 (1–180)";
+"tasks_timer_sheet_title" = "定时器设置";
+"tasks_timer_sheet_hint" = "设置分钟和秒。当计时器结束时任务完成。";
+"tasks_timer_remove" = "删除计时器";
+"tasks_timer_save" = "节省";
+"timer_session_title" = "计时器";
+"timer_session_hint" = "运行时屏幕保持唤醒状态";
+"timer_session_start" = "开始";
+"timer_session_pause" = "暂停";
+
+/* Task ticket */
+"task_ticket_number_format" = "编号%02d";
+"task_ticket_done_stamp" = "完毕";

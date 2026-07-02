@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "Налаштування";
+"common_done" = "Готово";
+"common_cancel" = "Скасувати";
+"common_select" = "Виберіть";
+"common_next" = "Далі";
+"common_continue" = "Продовжити";
+"common_back" = "Назад";
+"common_skip" = "Пропустити";
+"common_start" = "Почніть роботу";
+
+/* MainView (idle) */
+"main_next_block" = "НАСТУПНИЙ БЛОК";
+"main_completed_eyebrow" = "ВСЕ ГОТОВО";
+"main_completed_title" = "Готово на сьогодні";
+"main_completed_subtitle" = "Насолоджуйтесь рештою дня.";
+"main_completed_streak_unit" = "СМУГА ДНЯ";
+"main_completed_message_3" = "Ваша звичка формується. Продовжуйте завтра.";
+"main_completed_message_7" = "Повний тиждень. Ти справжня справа.";
+"main_completed_message_30" = "Нестримна послідовність. Пишайтеся собою.";
+"main_completed_message_100" = "100 днів доказів. Тепер ніщо не може зупинити вас.";
+"main_completed_week_progress" = "%d / 7 днів цього тижня";
+"main_completed_best_streak" = "Найкраще: %d";
+"main_completed_next_block" = "Наступний блок %@";
+"main_todays_tasks" = "ЗАВДАННЯ НА СЬОГОДНІ";
+"main_todays_tasks_done" = "ВСЕ ПОВНО";
+"main_no_tasks" = "Завдань ще немає. Додайте деякі з вкладки Завдання.";
+
+"routine_celebration_eyebrow" = "ВСЕ ГОТОВО";
+"routine_celebration_title" = "Ви це зробили!";
+"routine_celebration_message" = "Всі завдання на сьогодні виконано.\nНасолоджуйтесь своєю свободою.";
+"routine_celebration_continue" = "Продовжити";
+"routine_celebration_compact_title" = "На сьогодні все зроблено";
+
+/* Tabs */
+"tab_home" = "додому";
+"tab_tasks" = "завдання";
+"tab_stats" = "статистика";
+"tab_settings" = "Налаштування";
+
+/* Streak / Stats */
+"streak_days_format" = "%d днів поспіль";
+"stats_streak_day_unit_singular" = "день";
+"stats_streak_day_unit_plural" = "днів";
+"stats_current_streak" = "СМУГА ДНЯ";
+"stats_longest_streak" = "НАЙКРАЩА СЕРІЯ";
+"stats_total_completed" = "ВСЬОГО ДНІВ";
+"stats_week_progress_short" = "%d / 7 днів цього тижня";
+"stats_next_milestone" = "НАСТУПНА ВІХА";
+"stats_next_milestone_days" = "%2$d днів до %1$@";
+"stats_summary_footer" = "Найкращий %d · Усього %d днів";
+"stats_all_badges_unlocked" = "Усі значки розблоковано";
+"stats_last_7_days" = "ОСТАННІ 7 ДНІВ";
+"stats_month_calendar" = "ЦЬОГО МІСЯЦЯ";
+"stats_contributions" = "ДІЯЛЬНІСТЬ";
+"stats_badges" = "ЗНАЧКИ";
+"stats_no_data" = "Виконайте всі свої завдання протягом дня, щоб почати свою серію.";
+"stats_blocked_usage_today" = "ЗАБЛОКУВАНІ ПРОГРАМИ · СЬОГОДНІ";
+"stats_blocked_usage_no_selection" = "Ще не вибрано програм для блокування.";
+"stats_emergency_unlocks" = "Аварійне відмикання";
+"stats_emergency_unlocks_count_unit" = "разів";
+"stats_emergency_unlocks_this_week" = "Цього тижня";
+"stats_emergency_unlocks_this_month" = "Цей місяць";
+"stats_emergency_unlocks_past_year" = "Минулий рік";
+"stats_emergency_unlocks_total" = "Всього";
+"stats_emergency_unlocks_last" = "Останній: %@";
+"stats_emergency_unlocks_none" = "Екстреного розблокування ще немає.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "Порівняння";
+"stats_emergency_compare_week" = "проти минулого тижня";
+"stats_emergency_compare_month" = "проти минулого місяця";
+"stats_emergency_compare_year" = "проти минулого року";
+"stats_emergency_compare_lock_title" = "Відстежуйте тенденцію розблокування";
+"stats_emergency_compare_lock_message" = "Pro показує порівняння ваших екстрених розблокувань з минулим тижнем, минулим місяцем і минулим роком.";
+"stats_blocked_duration" = "Заблоковано / день";
+"stats_blocked_duration_this_week" = "Цього тижня";
+"stats_blocked_duration_past_year" = "Минулий рік";
+"stats_blocked_duration_per_day_suffix" = "/ день";
+"stats_blocked_duration_none" = "Заблокований час ще не зареєстровано.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "РОЗБІР ЗАВДАННЯ";
+"stats_task_period_month" = "Цей місяць";
+"stats_task_period_year" = "Цього року";
+"stats_task_consistency_format" = "%d / %d днів";
+"stats_task_no_data_month" = "Позначте завдання цього місяця, щоб побачити їх тут.";
+"stats_task_no_data_year" = "Позначте завдання цього року, щоб побачити їх тут.";
+"stats_task_compare" = "Порівняйте";
+"stats_task_compare_lock_title" = "Переглядайте свій прогрес з часом";
+"stats_task_compare_lock_message" = "Pro показує порівняння кожного завдання з попереднім місяцем або роком.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "Порівняння";
+"stats_blocked_compare_week" = "проти минулого тижня";
+"stats_blocked_compare_month" = "проти минулого місяця";
+"stats_blocked_compare_year" = "проти минулого року";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "Порівняйте свій тиждень, місяць, рік";
+"stats_blocked_compare_lock_message" = "Pro показує, як цей тиждень, місяць і рік співвідносяться з минулим.";
+"stats_blocked_compare_unlock_button" = "Розблокувати за допомогою Pro";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro Звіти";
+"stats_pro_section_upsell_desc" = "Розблокуйте всі порівняльні звіти за періодами.";
+
+/* Badges */
+"badge_3day" = "3 день\nСтартер";
+"badge_7day" = "тиждень\nВоїн";
+"badge_30day" = "місяць\nмайстер";
+"badge_100day" = "Століття\nЧемпіон";
+"badge_365day" = "рік\nЛегенда";
+"badge_celebration_eyebrow" = "ЗНАЧОК РОЗБЛОКУВАНО";
+"badge_celebration_continue" = "Продовжити";
+
+/* BlockingView */
+"blocking_header" = "ЗАБЛОКУВАНО";
+"blocking_subtitle" = "Виконайте завдання, щоб розблокувати.";
+"blocking_give_up" = "Екстрене розблокування";
+"blocking_give_up_confirm_title" = "Розблокувати в екстреному випадку?";
+"blocking_give_up_confirm_message" = "Використовуйте лише в екстрених випадках. Сьогоднішні завдання залишаться непозначеними, а завтра блокування відновиться.";
+"blocking_give_up_confirm_button" = "Екстрене розблокування";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "Екстрене розблокування";
+"emergency_unlock_subtitle" = "Ви впевнені, що хочете розблокувати?";
+"emergency_unlock_bullet_today" = "Сьогоднішні завдання залишаться неперевіреними.";
+"emergency_unlock_bullet_tomorrow" = "Блокування відновлять завтра вранці.";
+"emergency_unlock_bullet_streak" = "Ваша смуга може бути порушена.";
+"emergency_unlock_slide_label" = "Посуньте, щоб розблокувати";
+"emergency_unlock_cancel" = "Неважливо";
+
+/* SettingsView */
+"settings_start_time" = "Час початку";
+"settings_start_time_label" = "Час початку";
+"settings_start_time_daily" = "Щодня";
+"settings_routine_section" = "Рутина";
+"settings_tasks" = "завдання";
+"settings_tasks_footer" = "Виконайте всі завдання, щоб розблокувати заблоковані програми. Завдання скидаються щодня.\nТоркніться назви завдання, щоб перейменувати його.";
+"settings_task_placeholder" = "завдання";
+"settings_add_task_placeholder" = "Додайте завдання";
+"tasks_add_sheet_title" = "Додати завдання";
+"tasks_add_accessibility" = "Додати завдання";
+"tasks_add_timer_toggle" = "Встановіть таймер";
+"tasks_rename_sheet_title" = "Перейменувати завдання";
+"tasks_rename_accessibility" = "Перейменувати завдання";
+"tasks_delete_accessibility" = "Видалити завдання";
+"tasks_edit_done_accessibility" = "Завершено редагування";
+"settings_blocking" = "Блокування";
+"settings_blocked_apps" = "Заблоковані програми";
+"settings_blocked_apps_pro_upsell_title" = "Блокувати без обмежень за допомогою Pro";
+"settings_blocked_apps_pro_upsell_subtitle" = "Виберіть скільки завгодно програм, категорій і веб-сайтів.";
+"settings_blocked_apps_upsell_feature_categories" = "Блокувати цілі категорії додатків одночасно";
+"settings_blocked_apps_upsell_feature_websites" = "Також блокуйте веб-сайти";
+"settings_blocked_apps_upsell_continue_free" = "Продовжити за безкоштовним планом (до %d)";
+"settings_categories_pro_only" = "Категорії програм можна зберегти лише за допомогою Pro. У безкоштовному плані виберіть окремі програми або веб-сайти.";
+"settings_items_unit" = "елементи";
+"settings_weekday_scheduling" = "Розклад на будні дні";
+"settings_appearance_section" = "Зовнішній вигляд";
+"settings_appearance" = "Тема";
+"settings_appearance_system" = "система";
+"settings_appearance_light" = "світло";
+"settings_appearance_dark" = "Темний";
+"settings_color_theme_section" = "Кольорова тема";
+"settings_color_theme" = "Кольорова тема";
+"settings_color_theme_pro_only" = "Учасники Pro можуть налаштувати акцентні кольори програми.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "класичний";
+"settings_color_theme_sunrise" = "Схід сонця";
+"settings_color_theme_forest" = "Ліс";
+"settings_color_theme_ocean" = "океан";
+"settings_color_theme_lavender" = "Лаванда";
+"settings_color_theme_rose" = "Роза";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "Втрачаєте свій день через SNS і програми, які витрачають час?";
+"onboarding_problem_desc" = "Програми, які ви відкриваєте, не замислюючись, додають годин — і весь день вислизає.";
+"onboarding_problem_point_scroll" = "Відкриття соціальних стрічок на автопілоті";
+"onboarding_problem_point_time" = "Години щодня перетворюються на додатки";
+"onboarding_problem_point_mood" = "Ніколи не дійти до того, що насправді хочеш зробити";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "Як працює MornDash";
+"onboarding_how_desc" = "Починаючи з установленого вами часу, програми, які витрачають час, залишаються заблокованими до кінця дня.";
+"onboarding_how_step1_title" = "У встановлений час";
+"onboarding_how_step1_desc" = "Блокування вмикається автоматично щодня";
+"onboarding_how_step2_title" = "Блокування програм";
+"onboarding_how_step2_desc" = "Вибрані вами програми залишаються заблокованими протягом усього дня";
+"onboarding_how_step3_title" = "Завдання розблокують їх";
+"onboarding_how_step3_desc" = "Завершіть вибрані завдання, щоб звільнити блок";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Увімкнути Screen Time";
+"onboarding_permission_desc" = "Щоб заблокувати програми, MornDash потрібен доступ до Screen Time Apple.";
+"onboarding_permission_note" = "Усе залишається на вашому пристрої. MornDash нікуди не надсилає ваші дані.";
+"onboarding_param_screentime" = "Увімкнути Screen Time";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "Виберіть програми для блокування";
+"onboarding_apps_desc" = "Зі вчорашнього списку, якщо він відображається, або скористайтеся «Вибрати програми».";
+"onboarding_apps_yesterday_label" = "вчора";
+"onboarding_apps_free_footer" = "Безкоштовно: до %d елементів. Категорії потребують Pro.";
+"onboarding_select_apps" = "Виберіть Програми";
+"onboarding_usage_hm_format" = "%dгод %dхв";
+"onboarding_usage_h_only_format" = "%dгод";
+"onboarding_usage_m_only_format" = "%dм";
+"onboarding_usage_under_one_m" = "<1м";
+"onboarding_items_selected" = "Вибрано елементів: %d";
+"onboarding_items_selected_with_limit" = "Вибрано елементів: %d / %d";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "Коли це має початися?";
+"onboarding_time_desc" = "З цього часу щодня вибрані програми залишаються заблокованими.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "Встановіть завдання для розблокування";
+"onboarding_tasks_desc" = "Виконайте всі завдання, щоб розблокувати програми на день.";
+"onboarding_tasks_your_list" = "Ваші завдання";
+"onboarding_tasks_suggestions" = "Пропозиції";
+"onboarding_tasks_custom" = "Напишіть свій";
+"onboarding_tasks_empty" = "Завдань ще немає";
+"onboarding_tasks_empty_hint" = "Торкніться пропозиції нижче, щоб додати завдання";
+"onboarding_tasks_ritual_count" = "%d завдань";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "Поверніть свій час назад.";
+"onboarding_motivation_desc" = "Витрачайте свої години на своє життя, а не на корм.\nМаленькі перемоги формують людину, якою ви хочете бути.";
+"onboarding_motivation_point_focus" = "Залишайтеся зосередженими цілий день";
+"onboarding_motivation_point_calm" = "Нарешті дійдіть до справді важливого";
+"onboarding_motivation_point_self" = "На крок ближче до себе";
+"onboarding_finish" = "Почніть роботу";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "Розтягнути";
+"onboarding_preset_bed" = "Застели моє ліжко";
+"onboarding_preset_meditate" = "Медитуйте протягом 5 хвилин";
+"onboarding_preset_journal" = "Запиши в мій щоденник";
+"onboarding_preset_read" = "Прочитати 10 сторінок";
+"onboarding_preset_run" = "Вирушайте на пробіжку";
+
+/* Default tasks */
+"default_task_stretch" = "Розтягнути";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "Підписка";
+"settings_status_pro" = "Pro · поновлює %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "Безкоштовний план";
+"settings_upgrade_to_pro" = "Оновити до Pro";
+"settings_restore_purchase" = "Відновити покупку";
+"settings_manage_subscription" = "Керувати підпискою";
+"settings_restore_success_title" = "Відновлено";
+"settings_restore_success_message" = "Ваша підписка на Pro активна.";
+"settings_restore_failure_title" = "Не вдалося відновити";
+"settings_restore_failure_message" = "Не знайдено жодної активної підписки для цього Apple ID.";
+"settings_restore_error_title" = "Не вдалося відновити";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "Необмежена кількість завдань";
+"paywall_feature_unlimited_blocked_apps" = "Необмежена кількість програм і категорій для блокування";
+"paywall_feature_multi_schedule" = "Багатоблокові розклади";
+"paywall_feature_color_themes" = "Спеціальні колірні теми";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "Безкоштовний план підтримує до %d завдань.\nОновіть до Pro для необмеженої кількості завдань.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "Більше свободи для ранків, які ви хочете.";
+"settings_card_pro_title" = "Pro Член";
+"settings_card_pro_subtitle" = "Дякуємо за підтримку MornDash.";
+"settings_legal_section" = "юридичний";
+"settings_commercial_transactions" = "Зазначені комерційні операції";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "Заглибтеся у свою ранкову практику.\nРозблокуйте все нижче.";
+"paywall_plan_weekly" = "Щотижня";
+"paywall_plan_monthly" = "Щомісяця";
+"paywall_plan_annual" = "Щорічний";
+"paywall_per_week" = "Оновлюється щотижня";
+"paywall_per_month" = "Оновлюється щомісяця";
+"paywall_per_year" = "Оновлюється щороку";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "Зекономте %d%%";
+"paywall_cta_continue" = "Продовжити";
+"paywall_cta_free_trial" = "Розпочніть безкоштовну пробну версію";
+"paywall_trial_badge_first_week" = "1-й тиждень безкоштовно";
+"paywall_trial_disclosure_format" = "%1$@ безкоштовна пробна версія для тих, хто вперше підписався на рік, потім %2$@/рік. Автоматично поновлюється, якщо не скасовувати принаймні за 24 години до закінчення пробного періоду.";
+"trial_period_one_week" = "1 тиждень";
+"trial_period_days_format" = "%d днів";
+"trial_period_weeks_format" = "%d тижн.";
+"trial_period_months_format" = "%d міс.";
+"trial_period_years_format" = "%d років";
+"paywall_terms" = "Умови використання";
+"paywall_privacy" = "Політика конфіденційності";
+"paywall_commercial" = "Комерційні операції";
+"paywall_offerings_unavailable" = "Не вдалося завантажити плани. Перевірте підключення.";
+"paywall_retry" = "Спробуйте знову";
+"paywall_error_title" = "Щось пішло не так";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "Заглибтеся у свою ранкову практику. Усі функції розблоковано.";
+"subscription_active" = "Активний";
+"subscription_next_renewal" = "Наступне оновлення";
+"subscription_manage_in_store" = "Керувати в App Store";
+"subscription_cancel" = "Скасувати підписку";
+"subscription_cancel_alert_title" = "Proскасувати?";
+"subscription_cancel_alert_message" = "Ви будете перенаправлені на сторінку керування підпискою App Store.";
+"subscription_cancel_alert_proceed" = "Відкрити App Store";
+"subscription_terms_heading" = "Умови підписки";
+"subscription_terms_auto_renew" = "Підписка автоматично поновлюється, якщо не вимкнути автоматичне поновлення принаймні за 24 години до закінчення поточного періоду.";
+"subscription_terms_charge" = "З вашого облікового запису буде стягнуто плату за поновлення протягом 24 годин до закінчення поточного періоду.";
+"subscription_terms_manage" = "Після покупки можна керувати підписками та вимкнути автоматичне оновлення в налаштуваннях облікового запису.";
+"subscription_terms_trial" = "Річний план включає одноразову 1-тижневу безкоштовну пробну версію лише для нових підписників, які відповідають вимогам. Тижневі та місячні плани не включають безкоштовну пробну версію. Будь-яка невикористана частина безкоштовної пробної версії втрачається, коли ви підписуєтеся, і після закінчення пробної версії з вас стягуватиметься річна ціна, якщо ви не скасуєте її принаймні за 24 години до цього.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d Присідання";
+"workout_preset_ai_badge" = "AI · PRO";
+"workout_reps_picker_title" = "Виберіть повторення присідань";
+"workout_reps_picker_stepper_format" = "%d повторень";
+"workout_reps_picker_placeholder" = "Введіть повторення (1-999)";
+"workout_reps_picker_invalid" = "Введіть число від 1 до 999";
+"workout_reps_picker_add_button" = "Додайте це завдання";
+"workout_status_recognizing" = "Визнаючи...";
+"workout_status_no_body" = "Крок у кадр";
+"workout_status_adjust" = "Відкоригуйте своє положення";
+"workout_status_start" = "старт!";
+"workout_status_down" = "Вниз!";
+"workout_status_good" = "приємно!";
+"workout_simulator_notice" = "Камера недоступна в симуляторі. Торкніться, щоб імітувати завершення.";
+"workout_simulator_complete" = "Позначити як завершене";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "Навчання %d хв";
+"focus_preset_pcwork_title" = "Робота на ПК %d хв";
+"focus_preset_study_label" = "дослідження";
+"focus_preset_pcwork_label" = "Робота з ПК";
+"focus_preset_ai_badge" = "AI · PRO";
+"focus_status_detected" = "Зосереджений";
+"focus_status_no_face" = "Відійдіть від камери";
+"focus_status_multiple_faces" = "Виявлено кілька людей";
+"focus_status_low_quality" = "Освітлення занадто низьке";
+"focus_status_bad_angle" = "Обличчям до камери";
+"focus_status_face_too_small" = "Підійдіть ближче";
+"focus_hint_setup_title" = "Налаштуйте телефон";
+"focus_hint_setup_body" = "Prop телефон на підставці, щоб ваше обличчя містилося в рамці.";
+"focus_hint_setup_close" = "зрозумів";
+"focus_privacy_notice" = "Відео залишається на цьому пристрої";
+"focus_session_remaining" = "Залишилося";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d хв";
+"tasks_timer_seconds_short_format" = "%d сек";
+"tasks_timer_duration_min_sec_format" = "%d хв %02d сек";
+"tasks_timer_minutes_label" = "хвилин";
+"tasks_timer_seconds_label" = "секунд";
+"tasks_timer_minutes_placeholder" = "Хвилини (1–180)";
+"tasks_timer_sheet_title" = "Налаштування таймера";
+"tasks_timer_sheet_hint" = "Встановіть хвилини та секунди. Завдання буде завершено, коли закінчиться таймер.";
+"tasks_timer_remove" = "Видаліть таймер";
+"tasks_timer_save" = "зберегти";
+"timer_session_title" = "ТАЙМЕР";
+"timer_session_hint" = "Під час роботи екран не активний";
+"timer_session_start" = "Почніть";
+"timer_session_pause" = "Пауза";
+
+/* Task ticket */
+"task_ticket_number_format" = "№%02d";
+"task_ticket_done_stamp" = "ГОТОВО";

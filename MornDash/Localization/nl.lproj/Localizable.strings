@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "Instellingen";
+"common_done" = "Klaar";
+"common_cancel" = "Annuleren";
+"common_select" = "Selecteer";
+"common_next" = "Volgende";
+"common_continue" = "Doorgaan";
+"common_back" = "Rug";
+"common_skip" = "Overslaan";
+"common_start" = "Aan de slag";
+
+/* MainView (idle) */
+"main_next_block" = "VOLGENDE BLOK";
+"main_completed_eyebrow" = "ALLES GEDAAN";
+"main_completed_title" = "Klaar voor vandaag";
+"main_completed_subtitle" = "Geniet van de rest van je dag.";
+"main_completed_streak_unit" = "DAG STREEK";
+"main_completed_message_3" = "Je gewoonte krijgt vorm. Ga zo door morgen.";
+"main_completed_message_7" = "Een volledige week. Jij bent de echte deal.";
+"main_completed_message_30" = "Onstuitbare consistentie. Wees trots op jezelf.";
+"main_completed_message_100" = "100 dagen bewijs. Niets kan je nu tegenhouden.";
+"main_completed_week_progress" = "%d / 7 dagen deze week";
+"main_completed_best_streak" = "Beste: %d";
+"main_completed_next_block" = "Volgend blok %@";
+"main_todays_tasks" = "DE TAKEN VAN VANDAAG";
+"main_todays_tasks_done" = "ALLES COMPLEET";
+"main_no_tasks" = "Nog geen taken. Voeg er enkele toe via het tabblad Taken.";
+
+"routine_celebration_eyebrow" = "ALLES GEDAAN";
+"routine_celebration_title" = "Je hebt het gedaan!";
+"routine_celebration_message" = "Alle taken voor vandaag voltooid.\nGeniet van je vrijheid.";
+"routine_celebration_continue" = "Doorgaan";
+"routine_celebration_compact_title" = "Alles gedaan voor vandaag";
+
+/* Tabs */
+"tab_home" = "Thuis";
+"tab_tasks" = "Taken";
+"tab_stats" = "Statistieken";
+"tab_settings" = "Instellingen";
+
+/* Streak / Stats */
+"streak_days_format" = "%d dagreeks";
+"stats_streak_day_unit_singular" = "dag";
+"stats_streak_day_unit_plural" = "dagen";
+"stats_current_streak" = "DAG STREEK";
+"stats_longest_streak" = "BESTE STREEK";
+"stats_total_completed" = "TOTAAL DAGEN";
+"stats_week_progress_short" = "%d / 7 dagen deze week";
+"stats_next_milestone" = "VOLGENDE MIJLPAAL";
+"stats_next_milestone_days" = "%2$d dagen tot %1$@";
+"stats_summary_footer" = "Beste %d · Totaal %d dagen";
+"stats_all_badges_unlocked" = "Alle badges ontgrendeld";
+"stats_last_7_days" = "LAATSTE 7 DAGEN";
+"stats_month_calendar" = "DEZE MAAND";
+"stats_contributions" = "ACTIVITEIT";
+"stats_badges" = "BADGES";
+"stats_no_data" = "Voltooi al je taken voor een dag om aan je streak te beginnen.";
+"stats_blocked_usage_today" = "GEBLOKKEERDE APPS · VANDAAG";
+"stats_blocked_usage_no_selection" = "Er zijn nog geen apps geselecteerd om te blokkeren.";
+"stats_emergency_unlocks" = "Noodontgrendelingen";
+"stats_emergency_unlocks_count_unit" = "keer";
+"stats_emergency_unlocks_this_week" = "Deze week";
+"stats_emergency_unlocks_this_month" = "Deze maand";
+"stats_emergency_unlocks_past_year" = "Afgelopen jaar";
+"stats_emergency_unlocks_total" = "Totaal";
+"stats_emergency_unlocks_last" = "Laatste: %@";
+"stats_emergency_unlocks_none" = "Er zijn nog geen noodontgrendelingen.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "Vergelijking";
+"stats_emergency_compare_week" = "versus vorige week";
+"stats_emergency_compare_month" = "versus vorige maand";
+"stats_emergency_compare_year" = "versus vorig jaar";
+"stats_emergency_compare_lock_title" = "Volg uw ontgrendelingstrend";
+"stats_emergency_compare_lock_message" = "Pro laat zien hoe uw noodontgrendelingen zich verhouden tot vorige week, vorige maand en vorig jaar.";
+"stats_blocked_duration" = "Geblokkeerd / dag";
+"stats_blocked_duration_this_week" = "Deze week";
+"stats_blocked_duration_past_year" = "Afgelopen jaar";
+"stats_blocked_duration_per_day_suffix" = "/ dag";
+"stats_blocked_duration_none" = "Er is nog geen geblokkeerde tijd geregistreerd.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "TAAKVERDELING";
+"stats_task_period_month" = "Deze maand";
+"stats_task_period_year" = "Dit jaar";
+"stats_task_consistency_format" = "%d / %d dagen";
+"stats_task_no_data_month" = "Vink taken van deze maand af om ze hier te bekijken.";
+"stats_task_no_data_year" = "Vink de taken van dit jaar aan om ze hier te zien.";
+"stats_task_compare" = "Vergelijken";
+"stats_task_compare_lock_title" = "Bekijk uw voortgang in de loop van de tijd";
+"stats_task_compare_lock_message" = "Pro laat zien hoe elke taak zich verhoudt tot de voorgaande maand of het voorgaande jaar.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "Vergelijking";
+"stats_blocked_compare_week" = "versus vorige week";
+"stats_blocked_compare_month" = "versus vorige maand";
+"stats_blocked_compare_year" = "versus vorig jaar";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "Vergelijk uw week, maand, jaar";
+"stats_blocked_compare_lock_message" = "Pro laat zien hoe deze week, maand en jaar zich verhouden tot de vorige.";
+"stats_blocked_compare_unlock_button" = "Ontgrendel met Pro";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro Rapporten";
+"stats_pro_section_upsell_desc" = "Ontgrendel alle vergelijkingsrapporten van periode tot periode.";
+
+/* Badges */
+"badge_3day" = "3 dagen\nVoorgerecht";
+"badge_7day" = "Week\nStrijder";
+"badge_30day" = "Maand\nMeester";
+"badge_100day" = "Eeuw\nKampioen";
+"badge_365day" = "Jaar\nLegende";
+"badge_celebration_eyebrow" = "BADGE ONTGRENDELD";
+"badge_celebration_continue" = "Doorgaan";
+
+/* BlockingView */
+"blocking_header" = "GEBLOKKEERD";
+"blocking_subtitle" = "Voltooi je taken om te ontgrendelen.";
+"blocking_give_up" = "Noodontgrendeling";
+"blocking_give_up_confirm_title" = "Ontgrendelen voor een noodgeval?";
+"blocking_give_up_confirm_message" = "Alleen gebruiken in noodgevallen. De taken van vandaag blijven ongecontroleerd en het blokkeren wordt morgen hervat.";
+"blocking_give_up_confirm_button" = "Noodontgrendeling";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "Noodontgrendeling";
+"emergency_unlock_subtitle" = "Weet je zeker dat je wilt ontgrendelen?";
+"emergency_unlock_bullet_today" = "De taken van vandaag zullen ongecontroleerd blijven.";
+"emergency_unlock_bullet_tomorrow" = "De blokkering wordt morgenochtend hervat.";
+"emergency_unlock_bullet_streak" = "Je streak is mogelijk verbroken.";
+"emergency_unlock_slide_label" = "Schuif om te ontgrendelen";
+"emergency_unlock_cancel" = "Laat maar zitten";
+
+/* SettingsView */
+"settings_start_time" = "Begintijd";
+"settings_start_time_label" = "Begintijd";
+"settings_start_time_daily" = "Dagelijks";
+"settings_routine_section" = "Routine";
+"settings_tasks" = "Taken";
+"settings_tasks_footer" = "Voltooi alle taken om geblokkeerde apps te ontgrendelen. Taken worden elke dag gereset.\nTik op een taaknaam om deze te hernoemen.";
+"settings_task_placeholder" = "Taak";
+"settings_add_task_placeholder" = "Voeg een taak toe";
+"tasks_add_sheet_title" = "Taak toevoegen";
+"tasks_add_accessibility" = "Taak toevoegen";
+"tasks_add_timer_toggle" = "Stel een timer in";
+"tasks_rename_sheet_title" = "Hernoem taak";
+"tasks_rename_accessibility" = "Hernoem taak";
+"tasks_delete_accessibility" = "Taken verwijderen";
+"tasks_edit_done_accessibility" = "Klaar met bewerken";
+"settings_blocking" = "Blokkeren";
+"settings_blocked_apps" = "Geblokkeerde apps";
+"settings_blocked_apps_pro_upsell_title" = "Blokkeer onbeperkt met Pro";
+"settings_blocked_apps_pro_upsell_subtitle" = "Kies zoveel apps, categorieën en websites als je wilt.";
+"settings_blocked_apps_upsell_feature_categories" = "Blokkeer hele app-categorieën in één keer";
+"settings_blocked_apps_upsell_feature_websites" = "Blokkeer ook websites";
+"settings_blocked_apps_upsell_continue_free" = "Ga door met het gratis abonnement (tot %d)";
+"settings_categories_pro_only" = "App-categorieën kunnen alleen worden opgeslagen met Pro. Kies bij het gratis abonnement individuele apps of websites.";
+"settings_items_unit" = "artikelen";
+"settings_weekday_scheduling" = "Weekdag schema";
+"settings_appearance_section" = "Verschijning";
+"settings_appearance" = "Thema";
+"settings_appearance_system" = "Systeem";
+"settings_appearance_light" = "Licht";
+"settings_appearance_dark" = "Donker";
+"settings_color_theme_section" = "Kleur thema";
+"settings_color_theme" = "Kleur thema";
+"settings_color_theme_pro_only" = "Pro-leden kunnen de accentkleuren van de app aanpassen.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "Klassiek";
+"settings_color_theme_sunrise" = "Zonsopgang";
+"settings_color_theme_forest" = "Woud";
+"settings_color_theme_ocean" = "Oceaan";
+"settings_color_theme_lavender" = "Lavendel";
+"settings_color_theme_rose" = "Roos";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "Verliest u uw dag door SNS en tijdverspillende apps?";
+"onboarding_problem_desc" = "De apps die je zonder na te denken opent, duren uren – en je hele dag glijdt voorbij.";
+"onboarding_problem_point_scroll" = "Sociale feeds openen op de automatische piloot";
+"onboarding_problem_point_time" = "Uren versmelten elke dag in apps";
+"onboarding_problem_point_mood" = "Nooit komen tot wat je eigenlijk wilt doen";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "Hoe MornDash werkt";
+"onboarding_how_desc" = "Vanaf jouw ingestelde tijd blijven tijdrovende apps de rest van de dag vergrendeld.";
+"onboarding_how_step1_title" = "Op jouw ingestelde tijd";
+"onboarding_how_step1_desc" = "Het blokkeren wordt elke dag automatisch geactiveerd";
+"onboarding_how_step2_title" = "Apps vergrendelen";
+"onboarding_how_step2_desc" = "De apps die je kiest, blijven de hele dag vergrendeld";
+"onboarding_how_step3_title" = "Taken ontgrendelen ze";
+"onboarding_how_step3_desc" = "Voltooi de door jou gekozen taken om het blok vrij te geven";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Schakel Screen Time in";
+"onboarding_permission_desc" = "Om apps te blokkeren heeft MornDash toegang nodig tot Screen Time van Apple.";
+"onboarding_permission_note" = "Alles blijft op uw apparaat staan. MornDash stuurt uw gegevens nergens naartoe.";
+"onboarding_param_screentime" = "Schakel Screen Time in";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "Kies apps om te blokkeren";
+"onboarding_apps_desc" = "Uit de lijst van gisteren, indien weergegeven, of gebruik Apps selecteren.";
+"onboarding_apps_yesterday_label" = "Gisteren";
+"onboarding_apps_free_footer" = "Gratis: maximaal %d artikelen. Categorieën hebben Pro nodig.";
+"onboarding_select_apps" = "Selecteer Apps";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%du";
+"onboarding_usage_m_only_format" = "%dm";
+"onboarding_usage_under_one_m" = "<1m";
+"onboarding_items_selected" = "%d artikelen geselecteerd";
+"onboarding_items_selected_with_limit" = "%d / %d items geselecteerd";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "Wanneer moet het beginnen?";
+"onboarding_time_desc" = "Vanaf dit tijdstip blijven de door u gekozen apps elke dag vergrendeld.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "Stel uw ontgrendelingstaken in";
+"onboarding_tasks_desc" = "Voltooi alle taken om uw apps voor vandaag te ontgrendelen.";
+"onboarding_tasks_your_list" = "Jouw taken";
+"onboarding_tasks_suggestions" = "Suggesties";
+"onboarding_tasks_custom" = "Schrijf je eigen";
+"onboarding_tasks_empty" = "Nog geen taken";
+"onboarding_tasks_empty_hint" = "Tik hieronder op een suggestie om taken toe te voegen";
+"onboarding_tasks_ritual_count" = "%d taken";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "Neem je tijd terug.";
+"onboarding_motivation_desc" = "Besteed uw uren aan uw leven, niet aan uw feed.\nKleine overwinningen vormen de persoon die je wilt zijn.";
+"onboarding_motivation_point_focus" = "Blijf de hele dag gefocust";
+"onboarding_motivation_point_calm" = "Kom eindelijk tot de kern van wat er echt toe doet";
+"onboarding_motivation_point_self" = "Een stap dichter bij je beste zelf";
+"onboarding_finish" = "Aan de slag";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "Strek";
+"onboarding_preset_bed" = "Maak mijn bed op";
+"onboarding_preset_meditate" = "Mediteer gedurende 5 minuten";
+"onboarding_preset_journal" = "Schrijf in mijn dagboek";
+"onboarding_preset_read" = "Lees 10 pagina's";
+"onboarding_preset_run" = "Ga hardlopen";
+
+/* Default tasks */
+"default_task_stretch" = "Strek";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "Abonnement";
+"settings_status_pro" = "Pro · verlengt %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "Gratis abonnement";
+"settings_upgrade_to_pro" = "Upgrade naar Pro";
+"settings_restore_purchase" = "Aankoop herstellen";
+"settings_manage_subscription" = "Beheer abonnement";
+"settings_restore_success_title" = "Hersteld";
+"settings_restore_success_message" = "Uw Pro-abonnement is actief.";
+"settings_restore_failure_title" = "Kan niet herstellen";
+"settings_restore_failure_message" = "Er is geen actief abonnement gevonden voor deze Apple ID.";
+"settings_restore_error_title" = "Herstellen mislukt";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "Onbeperkte taken";
+"paywall_feature_unlimited_blocked_apps" = "Onbeperkte apps en categorieën om te blokkeren";
+"paywall_feature_multi_schedule" = "Meerdere blokschema's";
+"paywall_feature_color_themes" = "Aangepaste kleurthema's";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "Het gratis abonnement ondersteunt maximaal %d taken.\nUpgrade naar Pro voor onbeperkte taken.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "Meer vrijheid voor de ochtenden die jij wilt.";
+"settings_card_pro_title" = "Pro Lid";
+"settings_card_pro_subtitle" = "Bedankt voor het ondersteunen van MornDash.";
+"settings_legal_section" = "Legaal";
+"settings_commercial_transactions" = "Gespecificeerde commerciële transacties";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "Ga dieper in op je ochtendoefening.\nOntgrendel alles hieronder.";
+"paywall_plan_weekly" = "Wekelijks";
+"paywall_plan_monthly" = "Maandelijks";
+"paywall_plan_annual" = "Jaarlijks";
+"paywall_per_week" = "Wordt elke week verlengd";
+"paywall_per_month" = "Wordt elke maand verlengd";
+"paywall_per_year" = "Wordt elk jaar verlengd";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "Bespaar %d%%";
+"paywall_cta_continue" = "Doorgaan";
+"paywall_cta_free_trial" = "Gratis proefperiode starten";
+"paywall_trial_badge_first_week" = "1e week gratis";
+"paywall_trial_disclosure_format" = "%1$@ gratis proefperiode voor nieuwe jaarabonnees, daarna %2$@/jaar. Automatische verlenging, tenzij u ten minste 24 uur vóór het einde van de proefperiode annuleert.";
+"trial_period_one_week" = "1 week";
+"trial_period_days_format" = "%d dagen";
+"trial_period_weeks_format" = "%d week(en)";
+"trial_period_months_format" = "%d maand(en)";
+"trial_period_years_format" = "%d jaar/jaren";
+"paywall_terms" = "Gebruiksvoorwaarden";
+"paywall_privacy" = "Privacybeleid";
+"paywall_commercial" = "Commerciële transacties";
+"paywall_offerings_unavailable" = "Kan plannen niet laden. Controleer uw verbinding.";
+"paywall_retry" = "Probeer het opnieuw";
+"paywall_error_title" = "Er is iets misgegaan";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "Ga dieper in op je ochtendoefening. Alle functies ontgrendeld.";
+"subscription_active" = "Actief";
+"subscription_next_renewal" = "Volgende verlenging";
+"subscription_manage_in_store" = "Beheer in App Store";
+"subscription_cancel" = "Abonnement opzeggen";
+"subscription_cancel_alert_title" = "Pro doorgaan met annuleren?";
+"subscription_cancel_alert_message" = "U wordt doorgestuurd naar uw App Store abonnementsbeheerpagina.";
+"subscription_cancel_alert_proceed" = "Open App Store";
+"subscription_terms_heading" = "Abonnementsvoorwaarden";
+"subscription_terms_auto_renew" = "Het abonnement wordt automatisch verlengd, tenzij automatische verlenging ten minste 24 uur voor het einde van de huidige periode wordt uitgeschakeld.";
+"subscription_terms_charge" = "De verlenging wordt binnen 24 uur vóór het einde van de huidige periode in rekening gebracht op uw account.";
+"subscription_terms_manage" = "Abonnementen kunnen na aankoop worden beheerd en automatische verlenging worden uitgeschakeld via uw accountinstellingen.";
+"subscription_terms_trial" = "Het jaarabonnement omvat een eenmalige gratis proefperiode van 1 week, uitsluitend voor in aanmerking komende nieuwe abonnees. Wekelijkse en maandelijkse abonnementen omvatten geen gratis proefperiode. Elk ongebruikt deel van de gratis proefperiode vervalt wanneer u zich abonneert, en de jaarprijs wordt aan u in rekening gebracht wanneer de proefperiode eindigt, tenzij u ten minste 24 uur van tevoren annuleert.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d Squats";
+"workout_preset_ai_badge" = "AI · PRO";
+"workout_reps_picker_title" = "Kies squat-herhalingen";
+"workout_reps_picker_stepper_format" = "%d herhalingen";
+"workout_reps_picker_placeholder" = "Voer herhalingen in (1-999)";
+"workout_reps_picker_invalid" = "Voer een getal tussen 1 en 999 in";
+"workout_reps_picker_add_button" = "Voeg deze taak toe";
+"workout_status_recognizing" = "Herkennen...";
+"workout_status_no_body" = "Stap in het frame";
+"workout_status_adjust" = "Pas uw positie aan";
+"workout_status_start" = "Begin!";
+"workout_status_down" = "Omlaag!";
+"workout_status_good" = "Leuk!";
+"workout_simulator_notice" = "Camera is niet beschikbaar in de simulator. Tik om voltooiing te simuleren.";
+"workout_simulator_complete" = "Markeer als voltooid";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "Studeer %d min";
+"focus_preset_pcwork_title" = "PC-werk %d min";
+"focus_preset_study_label" = "Studie";
+"focus_preset_pcwork_label" = "PC-werk";
+"focus_preset_ai_badge" = "AI · PRO";
+"focus_status_detected" = "Gefocust";
+"focus_status_no_face" = "Ga weg van de camera";
+"focus_status_multiple_faces" = "Meerdere mensen gedetecteerd";
+"focus_status_low_quality" = "Verlichting is te laag";
+"focus_status_bad_angle" = "Kijk naar de camera";
+"focus_status_face_too_small" = "Kom dichterbij";
+"focus_hint_setup_title" = "Stel uw telefoon in";
+"focus_hint_setup_body" = "Prop uw telefoon op een standaard zodat uw gezicht in het frame past.";
+"focus_hint_setup_close" = "Ik heb het";
+"focus_privacy_notice" = "Video blijft op dit apparaat staan";
+"focus_session_remaining" = "Overig";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d min";
+"tasks_timer_seconds_short_format" = "%d sec";
+"tasks_timer_duration_min_sec_format" = "%d min %02d sec";
+"tasks_timer_minutes_label" = "Notulen";
+"tasks_timer_seconds_label" = "Seconden";
+"tasks_timer_minutes_placeholder" = "Minuten (1–180)";
+"tasks_timer_sheet_title" = "Timerinstellingen";
+"tasks_timer_sheet_hint" = "Minuten en seconden instellen. De taak is voltooid wanneer de timer is afgelopen.";
+"tasks_timer_remove" = "Timer verwijderen";
+"tasks_timer_save" = "Redden";
+"timer_session_title" = "TIMER";
+"timer_session_hint" = "Scherm blijft wakker tijdens het hardlopen";
+"timer_session_start" = "Begin";
+"timer_session_pause" = "Pauze";
+
+/* Task ticket */
+"task_ticket_number_format" = "Nr.%02d";
+"task_ticket_done_stamp" = "KLAAR";

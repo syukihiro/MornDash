@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "설정";
+"common_done" = "완료";
+"common_cancel" = "취소";
+"common_select" = "선택하다";
+"common_next" = "다음";
+"common_continue" = "계속하다";
+"common_back" = "뒤쪽에";
+"common_skip" = "건너뛰다";
+"common_start" = "시작하기";
+
+/* MainView (idle) */
+"main_next_block" = "다음 블록";
+"main_completed_eyebrow" = "모두 완료";
+"main_completed_title" = "오늘은 완료";
+"main_completed_subtitle" = "남은 하루도 잘 보내세요.";
+"main_completed_streak_unit" = "하루 연속";
+"main_completed_message_3" = "당신의 습관이 구체화되고 있습니다. 내일 계속하세요.";
+"main_completed_message_7" = "일주일. 당신은 진짜 거래입니다.";
+"main_completed_message_30" = "멈출 수 없는 일관성. 자신을 자랑스러워하십시오.";
+"main_completed_message_100" = "100일 증명. 이제 아무것도 당신을 막을 수 없습니다.";
+"main_completed_week_progress" = "%d / 이번 주 7일";
+"main_completed_best_streak" = "최고: %d";
+"main_completed_next_block" = "다음 블록 %@";
+"main_todays_tasks" = "오늘의 작업";
+"main_todays_tasks_done" = "모두 완료";
+"main_no_tasks" = "아직 작업이 없습니다. 작업 탭에서 일부를 추가하세요.";
+
+"routine_celebration_eyebrow" = "모두 완료";
+"routine_celebration_title" = "당신이 해냈어요!";
+"routine_celebration_message" = "오늘의 모든 작업이 완료되었습니다.\n자유를 즐기세요.";
+"routine_celebration_continue" = "계속하다";
+"routine_celebration_compact_title" = "오늘은 다 끝났어";
+
+/* Tabs */
+"tab_home" = "집";
+"tab_tasks" = "작업";
+"tab_stats" = "통계";
+"tab_settings" = "설정";
+
+/* Streak / Stats */
+"streak_days_format" = "%d일 연속";
+"stats_streak_day_unit_singular" = "낮";
+"stats_streak_day_unit_plural" = "날";
+"stats_current_streak" = "하루 연속";
+"stats_longest_streak" = "최고의 연속";
+"stats_total_completed" = "총 일수";
+"stats_week_progress_short" = "%d / 이번 주 7일";
+"stats_next_milestone" = "다음 마일스톤";
+"stats_next_milestone_days" = "%2$d일부터 %1$@까지";
+"stats_summary_footer" = "최고 %d · 총 %d일";
+"stats_all_badges_unlocked" = "모든 배지 잠금 해제";
+"stats_last_7_days" = "지난 7일";
+"stats_month_calendar" = "이번 달";
+"stats_contributions" = "활동";
+"stats_badges" = "배지";
+"stats_no_data" = "하루 동안 모든 작업을 완료하여 연속 활동을 시작하세요.";
+"stats_blocked_usage_today" = "차단된 앱 · 오늘";
+"stats_blocked_usage_no_selection" = "아직 차단하도록 선택된 앱이 없습니다.";
+"stats_emergency_unlocks" = "긴급 잠금 해제";
+"stats_emergency_unlocks_count_unit" = "타임스";
+"stats_emergency_unlocks_this_week" = "이번주";
+"stats_emergency_unlocks_this_month" = "이번 달";
+"stats_emergency_unlocks_past_year" = "작년";
+"stats_emergency_unlocks_total" = "총";
+"stats_emergency_unlocks_last" = "마지막: %@";
+"stats_emergency_unlocks_none" = "아직 긴급 잠금 해제가 없습니다.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "비교";
+"stats_emergency_compare_week" = "지난주 대비";
+"stats_emergency_compare_month" = "지난달 대비";
+"stats_emergency_compare_year" = "작년 대비";
+"stats_emergency_compare_lock_title" = "잠금 해제 추세를 추적하세요";
+"stats_emergency_compare_lock_message" = "Pro은 지난 주, 지난 달, 작년과 비교하여 긴급 상황 잠금 해제 방법을 보여줍니다.";
+"stats_blocked_duration" = "차단된 날짜/일";
+"stats_blocked_duration_this_week" = "이번주";
+"stats_blocked_duration_past_year" = "작년";
+"stats_blocked_duration_per_day_suffix" = "/ 낮";
+"stats_blocked_duration_none" = "아직 차단된 시간이 기록되지 않았습니다.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "작업 분류";
+"stats_task_period_month" = "이번 달";
+"stats_task_period_year" = "올해";
+"stats_task_consistency_format" = "%d / %d일";
+"stats_task_no_data_month" = "이번 달 작업을 확인하여 여기에서 확인하세요.";
+"stats_task_no_data_year" = "여기에서 보려면 올해의 작업을 확인하세요.";
+"stats_task_compare" = "비교하다";
+"stats_task_compare_lock_title" = "시간 경과에 따른 진행 상황 확인";
+"stats_task_compare_lock_message" = "Pro은 각 작업을 이전 달 또는 연도와 비교하는 방법을 보여줍니다.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "비교";
+"stats_blocked_compare_week" = "지난주 대비";
+"stats_blocked_compare_month" = "지난달 대비";
+"stats_blocked_compare_year" = "작년 대비";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "주, 월, 연도 비교";
+"stats_blocked_compare_lock_message" = "Pro은 이번 주, 월, 연도가 지난 주와 어떻게 비교되는지 보여줍니다.";
+"stats_blocked_compare_unlock_button" = "Pro로 잠금 해제";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro 보고서";
+"stats_pro_section_upsell_desc" = "모든 기간별 비교 보고서를 잠금 해제하세요.";
+
+/* Badges */
+"badge_3day" = "3일\n스타터";
+"badge_7day" = "주\n전사";
+"badge_30day" = "월\n마스터";
+"badge_100day" = "세기\n챔피언";
+"badge_365day" = "연도\n범례";
+"badge_celebration_eyebrow" = "배지 잠금 해제됨";
+"badge_celebration_continue" = "계속하다";
+
+/* BlockingView */
+"blocking_header" = "막힌";
+"blocking_subtitle" = "잠금을 해제하려면 작업을 완료하세요.";
+"blocking_give_up" = "긴급 잠금 해제";
+"blocking_give_up_confirm_title" = "긴급 상황에 대비해 잠금을 해제하시겠습니까?";
+"blocking_give_up_confirm_message" = "긴급 상황에서만 사용하십시오. 오늘의 작업은 확인되지 않은 상태로 유지되며 차단은 내일 재개됩니다.";
+"blocking_give_up_confirm_button" = "긴급 잠금 해제";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "긴급 잠금 해제";
+"emergency_unlock_subtitle" = "잠금을 해제하시겠습니까?";
+"emergency_unlock_bullet_today" = "오늘의 작업은 확인되지 않은 상태로 유지됩니다.";
+"emergency_unlock_bullet_tomorrow" = "내일 아침부터 차단이 재개됩니다.";
+"emergency_unlock_bullet_streak" = "당신의 행진이 깨질 수도 있습니다.";
+"emergency_unlock_slide_label" = "슬라이드하여 잠금 해제";
+"emergency_unlock_cancel" = "괜찮아요";
+
+/* SettingsView */
+"settings_start_time" = "시작 시간";
+"settings_start_time_label" = "시작 시간";
+"settings_start_time_daily" = "일일";
+"settings_routine_section" = "루틴";
+"settings_tasks" = "작업";
+"settings_tasks_footer" = "차단된 앱을 잠금 해제하려면 모든 작업을 완료하세요. 작업은 매일 재설정됩니다.\n이름을 바꾸려면 작업 이름을 탭하세요.";
+"settings_task_placeholder" = "일";
+"settings_add_task_placeholder" = "작업 추가";
+"tasks_add_sheet_title" = "작업 추가";
+"tasks_add_accessibility" = "작업 추가";
+"tasks_add_timer_toggle" = "타이머 설정";
+"tasks_rename_sheet_title" = "작업 이름 바꾸기";
+"tasks_rename_accessibility" = "작업 이름 바꾸기";
+"tasks_delete_accessibility" = "작업 삭제";
+"tasks_edit_done_accessibility" = "편집 완료";
+"settings_blocking" = "블로킹";
+"settings_blocked_apps" = "차단된 앱";
+"settings_blocked_apps_pro_upsell_title" = "Pro을 사용하여 무제한 차단";
+"settings_blocked_apps_pro_upsell_subtitle" = "원하는 만큼 앱, 카테고리, 웹사이트를 선택하세요.";
+"settings_blocked_apps_upsell_feature_categories" = "전체 앱 카테고리를 한 번에 차단";
+"settings_blocked_apps_upsell_feature_websites" = "웹사이트도 차단하세요";
+"settings_blocked_apps_upsell_continue_free" = "무료 요금제 계속 이용(최대 %d)";
+"settings_categories_pro_only" = "앱 카테고리는 Pro로만 저장할 수 있습니다. 무료 요금제에서는 개별 앱이나 웹사이트를 선택하세요.";
+"settings_items_unit" = "아이템";
+"settings_weekday_scheduling" = "평일 일정";
+"settings_appearance_section" = "모습";
+"settings_appearance" = "주제";
+"settings_appearance_system" = "체계";
+"settings_appearance_light" = "빛";
+"settings_appearance_dark" = "어두운";
+"settings_color_theme_section" = "색상 테마";
+"settings_color_theme" = "색상 테마";
+"settings_color_theme_pro_only" = "Pro 회원은 앱의 강조 색상을 맞춤 설정할 수 있습니다.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "권위 있는";
+"settings_color_theme_sunrise" = "해돋이";
+"settings_color_theme_forest" = "숲";
+"settings_color_theme_ocean" = "대양";
+"settings_color_theme_lavender" = "라벤더";
+"settings_color_theme_rose" = "장미";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "SNS로 하루를 허비하고 앱을 낭비하고 계십니까?";
+"onboarding_problem_desc" = "아무 생각 없이 앱을 열면 몇 시간이 걸리고 하루 종일 시간이 흘러갑니다.";
+"onboarding_problem_point_scroll" = "자동 조종 장치에서 소셜 피드 열기";
+"onboarding_problem_point_time" = "매일 앱에 녹아드는 시간들";
+"onboarding_problem_point_mood" = "실제로 하고 싶은 일을 결코 이루지 못함";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "MornDash 작동 방식";
+"onboarding_how_desc" = "설정한 시간부터 시간을 낭비하는 앱은 하루 종일 잠긴 상태로 유지됩니다.";
+"onboarding_how_step1_title" = "설정된 시간에";
+"onboarding_how_step1_desc" = "매일 자동으로 차단 시작";
+"onboarding_how_step2_title" = "앱 잠금";
+"onboarding_how_step2_desc" = "선택한 앱은 하루 종일 잠겨 있습니다.";
+"onboarding_how_step3_title" = "작업을 통해 잠금 해제";
+"onboarding_how_step3_desc" = "블록을 해제하려면 선택한 작업을 완료하세요.";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Screen Time 활성화";
+"onboarding_permission_desc" = "앱을 차단하려면 MornDash이 Apple의 Screen Time에 액세스해야 합니다.";
+"onboarding_permission_note" = "모든 것이 장치에 유지됩니다. MornDash은 데이터를 어디로도 보내지 않습니다.";
+"onboarding_param_screentime" = "Screen Time 활성화";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "차단할 앱 선택";
+"onboarding_apps_desc" = "표시된 경우 어제 목록에서 선택하거나 앱 선택을 사용하세요.";
+"onboarding_apps_yesterday_label" = "어제";
+"onboarding_apps_free_footer" = "무료: 최대 %d개 항목. 카테고리에는 Pro이 필요합니다.";
+"onboarding_select_apps" = "앱 선택";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%dm";
+"onboarding_usage_under_one_m" = "1분 미만";
+"onboarding_items_selected" = "%d 항목이 선택됨";
+"onboarding_items_selected_with_limit" = "%d / %d 항목 선택됨";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "언제 시작해야합니까?";
+"onboarding_time_desc" = "매일 이 시간부터 선택한 앱은 잠긴 상태로 유지됩니다.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "잠금 해제 작업 설정";
+"onboarding_tasks_desc" = "모든 작업을 완료하여 그날의 앱을 잠금 해제하세요.";
+"onboarding_tasks_your_list" = "귀하의 작업";
+"onboarding_tasks_suggestions" = "제안";
+"onboarding_tasks_custom" = "나만의 글쓰기";
+"onboarding_tasks_empty" = "아직 할 일이 없습니다.";
+"onboarding_tasks_empty_hint" = "작업을 추가하려면 아래 제안사항을 탭하세요.";
+"onboarding_tasks_ritual_count" = "%d 작업";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "시간을 되돌려보세요.";
+"onboarding_motivation_desc" = "피드가 아닌 인생에 시간을 보내십시오.\n작은 승리가 당신이 되고 싶은 사람을 만들어줍니다.";
+"onboarding_motivation_point_focus" = "하루종일 집중하세요";
+"onboarding_motivation_point_calm" = "마지막으로 정말 중요한 것이 무엇인지 알아보세요.";
+"onboarding_motivation_point_self" = "최고의 자신에게 한 걸음 더 다가가세요";
+"onboarding_finish" = "시작하기";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "뻗기";
+"onboarding_preset_bed" = "내 침대를 만들어";
+"onboarding_preset_meditate" = "5분간 명상하기";
+"onboarding_preset_journal" = "내 일기장에 쓰세요";
+"onboarding_preset_read" = "10페이지 읽기";
+"onboarding_preset_run" = "달리러 가세요";
+
+/* Default tasks */
+"default_task_stretch" = "뻗기";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "신청";
+"settings_status_pro" = "Pro · %@ 갱신";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "무료 플랜";
+"settings_upgrade_to_pro" = "Pro로 업그레이드";
+"settings_restore_purchase" = "구매 복원";
+"settings_manage_subscription" = "구독 관리";
+"settings_restore_success_title" = "복원됨";
+"settings_restore_success_message" = "귀하의 Pro 구독이 활성화되었습니다.";
+"settings_restore_failure_title" = "복원할 수 없습니다.";
+"settings_restore_failure_message" = "이 Apple ID에 대한 활성 구독을 찾을 수 없습니다.";
+"settings_restore_error_title" = "복원 실패";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "무제한 작업";
+"paywall_feature_unlimited_blocked_apps" = "차단할 무제한 앱 및 카테고리";
+"paywall_feature_multi_schedule" = "다중 블록 일정";
+"paywall_feature_color_themes" = "사용자 정의 색상 테마";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "무료 플랜은 최대 %d 작업을 지원합니다.\n작업을 무제한으로 이용하려면 Pro로 업그레이드하세요.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "원하는 아침에 더 많은 자유를 누리세요.";
+"settings_card_pro_title" = "Pro 회원";
+"settings_card_pro_subtitle" = "MornDash을(를) 지원해 주셔서 감사합니다.";
+"settings_legal_section" = "합법적인";
+"settings_commercial_transactions" = "특정상거래";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "아침 연습에 더 깊이 들어가 보세요.\n아래의 모든 것을 잠금 해제하세요.";
+"paywall_plan_weekly" = "주간";
+"paywall_plan_monthly" = "월간 간행물";
+"paywall_plan_annual" = "연간";
+"paywall_per_week" = "매주 갱신됩니다";
+"paywall_per_month" = "매달 갱신됩니다";
+"paywall_per_year" = "매년 갱신";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "%d%% 저장";
+"paywall_cta_continue" = "계속하다";
+"paywall_cta_free_trial" = "무료 평가판 시작";
+"paywall_trial_badge_first_week" = "첫 주 무료";
+"paywall_trial_disclosure_format" = "최초 연간 구독자에게는 %1$@ 무료 평가판이 제공되며 이후에는 %2$@/년이 제공됩니다. 평가판이 종료되기 최소 24시간 전에 취소하지 않으면 자동 갱신됩니다.";
+"trial_period_one_week" = "1주";
+"trial_period_days_format" = "%d일";
+"trial_period_weeks_format" = "%d주";
+"trial_period_months_format" = "%d개월";
+"trial_period_years_format" = "%d년";
+"paywall_terms" = "이용약관";
+"paywall_privacy" = "개인 정보 보호 정책";
+"paywall_commercial" = "상업 거래";
+"paywall_offerings_unavailable" = "계획을 로드할 수 없습니다. 연결을 확인하세요.";
+"paywall_retry" = "다시 시도";
+"paywall_error_title" = "문제가 발생했습니다.";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "아침 연습에 더 깊이 들어가 보세요. 모든 기능이 잠금 해제되었습니다.";
+"subscription_active" = "활동적인";
+"subscription_next_renewal" = "다음 갱신";
+"subscription_manage_in_store" = "App Store에 관리";
+"subscription_cancel" = "구독 취소";
+"subscription_cancel_alert_title" = "Pro취소하시겠습니까?";
+"subscription_cancel_alert_message" = "App Store 구독 관리 페이지로 리디렉션됩니다.";
+"subscription_cancel_alert_proceed" = "App Store 열기";
+"subscription_terms_heading" = "구독 조건";
+"subscription_terms_auto_renew" = "현재 기간이 종료되기 최소 24시간 전에 자동 갱신을 끄지 않으면 구독이 자동으로 갱신됩니다.";
+"subscription_terms_charge" = "현재 기간이 종료되기 24시간 이내에 갱신 비용이 귀하의 계정에 청구됩니다.";
+"subscription_terms_manage" = "구매 후 계정 설정을 통해 구독을 관리하고 자동 갱신을 끌 수 있습니다.";
+"subscription_terms_trial" = "연간 요금제에는 자격을 갖춘 신규 가입자에게만 제공되는 1회 1주 무료 평가판이 포함되어 있습니다. 주간 및 월간 요금제에는 무료 평가판이 포함되어 있지 않습니다. 무료 평가판의 미사용 부분은 구독 시 소멸되며, 최소 24시간 전에 취소하지 않는 한 평가판 종료 시 연간 가격이 청구됩니다.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d 스쿼트";
+"workout_preset_ai_badge" = "AI · 프로";
+"workout_reps_picker_title" = "스쿼트 담당자를 선택하세요";
+"workout_reps_picker_stepper_format" = "%d 담당자";
+"workout_reps_picker_placeholder" = "담당자 입력(1-999)";
+"workout_reps_picker_invalid" = "1~999 사이의 숫자를 입력하세요.";
+"workout_reps_picker_add_button" = "이 작업 추가";
+"workout_status_recognizing" = "인식 중...";
+"workout_status_no_body" = "프레임 속으로 들어가세요";
+"workout_status_adjust" = "위치를 조정하세요";
+"workout_status_start" = "시작!";
+"workout_status_down" = "아래에!";
+"workout_status_good" = "멋진!";
+"workout_simulator_notice" = "시뮬레이터에서 카메라를 사용할 수 없습니다. 완료를 시뮬레이션하려면 탭하세요.";
+"workout_simulator_complete" = "완료로 표시";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "공부 %d분";
+"focus_preset_pcwork_title" = "PC 작업 %d분";
+"focus_preset_study_label" = "공부하다";
+"focus_preset_pcwork_label" = "PC작업";
+"focus_preset_ai_badge" = "AI · 프로";
+"focus_status_detected" = "집중";
+"focus_status_no_face" = "카메라에서 물러나세요";
+"focus_status_multiple_faces" = "여러 사람이 감지되었습니다.";
+"focus_status_low_quality" = "조명이 너무 낮습니다.";
+"focus_status_bad_angle" = "카메라를 바라보세요";
+"focus_status_face_too_small" = "더 가까이 다가가세요";
+"focus_hint_setup_title" = "휴대전화 설정";
+"focus_hint_setup_body" = "Prop 얼굴이 프레임에 맞도록 휴대전화를 스탠드 위에 올려 놓습니다.";
+"focus_hint_setup_close" = "알았어요";
+"focus_privacy_notice" = "동영상이 이 기기에 유지됩니다.";
+"focus_session_remaining" = "남은";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d분";
+"tasks_timer_seconds_short_format" = "%d초";
+"tasks_timer_duration_min_sec_format" = "%d분 %02d초";
+"tasks_timer_minutes_label" = "분";
+"tasks_timer_seconds_label" = "초";
+"tasks_timer_minutes_placeholder" = "분(1~180)";
+"tasks_timer_sheet_title" = "타이머 설정";
+"tasks_timer_sheet_hint" = "분과 초를 설정합니다. 타이머가 끝나면 작업이 완료됩니다.";
+"tasks_timer_remove" = "타이머 삭제";
+"tasks_timer_save" = "구하다";
+"timer_session_title" = "시간제 노동자";
+"timer_session_hint" = "달리는 동안 화면이 켜져 있음";
+"timer_session_start" = "시작";
+"timer_session_pause" = "정지시키다";
+
+/* Task ticket */
+"task_ticket_number_format" = "번호%02d";
+"task_ticket_done_stamp" = "완료";

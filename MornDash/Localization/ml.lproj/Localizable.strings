@@ -1,0 +1,376 @@
+/*
+  Localizable.strings
+  MornDash
+*/
+
+/* Common */
+"settings_title" = "ക്രമീകരണങ്ങൾ";
+"common_done" = "ചെയ്തു";
+"common_cancel" = "റദ്ദാക്കുക";
+"common_select" = "തിരഞ്ഞെടുക്കുക";
+"common_next" = "അടുത്തത്";
+"common_continue" = "തുടരുക";
+"common_back" = "തിരികെ";
+"common_skip" = "ഒഴിവാക്കുക";
+"common_start" = "ആരംഭിക്കുക";
+
+/* MainView (idle) */
+"main_next_block" = "അടുത്ത ബ്ലോക്ക്";
+"main_completed_eyebrow" = "എല്ലാം കഴിഞ്ഞു";
+"main_completed_title" = "ഇന്നത്തേക്ക് ചെയ്തു";
+"main_completed_subtitle" = "നിങ്ങളുടെ ബാക്കി ദിവസം ആസ്വദിക്കൂ.";
+"main_completed_streak_unit" = "ഡേ സ്ട്രീക്ക്";
+"main_completed_message_3" = "നിങ്ങളുടെ ശീലം രൂപപ്പെടുന്നു. നാളെ അത് തുടരുക.";
+"main_completed_message_7" = "ഒരു ആഴ്ച മുഴുവൻ. നിങ്ങളാണ് യഥാർത്ഥ ഇടപാട്.";
+"main_completed_message_30" = "നിർത്താനാവാത്ത സ്ഥിരത. സ്വയം അഭിമാനിക്കുക.";
+"main_completed_message_100" = "100 ദിവസത്തെ തെളിവ്. ഇപ്പോൾ ഒന്നിനും നിങ്ങളെ തടയാൻ കഴിയില്ല.";
+"main_completed_week_progress" = "%d / ഈ ആഴ്ച 7 ദിവസം";
+"main_completed_best_streak" = "മികച്ചത്: %d";
+"main_completed_next_block" = "അടുത്ത ബ്ലോക്ക് %@";
+"main_todays_tasks" = "ഇന്നത്തെ ജോലികൾ";
+"main_todays_tasks_done" = "എല്ലാം പൂർത്തിയായി";
+"main_no_tasks" = "ഇതുവരെ ചുമതലകളൊന്നുമില്ല. ടാസ്‌ക്കുകൾ ടാബിൽ നിന്ന് ചിലത് ചേർക്കുക.";
+
+"routine_celebration_eyebrow" = "എല്ലാം കഴിഞ്ഞു";
+"routine_celebration_title" = "നിങ്ങൾ അത് ചെയ്തു!";
+"routine_celebration_message" = "ഇന്നത്തെ എല്ലാ ജോലികളും പൂർത്തിയായി.\nനിങ്ങളുടെ സ്വാതന്ത്ര്യം ആസ്വദിക്കൂ.";
+"routine_celebration_continue" = "തുടരുക";
+"routine_celebration_compact_title" = "ഇന്നത്തേക്ക് എല്ലാം കഴിഞ്ഞു";
+
+/* Tabs */
+"tab_home" = "വീട്";
+"tab_tasks" = "ചുമതലകൾ";
+"tab_stats" = "സ്ഥിതിവിവരക്കണക്കുകൾ";
+"tab_settings" = "ക്രമീകരണങ്ങൾ";
+
+/* Streak / Stats */
+"streak_days_format" = "%d ദിവസത്തെ സ്ട്രീക്ക്";
+"stats_streak_day_unit_singular" = "ദിവസം";
+"stats_streak_day_unit_plural" = "ദിവസങ്ങൾ";
+"stats_current_streak" = "ഡേ സ്ട്രീക്ക്";
+"stats_longest_streak" = "മികച്ച സ്ട്രീക്ക്";
+"stats_total_completed" = "ആകെ ദിവസങ്ങൾ";
+"stats_week_progress_short" = "%d / ഈ ആഴ്ച 7 ദിവസം";
+"stats_next_milestone" = "അടുത്ത നാഴികക്കല്ല്";
+"stats_next_milestone_days" = "%2$d ദിവസം മുതൽ %1$@ വരെ";
+"stats_summary_footer" = "മികച്ച %d · ആകെ %d ദിവസം";
+"stats_all_badges_unlocked" = "എല്ലാ ബാഡ്ജുകളും അൺലോക്ക് ചെയ്തു";
+"stats_last_7_days" = "കഴിഞ്ഞ 7 ദിവസം";
+"stats_month_calendar" = "ഈ മാസം";
+"stats_contributions" = "പ്രവർത്തനം";
+"stats_badges" = "ബാഡ്ജുകൾ";
+"stats_no_data" = "നിങ്ങളുടെ സ്ട്രീക്ക് ആരംഭിക്കാൻ ഒരു ദിവസത്തേക്ക് നിങ്ങളുടെ എല്ലാ ജോലികളും പൂർത്തിയാക്കുക.";
+"stats_blocked_usage_today" = "ബ്ലോക്ക് ചെയ്‌ത ആപ്പുകൾ · ഇന്ന്";
+"stats_blocked_usage_no_selection" = "ബ്ലോക്ക് ചെയ്യുന്നതിനായി ഇതുവരെ ആപ്പുകളൊന്നും തിരഞ്ഞെടുത്തിട്ടില്ല.";
+"stats_emergency_unlocks" = "അടിയന്തര അൺലോക്കുകൾ";
+"stats_emergency_unlocks_count_unit" = "തവണ";
+"stats_emergency_unlocks_this_week" = "ഈ ആഴ്ച";
+"stats_emergency_unlocks_this_month" = "ഈ മാസം";
+"stats_emergency_unlocks_past_year" = "കഴിഞ്ഞ വർഷം";
+"stats_emergency_unlocks_total" = "ആകെ";
+"stats_emergency_unlocks_last" = "അവസാനം: %@";
+"stats_emergency_unlocks_none" = "ഇതുവരെ അടിയന്തര അൺലോക്കുകളൊന്നുമില്ല.";
+
+/* Emergency unlocks comparison report (Pro-only) */
+"stats_emergency_compare" = "താരതമ്യം";
+"stats_emergency_compare_week" = "vs കഴിഞ്ഞ ആഴ്ച";
+"stats_emergency_compare_month" = "കഴിഞ്ഞ മാസം vs";
+"stats_emergency_compare_year" = "കഴിഞ്ഞ വർഷം vs";
+"stats_emergency_compare_lock_title" = "നിങ്ങളുടെ അൺലോക്ക് ട്രെൻഡ് ട്രാക്ക് ചെയ്യുക";
+"stats_emergency_compare_lock_message" = "നിങ്ങളുടെ എമർജൻസി അൺലോക്കുകൾ കഴിഞ്ഞ ആഴ്‌ച, കഴിഞ്ഞ മാസം, കഴിഞ്ഞ വർഷം എന്നിവയുമായി താരതമ്യം ചെയ്യുന്നത് എങ്ങനെയെന്ന് Pro കാണിക്കുന്നു.";
+"stats_blocked_duration" = "തടഞ്ഞു / ദിവസം";
+"stats_blocked_duration_this_week" = "ഈ ആഴ്ച";
+"stats_blocked_duration_past_year" = "കഴിഞ്ഞ വർഷം";
+"stats_blocked_duration_per_day_suffix" = "/ ദിവസം";
+"stats_blocked_duration_none" = "തടഞ്ഞ സമയമൊന്നും ഇതുവരെ രേഖപ്പെടുത്തിയിട്ടില്ല.";
+
+/* Task breakdown (per-task analytics) */
+"stats_task_breakdown" = "ടാസ്ക് ബ്രേക്ക്ഡൗൺ";
+"stats_task_period_month" = "ഈ മാസം";
+"stats_task_period_year" = "ഈ വര്ഷം";
+"stats_task_consistency_format" = "%d / %d ദിവസം";
+"stats_task_no_data_month" = "ഈ മാസത്തെ ടാസ്‌ക്കുകൾ ഇവിടെ കാണുന്നതിന് പരിശോധിക്കുക.";
+"stats_task_no_data_year" = "ഈ വർഷത്തെ ടാസ്‌ക്കുകൾ ഇവിടെ കാണുന്നതിന് പരിശോധിക്കുക.";
+"stats_task_compare" = "താരതമ്യം ചെയ്യുക";
+"stats_task_compare_lock_title" = "കാലക്രമേണ നിങ്ങളുടെ പുരോഗതി കാണുക";
+"stats_task_compare_lock_message" = "Pro ഓരോ ജോലിയും മുൻ മാസത്തെയോ വർഷത്തേയോ എങ്ങനെ താരതമ്യം ചെയ്യുന്നുവെന്ന് കാണിക്കുന്നു.";
+
+/* Comparison report (Pro-only) */
+"stats_blocked_compare" = "താരതമ്യം";
+"stats_blocked_compare_week" = "vs കഴിഞ്ഞ ആഴ്ച";
+"stats_blocked_compare_month" = "കഴിഞ്ഞ മാസം vs";
+"stats_blocked_compare_year" = "കഴിഞ്ഞ വർഷം vs";
+"stats_blocked_compare_no_baseline" = "—";
+"stats_blocked_compare_lock_title" = "നിങ്ങളുടെ ആഴ്ച, മാസം, വർഷം എന്നിവ താരതമ്യം ചെയ്യുക";
+"stats_blocked_compare_lock_message" = "Pro ഈ ആഴ്‌ച, മാസം, വർഷം എന്നിവ അവസാനത്തേതിന് എതിരെ എങ്ങനെ അടുക്കുന്നു എന്ന് കാണിക്കുന്നു.";
+"stats_blocked_compare_unlock_button" = "Pro ഉപയോഗിച്ച് അൺലോക്ക് ചെയ്യുക";
+
+/* Pro section (stats tab footer) */
+"stats_pro_section_title" = "Pro റിപ്പോർട്ടുകൾ";
+"stats_pro_section_upsell_desc" = "എല്ലാ കാലയളവിലെ താരതമ്യ റിപ്പോർട്ടുകളും അൺലോക്ക് ചെയ്യുക.";
+
+/* Badges */
+"badge_3day" = "3 ദിവസം\nസ്റ്റാർട്ടർ";
+"badge_7day" = "ആഴ്ച\nയോദ്ധാവ്";
+"badge_30day" = "മാസം\nമാസ്റ്റർ";
+"badge_100day" = "നൂറ്റാണ്ട്\nചാമ്പ്യൻ";
+"badge_365day" = "വർഷം\nഇതിഹാസം";
+"badge_celebration_eyebrow" = "ബാഡ്ജ് അൺലോക്ക് ചെയ്തു";
+"badge_celebration_continue" = "തുടരുക";
+
+/* BlockingView */
+"blocking_header" = "തടഞ്ഞു";
+"blocking_subtitle" = "അൺലോക്ക് ചെയ്യാൻ നിങ്ങളുടെ ടാസ്ക്കുകൾ പൂർത്തിയാക്കുക.";
+"blocking_give_up" = "അടിയന്തര അൺലോക്ക്";
+"blocking_give_up_confirm_title" = "അടിയന്തരാവസ്ഥയ്ക്കായി അൺലോക്ക് ചെയ്യണോ?";
+"blocking_give_up_confirm_message" = "അടിയന്തര ഘട്ടങ്ങളിൽ മാത്രം ഉപയോഗിക്കുക. ഇന്നത്തെ ടാസ്‌ക്കുകൾ പരിശോധിക്കാതെ തുടരും, തടയൽ നാളെ പുനരാരംഭിക്കും.";
+"blocking_give_up_confirm_button" = "അടിയന്തര അൺലോക്ക്";
+
+/* EmergencyUnlockView */
+"emergency_unlock_title" = "അടിയന്തര അൺലോക്ക്";
+"emergency_unlock_subtitle" = "അൺലോക്ക് ചെയ്യണമെന്ന് തീർച്ചയാണോ?";
+"emergency_unlock_bullet_today" = "ഇന്നത്തെ ജോലികൾ അനിയന്ത്രിതമായി തുടരും.";
+"emergency_unlock_bullet_tomorrow" = "നാളെ രാവിലെ തടയൽ പുനരാരംഭിക്കും.";
+"emergency_unlock_bullet_streak" = "നിങ്ങളുടെ സ്ട്രീക്ക് തകർന്നേക്കാം.";
+"emergency_unlock_slide_label" = "അൺലോക്ക് ചെയ്യാൻ സ്ലൈഡ് ചെയ്യുക";
+"emergency_unlock_cancel" = "കാര്യമാക്കേണ്ടതില്ല";
+
+/* SettingsView */
+"settings_start_time" = "ആരംഭ സമയം";
+"settings_start_time_label" = "ആരംഭ സമയം";
+"settings_start_time_daily" = "ദിവസേന";
+"settings_routine_section" = "പതിവ്";
+"settings_tasks" = "ചുമതലകൾ";
+"settings_tasks_footer" = "ബ്ലോക്ക് ചെയ്‌ത ആപ്പുകൾ അൺലോക്ക് ചെയ്യാൻ എല്ലാ ജോലികളും പൂർത്തിയാക്കുക. എല്ലാ ദിവസവും ടാസ്‌ക്കുകൾ റീസെറ്റ് ചെയ്യുക.\nപേരുമാറ്റാൻ ടാസ്‌ക്കിൻ്റെ പേര് ടാപ്പുചെയ്യുക.";
+"settings_task_placeholder" = "ടാസ്ക്";
+"settings_add_task_placeholder" = "ഒരു ടാസ്ക് ചേർക്കുക";
+"tasks_add_sheet_title" = "ടാസ്ക് ചേർക്കുക";
+"tasks_add_accessibility" = "ചുമതല ചേർക്കുക";
+"tasks_add_timer_toggle" = "ഒരു ടൈമർ സജ്ജീകരിക്കുക";
+"tasks_rename_sheet_title" = "ടാസ്‌ക്കിൻ്റെ പേര് മാറ്റുക";
+"tasks_rename_accessibility" = "ചുമതല പുനർനാമകരണം ചെയ്യുക";
+"tasks_delete_accessibility" = "ടാസ്ക്കുകൾ ഇല്ലാതാക്കുക";
+"tasks_edit_done_accessibility" = "എഡിറ്റിംഗ് കഴിഞ്ഞു";
+"settings_blocking" = "തടയുന്നു";
+"settings_blocked_apps" = "ബ്ലോക്ക് ചെയ്‌ത ആപ്പുകൾ";
+"settings_blocked_apps_pro_upsell_title" = "Pro ഉപയോഗിച്ച് അൺലിമിറ്റഡ് തടയുക";
+"settings_blocked_apps_pro_upsell_subtitle" = "നിങ്ങൾക്ക് ഇഷ്ടമുള്ളത്ര ആപ്പുകളും വിഭാഗങ്ങളും വെബ്‌സൈറ്റുകളും തിരഞ്ഞെടുക്കുക.";
+"settings_blocked_apps_upsell_feature_categories" = "മുഴുവൻ ആപ്പ് വിഭാഗങ്ങളും ഒരേസമയം തടയുക";
+"settings_blocked_apps_upsell_feature_websites" = "വെബ്‌സൈറ്റുകളും ബ്ലോക്ക് ചെയ്യുക";
+"settings_blocked_apps_upsell_continue_free" = "സൗജന്യ പ്ലാനിൽ തുടരുക (%d വരെ)";
+"settings_categories_pro_only" = "ആപ്പ് വിഭാഗങ്ങൾ Pro ഉപയോഗിച്ച് മാത്രമേ സംരക്ഷിക്കാനാകൂ. സൗജന്യ പ്ലാനിൽ, വ്യക്തിഗത ആപ്പുകളോ വെബ്‌സൈറ്റുകളോ തിരഞ്ഞെടുക്കുക.";
+"settings_items_unit" = "ഇനങ്ങൾ";
+"settings_weekday_scheduling" = "പ്രവൃത്തിദിന ഷെഡ്യൂൾ";
+"settings_appearance_section" = "രൂപഭാവം";
+"settings_appearance" = "തീം";
+"settings_appearance_system" = "സിസ്റ്റം";
+"settings_appearance_light" = "വെളിച്ചം";
+"settings_appearance_dark" = "ഇരുട്ട്";
+"settings_color_theme_section" = "കളർ തീം";
+"settings_color_theme" = "കളർ തീം";
+"settings_color_theme_pro_only" = "Pro അംഗങ്ങൾക്ക് ആപ്പിൻ്റെ ഉച്ചാരണ നിറങ്ങൾ ഇഷ്ടാനുസൃതമാക്കാനാകും.";
+"settings_pro_badge" = "Pro";
+"settings_color_theme_classic" = "ക്ലാസിക്";
+"settings_color_theme_sunrise" = "സൂര്യോദയം";
+"settings_color_theme_forest" = "വനം";
+"settings_color_theme_ocean" = "സമുദ്രം";
+"settings_color_theme_lavender" = "ലാവെൻഡർ";
+"settings_color_theme_rose" = "റോസ്";
+
+/* Onboarding — step 1: problem */
+"onboarding_problem_title" = "SNS എന്നതിലേക്ക് നിങ്ങളുടെ ദിവസം നഷ്‌ടപ്പെടുകയും ആപ്പുകൾ സമയം പാഴാക്കുകയും ചെയ്യുന്നുണ്ടോ?";
+"onboarding_problem_desc" = "നിങ്ങൾ ചിന്തിക്കാതെ തുറക്കുന്ന ആപ്പുകൾ മണിക്കൂറുകളോളം കൂട്ടുന്നു - നിങ്ങളുടെ ദിവസം മുഴുവൻ കടന്നുപോകും.";
+"onboarding_problem_point_scroll" = "ഓട്ടോപൈലറ്റിൽ സോഷ്യൽ ഫീഡുകൾ തുറക്കുന്നു";
+"onboarding_problem_point_time" = "എല്ലാ ദിവസവും മണിക്കൂറുകൾ ആപ്പുകളായി ലയിക്കുന്നു";
+"onboarding_problem_point_mood" = "നിങ്ങൾ യഥാർത്ഥത്തിൽ ചെയ്യാൻ ആഗ്രഹിക്കുന്ന കാര്യത്തിലേക്ക് ഒരിക്കലും എത്തിച്ചേരില്ല";
+
+/* Onboarding — step 2: how it works */
+"onboarding_how_title" = "എങ്ങനെയാണ് MornDash പ്രവർത്തിക്കുന്നത്";
+"onboarding_how_desc" = "നിങ്ങൾ നിശ്ചയിച്ച സമയം മുതൽ, സമയം പാഴാക്കുന്ന ആപ്പുകൾ ദിവസം മുഴുവൻ ലോക്ക് ചെയ്തിരിക്കും.";
+"onboarding_how_step1_title" = "നിങ്ങൾ നിശ്ചയിച്ച സമയത്ത്";
+"onboarding_how_step1_desc" = "ഓരോ ദിവസവും കിക്കുകൾ സ്വയമേവ തടയുന്നു";
+"onboarding_how_step2_title" = "ആപ്പുകൾ ലോക്ക് ഡൗൺ ചെയ്യുന്നു";
+"onboarding_how_step2_desc" = "നിങ്ങൾ തിരഞ്ഞെടുക്കുന്ന ആപ്പുകൾ ദിവസം മുഴുവൻ ലോക്ക് ചെയ്തിരിക്കും";
+"onboarding_how_step3_title" = "ടാസ്‌ക്കുകൾ അവയെ അൺലോക്ക് ചെയ്യുന്നു";
+"onboarding_how_step3_desc" = "ബ്ലോക്ക് റിലീസ് ചെയ്യാൻ നിങ്ങൾ തിരഞ്ഞെടുത്ത ജോലികൾ പൂർത്തിയാക്കുക";
+
+/* Onboarding — step 3: permission */
+"onboarding_permission_title" = "Screen Time പ്രവർത്തനക്ഷമമാക്കുക";
+"onboarding_permission_desc" = "ആപ്പുകൾ തടയാൻ, MornDash-ന് Apple-ൻ്റെ Screen Time-ലേക്ക് ആക്‌സസ് ആവശ്യമാണ്.";
+"onboarding_permission_note" = "എല്ലാം നിങ്ങളുടെ ഉപകരണത്തിൽ നിലനിൽക്കും. MornDash നിങ്ങളുടെ ഡാറ്റ എവിടെയും അയയ്‌ക്കുന്നില്ല.";
+"onboarding_param_screentime" = "Screen Time പ്രവർത്തനക്ഷമമാക്കുക";
+
+/* Onboarding — step 4: apps */
+"onboarding_apps_title" = "ബ്ലോക്ക് ചെയ്യാൻ ആപ്പുകൾ തിരഞ്ഞെടുക്കുക";
+"onboarding_apps_desc" = "കാണിക്കുകയാണെങ്കിൽ ഇന്നലത്തെ ലിസ്റ്റിൽ നിന്ന്, അല്ലെങ്കിൽ ആപ്പുകൾ തിരഞ്ഞെടുക്കുക.";
+"onboarding_apps_yesterday_label" = "ഇന്നലെ";
+"onboarding_apps_free_footer" = "സൗജന്യം: %d ഇനങ്ങൾ വരെ. വിഭാഗങ്ങൾക്ക് Pro ആവശ്യമാണ്.";
+"onboarding_select_apps" = "ആപ്പുകൾ തിരഞ്ഞെടുക്കുക";
+"onboarding_usage_hm_format" = "%dh %dm";
+"onboarding_usage_h_only_format" = "%dh";
+"onboarding_usage_m_only_format" = "%dമി";
+"onboarding_usage_under_one_m" = "<1മി";
+"onboarding_items_selected" = "%d ഇനങ്ങൾ തിരഞ്ഞെടുത്തു";
+"onboarding_items_selected_with_limit" = "%d / %d ഇനങ്ങൾ തിരഞ്ഞെടുത്തു";
+
+/* Onboarding — step 5: time */
+"onboarding_time_title" = "എപ്പോൾ തുടങ്ങണം?";
+"onboarding_time_desc" = "എല്ലാ ദിവസവും ഈ സമയം മുതൽ, നിങ്ങൾ തിരഞ്ഞെടുത്ത ആപ്പുകൾ ലോക്ക് ചെയ്തിരിക്കും.";
+
+/* Onboarding — step 6: tasks */
+"onboarding_tasks_title" = "നിങ്ങളുടെ അൺലോക്ക് ടാസ്ക്കുകൾ സജ്ജമാക്കുക";
+"onboarding_tasks_desc" = "ദിവസത്തേക്കുള്ള നിങ്ങളുടെ ആപ്പുകൾ അൺലോക്ക് ചെയ്യാൻ എല്ലാ ജോലികളും പൂർത്തിയാക്കുക.";
+"onboarding_tasks_your_list" = "നിങ്ങളുടെ ചുമതലകൾ";
+"onboarding_tasks_suggestions" = "നിർദ്ദേശങ്ങൾ";
+"onboarding_tasks_custom" = "സ്വന്തമായി എഴുതുക";
+"onboarding_tasks_empty" = "ഇതുവരെ ചുമതലകളൊന്നുമില്ല";
+"onboarding_tasks_empty_hint" = "ടാസ്‌ക്കുകൾ ചേർക്കാൻ ചുവടെയുള്ള ഒരു നിർദ്ദേശത്തിൽ ടാപ്പ് ചെയ്യുക";
+"onboarding_tasks_ritual_count" = "%d ടാസ്ക്കുകൾ";
+
+/* Onboarding — step 7: motivation */
+"onboarding_motivation_title" = "നിങ്ങളുടെ സമയം തിരികെ എടുക്കുക.";
+"onboarding_motivation_desc" = "നിങ്ങളുടെ ഫീഡിനല്ല, നിങ്ങളുടെ ജീവിതത്തിനായി നിങ്ങളുടെ മണിക്കൂറുകൾ ചെലവഴിക്കുക.\nചെറിയ വിജയങ്ങൾ നിങ്ങൾ ആകാൻ ആഗ്രഹിക്കുന്ന വ്യക്തിയെ നിർമ്മിക്കുന്നു.";
+"onboarding_motivation_point_focus" = "ദിവസം മുഴുവൻ ശ്രദ്ധ കേന്ദ്രീകരിക്കുക";
+"onboarding_motivation_point_calm" = "ഒടുവിൽ ശരിക്കും പ്രാധാന്യമുള്ള കാര്യത്തിലേക്ക് എത്തുക";
+"onboarding_motivation_point_self" = "നിങ്ങളുടെ ഏറ്റവും മികച്ച വ്യക്തിത്വത്തിലേക്ക് ഒരു ചുവട് അടുക്കുക";
+"onboarding_finish" = "ആരംഭിക്കുക";
+
+/* Onboarding — preset tasks */
+"onboarding_preset_stretch" = "വലിച്ചുനീട്ടുക";
+"onboarding_preset_bed" = "എൻ്റെ കിടക്ക ഉണ്ടാക്കുക";
+"onboarding_preset_meditate" = "5 മിനിറ്റ് ധ്യാനിക്കുക";
+"onboarding_preset_journal" = "എൻ്റെ ജേണലിൽ എഴുതുക";
+"onboarding_preset_read" = "10 പേജുകൾ വായിക്കുക";
+"onboarding_preset_run" = "ഒരു ഓട്ടത്തിന് പോകൂ";
+
+/* Default tasks */
+"default_task_stretch" = "വലിച്ചുനീട്ടുക";
+
+/* Subscription / Settings */
+"settings_subscription_section" = "സബ്സ്ക്രിപ്ഷൻ";
+"settings_status_pro" = "Pro · പുതുക്കുന്നു %@";
+"settings_status_pro_no_date" = "Pro";
+"settings_status_free" = "സൗജന്യ പ്ലാൻ";
+"settings_upgrade_to_pro" = "Pro ലേക്ക് അപ്‌ഗ്രേഡ് ചെയ്യുക";
+"settings_restore_purchase" = "വാങ്ങൽ പുനഃസ്ഥാപിക്കുക";
+"settings_manage_subscription" = "സബ്സ്ക്രിപ്ഷൻ നിയന്ത്രിക്കുക";
+"settings_restore_success_title" = "പുനഃസ്ഥാപിച്ചു";
+"settings_restore_success_message" = "നിങ്ങളുടെ Pro സബ്‌സ്‌ക്രിപ്‌ഷൻ സജീവമാണ്.";
+"settings_restore_failure_title" = "പുനഃസ്ഥാപിക്കാനായില്ല";
+"settings_restore_failure_message" = "ഈ Apple ഐഡിക്ക് സജീവമായ സബ്‌സ്‌ക്രിപ്‌ഷനൊന്നും കണ്ടെത്തിയില്ല.";
+"settings_restore_error_title" = "പുനഃസ്ഥാപിക്കാനായില്ല";
+"common_ok" = "OK";
+
+/* Paywall feature bullets (used by RC Paywall metadata or local upsell banners) */
+"paywall_feature_unlimited_tasks" = "പരിധിയില്ലാത്ത ജോലികൾ";
+"paywall_feature_unlimited_blocked_apps" = "തടയാനുള്ള പരിധിയില്ലാത്ത ആപ്പുകളും വിഭാഗങ്ങളും";
+"paywall_feature_multi_schedule" = "ഒന്നിലധികം ബ്ലോക്ക് ഷെഡ്യൂളുകൾ";
+"paywall_feature_color_themes" = "ഇഷ്‌ടാനുസൃത വർണ്ണ തീമുകൾ";
+
+/* Premium gates */
+"gate_tasks_lock_message" = "സൗജന്യ പ്ലാൻ %d ടാസ്ക്കുകൾ വരെ പിന്തുണയ്ക്കുന്നു.\nപരിധിയില്ലാത്ത ടാസ്ക്കുകൾക്കായി Pro ലേക്ക് അപ്ഗ്രേഡ് ചെയ്യുക.";
+/* Settings subscription card */
+"settings_card_free_title" = "MornDash Pro";
+"settings_card_free_subtitle" = "നിങ്ങൾ ആഗ്രഹിക്കുന്ന പ്രഭാതങ്ങൾക്ക് കൂടുതൽ സ്വാതന്ത്ര്യം.";
+"settings_card_pro_title" = "Pro അംഗം";
+"settings_card_pro_subtitle" = "MornDash പിന്തുണയ്ക്കുന്നതിന് നന്ദി.";
+"settings_legal_section" = "നിയമപരമായ";
+"settings_commercial_transactions" = "നിർദ്ദിഷ്ട വാണിജ്യ ഇടപാടുകൾ";
+
+/* Custom paywall */
+"paywall_title" = "MornDash Pro";
+"paywall_subtitle" = "നിങ്ങളുടെ പ്രഭാത പരിശീലനത്തിലേക്ക് കൂടുതൽ ആഴത്തിൽ പോകുക.\nതാഴെയുള്ളതെല്ലാം അൺലോക്ക് ചെയ്യുക.";
+"paywall_plan_weekly" = "പ്രതിവാരം";
+"paywall_plan_monthly" = "പ്രതിമാസ";
+"paywall_plan_annual" = "വാർഷികം";
+"paywall_per_week" = "എല്ലാ ആഴ്ചയും പുതുക്കുന്നു";
+"paywall_per_month" = "എല്ലാ മാസവും പുതുക്കുന്നു";
+"paywall_per_year" = "എല്ലാ വർഷവും പുതുക്കുന്നു";
+"paywall_badge_best_value" = "BEST VALUE";
+"paywall_savings_format" = "സംരക്ഷിക്കുക %d%%";
+"paywall_cta_continue" = "തുടരുക";
+"paywall_cta_free_trial" = "സൗജന്യ ട്രയൽ ആരംഭിക്കുക";
+"paywall_trial_badge_first_week" = "ആദ്യ ആഴ്ച സൗജന്യം";
+"paywall_trial_disclosure_format" = "ആദ്യമായി വാർഷിക വരിക്കാർക്കായി %1$@ സൗജന്യ ട്രയൽ, തുടർന്ന് %2$@/വർഷം. ട്രയൽ അവസാനിക്കുന്നതിന് 24 മണിക്കൂർ മുമ്പെങ്കിലും റദ്ദാക്കിയില്ലെങ്കിൽ സ്വയമേവ പുതുക്കുന്നു.";
+"trial_period_one_week" = "1 ആഴ്ച";
+"trial_period_days_format" = "%d ദിവസം";
+"trial_period_weeks_format" = "%d ആഴ്ച(ങ്ങൾ)";
+"trial_period_months_format" = "%d മാസം(ങ്ങൾ)";
+"trial_period_years_format" = "%d വർഷം(ങ്ങൾ)";
+"paywall_terms" = "ഉപയോഗ നിബന്ധനകൾ";
+"paywall_privacy" = "സ്വകാര്യതാ നയം";
+"paywall_commercial" = "വാണിജ്യ ഇടപാടുകൾ";
+"paywall_offerings_unavailable" = "പ്ലാനുകൾ ലോഡ് ചെയ്യാനായില്ല. നിങ്ങളുടെ കണക്ഷൻ പരിശോധിക്കുക.";
+"paywall_retry" = "വീണ്ടും ശ്രമിക്കുക";
+"paywall_error_title" = "എന്തോ കുഴപ്പം സംഭവിച്ചു";
+
+/* Subscription details */
+"subscription_pro_title" = "MornDash Pro";
+"subscription_pro_description" = "നിങ്ങളുടെ പ്രഭാത പരിശീലനത്തിലേക്ക് കൂടുതൽ ആഴത്തിൽ പോകുക. എല്ലാ ഫീച്ചറുകളും അൺലോക്ക് ചെയ്തു.";
+"subscription_active" = "സജീവമാണ്";
+"subscription_next_renewal" = "അടുത്ത പുതുക്കൽ";
+"subscription_manage_in_store" = "App Store-ൽ നിയന്ത്രിക്കുക";
+"subscription_cancel" = "സബ്‌സ്‌ക്രിപ്‌ഷൻ റദ്ദാക്കുക";
+"subscription_cancel_alert_title" = "Proceed റദ്ദാക്കണോ?";
+"subscription_cancel_alert_message" = "നിങ്ങളെ നിങ്ങളുടെ App Store സബ്‌സ്‌ക്രിപ്‌ഷൻ മാനേജ്‌മെൻ്റ് പേജിലേക്ക് റീഡയറക്‌ടുചെയ്യും.";
+"subscription_cancel_alert_proceed" = "App Store തുറക്കുക";
+"subscription_terms_heading" = "സബ്സ്ക്രിപ്ഷൻ നിബന്ധനകൾ";
+"subscription_terms_auto_renew" = "നിലവിലെ കാലയളവ് അവസാനിക്കുന്നതിന് 24 മണിക്കൂർ മുമ്പെങ്കിലും സ്വയമേവ പുതുക്കൽ ഓഫാക്കിയില്ലെങ്കിൽ സബ്‌സ്‌ക്രിപ്‌ഷൻ സ്വയമേവ പുതുക്കുന്നു.";
+"subscription_terms_charge" = "നിലവിലെ കാലയളവ് അവസാനിക്കുന്നതിന് 24 മണിക്കൂറിനുള്ളിൽ നിങ്ങളുടെ അക്കൗണ്ട് പുതുക്കുന്നതിന് പണം ഈടാക്കും.";
+"subscription_terms_manage" = "വാങ്ങലിനുശേഷം നിങ്ങളുടെ അക്കൗണ്ട് ക്രമീകരണങ്ങൾ വഴി സബ്‌സ്‌ക്രിപ്‌ഷനുകൾ നിയന്ത്രിക്കാനും സ്വയമേവ പുതുക്കൽ ഓഫാക്കാനുമാകും.";
+"subscription_terms_trial" = "വാർഷിക പ്ലാനിൽ യോഗ്യരായ പുതിയ വരിക്കാർക്ക് മാത്രമായി ഒറ്റത്തവണ 1-ആഴ്ച സൗജന്യ ട്രയൽ ഉൾപ്പെടുന്നു. പ്രതിവാര, പ്രതിമാസ പ്ലാനുകളിൽ സൗജന്യ ട്രയൽ ഉൾപ്പെടുന്നില്ല. നിങ്ങൾ സബ്‌സ്‌ക്രൈബുചെയ്യുമ്പോൾ സൗജന്യ ട്രയലിൻ്റെ ഉപയോഗിക്കാത്ത ഏതെങ്കിലും ഭാഗം നഷ്‌ടപ്പെടും, കൂടാതെ കുറഞ്ഞത് 24 മണിക്കൂർ മുമ്പെങ്കിലും നിങ്ങൾ റദ്ദാക്കിയില്ലെങ്കിൽ ട്രയൽ അവസാനിക്കുമ്പോൾ നിങ്ങളിൽ നിന്ന് വാർഷിക നിരക്ക് ഈടാക്കും.";
+
+/* Workout */
+"workout_preset_squats_title" = "%d സ്ക്വാറ്റുകൾ";
+"workout_preset_ai_badge" = "AI · PRO";
+"workout_reps_picker_title" = "സ്ക്വാറ്റ് പ്രതിനിധികളെ തിരഞ്ഞെടുക്കുക";
+"workout_reps_picker_stepper_format" = "%d ആവർത്തനങ്ങൾ";
+"workout_reps_picker_placeholder" = "പ്രതിനിധികൾ നൽകുക (1-999)";
+"workout_reps_picker_invalid" = "1 നും 999 നും ഇടയിലുള്ള ഒരു നമ്പർ നൽകുക";
+"workout_reps_picker_add_button" = "ഈ ടാസ്ക് ചേർക്കുക";
+"workout_status_recognizing" = "തിരിച്ചറിയുന്നു...";
+"workout_status_no_body" = "ഫ്രെയിമിലേക്ക് കടക്കുക";
+"workout_status_adjust" = "നിങ്ങളുടെ സ്ഥാനം ക്രമീകരിക്കുക";
+"workout_status_start" = "ആരംഭിക്കുക!";
+"workout_status_down" = "താഴേക്ക്!";
+"workout_status_good" = "കൊള്ളാം!";
+"workout_simulator_notice" = "സിമുലേറ്ററിൽ ക്യാമറ ലഭ്യമല്ല. പൂർത്തീകരണം അനുകരിക്കാൻ ടാപ്പ് ചെയ്യുക.";
+"workout_simulator_complete" = "പൂർത്തിയായതായി അടയാളപ്പെടുത്തുക";
+
+/* Focus detection (AI camera task) */
+"focus_preset_study_title" = "പഠനം %d മിനിറ്റ്";
+"focus_preset_pcwork_title" = "പിസി വർക്ക് %d മിനിറ്റ്";
+"focus_preset_study_label" = "പഠനം";
+"focus_preset_pcwork_label" = "പിസി വർക്ക്";
+"focus_preset_ai_badge" = "AI · PRO";
+"focus_status_detected" = "ഫോക്കസ് ചെയ്തു";
+"focus_status_no_face" = "ക്യാമറയിൽ നിന്ന് മാറി നിൽക്കുക";
+"focus_status_multiple_faces" = "ഒന്നിലധികം ആളുകളെ കണ്ടെത്തി";
+"focus_status_low_quality" = "ലൈറ്റിംഗ് വളരെ കുറവാണ്";
+"focus_status_bad_angle" = "ക്യാമറയെ അഭിമുഖീകരിക്കുക";
+"focus_status_face_too_small" = "അടുത്തേക്ക് നീങ്ങുക";
+"focus_hint_setup_title" = "നിങ്ങളുടെ ഫോൺ സജ്ജീകരിക്കുക";
+"focus_hint_setup_body" = "Prop നിങ്ങളുടെ ഫോൺ ഒരു സ്റ്റാൻഡിൽ വയ്ക്കുക, അങ്ങനെ നിങ്ങളുടെ മുഖം ഫ്രെയിമിൽ യോജിക്കും.";
+"focus_hint_setup_close" = "മനസ്സിലായി";
+"focus_privacy_notice" = "വീഡിയോ ഈ ഉപകരണത്തിൽ നിലനിൽക്കും";
+"focus_session_remaining" = "ശേഷിക്കുന്നത്";
+
+/* Task timer */
+"tasks_timer_minutes_short_format" = "%d മിനിറ്റ്";
+"tasks_timer_seconds_short_format" = "%d സെക്കൻ്റ്";
+"tasks_timer_duration_min_sec_format" = "%d മിനിറ്റ് %02d സെക്കൻ്റ്";
+"tasks_timer_minutes_label" = "മിനിറ്റ്";
+"tasks_timer_seconds_label" = "സെക്കൻ്റുകൾ";
+"tasks_timer_minutes_placeholder" = "മിനിറ്റ് (1–180)";
+"tasks_timer_sheet_title" = "ടൈമർ ക്രമീകരണങ്ങൾ";
+"tasks_timer_sheet_hint" = "മിനിറ്റുകളും സെക്കൻഡുകളും സജ്ജമാക്കുക. ടൈമർ പൂർത്തിയാകുമ്പോൾ ടാസ്ക് പൂർത്തിയാകും.";
+"tasks_timer_remove" = "ടൈമർ നീക്കം ചെയ്യുക";
+"tasks_timer_save" = "സംരക്ഷിക്കുക";
+"timer_session_title" = "ടൈമർ";
+"timer_session_hint" = "പ്രവർത്തിക്കുമ്പോൾ സ്‌ക്രീൻ ഉണർന്നിരിക്കും";
+"timer_session_start" = "ആരംഭിക്കുക";
+"timer_session_pause" = "താൽക്കാലികമായി നിർത്തുക";
+
+/* Task ticket */
+"task_ticket_number_format" = "നമ്പർ%02d";
+"task_ticket_done_stamp" = "ചെയ്തു";
