@@ -121,6 +121,7 @@
 /* BlockingView */
 "blocking_header" = "OBSTRUIDO";
 "blocking_subtitle" = "Completa tus tareas para desbloquear.";
+"blocking_slide_hint" = "Desliza a la derecha para completar";
 "blocking_give_up" = "Desbloqueo de emergencia";
 "blocking_give_up_confirm_title" = "¿Desbloquear para una emergencia?";
 "blocking_give_up_confirm_message" = "Úselo sólo en emergencias. Las tareas de hoy permanecerán sin control y el bloqueo se reanudará mañana.";

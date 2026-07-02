@@ -121,6 +121,7 @@
 /* BlockingView */
 "blocking_header" = "BLOQUÉ";
 "blocking_subtitle" = "Terminez vos tâches pour débloquer.";
+"blocking_slide_hint" = "Glissez vers la droite pour terminer";
 "blocking_give_up" = "Déverrouillage d'urgence";
 "blocking_give_up_confirm_title" = "Débloquer en cas d'urgence ?";
 "blocking_give_up_confirm_message" = "À utiliser uniquement en cas d'urgence. Les tâches d'aujourd'hui ne seront pas contrôlées et le blocage reprendra demain.";

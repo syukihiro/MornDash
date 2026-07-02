@@ -121,6 +121,7 @@
 /* BlockingView */
 "blocking_header" = "GESPERRT";
 "blocking_subtitle" = "Schließen Sie Ihre Aufgaben ab, um sie freizuschalten.";
+"blocking_slide_hint" = "Zum Abschließen nach rechts wischen";
 "blocking_give_up" = "Notentriegelung";
 "blocking_give_up_confirm_title" = "Für einen Notfall entsperren?";
 "blocking_give_up_confirm_message" = "Nur in Notfällen verwenden. Die heutigen Aufgaben bleiben unkontrolliert und die Blockierung wird morgen wieder aufgenommen.";

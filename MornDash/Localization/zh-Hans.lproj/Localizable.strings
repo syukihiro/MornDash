@@ -121,6 +121,7 @@
 /* BlockingView */
 "blocking_header" = "封锁";
 "blocking_subtitle" = "完成任务即可解锁。";
+"blocking_slide_hint" = "向右滑动完成";
 "blocking_give_up" = "紧急解锁";
 "blocking_give_up_confirm_title" = "紧急情况下解锁？";
 "blocking_give_up_confirm_message" = "仅在紧急情况下使用。今天的任务将保持不变，明天将恢复阻塞。";

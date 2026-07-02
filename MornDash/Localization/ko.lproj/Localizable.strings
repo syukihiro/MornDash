@@ -121,6 +121,7 @@
 /* BlockingView */
 "blocking_header" = "막힌";
 "blocking_subtitle" = "잠금을 해제하려면 작업을 완료하세요.";
+"blocking_slide_hint" = "오른쪽으로 밀어 완료";
 "blocking_give_up" = "긴급 잠금 해제";
 "blocking_give_up_confirm_title" = "긴급 상황에 대비해 잠금을 해제하시겠습니까?";
 "blocking_give_up_confirm_message" = "긴급 상황에서만 사용하십시오. 오늘의 작업은 확인되지 않은 상태로 유지되며 차단은 내일 재개됩니다.";

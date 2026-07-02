@@ -121,6 +121,7 @@
 /* BlockingView */
 "blocking_header" = "BLOCCATO";
 "blocking_subtitle" = "Completa le tue attività per sbloccare.";
+"blocking_slide_hint" = "Scorri a destra per completare";
 "blocking_give_up" = "Sblocco di emergenza";
 "blocking_give_up_confirm_title" = "Sbloccare per un'emergenza?";
 "blocking_give_up_confirm_message" = "Utilizzare solo in caso di emergenza. Le attività di oggi rimarranno deselezionate e il blocco riprenderà domani.";
