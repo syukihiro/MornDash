@@ -151,6 +151,8 @@
 "tasks_rename_sheet_title" = "Rename Task";
 "tasks_rename_accessibility" = "Rename task";
 "tasks_delete_accessibility" = "Delete tasks";
+"tasks_minimum_one_title" = "Keep at least one task";
+"tasks_minimum_one_message" = "You need at least one task to unlock your apps during the morning block.";
 "tasks_edit_done_accessibility" = "Done editing";
 "settings_blocking" = "Blocking";
 "settings_blocked_apps" = "Blocked Apps";
@@ -200,6 +202,8 @@
 "onboarding_permission_desc" = "To block apps, MornDash needs access to Apple's Screen Time.";
 "onboarding_permission_note" = "Everything stays on your device. MornDash doesn't send your data anywhere.";
 "onboarding_param_screentime" = "Enable Screen Time";
+"onboarding_permission_denied" = "Screen Time access is required for MornDash to block apps. Please allow access in Settings.";
+"onboarding_permission_open_settings" = "Open Settings";
 
 /* Onboarding — step 4: apps */
 "onboarding_apps_title" = "Pick apps to block";
@@ -338,6 +342,9 @@
 "workout_status_good" = "Nice!";
 "workout_simulator_notice" = "Camera is unavailable in the simulator. Tap to simulate completion.";
 "workout_simulator_complete" = "Mark as complete";
+"camera_permission_denied_title" = "Camera access needed";
+"camera_permission_denied_message" = "Workout and Focus tasks need the camera. Enable access in Settings to continue.";
+"camera_open_settings" = "Open Settings";
 
 /* Focus detection (AI camera task) */
 "focus_preset_study_title" = "Study %d min";

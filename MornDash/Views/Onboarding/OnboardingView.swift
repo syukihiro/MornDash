@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 import DeviceActivity
 import FamilyControls
 import ManagedSettings
@@ -477,7 +478,8 @@ struct OnboardingPermissionView: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.accentTheme) private var accentTheme
     var nextAction: () -> Void
-    @State private var screenTimeAuthorized = false
+    @State private var screenTimeAuthorized = BlockManager.isScreenTimeAuthorized
+    @State private var permissionDenied = false
 
     var body: some View {
         VStack(spacing: 28) {
@@ -504,8 +506,27 @@ struct OnboardingPermissionView: View {
                 icon: "hourglass",
                 isAuthorized: screenTimeAuthorized
             ) {
-                await BlockManager().requestAuthorization()
-                await MainActor.run { screenTimeAuthorized = true }
+                let approved = await BlockManager().requestAuthorization()
+                await MainActor.run {
+                    screenTimeAuthorized = approved
+                    permissionDenied = !approved
+                }
+            }
+
+            if permissionDenied {
+                VStack(spacing: 10) {
+                    Text("onboarding_permission_denied")
+                        .font(.footnote)
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.orange)
+
+                    Button(action: openSettings) {
+                        Text("onboarding_permission_open_settings")
+                            .font(.footnote.weight(.semibold))
+                            .foregroundColor(accentTheme.blockingColor)
+                    }
+                }
+                .padding(.horizontal, 4)
             }
 
             HStack(alignment: .top, spacing: 8) {
@@ -527,6 +548,15 @@ struct OnboardingPermissionView: View {
             })
         }
         .padding(.vertical, 20)
+        .onAppear {
+            screenTimeAuthorized = BlockManager.isScreenTimeAuthorized
+            permissionDenied = !screenTimeAuthorized
+        }
+    }
+
+    private func openSettings() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+        UIApplication.shared.open(url)
     }
 }
 

@@ -33,13 +33,22 @@ class BlockManager: ObservableObject {
             + selection.webDomainTokens.count
     }
 
-    func requestAuthorization() async {
+    static var isScreenTimeAuthorized: Bool {
+        AuthorizationCenter.shared.authorizationStatus == .approved
+    }
+
+    @discardableResult
+    func requestAuthorization() async -> Bool {
         do {
             try await AuthorizationCenter.shared.requestAuthorization(for: .individual)
-            print("Authorization successful")
         } catch {
             print("Authorization failed: \(error.localizedDescription)")
         }
+        let approved = Self.isScreenTimeAuthorized
+        if approved {
+            print("Authorization successful")
+        }
+        return approved
     }
 
     /// Apply shield immediately (main app calls this when the user opens the app during an active block window).

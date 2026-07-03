@@ -1,25 +1,43 @@
 import AVFoundation
 import Combine
+import UIKit
 
 final class CameraManager: NSObject, ObservableObject {
     let session = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "com.morndash.cameraSessionQueue")
+
+    @Published private(set) var isAuthorized = false
+    @Published private(set) var permissionDenied = false
 
     weak var delegate: AVCaptureVideoDataOutputSampleBufferDelegate?
 
     func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
+            isAuthorized = true
+            permissionDenied = false
             setupSession()
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
+                DispatchQueue.main.async {
+                    self?.isAuthorized = granted
+                    self?.permissionDenied = !granted
+                }
                 if granted {
                     self?.setupSession()
                 }
             }
         default:
-            break
+            DispatchQueue.main.async {
+                self.isAuthorized = false
+                self.permissionDenied = true
+            }
         }
+    }
+
+    static func openSettings() {
+        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+        UIApplication.shared.open(url)
     }
 
     private func setupSession() {

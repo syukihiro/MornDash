@@ -80,21 +80,13 @@ class HomeViewModel: ObservableObject {
         return .idle
     }
 
-    /// 現在時刻 >= 開始時刻(同日内) なら true
+    /// 現在時刻が開始〜23:59 のブロック窓内なら true（Monitor 拡張の intervalEnd と一致）
     var isInBlockWindow: Bool {
         let calendar = Calendar.current
         let now = currentTime
         let weekday = calendar.component(.weekday, from: now)
         let (h, m) = effectiveStartTime(forWeekday: weekday)
-        let startComponents = DateComponents(
-            year: calendar.component(.year, from: now),
-            month: calendar.component(.month, from: now),
-            day: calendar.component(.day, from: now),
-            hour: h,
-            minute: m
-        )
-        guard let start = calendar.date(from: startComponents) else { return false }
-        return now >= start
+        return BlockWindowLogic.isInBlockWindow(now: now, startHour: h, startMinute: m, calendar: calendar)
     }
 
     private func effectiveStartTime(forWeekday weekday: Int) -> (hour: Int, minute: Int) {

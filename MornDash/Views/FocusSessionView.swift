@@ -35,14 +35,19 @@ struct FocusSessionView: View {
 
                 Spacer()
 
-                countdownDisplay
+                if detector.cameraManager.permissionDenied {
+                    CameraPermissionDeniedView()
+                        .frame(maxHeight: 280)
+                } else {
+                    countdownDisplay
 
-                statusBadge
-                    .padding(.top, 16)
+                    statusBadge
+                        .padding(.top, 16)
 
-                progressBar
-                    .padding(.horizontal, 40)
-                    .padding(.top, 20)
+                    progressBar
+                        .padding(.horizontal, 40)
+                        .padding(.top, 20)
+                }
 
                 Spacer()
 

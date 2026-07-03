@@ -23,9 +23,13 @@ struct WorkoutSessionView: View {
             #if targetEnvironment(simulator)
             simulatorFallback
             #else
-            CameraPreview(cameraManager: counter.cameraManager)
-                .ignoresSafeArea()
-                .overlay(scrim)
+            if counter.cameraManager.permissionDenied {
+                CameraPermissionDeniedView()
+            } else {
+                CameraPreview(cameraManager: counter.cameraManager)
+                    .ignoresSafeArea()
+                    .overlay(scrim)
+            }
             #endif
 
             VStack {

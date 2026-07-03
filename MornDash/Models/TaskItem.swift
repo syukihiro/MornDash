@@ -93,8 +93,10 @@ struct TaskStore: Codable {
         tasks[idx].focusSessionStartedAt = nil
     }
 
-    mutating func remove(at offsets: IndexSet) {
+    mutating func remove(at offsets: IndexSet) -> Bool {
+        guard tasks.count - offsets.count >= 1 else { return false }
         tasks.remove(atOffsets: offsets)
+        return true
     }
 
     mutating func update(_ id: UUID, title: String) {

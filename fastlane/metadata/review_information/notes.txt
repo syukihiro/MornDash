@@ -1,1 +1,18 @@
+MornDash uses Apple's Family Controls / Screen Time APIs to block user-selected apps during a daily morning window until the user completes their task list.
 
+How to test:
+1. Complete onboarding and grant Screen Time permission when prompted.
+2. Select 1–2 apps to block (e.g. Safari, Instagram) and set the start time to 1–2 minutes from now.
+3. Add at least one simple task (e.g. "Stretch").
+4. Wait for the start time — selected apps should show Apple's shield screen even if MornDash is closed.
+5. Open MornDash, complete all tasks — the shield should lift and blocked apps become usable.
+6. Alternative: tap "Give up" on the blocking screen and slide to confirm — shield lifts for the rest of the day.
+
+Subscription (Pro):
+- No demo account required. Use a Sandbox Apple ID to test in-app purchases.
+- Free plan limits: 2 blocked apps, 3 tasks, 1 timer task. Pro removes these limits.
+
+Camera (optional):
+- Workout and Focus tasks use the front camera on-device only (ML pose/face detection). No video is recorded or uploaded.
+
+No login is required. All data stays on device except anonymous analytics (Firebase) and purchase info (RevenueCat).

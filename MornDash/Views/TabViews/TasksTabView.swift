@@ -29,6 +29,7 @@ struct TasksTabView: View {
     @State private var showFocusDurationPicker: Bool = false
     @State private var focusKindDraft: FocusDetectionKind = .study
     @State private var focusMinutesInput: String = "30"
+    @State private var showLastTaskDeleteAlert: Bool = false
     @FocusState private var addTaskSheetFieldFocused: Bool
     @FocusState private var renameTaskSheetFieldFocused: Bool
     @FocusState private var workoutInputFocused: Bool
@@ -57,6 +58,11 @@ struct TasksTabView: View {
                 }
             }
             .paywallSheet(isPresented: $showPaywall, source: .tasks)
+            .alert("tasks_minimum_one_title", isPresented: $showLastTaskDeleteAlert) {
+                Button("common_ok", role: .cancel) {}
+            } message: {
+                Text("tasks_minimum_one_message")
+            }
             .sheet(isPresented: $showAddTaskSheet) {
                 addTaskSheet
             }
@@ -164,7 +170,9 @@ struct TasksTabView: View {
                     .listRowSeparatorTint(MornDashColors.listSeparator(colorScheme))
                 }
                 .onDelete { offsets in
-                    viewModel.taskStore.remove(at: offsets)
+                    if !viewModel.taskStore.remove(at: offsets) {
+                        showLastTaskDeleteAlert = true
+                    }
                 }
             }
 

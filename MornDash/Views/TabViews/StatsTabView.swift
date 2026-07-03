@@ -40,7 +40,7 @@ struct StatsTabView: View {
                         )
                         emergencyUnlockSection
                         blockedUsageSection
-                        StatsContributionGraphView(weeks: viewModel.streakStore.contributionGrid(weeks: 52))
+                        StatsContributionGraphView(weeks: viewModel.streakStore.contributionGrid(weeks: contributionWeekCount))
                         StatsBadgesSectionView(longestStreak: viewModel.streakStore.longestStreak)
 
                         statsProSection
@@ -53,6 +53,12 @@ struct StatsTabView: View {
             .mornDashNavigationBarStyle()
             .paywallSheet(isPresented: $showPaywall, source: .stats)
         }
+    }
+
+    private var contributionWeekCount: Int {
+        subscriptionManager.isPro
+            ? 52
+            : max(1, (RevenueCatConfig.freeStatsHistoryDays + 6) / 7)
     }
 
     @ViewBuilder
@@ -100,7 +106,9 @@ struct StatsTabView: View {
             }
 
             HStack(spacing: 16) {
-                blockedDurationMetric(seconds: pastYear, labelKey: "stats_blocked_duration_past_year")
+                if subscriptionManager.isPro {
+                    blockedDurationMetric(seconds: pastYear, labelKey: "stats_blocked_duration_past_year")
+                }
                 Spacer()
             }
 

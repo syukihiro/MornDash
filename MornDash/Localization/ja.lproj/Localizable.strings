@@ -151,6 +151,8 @@
 "tasks_rename_sheet_title" = "タスク名を変更";
 "tasks_rename_accessibility" = "タスク名を変更";
 "tasks_delete_accessibility" = "タスクを削除";
+"tasks_minimum_one_title" = "タスクは1つ以上必要です";
+"tasks_minimum_one_message" = "朝のブロック中にアプリを解除するには、最低1つのタスクが必要です。";
 "tasks_edit_done_accessibility" = "編集を終了";
 "settings_blocking" = "ブロック";
 "settings_blocked_apps" = "制限するアプリ";
@@ -200,6 +202,8 @@
 "onboarding_permission_desc" = "アプリをブロックするために、Appleの「スクリーンタイム」へのアクセスが必要です。";
 "onboarding_permission_note" = "データは端末内だけに留まります。MornDashが外部に送信することはありません。";
 "onboarding_param_screentime" = "スクリーンタイムを許可";
+"onboarding_permission_denied" = "アプリをブロックするにはスクリーンタイムの許可が必要です。設定から許可してください。";
+"onboarding_permission_open_settings" = "設定を開く";
 
 /* Onboarding — step 4: apps */
 "onboarding_apps_title" = "ブロックするアプリを選ぶ";
@@ -338,6 +342,9 @@
 "workout_status_good" = "いいぞ！";
 "workout_simulator_notice" = "シミュレータではカメラが使えません。タップで完了を擬似実行できます。";
 "workout_simulator_complete" = "完了として記録";
+"camera_permission_denied_title" = "カメラの許可が必要です";
+"camera_permission_denied_message" = "ワークアウトと集中タスクにはカメラが必要です。設定から許可してください。";
+"camera_open_settings" = "設定を開く";
 
 /* Focus detection (AI camera task) */
 "focus_preset_study_title" = "学習 %d分";
