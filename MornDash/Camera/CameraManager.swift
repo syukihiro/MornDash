@@ -35,11 +35,6 @@ final class CameraManager: NSObject, ObservableObject {
         }
     }
 
-    static func openSettings() {
-        guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
-        UIApplication.shared.open(url)
-    }
-
     private func setupSession() {
         sessionQueue.async { [weak self] in
             guard let self else { return }

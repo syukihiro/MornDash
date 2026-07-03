@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CameraPermissionDeniedView: View {
     @Environment(\.accentTheme) private var accentTheme
+    @Environment(\.openURL) private var openURL
 
     var body: some View {
         VStack(spacing: 16) {
@@ -16,7 +17,11 @@ struct CameraPermissionDeniedView: View {
                 .foregroundColor(.white.opacity(0.65))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 32)
-            Button(action: CameraManager.openSettings) {
+            Button {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    openURL(url)
+                }
+            } label: {
                 Text("camera_open_settings")
                     .font(.system(size: 15, weight: .semibold))
             }
