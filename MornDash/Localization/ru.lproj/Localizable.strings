@@ -151,6 +151,8 @@
 "tasks_rename_sheet_title" = "Переименовать задачу";
 "tasks_rename_accessibility" = "Переименовать задачу";
 "tasks_delete_accessibility" = "Удаление задач";
+"tasks_minimum_one_title" = "Оставьте хотя бы одну задачу";
+"tasks_minimum_one_message" = "Вам нужна хотя бы одна задача, чтобы разблокировать приложения во время утренней блокировки.";
 "tasks_edit_done_accessibility" = "Закончено редактирование";
 "settings_blocking" = "Блокировка";
 "settings_blocked_apps" = "Заблокированные приложения";
@@ -200,12 +202,19 @@
 "onboarding_permission_desc" = "Чтобы заблокировать приложения, MornDash необходим доступ к Screen Time от Apple.";
 "onboarding_permission_note" = "Все остается на вашем устройстве. MornDash никуда не отправляет ваши данные.";
 "onboarding_param_screentime" = "Включить Screen Time";
+"onboarding_permission_denied" = "MornDash требует доступ к «Экранному времени» для блокировки приложений. Разрешите доступ в Настройках.";
+"onboarding_permission_open_settings" = "Открыть настройки";
 
 /* Onboarding — step 4: apps */
 "onboarding_apps_title" = "Выберите приложения для блокировки";
 "onboarding_apps_desc" = "Из вчерашнего списка, если он отображается, или используйте «Выбрать приложения».";
 "onboarding_apps_yesterday_label" = "Вчера";
 "onboarding_apps_free_footer" = "Бесплатно: до %d предметов. Категории нуждаются в Pro.";
+"onboarding_apps_limit_title" = "Бесплатный план: до 2 приложений";
+"onboarding_apps_limit_message" = "Вы достигли бесплатного лимита. Перейдите на Pro, чтобы блокировать неограниченное число приложений, категорий и сайтов.";
+"onboarding_apps_limit_keep_free" = "Пока оставить 2 приложения";
+"onboarding_apps_limit_categories_title" = "Категории требуют Pro";
+"onboarding_apps_limit_categories_message" = "Блокировка целых категорий приложений — функция Pro. Выбирайте отдельные приложения на бесплатном плане или обновитесь.";
 "onboarding_select_apps" = "Выберите приложения";
 "onboarding_usage_hm_format" = "%dh %dm";
 "onboarding_usage_h_only_format" = "%dh";
@@ -282,6 +291,7 @@
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "Углубитесь в свою утреннюю практику.\nРазблокируйте все ниже.";
 "paywall_onboarding_subtitle" = "Ваша утренняя рутина готова.\nПопробуйте Pro бесплатно первую неделю.";
+"paywall_onboarding_apps_subtitle" = "Блокируйте неограниченное число приложений каждое утро.\nОбновитесь, чтобы добавить 3-е приложение и больше.";
 "paywall_plan_weekly" = "Еженедельно";
 "paywall_plan_monthly" = "Ежемесячно";
 "paywall_plan_annual" = "Ежегодный";
@@ -338,6 +348,9 @@
 "workout_status_good" = "Хороший!";
 "workout_simulator_notice" = "Камера недоступна в симуляторе. Нажмите, чтобы имитировать завершение.";
 "workout_simulator_complete" = "Отметить как завершенное";
+"camera_permission_denied_title" = "Требуется доступ к камере";
+"camera_permission_denied_message" = "Задачи Workout и Focus требуют камеру. Включите доступ в Настройках.";
+"camera_open_settings" = "Открыть настройки";
 
 /* Focus detection (AI camera task) */
 "focus_preset_study_title" = "Исследование %d мин.";

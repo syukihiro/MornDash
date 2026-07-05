@@ -70,7 +70,7 @@ struct SettingsView: View {
             }
 
             if subscriptionManager.isPro {
-                colorThemePickerRow
+                colorThemeNavigationRow
             } else {
                 proLockRow(titleKey: "settings_color_theme")
             }
@@ -79,21 +79,20 @@ struct SettingsView: View {
         }
     }
 
-    private var colorThemePickerRow: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("settings_color_theme")
-                .font(.body)
-                .foregroundColor(MornDashColors.labelPrimary(colorScheme))
-
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 14) {
-                    ForEach(AccentTheme.allCases) { theme in
-                        colorThemeOption(theme)
-                    }
-                }
+    private var colorThemeNavigationRow: some View {
+        NavigationLink {
+            ColorThemePickerView()
+                .navigationTitle(Text("settings_color_theme_section"))
+                .navigationBarTitleDisplayMode(.inline)
+                .mornDashNavigationBarStyle()
+        } label: {
+            HStack {
+                Text("settings_color_theme")
+                Spacer()
+                Text(selectedAccentTheme.titleKey)
+                    .foregroundColor(.secondary)
             }
         }
-        .padding(.vertical, 4)
     }
 
     private func proLockRow(titleKey: LocalizedStringKey) -> some View {
@@ -147,54 +146,6 @@ struct SettingsView: View {
         } header: {
             Text("settings_blocking")
         }
-    }
-
-    private func colorThemeOption(_ theme: AccentTheme) -> some View {
-        let isSelected = selectedAccentTheme == theme
-        return Button {
-            accentThemeRaw = theme.rawValue
-        } label: {
-            VStack(spacing: 8) {
-                Circle()
-                    .fill(
-                        LinearGradient(
-                            colors: theme.idleGradientColors,
-                            startPoint: .bottomLeading,
-                            endPoint: .topTrailing
-                        )
-                    )
-                    .frame(width: 44, height: 44)
-                    .overlay(
-                        Circle()
-                            .strokeBorder(
-                                isSelected ? Color.white.opacity(0.9) : Color.clear,
-                                lineWidth: 2
-                            )
-                    )
-                    .overlay(
-                        Circle()
-                            .strokeBorder(
-                                isSelected ? theme.idleColor : Color.clear,
-                                lineWidth: 3
-                            )
-                            .padding(-3)
-                    )
-                    .shadow(color: theme.idleColor.opacity(isSelected ? 0.45 : 0.2), radius: isSelected ? 8 : 4)
-
-                Text(theme.titleKey)
-                    .font(.system(size: 11, weight: isSelected ? .semibold : .regular))
-                    .foregroundColor(
-                        isSelected
-                            ? MornDashColors.primaryText(colorScheme)
-                            : MornDashColors.secondaryText(colorScheme, opacity: 0.7)
-                    )
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.8)
-            }
-            .frame(width: 64)
-        }
-        .buttonStyle(.plain)
-        .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 
     // MARK: - Legal
@@ -374,10 +325,6 @@ struct SettingsView: View {
             .background(
                 Capsule().fill(accentTheme.idleColor.opacity(colorScheme == .dark ? 0.16 : 0.14))
             )
-
-            Image(systemName: "chevron.right")
-                .font(.system(size: 13, weight: .semibold))
-                .foregroundColor(MornDashColors.labelTertiary(colorScheme))
         }
         .padding(.horizontal, 20)
         .padding(.vertical, 18)

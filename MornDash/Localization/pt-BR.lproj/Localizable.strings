@@ -151,6 +151,8 @@
 "tasks_rename_sheet_title" = "Renomear tarefa";
 "tasks_rename_accessibility" = "Renomear tarefa";
 "tasks_delete_accessibility" = "Excluir tarefas";
+"tasks_minimum_one_title" = "Mantenha pelo menos uma tarefa";
+"tasks_minimum_one_message" = "Você precisa de pelo menos uma tarefa para desbloquear seus apps durante o bloqueio matinal.";
 "tasks_edit_done_accessibility" = "Edição concluída";
 "settings_blocking" = "Bloqueio";
 "settings_blocked_apps" = "Aplicativos bloqueados";
@@ -200,12 +202,19 @@
 "onboarding_permission_desc" = "Para bloquear aplicativos, MornDash precisa de acesso ao Screen Time da Apple.";
 "onboarding_permission_note" = "Tudo permanece no seu dispositivo. MornDash não envia seus dados para lugar nenhum.";
 "onboarding_param_screentime" = "Habilitar Screen Time";
+"onboarding_permission_denied" = "O MornDash precisa de acesso ao Tempo de Uso para bloquear apps. Permita o acesso em Ajustes.";
+"onboarding_permission_open_settings" = "Abrir Ajustes";
 
 /* Onboarding — step 4: apps */
 "onboarding_apps_title" = "Escolha aplicativos para bloquear";
 "onboarding_apps_desc" = "Na lista de ontem, se exibida, ou use Selecionar aplicativos.";
 "onboarding_apps_yesterday_label" = "Ontem";
 "onboarding_apps_free_footer" = "Grátis: até %d itens. As categorias precisam de Pro.";
+"onboarding_apps_limit_title" = "Plano gratuito: até 2 apps";
+"onboarding_apps_limit_message" = "Você atingiu o limite gratuito. Atualize para o Pro para bloquear apps, categorias e sites ilimitados.";
+"onboarding_apps_limit_keep_free" = "Manter 2 apps por enquanto";
+"onboarding_apps_limit_categories_title" = "Categorias exigem Pro";
+"onboarding_apps_limit_categories_message" = "Bloquear categorias inteiras de apps é um recurso Pro. Escolha apps individuais no plano gratuito ou atualize.";
 "onboarding_select_apps" = "Selecione aplicativos";
 "onboarding_usage_hm_format" = "%dh %dm";
 "onboarding_usage_h_only_format" = "%dh";
@@ -282,6 +291,7 @@
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "Aprofunde-se em sua prática matinal.\nDesbloqueie tudo abaixo.";
 "paywall_onboarding_subtitle" = "Sua rotina matinal está pronta.\nExperimente o Pro grátis na primeira semana.";
+"paywall_onboarding_apps_subtitle" = "Bloqueie apps ilimitados toda manhã.\nAtualize para adicionar um 3º app e mais.";
 "paywall_plan_weekly" = "Semanalmente";
 "paywall_plan_monthly" = "Mensal";
 "paywall_plan_annual" = "Anual";
@@ -338,6 +348,9 @@
 "workout_status_good" = "Legal!";
 "workout_simulator_notice" = "A câmera não está disponível no simulador. Toque para simular a conclusão.";
 "workout_simulator_complete" = "Marcar como concluído";
+"camera_permission_denied_title" = "Acesso à câmera necessário";
+"camera_permission_denied_message" = "Tarefas de treino e foco precisam da câmera. Ative o acesso em Ajustes.";
+"camera_open_settings" = "Abrir Ajustes";
 
 /* Focus detection (AI camera task) */
 "focus_preset_study_title" = "Estude %d min";

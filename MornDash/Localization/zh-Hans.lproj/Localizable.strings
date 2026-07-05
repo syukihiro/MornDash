@@ -151,6 +151,8 @@
 "tasks_rename_sheet_title" = "重命名任务";
 "tasks_rename_accessibility" = "重命名任务";
 "tasks_delete_accessibility" = "删除任务";
+"tasks_minimum_one_title" = "至少保留一个任务";
+"tasks_minimum_one_message" = "早晨阻止期间解除应用锁定，至少需要一项任务。";
 "tasks_edit_done_accessibility" = "编辑完成";
 "settings_blocking" = "阻塞";
 "settings_blocked_apps" = "被阻止的应用程序";
@@ -200,12 +202,19 @@
 "onboarding_permission_desc" = "要阻止应用程序，MornDash 需要访问 Apple 的 Screen Time。";
 "onboarding_permission_note" = "一切都保留在您的设备上。 MornDash 不会将您的数据发送到任何地方。";
 "onboarding_param_screentime" = "启用 Screen Time";
+"onboarding_permission_denied" = "MornDash 需要屏幕使用时间权限才能阻止应用。请在设置中允许访问。";
+"onboarding_permission_open_settings" = "打开设置";
 
 /* Onboarding — step 4: apps */
 "onboarding_apps_title" = "选择要阻止的应用程序";
 "onboarding_apps_desc" = "从昨天的列表（如果显示）中选择，或使用“选择应用程序”。";
 "onboarding_apps_yesterday_label" = "昨天";
 "onboarding_apps_free_footer" = "免费：最多 %d 件物品。类别需要 Pro。";
+"onboarding_apps_limit_title" = "免费版最多 2 个应用";
+"onboarding_apps_limit_message" = "已达到免费版上限。升级 Pro 可无限阻止应用、类别和网站。";
+"onboarding_apps_limit_keep_free" = "暂时保留 2 个";
+"onboarding_apps_limit_categories_title" = "类别阻止需要 Pro";
+"onboarding_apps_limit_categories_message" = "阻止整个应用类别是 Pro 功能。免费版请选择单个应用，或升级 Pro。";
 "onboarding_select_apps" = "选择应用程序";
 "onboarding_usage_hm_format" = "%dh %dm";
 "onboarding_usage_h_only_format" = "%dh";
@@ -282,6 +291,7 @@
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "更深入地进行早晨的练习。\n解锁以下所有内容。";
 "paywall_onboarding_subtitle" = "您的晨间例程已就绪。\n第一周免费试用 Pro。";
+"paywall_onboarding_apps_subtitle" = "每天早晨无限阻止应用。\n升级 Pro 可添加第 3 个及更多。";
 "paywall_plan_weekly" = "每周";
 "paywall_plan_monthly" = "每月";
 "paywall_plan_annual" = "年度的";
@@ -338,6 +348,9 @@
 "workout_status_good" = "好的！";
 "workout_simulator_notice" = "模拟器中的相机不可用。点击以模拟完成。";
 "workout_simulator_complete" = "标记为完成";
+"camera_permission_denied_title" = "需要相机权限";
+"camera_permission_denied_message" = "锻炼和专注任务需要相机。请在设置中开启权限。";
+"camera_open_settings" = "打开设置";
 
 /* Focus detection (AI camera task) */
 "focus_preset_study_title" = "学习 %d 分钟";

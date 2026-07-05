@@ -40,12 +40,14 @@ struct RoutineCompleteCelebrationView: View {
     @State private var compactVisible = false
     @State private var compactDidDismiss = false
 
-    private let accentGreen = Color(red: 0.45, green: 0.95, blue: 0.65)
     private let accentYellow = Color.yellow
     private let accentGold = Color(red: 1.0, green: 0.88, blue: 0.55)
 
     private var celebrationPrimary: Color {
-        colorScheme == .dark ? (badge?.color ?? accentGreen) : accentTheme.idleColor
+        if let badge {
+            return colorScheme == .dark ? badge.color : accentTheme.idleColor
+        }
+        return accentTheme.completedAccentColor
     }
 
     private var celebrationSecondary: Color {
@@ -65,7 +67,7 @@ struct RoutineCompleteCelebrationView: View {
             ]
         }
         if colorScheme == .dark {
-            return [MornDashColors.iconGradientLeading(colorScheme), accentGreen, accentYellow]
+            return [MornDashColors.iconGradientLeading(colorScheme), accentTheme.completedAccentColor, accentYellow]
         }
         return [
             Color(red: 0.45, green: 0.20, blue: 0.03),
@@ -136,7 +138,7 @@ struct RoutineCompleteCelebrationView: View {
 
     private var celebrationButtonGradient: [Color] {
         colorScheme == .dark
-            ? [accentGreen, celebrationSecondary]
+            ? [accentTheme.completedAccentColor, celebrationSecondary]
             : accentTheme.idleGradientColors
     }
 
@@ -408,7 +410,7 @@ struct RoutineCompleteCelebrationView: View {
                             HStack(spacing: 5) {
                                 Image(systemName: "flame.fill")
                                     .font(.system(size: 12, weight: .semibold))
-                                    .foregroundStyle(MornDashColors.streakFlame)
+                                    .foregroundStyle(accentTheme.streakFlameGradientStyle)
                                 Text(String(format: NSLocalizedString("streak_days_format", comment: ""), streak))
                                     .font(.system(size: 13, weight: .medium))
                                     .foregroundColor(MornDashColors.labelSecondary(colorScheme))
@@ -446,7 +448,7 @@ struct RoutineCompleteCelebrationView: View {
         HStack(spacing: 6) {
             Image(systemName: "flame.fill")
                 .font(.system(size: 14))
-                .foregroundStyle(MornDashColors.streakFlame)
+                .foregroundStyle(accentTheme.streakFlameGradientStyle)
             Text(String(format: NSLocalizedString("streak_days_format", comment: ""), streak))
                 .font(.system(size: 14, weight: .semibold))
                 .foregroundColor(MornDashColors.labelPrimary(colorScheme, opacity: colorScheme == .dark ? 0.88 : 0.92))

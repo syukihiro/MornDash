@@ -609,8 +609,11 @@ struct OnboardingAppsView: View {
     var nextAction: () -> Void
     @State private var showPicker = false
     @State private var showPaywall = false
+    @State private var showLimitSheet = false
+    @State private var limitReason: BlockedAppsLimitReason = .appLimit
     @State private var selectionBeforePicker: FamilyActivitySelection?
     @State private var pickerDraft = FamilyActivitySelection()
+    @State private var lastValidPickerDraft = FamilyActivitySelection()
     @State private var usageRows: [OnboardingUsagePickRow] = []
 
     private var hasUsageList: Bool {
@@ -689,6 +692,19 @@ struct OnboardingAppsView: View {
                         }
                     }
             }
+            .onChange(of: pickerDraft) { _, newValue in
+                handlePickerDraftChange(newValue)
+            }
+        }
+        .sheet(isPresented: $showLimitSheet) {
+            BlockedAppsLimitSheet(
+                reason: limitReason,
+                onUpgrade: {
+                    showLimitSheet = false
+                    showPaywall = true
+                },
+                onDismiss: { showLimitSheet = false }
+            )
         }
         .paywallSheet(isPresented: $showPaywall, source: .onboardingApps)
         .onAppear {
@@ -807,7 +823,7 @@ struct OnboardingAppsView: View {
             return
         }
         if !subscriptionManager.isPro, selectionItemCount(sel) >= RevenueCatConfig.freeBlockedAppsLimit {
-            showPaywall = true
+            presentLimitSheet(.appLimit)
             return
         }
         sel.applicationTokens.insert(row.token)
@@ -827,40 +843,52 @@ struct OnboardingAppsView: View {
 
     private func openAppPicker() {
         selectionBeforePicker = blockManager.selection
-        pickerDraft = blockManager.selection
+        let baseline = blockManager.selection.clearingCategories()
+        pickerDraft = baseline
+        lastValidPickerDraft = baseline
         showPicker = true
+    }
+
+    private func handlePickerDraftChange(_ newValue: FamilyActivitySelection) {
+        guard showPicker, !subscriptionManager.isPro else { return }
+
+        if !newValue.categoryTokens.isEmpty || !newValue.webDomainTokens.isEmpty {
+            pickerDraft = lastValidPickerDraft
+            showPicker = false
+            presentLimitSheet(.categories)
+            return
+        }
+
+        let sanitized = newValue.clearingCategories()
+        if selectionItemCount(sanitized) > RevenueCatConfig.freeBlockedAppsLimit {
+            pickerDraft = lastValidPickerDraft
+            showPicker = false
+            presentLimitSheet(.appLimit)
+            return
+        }
+
+        lastValidPickerDraft = sanitized
+    }
+
+    private func presentLimitSheet(_ reason: BlockedAppsLimitReason) {
+        limitReason = reason
+        showLimitSheet = true
     }
 
     private func handleAppsPickerDismiss() {
         defer { selectionBeforePicker = nil }
-        let hadCategories = !pickerDraft.categoryTokens.isEmpty
-
-        if subscriptionManager.isPro {
+        guard !subscriptionManager.isPro else {
             blockManager.selection = pickerDraft
             return
         }
 
-        let sanitized = pickerDraft.clearingCategories()
-
-        if hadCategories, selectionItemCount(sanitized) == 0,
-           let prev = selectionBeforePicker, selectionItemCount(prev.clearingCategories()) > 0 {
-            blockManager.selection = prev.clearingCategories()
-            showPaywall = true
-            return
-        }
-
+        let sanitized = lastValidPickerDraft
         blockManager.selection = sanitized
 
-        if selectionItemCount(sanitized) > RevenueCatConfig.freeBlockedAppsLimit {
-            if let prev = selectionBeforePicker {
-                blockManager.selection = prev
-            }
-            showPaywall = true
-            return
-        }
-
-        if hadCategories {
-            showPaywall = true
+        if selectionItemCount(sanitized) > RevenueCatConfig.freeBlockedAppsLimit,
+           let prev = selectionBeforePicker {
+            blockManager.selection = prev.clearingCategories()
+            presentLimitSheet(.appLimit)
         }
     }
 

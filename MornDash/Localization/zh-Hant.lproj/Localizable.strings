@@ -151,6 +151,8 @@
 "tasks_rename_sheet_title" = "重新命名任務";
 "tasks_rename_accessibility" = "重新命名任務";
 "tasks_delete_accessibility" = "刪除任務";
+"tasks_minimum_one_title" = "至少保留一項任務";
+"tasks_minimum_one_message" = "早晨封鎖期間解除 App 鎖定，至少需要一項任務。";
 "tasks_edit_done_accessibility" = "編輯完成";
 "settings_blocking" = "阻塞";
 "settings_blocked_apps" = "被阻止的應用程式";
@@ -200,12 +202,19 @@
 "onboarding_permission_desc" = "要阻止應用程序，MornDash 需要存取 Apple 的 Screen Time。";
 "onboarding_permission_note" = "一切都保留在您的設備上。 MornDash 不會將您的資料傳送到任何地方。";
 "onboarding_param_screentime" = "啟用 Screen Time";
+"onboarding_permission_denied" = "MornDash 需要螢幕使用時間權限才能封鎖 App。請在設定中允許存取。";
+"onboarding_permission_open_settings" = "打開設定";
 
 /* Onboarding — step 4: apps */
 "onboarding_apps_title" = "選擇要阻止的應用程式";
 "onboarding_apps_desc" = "從昨天的清單（如果顯示）中選擇，或使用“選擇應用程式”。";
 "onboarding_apps_yesterday_label" = "昨天";
 "onboarding_apps_free_footer" = "免費：最多 %d 件物品。類別需要 Pro。";
+"onboarding_apps_limit_title" = "免費版最多 2 個 App";
+"onboarding_apps_limit_message" = "已達免費版上限。升級 Pro 可無限封鎖 App、類別和網站。";
+"onboarding_apps_limit_keep_free" = "暫時保留 2 個";
+"onboarding_apps_limit_categories_title" = "類別封鎖需要 Pro";
+"onboarding_apps_limit_categories_message" = "封鎖整個 App 類別是 Pro 功能。免費版請選擇個別 App，或升級 Pro。";
 "onboarding_select_apps" = "選擇應用程式";
 "onboarding_usage_hm_format" = "%dh %dm";
 "onboarding_usage_h_only_format" = "%dh";
@@ -282,6 +291,7 @@
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "更深入地進行早晨的練習。\n解鎖以下所有內容。";
 "paywall_onboarding_subtitle" = "您的晨間例程已就緒。\n第一週免費試用 Pro。";
+"paywall_onboarding_apps_subtitle" = "每天早晨無限封鎖 App。\n升級 Pro 可新增第 3 個及更多。";
 "paywall_plan_weekly" = "每週";
 "paywall_plan_monthly" = "每月";
 "paywall_plan_annual" = "年度的";
@@ -338,6 +348,9 @@
 "workout_status_good" = "好的！";
 "workout_simulator_notice" = "模擬器中的相機不可用。點擊以模擬完成。";
 "workout_simulator_complete" = "標記為完成";
+"camera_permission_denied_title" = "需要相機權限";
+"camera_permission_denied_message" = "運動和專注任務需要相機。請在設定中開啟權限。";
+"camera_open_settings" = "打開設定";
 
 /* Focus detection (AI camera task) */
 "focus_preset_study_title" = "學習 %d 分鐘";

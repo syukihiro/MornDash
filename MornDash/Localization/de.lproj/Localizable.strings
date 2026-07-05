@@ -151,6 +151,8 @@
 "tasks_rename_sheet_title" = "Aufgabe umbenennen";
 "tasks_rename_accessibility" = "Aufgabe umbenennen";
 "tasks_delete_accessibility" = "Aufgaben löschen";
+"tasks_minimum_one_title" = "Mindestens eine Aufgabe behalten";
+"tasks_minimum_one_message" = "Sie benötigen mindestens eine Aufgabe, um Ihre Apps während des Morgenblocks freizuschalten.";
 "tasks_edit_done_accessibility" = "Bearbeitung abgeschlossen";
 "settings_blocking" = "Blockierung";
 "settings_blocked_apps" = "Blockierte Apps";
@@ -200,12 +202,19 @@
 "onboarding_permission_desc" = "Um Apps zu blockieren, benötigt MornDash Zugriff auf Apples Screen Time.";
 "onboarding_permission_note" = "Alles bleibt auf Ihrem Gerät. MornDash sendet Ihre Daten nirgendwo hin.";
 "onboarding_param_screentime" = "Screen Time aktivieren";
+"onboarding_permission_denied" = "Für das Blockieren von Apps benötigt MornDash Zugriff auf Screen Time. Bitte erlauben Sie den Zugriff in den Einstellungen.";
+"onboarding_permission_open_settings" = "Einstellungen öffnen";
 
 /* Onboarding — step 4: apps */
 "onboarding_apps_title" = "Wählen Sie Apps zum Blockieren aus";
 "onboarding_apps_desc" = "Aus der Liste von gestern, falls angezeigt, oder verwenden Sie „Apps auswählen“.";
 "onboarding_apps_yesterday_label" = "Gestern";
 "onboarding_apps_free_footer" = "Kostenlos: bis zu %d Artikel. Kategorien benötigen Pro.";
+"onboarding_apps_limit_title" = "Kostenloser Plan: max. 2 Apps";
+"onboarding_apps_limit_message" = "Sie haben das kostenlose Limit erreicht. Mit Pro können Sie unbegrenzt Apps, Kategorien und Websites blockieren.";
+"onboarding_apps_limit_keep_free" = "Erstmal bei 2 Apps bleiben";
+"onboarding_apps_limit_categories_title" = "Kategorien erfordern Pro";
+"onboarding_apps_limit_categories_message" = "Das Blockieren ganzer App-Kategorien ist eine Pro-Funktion. Wählen Sie im kostenlosen Plan einzelne Apps aus oder upgraden Sie.";
 "onboarding_select_apps" = "Wählen Sie Apps aus";
 "onboarding_usage_hm_format" = "%dh %dm";
 "onboarding_usage_h_only_format" = "%dh";
@@ -282,6 +291,7 @@
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "Gehen Sie tiefer in Ihr Morgentraining ein.\nSchalten Sie unten alles frei.";
 "paywall_onboarding_subtitle" = "Deine Morgenroutine ist bereit.\nTeste Pro die erste Woche kostenlos.";
+"paywall_onboarding_apps_subtitle" = "Blockieren Sie unbegrenzt Apps jeden Morgen.\nUpgraden Sie, um eine 3. App und mehr hinzuzufügen.";
 "paywall_plan_weekly" = "Wöchentlich";
 "paywall_plan_monthly" = "Monatlich";
 "paywall_plan_annual" = "Jährlich";
@@ -338,6 +348,9 @@
 "workout_status_good" = "Hübsch!";
 "workout_simulator_notice" = "Die Kamera ist im Simulator nicht verfügbar. Tippen Sie, um den Abschluss zu simulieren.";
 "workout_simulator_complete" = "Als abgeschlossen markieren";
+"camera_permission_denied_title" = "Kamerazugriff erforderlich";
+"camera_permission_denied_message" = "Workout- und Fokus-Aufgaben benötigen die Kamera. Aktivieren Sie den Zugriff in den Einstellungen.";
+"camera_open_settings" = "Einstellungen öffnen";
 
 /* Focus detection (AI camera task) */
 "focus_preset_study_title" = "Studie %d min";

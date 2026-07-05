@@ -157,8 +157,6 @@ enum MornDashColors {
             : [lightInkTertiary.opacity(0.35), lightInkTertiary.opacity(0.2)]
     }
 
-    static let streakFlame = Color.red
-
     static func calendarEmptyDay(_ scheme: ColorScheme) -> Color {
         scheme == .dark ? Color.white.opacity(0.15) : lightBorder
     }

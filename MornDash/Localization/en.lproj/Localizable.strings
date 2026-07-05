@@ -210,6 +210,11 @@
 "onboarding_apps_desc" = "From yesterday’s list if shown, or use Select Apps.";
 "onboarding_apps_yesterday_label" = "Yesterday";
 "onboarding_apps_free_footer" = "Free: up to %d items. Categories need Pro.";
+"onboarding_apps_limit_title" = "2 apps on the free plan";
+"onboarding_apps_limit_message" = "You've reached the free limit. Upgrade to Pro to block unlimited apps, categories, and websites.";
+"onboarding_apps_limit_keep_free" = "Keep 2 apps for now";
+"onboarding_apps_limit_categories_title" = "Categories need Pro";
+"onboarding_apps_limit_categories_message" = "Blocking entire app categories is a Pro feature. Pick individual apps on the free plan, or upgrade.";
 "onboarding_select_apps" = "Select Apps";
 "onboarding_usage_hm_format" = "%dh %dm";
 "onboarding_usage_h_only_format" = "%dh";
@@ -286,6 +291,7 @@
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "Go deeper into your morning practice.\nUnlock everything below.";
 "paywall_onboarding_subtitle" = "Your morning routine is ready.\nTry Pro free for your first week.";
+"paywall_onboarding_apps_subtitle" = "Block unlimited apps every morning.\nUpgrade to add a 3rd app and more.";
 "paywall_plan_weekly" = "Weekly";
 "paywall_plan_monthly" = "Monthly";
 "paywall_plan_annual" = "Annual";

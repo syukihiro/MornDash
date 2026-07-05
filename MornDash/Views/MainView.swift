@@ -68,7 +68,11 @@ struct MainView: View {
                         ForEach(sortedTasks) { task in
                             HStack(alignment: .top, spacing: 8) {
                                 Image(systemName: task.isCompletedToday ? "checkmark.circle.fill" : "circle")
-                                    .foregroundColor(task.isCompletedToday ? .green : MornDashColors.secondaryText(colorScheme, opacity: 0.3))
+                                    .foregroundColor(
+                                        task.isCompletedToday
+                                            ? accentTheme.completedAccentColor
+                                            : MornDashColors.secondaryText(colorScheme, opacity: 0.3)
+                                    )
                                     .padding(.top, 2)
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(task.title)
@@ -119,7 +123,7 @@ struct MainView: View {
     private var streakPill: some View {
         HStack(spacing: 6) {
             Image(systemName: "flame.fill")
-                .foregroundStyle(MornDashColors.streakFlame)
+                .foregroundStyle(accentTheme.streakFlameGradientStyle)
             Text(String(format: NSLocalizedString("streak_days_format", comment: ""), viewModel.streakStore.currentStreak))
                 .foregroundColor(MornDashColors.primaryText(colorScheme, opacity: 0.9))
         }

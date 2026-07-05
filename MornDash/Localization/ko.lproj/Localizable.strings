@@ -151,6 +151,8 @@
 "tasks_rename_sheet_title" = "작업 이름 바꾸기";
 "tasks_rename_accessibility" = "작업 이름 바꾸기";
 "tasks_delete_accessibility" = "작업 삭제";
+"tasks_minimum_one_title" = "최소 1개의 작업 유지";
+"tasks_minimum_one_message" = "아침 차단 중 앱을 해제하려면 최소 1개의 작업이 필요합니다.";
 "tasks_edit_done_accessibility" = "편집 완료";
 "settings_blocking" = "블로킹";
 "settings_blocked_apps" = "차단된 앱";
@@ -200,12 +202,19 @@
 "onboarding_permission_desc" = "앱을 차단하려면 MornDash이 Apple의 Screen Time에 액세스해야 합니다.";
 "onboarding_permission_note" = "모든 것이 장치에 유지됩니다. MornDash은 데이터를 어디로도 보내지 않습니다.";
 "onboarding_param_screentime" = "Screen Time 활성화";
+"onboarding_permission_denied" = "앱을 차단하려면 스크린 타임 접근이 필요합니다. 설정에서 허용해 주세요.";
+"onboarding_permission_open_settings" = "설정 열기";
 
 /* Onboarding — step 4: apps */
 "onboarding_apps_title" = "차단할 앱 선택";
 "onboarding_apps_desc" = "표시된 경우 어제 목록에서 선택하거나 앱 선택을 사용하세요.";
 "onboarding_apps_yesterday_label" = "어제";
 "onboarding_apps_free_footer" = "무료: 최대 %d개 항목. 카테고리에는 Pro이 필요합니다.";
+"onboarding_apps_limit_title" = "무료 플랜: 최대 2개 앱";
+"onboarding_apps_limit_message" = "무료 한도에 도달했습니다. Pro로 업그레이드하면 앱, 카테고리, 웹사이트를 무제한으로 차단할 수 있습니다.";
+"onboarding_apps_limit_keep_free" = "지금은 2개로 유지";
+"onboarding_apps_limit_categories_title" = "카테고리는 Pro 필요";
+"onboarding_apps_limit_categories_message" = "앱 카테고리 전체 차단은 Pro 기능입니다. 무료 플랜에서는 개별 앱을 선택하거나 업그레이드하세요.";
 "onboarding_select_apps" = "앱 선택";
 "onboarding_usage_hm_format" = "%dh %dm";
 "onboarding_usage_h_only_format" = "%dh";
@@ -282,6 +291,7 @@
 "paywall_title" = "MornDash Pro";
 "paywall_subtitle" = "아침 연습에 더 깊이 들어가 보세요.\n아래의 모든 것을 잠금 해제하세요.";
 "paywall_onboarding_subtitle" = "아침 루틴이 준비되었습니다.\n첫 주는 Pro를 무료로 사용해 보세요.";
+"paywall_onboarding_apps_subtitle" = "매일 아침 무제한 앱 차단.\n3번째 앱 이상은 Pro로 추가하세요.";
 "paywall_plan_weekly" = "주간";
 "paywall_plan_monthly" = "월간 간행물";
 "paywall_plan_annual" = "연간";
@@ -338,6 +348,9 @@
 "workout_status_good" = "멋진!";
 "workout_simulator_notice" = "시뮬레이터에서 카메라를 사용할 수 없습니다. 완료를 시뮬레이션하려면 탭하세요.";
 "workout_simulator_complete" = "완료로 표시";
+"camera_permission_denied_title" = "카메라 접근 필요";
+"camera_permission_denied_message" = "운동 및 집중 작업에는 카메라가 필요합니다. 설정에서 접근을 허용해 주세요.";
+"camera_open_settings" = "설정 열기";
 
 /* Focus detection (AI camera task) */
 "focus_preset_study_title" = "공부 %d분";

@@ -3,6 +3,7 @@ import SwiftUI
 struct AmbientBackgroundView: View {
     let color: Color
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.accentTheme) private var accentTheme
     @State private var animateOrb = false
 
     var body: some View {
@@ -22,7 +23,7 @@ struct AmbientBackgroundView: View {
 
             Circle()
                 .fill(
-                    (colorScheme == .dark ? Color.blue : Color(red: 0.55, green: 0.72, blue: 0.95))
+                    accentTheme.ambientSecondaryColor
                         .opacity(colorScheme == .dark ? 0.2 : 0.16)
                 )
                 .frame(width: 400, height: 400)

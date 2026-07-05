@@ -126,7 +126,11 @@ struct TasksTabView: View {
                     HStack(spacing: 14) {
                         Image(systemName: task.isCompletedToday ? "checkmark.circle.fill" : "circle")
                             .font(.system(size: 22, weight: .light))
-                            .foregroundColor(task.isCompletedToday ? .green : MornDashColors.inactiveIcon(colorScheme))
+                            .foregroundColor(
+                                task.isCompletedToday
+                                    ? accentTheme.completedAccentColor
+                                    : MornDashColors.inactiveIcon(colorScheme)
+                            )
 
                         Button(action: { openRenameSheet(for: task) }) {
                             HStack(spacing: 6) {

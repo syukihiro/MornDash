@@ -58,15 +58,35 @@ enum AccentTheme: String, CaseIterable, Identifiable {
         }
     }
 
-    var completedColor: Color {
+    var completedAccentColor: Color {
         switch self {
-        case .classic: Color(red: 0.62, green: 0.92, blue: 0.74).opacity(0.55)
-        case .sunrise: Color(red: 0.78, green: 0.88, blue: 0.42).opacity(0.55)
-        case .forest: Color(red: 0.48, green: 0.88, blue: 0.62).opacity(0.55)
-        case .ocean: Color(red: 0.45, green: 0.82, blue: 0.88).opacity(0.55)
-        case .lavender: Color(red: 0.72, green: 0.62, blue: 0.95).opacity(0.55)
-        case .rose: Color(red: 0.95, green: 0.62, blue: 0.78).opacity(0.55)
+        case .classic: Color(red: 0.62, green: 0.92, blue: 0.74)
+        case .sunrise: Color(red: 0.78, green: 0.88, blue: 0.42)
+        case .forest: Color(red: 0.48, green: 0.88, blue: 0.62)
+        case .ocean: Color(red: 0.45, green: 0.82, blue: 0.88)
+        case .lavender: Color(red: 0.72, green: 0.62, blue: 0.95)
+        case .rose: Color(red: 0.95, green: 0.62, blue: 0.78)
         }
+    }
+
+    /// Ambient glow when all tasks are completed for the day.
+    var completedColor: Color {
+        completedAccentColor.opacity(0.55)
+    }
+
+    /// Secondary ambient orb — complements the state-driven primary orb.
+    var ambientSecondaryColor: Color {
+        blockingColor
+    }
+
+    /// Active streak flame icon gradient.
+    var streakFlameGradient: [Color] {
+        let highlight = idleGradientColors.last ?? idleColor
+        return [highlight, idleColor]
+    }
+
+    var streakFlameGradientStyle: LinearGradient {
+        LinearGradient(colors: streakFlameGradient, startPoint: .top, endPoint: .bottom)
     }
 
     var uiAccent: UIColor {

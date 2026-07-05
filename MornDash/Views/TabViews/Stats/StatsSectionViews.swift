@@ -53,7 +53,7 @@ struct StatsStreakSummaryView: View {
                     .font(.system(size: 24, weight: .light))
                     .foregroundStyle(
                         streak > 0
-                            ? AnyShapeStyle(MornDashColors.streakFlame)
+                            ? AnyShapeStyle(accentTheme.streakFlameGradientStyle)
                             : AnyShapeStyle(
                                 LinearGradient(
                                     colors: MornDashColors.flameInactiveGradient(colorScheme),

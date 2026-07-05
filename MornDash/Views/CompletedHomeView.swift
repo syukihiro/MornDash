@@ -11,19 +11,16 @@ struct CompletedHomeView: View {
     @State private var glowBreath = false
     @State private var sparkleSeed = 0
 
-    private let accentGreen = Color(red: 0.62, green: 0.92, blue: 0.74)
     private let accentGold = Color(red: 1.0, green: 0.88, blue: 0.55)
 
     private var streak: Int { viewModel.streakStore.currentStreak }
 
     private var celebrationPrimary: Color {
-        colorScheme == .dark ? accentGreen : accentTheme.idleColor
+        accentTheme.completedAccentColor
     }
 
     private var celebrationGradient: [Color] {
-        colorScheme == .dark
-            ? [accentGreen, accentGold]
-            : accentTheme.idleGradientColors
+        [accentTheme.completedAccentColor, accentGold]
     }
 
     var body: some View {
@@ -208,7 +205,7 @@ struct CompletedHomeView: View {
                 ? [.white, accentGold.opacity(0.9)]
                 : streak >= 7
                     ? [.white, accentGold.opacity(0.75)]
-                    : [.white, accentGreen.opacity(0.7)],
+                    : [.white, accentTheme.completedAccentColor.opacity(0.7)],
             startPoint: .top,
             endPoint: .bottom
         )

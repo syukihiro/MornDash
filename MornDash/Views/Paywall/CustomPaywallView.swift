@@ -118,11 +118,22 @@ struct CustomPaywallView: View {
                 .foregroundColor(MornDashColors.labelPrimary(colorScheme))
                 .multilineTextAlignment(.center)
 
-            Text(source == .onboarding ? "paywall_onboarding_subtitle" : "paywall_subtitle")
+            Text(paywallSubtitleKey)
                 .font(.system(size: 14))
                 .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 12)
+        }
+    }
+
+    private var paywallSubtitleKey: LocalizedStringKey {
+        switch source {
+        case .onboarding:
+            return "paywall_onboarding_subtitle"
+        case .onboardingApps:
+            return "paywall_onboarding_apps_subtitle"
+        default:
+            return "paywall_subtitle"
         }
     }
 
