@@ -29,7 +29,11 @@ final class WorkoutCounterViewModel: NSObject, ObservableObject, AVCaptureVideoD
     let targetReps: Int
     var onTargetReached: (() -> Void)?
 
+    /// カウント検出用。回転済みバッファに .up で回し、縦移動を Y 軸に乗せる。
     private let bodyPoseRequest = VNDetectHumanBodyPoseRequest()
+    /// 骨格線オーバーレイ描画用。layerRectConverted が期待する座標系に合わせ .leftMirrored で回す。
+    /// 検出とは必要な向きが逆のため別リクエストにしている。
+    private let overlayPoseRequest = VNDetectHumanBodyPoseRequest()
 
     private enum Phase { case up, down }
     private var currentPhase: Phase = .up
@@ -71,11 +75,26 @@ final class WorkoutCounterViewModel: NSObject, ObservableObject, AVCaptureVideoD
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
 
+        // --- 骨格線オーバーレイ用 ---
+        // 描画は layerRectConverted(fromMetadataOutputRect:) 経由で行うため、その期待する
+        // 横向き座標系に一致する .leftMirrored で抽出する。検出とは向きが逆なので別ハンドラ。
+        let overlayHandler = VNImageRequestHandler(
+            cvPixelBuffer: pixelBuffer,
+            orientation: .leftMirrored,
+            options: [:]
+        )
+        if (try? overlayHandler.perform([overlayPoseRequest])) != nil,
+           let overlayObservation = overlayPoseRequest.results?.first {
+            publishPoseJoints(extractJoints(from: overlayObservation))
+        } else {
+            publishPoseJoints([:])
+        }
+
+        // --- カウント検出用 ---
+        // CameraManager 側で videoRotationAngle=90 + ミラーを適用済みのため、ここに届くバッファは
+        // 既に縦向き・ミラー済み。Vision で再度回転を掛けると立ち↔しゃがみの縦移動が Y ではなく
+        // X 軸に乗って全くカウントされない。回転済みバッファには .up を使う（waiton の検出パスと同座標系）。
         do {
-            // CameraManager 側で videoRotationAngle=90 + ミラーを適用済みのため、
-            // ここに届くバッファは既に縦向き・ミラー済み。Vision で再度回転を掛けると
-            // 立ち↔しゃがみの縦移動が Y ではなく X 軸に乗ってしまい全くカウントされない。
-            // 回転済みバッファには .up を使う（waiton の検出パスと同じ座標系）。
             let handler = VNImageRequestHandler(
                 cvPixelBuffer: pixelBuffer,
                 orientation: .up,
@@ -84,13 +103,10 @@ final class WorkoutCounterViewModel: NSObject, ObservableObject, AVCaptureVideoD
             try handler.perform([bodyPoseRequest])
 
             guard let observation = bodyPoseRequest.results?.first else {
-                publishPoseJoints([:])
                 handleMissingBody()
                 return
             }
 
-            let joints = extractJoints(from: observation)
-            publishPoseJoints(joints)
             processObservation(observation)
         } catch {
             #if DEBUG
