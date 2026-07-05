@@ -346,6 +346,10 @@
 "workout_status_start" = "Начинать!";
 "workout_status_down" = "Вниз!";
 "workout_status_good" = "Хороший!";
+"workout_status_stand_still" = "Стойте неподвижно для подготовки";
+"workout_status_countdown" = "Приготовьтесь…";
+"workout_countdown_go" = "Старт!";
+"workout_status_ready_hint" = "Приседайте, чтобы начать счёт";
 "workout_simulator_notice" = "Камера недоступна в симуляторе. Нажмите, чтобы имитировать завершение.";
 "workout_simulator_complete" = "Отметить как завершенное";
 "camera_permission_denied_title" = "Требуется доступ к камере";

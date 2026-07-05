@@ -346,6 +346,10 @@
 "workout_status_start" = "Commencer!";
 "workout_status_down" = "Vers le bas!";
 "workout_status_good" = "Bon!";
+"workout_status_stand_still" = "Restez immobile pour vous préparer";
+"workout_status_countdown" = "Préparez-vous…";
+"workout_countdown_go" = "Go !";
+"workout_status_ready_hint" = "Accroupissez-vous pour commencer à compter";
 "workout_simulator_notice" = "La caméra n'est pas disponible dans le simulateur. Appuyez pour simuler l'achèvement.";
 "workout_simulator_complete" = "Marquer comme terminé";
 "camera_permission_denied_title" = "Accès à la caméra requis";

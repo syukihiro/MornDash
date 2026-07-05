@@ -346,6 +346,10 @@
 "workout_status_start" = "시작!";
 "workout_status_down" = "아래에!";
 "workout_status_good" = "멋진!";
+"workout_status_stand_still" = "준비가 될 때까지 가만히 서 주세요";
+"workout_status_countdown" = "곧 시작합니다";
+"workout_countdown_go" = "시작!";
+"workout_status_ready_hint" = "스쿼트를 하면 카운트가 시작됩니다";
 "workout_simulator_notice" = "시뮬레이터에서 카메라를 사용할 수 없습니다. 완료를 시뮬레이션하려면 탭하세요.";
 "workout_simulator_complete" = "완료로 표시";
 "camera_permission_denied_title" = "카메라 접근 필요";

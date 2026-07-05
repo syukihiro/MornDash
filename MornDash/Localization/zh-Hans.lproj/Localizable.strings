@@ -346,6 +346,10 @@
 "workout_status_start" = "开始！";
 "workout_status_down" = "向下！";
 "workout_status_good" = "好的！";
+"workout_status_stand_still" = "请保持站立不动以完成准备";
+"workout_status_countdown" = "即将开始";
+"workout_countdown_go" = "开始！";
+"workout_status_ready_hint" = "下蹲后开始计数";
 "workout_simulator_notice" = "模拟器中的相机不可用。点击以模拟完成。";
 "workout_simulator_complete" = "标记为完成";
 "camera_permission_denied_title" = "需要相机权限";

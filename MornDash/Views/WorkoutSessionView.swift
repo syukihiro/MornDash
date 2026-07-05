@@ -26,16 +26,18 @@ struct WorkoutSessionView: View {
             if counter.cameraManager.permissionDenied {
                 CameraPermissionDeniedView()
             } else {
-                CameraPreview(cameraManager: counter.cameraManager)
-                    .ignoresSafeArea()
-                    .overlay(scrim)
+                cameraLayer
             }
             #endif
 
             VStack {
                 topBar
                 Spacer()
-                countDisplay
+                if showsCountdownOverlay {
+                    countdownOverlay
+                } else {
+                    countDisplay
+                }
                 Spacer()
                 statusFooter
             }
@@ -47,6 +49,42 @@ struct WorkoutSessionView: View {
         }
         .onDisappear {
             counter.stop()
+        }
+    }
+
+    private var cameraLayer: some View {
+        ZStack {
+            CameraPreview(cameraManager: counter.cameraManager)
+                .ignoresSafeArea()
+
+            BodyPoseSkeletonOverlay(
+                joints: counter.poseJoints,
+                lineColor: skeletonLineColor,
+                jointColor: .white
+            )
+            .ignoresSafeArea()
+
+            scrim
+        }
+    }
+
+    private var skeletonLineColor: Color {
+        switch counter.sessionPhase {
+        case .active, .go:
+            accentTheme.idleColor
+        case .calibrating:
+            accentTheme.blockingColor
+        default:
+            .white.opacity(0.85)
+        }
+    }
+
+    private var showsCountdownOverlay: Bool {
+        switch counter.sessionPhase {
+        case .countdown, .go:
+            true
+        default:
+            false
         }
     }
 
@@ -77,8 +115,46 @@ struct WorkoutSessionView: View {
         }
     }
 
+    private var countdownOverlay: some View {
+        ZStack {
+            switch counter.sessionPhase {
+            case .countdown(let value):
+                Text("\(value)")
+                    .font(.system(size: 120, weight: .bold, design: .rounded))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: accentTheme.idleGradientColors,
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .shadow(color: accentTheme.idleColor.opacity(0.45), radius: 24)
+                    .transition(.scale.combined(with: .opacity))
+            case .go:
+                Text("workout_countdown_go")
+                    .font(.system(size: 72, weight: .heavy, design: .rounded))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: accentTheme.idleGradientColors,
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .shadow(color: accentTheme.idleColor.opacity(0.5), radius: 20)
+                    .transition(.scale.combined(with: .opacity))
+            default:
+                EmptyView()
+            }
+        }
+        .animation(.spring(response: 0.35, dampingFraction: 0.72), value: counter.sessionPhase)
+    }
+
     private var countDisplay: some View {
-        VStack(spacing: 6) {
+        VStack(spacing: 10) {
+            if case .calibrating(let progress) = counter.sessionPhase {
+                calibrationBanner(progress: progress)
+            }
+
             HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Text("\(counter.count)")
                     .font(.system(size: 96, weight: .thin, design: .rounded))
@@ -95,10 +171,34 @@ struct WorkoutSessionView: View {
         }
     }
 
+    private func calibrationBanner(progress: Double) -> some View {
+        VStack(spacing: 8) {
+            Text("workout_status_stand_still")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(.white.opacity(0.9))
+
+            ProgressView(value: progress)
+                .progressViewStyle(.linear)
+                .tint(accentTheme.idleColor)
+                .frame(maxWidth: 180)
+        }
+        .padding(.horizontal, 18)
+        .padding(.vertical, 12)
+        .background(
+            Capsule()
+                .fill(Color.black.opacity(0.45))
+                .overlay(
+                    Capsule().strokeBorder(accentTheme.idleColor.opacity(0.35), lineWidth: 1)
+                )
+        )
+    }
+
     private var statusFooter: some View {
         Text(counter.feedbackMessage)
             .font(.system(size: 16, weight: .medium))
             .foregroundColor(.white.opacity(0.85))
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, 12)
             .padding(.bottom, 20)
     }
 
