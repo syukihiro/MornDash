@@ -83,6 +83,18 @@ private struct MornDashTabBarModifier: ViewModifier {
     }
 }
 
+private struct KeepScreenAwakeModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .onAppear {
+                UIApplication.shared.isIdleTimerDisabled = true
+            }
+            .onDisappear {
+                UIApplication.shared.isIdleTimerDisabled = false
+            }
+    }
+}
+
 extension View {
     func mornDashScreenBackground() -> some View {
         modifier(MornDashScreenBackgroundModifier())
@@ -102,6 +114,11 @@ extension View {
 
     func mornDashAppearanceSync() -> some View {
         modifier(MornDashAppearanceSyncModifier())
+    }
+
+    /// カメラセッションなど、操作中に自動ロックさせたくない画面向け。
+    func keepScreenAwakeWhileVisible() -> some View {
+        modifier(KeepScreenAwakeModifier())
     }
 }
 

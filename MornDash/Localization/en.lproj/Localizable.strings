@@ -368,6 +368,8 @@
 "focus_status_low_quality" = "Lighting is too low";
 "focus_status_bad_angle" = "Face the camera";
 "focus_status_face_too_small" = "Move closer";
+"focus_status_hold_still" = "Hold still with your face in frame";
+"focus_status_ready_hint" = "Stay focused to keep the timer running";
 "focus_hint_setup_title" = "Set up your phone";
 "focus_hint_setup_body" = "Prop your phone on a stand so your face fits in the frame.";
 "focus_hint_setup_close" = "Got it";

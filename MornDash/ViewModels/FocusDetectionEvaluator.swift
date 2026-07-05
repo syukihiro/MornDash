@@ -8,7 +8,7 @@ struct FocusEvaluation {
 }
 
 struct FocusDetectionEvaluator: Sendable {
-    var minFaceAreaRatio: CGFloat = 0.30
+    var minFaceAreaRatio: CGFloat = 0.08
     var minQuality: Float = 0.4
     var maxRollDeg: Double = 25
     var maxYawDeg: Double = 30

@@ -43,6 +43,7 @@ struct WorkoutSessionView: View {
             }
             .padding()
         }
+        .keepScreenAwakeWhileVisible()
         .onAppear {
             counter.onTargetReached = handleTargetReached
             counter.start()
@@ -54,12 +55,10 @@ struct WorkoutSessionView: View {
 
     private var cameraLayer: some View {
         ZStack {
-            CameraPreview(cameraManager: counter.cameraManager)
-                .ignoresSafeArea()
-
-            BodyPoseSkeletonOverlay(
+            WorkoutCameraPreview(
+                cameraManager: counter.cameraManager,
                 joints: counter.poseJoints,
-                lineColor: skeletonLineColor,
+                lineColor: UIColor(skeletonLineColor),
                 jointColor: .white
             )
             .ignoresSafeArea()

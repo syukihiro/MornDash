@@ -368,6 +368,8 @@
 "focus_status_low_quality" = "L'éclairage est trop faible";
 "focus_status_bad_angle" = "Face à la caméra";
 "focus_status_face_too_small" = "Rapprochez-vous";
+"focus_status_hold_still" = "Restez immobile, le visage dans le cadre";
+"focus_status_ready_hint" = "Restez concentré pour faire avancer le minuteur";
 "focus_hint_setup_title" = "Configurez votre téléphone";
 "focus_hint_setup_body" = "Posez votre téléphone sur un support pour que votre visage tienne dans le cadre.";
 "focus_hint_setup_close" = "J'ai compris";

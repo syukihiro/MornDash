@@ -10,13 +10,14 @@ final class CameraManager: NSObject, ObservableObject {
     @Published private(set) var permissionDenied = false
 
     weak var delegate: AVCaptureVideoDataOutputSampleBufferDelegate?
+    private var isConfigured = false
 
     func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             isAuthorized = true
             permissionDenied = false
-            setupSession()
+            configure()
         case .notDetermined:
             AVCaptureDevice.requestAccess(for: .video) { [weak self] granted in
                 DispatchQueue.main.async {
@@ -24,7 +25,7 @@ final class CameraManager: NSObject, ObservableObject {
                     self?.permissionDenied = !granted
                 }
                 if granted {
-                    self?.setupSession()
+                    self?.configure()
                 }
             }
         default:
@@ -35,44 +36,16 @@ final class CameraManager: NSObject, ObservableObject {
         }
     }
 
-    private func setupSession() {
+    func configure(preset: AVCaptureSession.Preset = .high) {
         sessionQueue.async { [weak self] in
-            guard let self else { return }
-            self.session.beginConfiguration()
-
-            guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front),
-                  let videoDeviceInput = try? AVCaptureDeviceInput(device: videoDevice),
-                  self.session.canAddInput(videoDeviceInput) else {
-                self.session.commitConfiguration()
-                return
-            }
-            self.session.addInput(videoDeviceInput)
-
-            let videoOutput = AVCaptureVideoDataOutput()
-            if self.session.canAddOutput(videoOutput) {
-                self.session.addOutput(videoOutput)
-                videoOutput.alwaysDiscardsLateVideoFrames = true
-
-                if let delegate = self.delegate {
-                    videoOutput.setSampleBufferDelegate(delegate, queue: DispatchQueue(label: "com.morndash.cameraOutputQueue"))
-                }
-
-                if let connection = videoOutput.connection(with: .video) {
-                    connection.videoRotationAngle = 90
-                    if connection.isVideoMirroringSupported {
-                        connection.automaticallyAdjustsVideoMirroring = false
-                        connection.isVideoMirrored = true
-                    }
-                }
-            }
-
-            self.session.commitConfiguration()
-            self.session.startRunning()
+            self?.configureSessionIfNeeded(preset: preset)
         }
     }
 
     func startSession() {
-        sessionQueue.async {
+        sessionQueue.async { [weak self] in
+            guard let self else { return }
+            self.configureSessionIfNeeded()
             if !self.session.isRunning {
                 self.session.startRunning()
             }
@@ -80,10 +53,62 @@ final class CameraManager: NSObject, ObservableObject {
     }
 
     func stopSession() {
-        sessionQueue.async {
+        sessionQueue.async { [weak self] in
+            guard let self else { return }
             if self.session.isRunning {
                 self.session.stopRunning()
             }
         }
+    }
+
+    private func configureSessionIfNeeded(preset: AVCaptureSession.Preset = .high) {
+        if isConfigured {
+            if session.sessionPreset != preset, session.canSetSessionPreset(preset) {
+                session.beginConfiguration()
+                session.sessionPreset = preset
+                session.commitConfiguration()
+            }
+            return
+        }
+
+        session.beginConfiguration()
+        if session.canSetSessionPreset(preset) {
+            session.sessionPreset = preset
+        }
+
+        guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front),
+              let videoDeviceInput = try? AVCaptureDeviceInput(device: videoDevice),
+              session.canAddInput(videoDeviceInput) else {
+            session.commitConfiguration()
+            return
+        }
+        session.addInput(videoDeviceInput)
+
+        let videoOutput = AVCaptureVideoDataOutput()
+        guard session.canAddOutput(videoOutput) else {
+            session.commitConfiguration()
+            return
+        }
+
+        session.addOutput(videoOutput)
+        videoOutput.alwaysDiscardsLateVideoFrames = true
+
+        if let delegate {
+            videoOutput.setSampleBufferDelegate(
+                delegate,
+                queue: DispatchQueue(label: "com.morndash.cameraOutputQueue")
+            )
+        }
+
+        if let connection = videoOutput.connection(with: .video) {
+            connection.videoRotationAngle = 90
+            if connection.isVideoMirroringSupported {
+                connection.automaticallyAdjustsVideoMirroring = false
+                connection.isVideoMirrored = true
+            }
+        }
+
+        session.commitConfiguration()
+        isConfigured = true
     }
 }

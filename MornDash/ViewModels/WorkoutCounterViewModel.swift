@@ -57,6 +57,7 @@ final class WorkoutCounterViewModel: NSObject, ObservableObject, AVCaptureVideoD
     }
 
     func start() {
+        cameraManager.configure(preset: .high)
         cameraManager.startSession()
     }
 
@@ -71,7 +72,11 @@ final class WorkoutCounterViewModel: NSObject, ObservableObject, AVCaptureVideoD
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
 
         do {
-            let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
+            let handler = VNImageRequestHandler(
+                cvPixelBuffer: pixelBuffer,
+                orientation: .leftMirrored,
+                options: [:]
+            )
             try handler.perform([bodyPoseRequest])
 
             guard let observation = bodyPoseRequest.results?.first else {

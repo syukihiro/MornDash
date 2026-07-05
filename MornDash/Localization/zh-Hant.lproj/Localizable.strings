@@ -368,6 +368,8 @@
 "focus_status_low_quality" = "照明太低";
 "focus_status_bad_angle" = "面對相機";
 "focus_status_face_too_small" = "靠近一點";
+"focus_status_hold_still" = "請保持面部在畫面內靜止";
+"focus_status_ready_hint" = "保持專注，計時才會繼續";
 "focus_hint_setup_title" = "設定您的手機";
 "focus_hint_setup_body" = "將您的手機放在支架上，讓您的臉部進入取景框。";
 "focus_hint_setup_close" = "知道了";

@@ -28,35 +28,30 @@ struct FocusSessionView: View {
         ZStack {
             Color.black.ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                topBar
-                    .padding(.horizontal, 16)
-                    .padding(.top, 12)
-
-                Spacer()
-
-                if detector.cameraManager.permissionDenied {
-                    CameraPermissionDeniedView()
-                        .frame(maxHeight: 280)
-                } else {
-                    countdownDisplay
-
-                    statusBadge
-                        .padding(.top, 16)
-
-                    progressBar
-                        .padding(.horizontal, 40)
-                        .padding(.top, 20)
-                }
-
-                Spacer()
-
-                Text("focus_privacy_notice")
-                    .font(.system(size: 11))
-                    .foregroundColor(.white.opacity(0.3))
-                    .padding(.bottom, 24)
+            #if targetEnvironment(simulator)
+            simulatorFallback
+            #else
+            if detector.cameraManager.permissionDenied {
+                CameraPermissionDeniedView()
+            } else {
+                cameraLayer
             }
+            #endif
+
+            VStack {
+                topBar
+                Spacer()
+                if showsCountdownOverlay {
+                    countdownOverlay
+                } else {
+                    timerDisplay
+                }
+                Spacer()
+                statusFooter
+            }
+            .padding()
         }
+        .keepScreenAwakeWhileVisible()
         .onAppear {
             detector.onTick = onTick
             detector.onTargetReached = handleTargetReached
@@ -73,7 +68,59 @@ struct FocusSessionView: View {
         }
     }
 
-    // MARK: - Subviews
+    private var cameraLayer: some View {
+        ZStack {
+            CameraPreview(cameraManager: detector.cameraManager)
+                .ignoresSafeArea()
+
+            FaceGuideOverlay(
+                boundingBox: detector.faceBoundingBox,
+                showsGuide: showsFaceGuide,
+                strokeColor: guideStrokeColor
+            )
+            .ignoresSafeArea()
+
+            scrim
+        }
+    }
+
+    private var showsFaceGuide: Bool {
+        switch detector.sessionPhase {
+        case .searching, .aligning, .calibrating:
+            true
+        default:
+            false
+        }
+    }
+
+    private var guideStrokeColor: Color {
+        switch detector.sessionPhase {
+        case .active, .go:
+            detector.isDetected ? accentTheme.completedAccentColor : .yellow
+        case .calibrating:
+            accentTheme.blockingColor
+        default:
+            .white.opacity(0.85)
+        }
+    }
+
+    private var showsCountdownOverlay: Bool {
+        switch detector.sessionPhase {
+        case .countdown, .go:
+            true
+        default:
+            false
+        }
+    }
+
+    private var scrim: some View {
+        LinearGradient(
+            colors: [Color.black.opacity(0.72), .clear, .clear, Color.black.opacity(0.72)],
+            startPoint: .top,
+            endPoint: .bottom
+        )
+        .ignoresSafeArea()
+    }
 
     private var topBar: some View {
         HStack {
@@ -90,81 +137,150 @@ struct FocusSessionView: View {
                 .foregroundColor(.white.opacity(0.8))
                 .lineLimit(1)
             Spacer()
-            #if targetEnvironment(simulator)
             Color.clear.frame(width: 36, height: 36)
-            #else
-            CameraPreview(cameraManager: detector.cameraManager)
-                .frame(width: 80, height: 107)
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .strokeBorder(Color.white.opacity(0.15), lineWidth: 1)
-                )
-            #endif
         }
     }
 
-    private var countdownDisplay: some View {
+    private var countdownOverlay: some View {
+        ZStack {
+            switch detector.sessionPhase {
+            case .countdown(let value):
+                Text("\(value)")
+                    .font(.system(size: 120, weight: .bold, design: .rounded))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: accentTheme.idleGradientColors,
+                            startPoint: .top,
+                            endPoint: .bottom
+                        )
+                    )
+                    .shadow(color: accentTheme.idleColor.opacity(0.45), radius: 24)
+                    .transition(.scale.combined(with: .opacity))
+            case .go:
+                Text("workout_countdown_go")
+                    .font(.system(size: 72, weight: .heavy, design: .rounded))
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: accentTheme.idleGradientColors,
+                            startPoint: .leading,
+                            endPoint: .trailing
+                        )
+                    )
+                    .shadow(color: accentTheme.idleColor.opacity(0.5), radius: 20)
+                    .transition(.scale.combined(with: .opacity))
+            default:
+                EmptyView()
+            }
+        }
+        .animation(.spring(response: 0.35, dampingFraction: 0.72), value: detector.sessionPhase)
+    }
+
+    private var timerDisplay: some View {
         let remaining = max(0, detector.targetSeconds - detector.elapsedSeconds)
         let minutes = remaining / 60
         let seconds = remaining % 60
-        return VStack(spacing: 6) {
-            Text(NSLocalizedString("focus_session_remaining", comment: ""))
+
+        return VStack(spacing: 10) {
+            if case .calibrating(let progress) = detector.sessionPhase {
+                calibrationBanner(progress: progress)
+            }
+
+            Text("focus_session_remaining")
                 .font(.system(size: 12, weight: .medium))
                 .tracking(3)
                 .foregroundColor(.white.opacity(0.5))
+
             Text(String(format: "%02d:%02d", minutes, seconds))
                 .font(.system(size: 80, weight: .thin, design: .rounded))
                 .monospacedDigit()
                 .foregroundColor(.white)
                 .contentTransition(.numericText())
+
+            if detector.sessionPhase == .active {
+                activeStatusBadge
+                    .padding(.top, 8)
+            }
+
+            ProgressView(value: sessionProgress)
+                .progressViewStyle(.linear)
+                .tint(accentTheme.blockingColor)
+                .frame(maxWidth: 220)
+                .padding(.top, 8)
         }
     }
 
-    private var statusBadge: some View {
+    private var activeStatusBadge: some View {
         HStack(spacing: 6) {
             Circle()
-                .fill(detector.isDetected ? Color.green : Color.yellow)
+                .fill(detector.isDetected ? accentTheme.completedAccentColor : Color.yellow)
                 .frame(width: 8, height: 8)
-            Text(statusMessage)
+            Text(detector.feedbackMessage)
                 .font(.system(size: 14, weight: .medium))
-                .foregroundColor(detector.isDetected ? .green : .yellow)
+                .foregroundColor(detector.isDetected ? accentTheme.completedAccentColor : .yellow)
         }
         .padding(.horizontal, 14)
         .padding(.vertical, 7)
         .background(
             Capsule()
-                .fill((detector.isDetected ? Color.green : Color.yellow).opacity(0.12))
+                .fill((detector.isDetected ? accentTheme.completedAccentColor : Color.yellow).opacity(0.12))
         )
     }
 
-    private var statusMessage: String {
-        if detector.isDetected {
-            return NSLocalizedString("focus_status_detected", comment: "")
+    private func calibrationBanner(progress: Double) -> some View {
+        VStack(spacing: 8) {
+            Text("focus_status_hold_still")
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(.white.opacity(0.9))
+
+            ProgressView(value: progress)
+                .progressViewStyle(.linear)
+                .tint(accentTheme.idleColor)
+                .frame(maxWidth: 180)
         }
-        switch detector.statusReason {
-        case .ok:
-            return NSLocalizedString("focus_status_detected", comment: "")
-        case .noFace:
-            return NSLocalizedString("focus_status_no_face", comment: "")
-        case .multipleFaces:
-            return NSLocalizedString("focus_status_multiple_faces", comment: "")
-        case .lowQuality:
-            return NSLocalizedString("focus_status_low_quality", comment: "")
-        case .badAngle:
-            return NSLocalizedString("focus_status_bad_angle", comment: "")
-        case .faceTooSmall:
-            return NSLocalizedString("focus_status_face_too_small", comment: "")
-        }
+        .padding(.horizontal, 18)
+        .padding(.vertical, 12)
+        .background(
+            Capsule()
+                .fill(Color.black.opacity(0.45))
+                .overlay(
+                    Capsule().strokeBorder(accentTheme.idleColor.opacity(0.35), lineWidth: 1)
+                )
+        )
     }
 
-    private var progressBar: some View {
-        let progress = detector.targetSeconds > 0
-            ? min(1.0, Double(detector.elapsedSeconds) / Double(detector.targetSeconds))
-            : 0
-        return ProgressView(value: progress)
-            .progressViewStyle(.linear)
-            .tint(accentTheme.blockingColor)
+    private var statusFooter: some View {
+        VStack(spacing: 8) {
+            if detector.sessionPhase != .active {
+                Text(detector.feedbackMessage)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(.white.opacity(0.85))
+                    .multilineTextAlignment(.center)
+            }
+
+            Text("focus_privacy_notice")
+                .font(.system(size: 11))
+                .foregroundColor(.white.opacity(0.3))
+        }
+        .padding(.horizontal, 12)
+        .padding(.bottom, 20)
+    }
+
+    private var sessionProgress: Double {
+        guard detector.targetSeconds > 0 else { return 0 }
+        return min(1.0, Double(detector.elapsedSeconds) / Double(detector.targetSeconds))
+    }
+
+    private var simulatorFallback: some View {
+        VStack(spacing: 14) {
+            Image(systemName: "camera.fill")
+                .font(.system(size: 44))
+                .foregroundColor(.white.opacity(0.3))
+            Text("workout_simulator_notice")
+                .font(.system(size: 13))
+                .foregroundColor(.white.opacity(0.5))
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 40)
+        }
     }
 
     private var hintSheet: some View {
@@ -197,8 +313,6 @@ struct FocusSessionView: View {
         .background(Color.black.ignoresSafeArea())
         .presentationDetents([.medium])
     }
-
-    // MARK: - Actions
 
     private func handleTargetReached() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
