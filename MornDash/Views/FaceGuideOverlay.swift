@@ -11,7 +11,7 @@ struct FaceGuideOverlay: View {
             Canvas { context, size in
                 if showsGuide {
                     let guide = Self.guideRect(in: size)
-                    var guidePath = Path(roundedRect: guide, cornerRadius: 24, style: .continuous)
+                    let guidePath = Path(roundedRect: guide, cornerRadius: 24, style: .continuous)
                     context.stroke(
                         guidePath,
                         with: .color(strokeColor.opacity(0.5)),
@@ -21,7 +21,7 @@ struct FaceGuideOverlay: View {
 
                 if let box = boundingBox {
                     let rect = Self.mapRect(box, in: size)
-                    var facePath = Path(roundedRect: rect, cornerRadius: 12, style: .continuous)
+                    let facePath = Path(roundedRect: rect, cornerRadius: 12, style: .continuous)
                     context.stroke(facePath, with: .color(strokeColor.opacity(0.95)), lineWidth: 3)
                     context.stroke(
                         facePath,

@@ -24,6 +24,15 @@ struct FocusSessionView: View {
         ))
     }
 
+    private var focusKind: FocusDetectionKind {
+        task.focusKind ?? .study
+    }
+
+    /// PC作業は位置合わせのためカメラを大きく表示。学習は検出のみで目立たせない。
+    private var usesProminentCamera: Bool {
+        focusKind == .pcWork
+    }
+
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea()
@@ -33,7 +42,7 @@ struct FocusSessionView: View {
             #else
             if detector.cameraManager.permissionDenied {
                 CameraPermissionDeniedView()
-            } else {
+            } else if usesProminentCamera {
                 cameraLayer
             }
             #endif
@@ -137,7 +146,21 @@ struct FocusSessionView: View {
                 .foregroundColor(.white.opacity(0.8))
                 .lineLimit(1)
             Spacer()
+            #if targetEnvironment(simulator)
             Color.clear.frame(width: 36, height: 36)
+            #else
+            if usesProminentCamera {
+                Color.clear.frame(width: 36, height: 36)
+            } else {
+                CameraPreview(cameraManager: detector.cameraManager)
+                    .frame(width: 80, height: 107)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 8)
+                            .strokeBorder(Color.white.opacity(0.15), lineWidth: 1)
+                    )
+            }
+            #endif
         }
     }
 
