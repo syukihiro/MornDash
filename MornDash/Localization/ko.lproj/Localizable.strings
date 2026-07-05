@@ -367,11 +367,11 @@
 "focus_status_multiple_faces" = "여러 사람이 감지되었습니다.";
 "focus_status_low_quality" = "조명이 너무 낮습니다.";
 "focus_status_bad_angle" = "카메라를 바라보세요";
-"focus_status_face_too_small" = "더 가까이 다가가세요";
-"focus_status_hold_still" = "얼굴을 프레임 안에 두고 가만히 있어 주세요";
+"focus_status_face_too_small" = "휴대전화 조금 더 가까이에 있어 주세요";
+"focus_status_hold_still" = "잠시 가만히 있어 주세요";
 "focus_status_ready_hint" = "집중을 유지하면 타이머가 진행됩니다";
 "focus_hint_setup_title" = "휴대전화 설정";
-"focus_hint_setup_body" = "얼굴이 프레임에 맞도록 휴대전화를 스탠드 위에 올려놓으세요.";
+"focus_hint_setup_body" = "자리에 있는 것이 보이도록 휴대전화를 스탠드에 올려두세요.";
 "focus_hint_setup_close" = "알았어요";
 "focus_privacy_notice" = "동영상이 이 기기에 유지됩니다.";
 "focus_session_remaining" = "남은";

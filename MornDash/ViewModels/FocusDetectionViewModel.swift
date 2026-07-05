@@ -32,7 +32,6 @@ final class FocusDetectionViewModel: NSObject, ObservableObject, AVCaptureVideoD
 
     private let detectionKind: FocusDetectionKind
     private let faceRequest = VNDetectFaceRectanglesRequest()
-    private let qualityRequest = VNDetectFaceCaptureQualityRequest()
     private let evaluator = FocusDetectionEvaluator()
     private var consecutiveOk = 0
     private var consecutiveNg = 0
@@ -99,13 +98,11 @@ final class FocusDetectionViewModel: NSObject, ObservableObject, AVCaptureVideoD
                 orientation: .leftMirrored,
                 options: [:]
             )
-            try handler.perform([faceRequest, qualityRequest])
+            try handler.perform([faceRequest])
 
             let observations = faceRequest.results ?? []
-            let quality = qualityRequest.results?.first?.faceCaptureQuality
             let evaluation = evaluator.evaluate(
                 observations: observations,
-                quality: quality,
                 kind: detectionKind
             )
             let boundingBox = observations.first?.boundingBox

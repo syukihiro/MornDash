@@ -367,11 +367,11 @@
 "focus_status_multiple_faces" = "Обнаружено несколько человек";
 "focus_status_low_quality" = "Освещение слишком слабое";
 "focus_status_bad_angle" = "Лицом к камере";
-"focus_status_face_too_small" = "Подойдите ближе";
-"focus_status_hold_still" = "Оставайтесь неподвижно, лицо в кадре";
+"focus_status_face_too_small" = "Держитесь немного ближе к телефону";
+"focus_status_hold_still" = "Побудьте неподвижно немного";
 "focus_status_ready_hint" = "Оставайтесь сосредоточенными, чтобы таймер шёл";
 "focus_hint_setup_title" = "Настройте свой телефон";
-"focus_hint_setup_body" = "Поставьте телефон на подставку так, чтобы ваше лицо поместилось в кадр.";
+"focus_hint_setup_body" = "Поставьте телефон на подставку так, чтобы было видно, что вы на месте.";
 "focus_hint_setup_close" = "Понятно";
 "focus_privacy_notice" = "Видео останется на этом устройстве";
 "focus_session_remaining" = "Оставшийся";

@@ -367,11 +367,11 @@
 "focus_status_multiple_faces" = "Varias personas detectadas";
 "focus_status_low_quality" = "La iluminación es demasiado baja";
 "focus_status_bad_angle" = "frente a la cámara";
-"focus_status_face_too_small" = "Acércate";
-"focus_status_hold_still" = "Quédate quieto con la cara en el encuadre";
+"focus_status_face_too_small" = "Acércate un poco al teléfono";
+"focus_status_hold_still" = "Quédate quieto un momento";
 "focus_status_ready_hint" = "Mantén el enfoque para que avance el temporizador";
 "focus_hint_setup_title" = "Configura tu teléfono";
-"focus_hint_setup_body" = "Coloca tu teléfono en un soporte para que tu cara encaje en el marco.";
+"focus_hint_setup_body" = "Coloca tu teléfono en un soporte desde donde se vea que estás en tu sitio.";
 "focus_hint_setup_close" = "Entiendo";
 "focus_privacy_notice" = "El vídeo permanece en este dispositivo";
 "focus_session_remaining" = "Restante";

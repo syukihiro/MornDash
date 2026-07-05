@@ -17,7 +17,7 @@ enum WorkoutSessionPhase: Equatable {
 
 /// スクワット限定のAIカウンター。VNDetectHumanBodyPoseRequest で首/鼻/肩のY座標を追跡し、
 /// 立ち→しゃがみ→立ち の状態遷移で1回をカウントする。
-/// 閾値は waiton の PoseDetection と同値。
+/// ロジックは waiton の detectSquat と同一。閾値は感度向上のため waiton(0.15)より緩めの 0.10。
 final class WorkoutCounterViewModel: NSObject, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
     @Published private(set) var count: Int = 0
     @Published private(set) var feedbackMessage: String = NSLocalizedString("workout_status_recognizing", comment: "")
@@ -43,7 +43,7 @@ final class WorkoutCounterViewModel: NSObject, ObservableObject, AVCaptureVideoD
     private var isRunningCountdown = false
     private let processingLock = NSLock()
 
-    private static let movementThreshold: CGFloat = 0.15
+    private static let movementThreshold: CGFloat = 0.10
     private static let hysteresisOffset: CGFloat = 0.05
     private static let minJointConfidence: Float = 0.3
     private static let calibrationStableFrames = 24
@@ -72,18 +72,20 @@ final class WorkoutCounterViewModel: NSObject, ObservableObject, AVCaptureVideoD
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
 
         do {
+            // CameraManager 側で videoRotationAngle=90 + ミラーを適用済みのため、
+            // ここに届くバッファは既に縦向き・ミラー済み。Vision で再度回転を掛けると
+            // 立ち↔しゃがみの縦移動が Y ではなく X 軸に乗ってしまい全くカウントされない。
+            // 回転済みバッファには .up を使う（waiton の検出パスと同じ座標系）。
             let handler = VNImageRequestHandler(
                 cvPixelBuffer: pixelBuffer,
-                orientation: .leftMirrored,
+                orientation: .up,
                 options: [:]
             )
             try handler.perform([bodyPoseRequest])
 
             guard let observation = bodyPoseRequest.results?.first else {
                 publishPoseJoints([:])
-                resetCalibration()
-                publishPhase(.searching)
-                publishStatus(NSLocalizedString("workout_status_no_body", comment: ""))
+                handleMissingBody()
                 return
             }
 
@@ -189,6 +191,27 @@ final class WorkoutCounterViewModel: NSObject, ObservableObject, AVCaptureVideoD
                 self.publishStatus(NSLocalizedString("workout_status_ready_hint", comment: ""))
             }
         }
+    }
+
+    /// ボディを一時的に見失ったときの処理。セットアップ完了後(検出中)やカウントダウン中は
+    /// baseline を捨てずに復帰を待つ。これをしないと1フレームのロストでキャリブレーションから
+    /// やり直し(再度3秒カウントダウン)になり、進行中のレップも失われる。
+    private func handleMissingBody() {
+        processingLock.lock()
+        let finishedSetup = hasFinishedSetup
+        let runningCountdown = isRunningCountdown
+        processingLock.unlock()
+
+        guard !hasReachedTarget else { return }
+
+        if finishedSetup || runningCountdown {
+            publishStatus(NSLocalizedString("workout_status_no_body", comment: ""))
+            return
+        }
+
+        resetCalibration()
+        publishPhase(.searching)
+        publishStatus(NSLocalizedString("workout_status_no_body", comment: ""))
     }
 
     private func resetCalibration() {

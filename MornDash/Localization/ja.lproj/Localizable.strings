@@ -366,12 +366,12 @@
 "focus_status_no_face" = "席にいません";
 "focus_status_multiple_faces" = "複数の人物が検出されています";
 "focus_status_low_quality" = "照明が暗すぎます";
-"focus_status_bad_angle" = "カメラの方を向いてください";
-"focus_status_face_too_small" = "近づいてください";
-"focus_status_hold_still" = "正しい位置で顔を静止させてください";
+"focus_status_bad_angle" = "顔がフレームから外れています";
+"focus_status_face_too_small" = "もう少し端末の近くにいてください";
+"focus_status_hold_still" = "そのまま少し静止してください";
 "focus_status_ready_hint" = "集中を続けると時間がカウントされます";
 "focus_hint_setup_title" = "端末をセットしてください";
-"focus_hint_setup_body" = "端末を立てかけて、顔がフレームに入るようにしてください。";
+"focus_hint_setup_body" = "端末を立てかけて、席にいることがカメラで分かる位置に置いてください。";
 "focus_hint_setup_close" = "了解";
 "focus_privacy_notice" = "映像は端末外に送信されません";
 "focus_session_remaining" = "残り";

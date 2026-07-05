@@ -367,11 +367,11 @@
 "focus_status_multiple_faces" = "检测到多人";
 "focus_status_low_quality" = "照明太低";
 "focus_status_bad_angle" = "面对相机";
-"focus_status_face_too_small" = "靠近一点";
-"focus_status_hold_still" = "请保持面部在画面内静止";
+"focus_status_face_too_small" = "再靠近手机一点";
+"focus_status_hold_still" = "请保持静止片刻";
 "focus_status_ready_hint" = "保持专注，计时才会继续";
 "focus_hint_setup_title" = "设置您的手机";
-"focus_hint_setup_body" = "将您的手机放在支架上，让您的脸部进入取景框。";
+"focus_hint_setup_body" = "将手机放在支架上，确保摄像头能看到你仍在座位上。";
 "focus_hint_setup_close" = "知道了";
 "focus_privacy_notice" = "视频保留在此设备上";
 "focus_session_remaining" = "其余的";
