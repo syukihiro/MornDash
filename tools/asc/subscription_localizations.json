@@ -1,0 +1,33 @@
+{
+  "groupReferenceName": "Pro",
+  "productIds": ["pro_weekly_dash", "pro_monthly_dash", "pro_yearly_dash"],
+  "_note": "name<=30, description<=45 chars. 表示名は3プラン共通、説明はロケール別。期間は Apple が自動表示するためサービス名のみ。",
+  "group": {
+    "en-US":   { "name": "MornDash Pro" },
+    "ja":      { "name": "MornDash Pro" },
+    "de-DE":   { "name": "MornDash Pro" },
+    "fr-FR":   { "name": "MornDash Pro" },
+    "es-ES":   { "name": "MornDash Pro" },
+    "es-MX":   { "name": "MornDash Pro" },
+    "it":      { "name": "MornDash Pro" },
+    "pt-BR":   { "name": "MornDash Pro" },
+    "ru":      { "name": "MornDash Pro" },
+    "ko":      { "name": "MornDash Pro" },
+    "zh-Hans": { "name": "MornDash Pro" },
+    "zh-Hant": { "name": "MornDash Pro" }
+  },
+  "subscription": {
+    "en-US":   { "name": "MornDash Pro", "description": "Unlock unlimited tasks, apps and workouts" },
+    "ja":      { "name": "MornDash Pro", "description": "タスク・アプリ・トレーニングを無制限に解放" },
+    "de-DE":   { "name": "MornDash Pro", "description": "Unbegrenzte Aufgaben, Apps und Workouts" },
+    "fr-FR":   { "name": "MornDash Pro", "description": "Tâches, apps et exercices illimités" },
+    "es-ES":   { "name": "MornDash Pro", "description": "Tareas, apps y ejercicios ilimitados" },
+    "es-MX":   { "name": "MornDash Pro", "description": "Tareas, apps y ejercicios ilimitados" },
+    "it":      { "name": "MornDash Pro", "description": "Attività, app ed esercizi illimitati" },
+    "pt-BR":   { "name": "MornDash Pro", "description": "Tarefas, apps e treinos ilimitados" },
+    "ru":      { "name": "MornDash Pro", "description": "Безлимитные задачи, приложения и тренировки" },
+    "ko":      { "name": "MornDash Pro", "description": "무제한 작업, 앱, 운동 잠금 해제" },
+    "zh-Hans": { "name": "MornDash Pro", "description": "无限任务、应用和锻炼" },
+    "zh-Hant": { "name": "MornDash Pro", "description": "無限任務、應用與鍛鍊" }
+  }
+}

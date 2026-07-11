@@ -26,3 +26,5 @@ MornDash는 매일 아침, 아침 루틴을 실제로 끝낼 때까지 휴대폰
 - 또 하나의 부드러운 알림이 아니라 진짜 책임을 원하는 습관 형성자
 
 아침이 하루 전체의 분위기를 정합니다. MornDash로 그 아침을 의미 있게 만드세요.
+
+이용약관(EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

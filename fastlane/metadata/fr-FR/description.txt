@@ -26,3 +26,5 @@ POUR QUI
 - Ceux qui veulent une vraie responsabilité, pas un énième rappel doux
 
 Votre matin donne le ton de toute votre journée. Rendez-le utile avec MornDash.
+
+Conditions d'utilisation (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

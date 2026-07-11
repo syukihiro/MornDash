@@ -26,3 +26,5 @@ MornDash（モーンダッシュ）は、朝のルーティンを終えるまで
 ・優しいリマインドではなく、強制力がほしい
 
 朝がその日を決める。MornDash で、朝を取り戻しましょう。
+
+利用規約（EULA）: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

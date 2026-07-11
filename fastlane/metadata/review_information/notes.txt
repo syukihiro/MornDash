@@ -1,3 +1,5 @@
+IMPORTANT: Please test on a physical iOS device. The Family Controls / Screen Time / DeviceActivity APIs that power the app blocking do NOT function in the iOS Simulator, so the shield will not appear there.
+
 MornDash uses Apple's Family Controls / Screen Time APIs to block user-selected apps during a daily morning window until the user completes their task list.
 
 How to test:
