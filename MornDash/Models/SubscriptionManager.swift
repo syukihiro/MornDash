@@ -34,6 +34,7 @@ final class SubscriptionManager: NSObject, ObservableObject {
 
     /// Links this device to Firebase Analytics so RevenueCat can forward purchase lifecycle events.
     func syncFirebaseAttribution() {
+        guard AnalyticsService.isCollectionEnabled else { return }
         guard let appInstanceID = Analytics.appInstanceID() else {
             #if DEBUG
             print("[SubscriptionManager] Firebase app instance ID not yet available")

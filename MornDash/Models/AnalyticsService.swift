@@ -4,6 +4,28 @@ import FirebaseAnalytics
 /// Centralized Firebase Analytics events for funnel and revenue tracking.
 enum AnalyticsService {
 
+    /// `false` on Simulator and TestFlight so those sessions never pollute production metrics.
+    static var isCollectionEnabled: Bool {
+        #if targetEnvironment(simulator)
+        return false
+        #else
+        // TestFlight (and Xcode-installed sandbox builds) use `sandboxReceipt`.
+        if Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt" {
+            return false
+        }
+        return true
+        #endif
+    }
+
+    /// Call once after `FirebaseApp.configure()`. Disables automatic + manual collection when not production.
+    static func configureCollection() {
+        let enabled = isCollectionEnabled
+        Analytics.setAnalyticsCollectionEnabled(enabled)
+        #if DEBUG
+        print("[Analytics] collection enabled: \(enabled)")
+        #endif
+    }
+
     // MARK: - Onboarding
 
     static func logOnboardingStepViewed(step: Int) {
@@ -83,6 +105,7 @@ enum AnalyticsService {
     // MARK: - User properties
 
     static func setIsPro(_ isPro: Bool) {
+        guard isCollectionEnabled else { return }
         Analytics.setUserProperty(isPro ? "true" : "false", forName: "is_pro")
     }
 
@@ -92,6 +115,7 @@ enum AnalyticsService {
         #if DEBUG
         print("[Analytics] \(name) \(params)")
         #endif
+        guard isCollectionEnabled else { return }
         Analytics.logEvent(name, parameters: params.isEmpty ? nil : params)
     }
 }

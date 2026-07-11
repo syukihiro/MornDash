@@ -15,6 +15,7 @@ struct MornDashApp: App {
     init() {
         AppAppearance.configure(isDark: AppearanceMode.isDarkAtLaunch)
         FirebaseApp.configure()
+        AnalyticsService.configureCollection()
         SubscriptionManager.shared.configure()
     }
 
