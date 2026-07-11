@@ -44,17 +44,32 @@ ruby tools/asc/asc.rb push
 | `privacy_url.txt` | プライバシーポリシーURL |
 | `release_notes.txt` | このバージョンの新機能 |
 
-## 運用フロー
+## 運用フロー（YouTrainy / WaitOn と同じ）
 
-1. `pull` で現在値を取得
-2. `fastlane/metadata/<locale>/*.txt` を編集
-3. `git diff` で変更を確認
-4. `push` で反映(**審査提出はしない**。App Store Connect 上で下書きが更新されるだけ)
-5. 審査提出は App Store Connect の画面から手動で行う
+推奨は fastlane（`bundle exec fastlane beta` → `release submit:true`）。
+Ruby HTTPS が使えない場合は本ディレクトリの curl ツールで代替する。
+
+```sh
+# 1) バージョン作成
+ruby tools/asc/submit.rb create 1.0.1
+
+# 2) メタデータ反映
+ruby tools/asc/asc.rb push
+
+# 3) ビルド（YouTrainy と同じ: Archive → Export → altool）
+#    MARKETING_VERSION / CURRENT_PROJECT_VERSION を先に上げること
+#    （ビルド番号は既存 TestFlight より大きい値に）
+
+# 4) ビルド紐付け + 審査提出
+ruby tools/asc/submit.rb builds
+ruby tools/asc/submit.rb attach <buildId>
+ruby tools/asc/submit.rb submit
+```
 
 ## 注意
 
 - `push` は編集可能なバージョン(例: `PREPARE_FOR_SUBMISSION`)にのみ反映される。
-  審査中/公開済みのみの状態では、先に App Store Connect で新バージョンを作成する。
+  審査中/公開済みのみの状態では、先に `submit.rb create` で新バージョンを作る。
 - `name` / `subtitle` / `privacy_url` はアプリ情報(appInfo)側、それ以外はバージョン側に
   保存される(API の仕様)。本ツールは自動で振り分ける。
+- altool は `~/.appstoreconnect/private_keys/AuthKey_<KEY_ID>.p8` を参照する。

@@ -1,28 +1,101 @@
 default_platform(:ios)
 
+# YouTrainy / WaitOn と同じレーン構成。
+#   bundle exec fastlane beta                 … ビルドして TestFlight へ
+#   bundle exec fastlane release              … メタデータ反映のみ
+#   bundle exec fastlane release submit:true  … 審査提出まで
+
+SCHEME = "MornDash"
+PROJECT = "MornDash.xcodeproj"
+APP_IDENTIFIER = "danchi.MornDash"
+
 platform :ios do
-  desc "App Store Connect の既存メタデータを fastlane/metadata に取得する"
-  desc "初回セットアップ後に最初に実行。CLI の `fastlane deliver download_metadata` と同等。"
-  lane :fetch_metadata do
-    UI.message("App Store Connect から既存メタデータを取得します…")
-    # --force を付けないと、既存の fastlane/metadata がある場合に上書き確認で
-    # 何もせず終了する(deliver の仕様)。
-    sh("fastlane", "deliver", "download_metadata",
-       "--api_key_path", "fastlane/.keys/asc_api_key.json",
-       "--app_identifier", "danchi.MornDash",
-       "--force", "true")
-    UI.success("fastlane/metadata に取得しました。")
+  before_all do
+    ENV["FASTLANE_HIDE_CHANGELOG"] = "1"
   end
 
-  desc "ローカルの fastlane/metadata を App Store Connect へ反映する"
-  desc "審査提出はしない(下書き保存のみ)。反映前に内容を git diff で必ず確認すること。"
-  lane :push_metadata do
-    deliver(
-      force: true,                  # HTML プレビューをスキップして反映
-      submit_for_review: false,     # 審査には自動提出しない
-      run_precheck_before_submit: false,
-      automatic_release: false
+  private_lane :asc_api_key do
+    app_store_connect_api_key(
+      key_id: ENV.fetch("ASC_KEY_ID"),
+      issuer_id: ENV.fetch("ASC_ISSUER_ID"),
+      key_content: ENV.fetch("ASC_KEY_P8"),
+      is_key_content_base64: true,
+      in_house: false
     )
-    UI.success("メタデータを App Store Connect に反映しました(審査提出はしていません)。")
+  end
+
+  desc "App Store Connect API の認証と権限を検証（ビルドなし）"
+  lane :auth_check do
+    api_key = asc_api_key
+    n = latest_testflight_build_number(
+      api_key: api_key,
+      app_identifier: APP_IDENTIFIER,
+      initial_build_number: 0
+    )
+    UI.success("認証OK ✅ TestFlight 最新ビルド番号: #{n}")
+  end
+
+  desc "ビルドして TestFlight にアップロード"
+  lane :beta do
+    api_key = asc_api_key
+
+    changelog = ENV["TF_CHANGELOG"]&.strip
+    if changelog.nil? || changelog.empty?
+      notes_path = File.join(File.dirname(__FILE__), "changelog.txt")
+      changelog = File.exist?(notes_path) ? File.read(notes_path).strip : nil
+    end
+    changelog = nil if changelog && changelog.empty?
+    UI.message(changelog ? "リリースノートを付与します 📝" : "リリースノート無しでアップロードします")
+
+    build_app(
+      project: PROJECT,
+      scheme: SCHEME,
+      export_method: "app-store",
+      clean: true,
+      xcargs: "-allowProvisioningUpdates"
+    )
+
+    upload_to_testflight(
+      api_key: api_key,
+      changelog: changelog,
+      skip_waiting_for_build_processing: changelog.nil?,
+      distribute_external: false
+    )
+  end
+
+  desc "メタデータを反映し、最新の TestFlight ビルドを App Store 審査に提出（submit:true で提出）"
+  lane :release do |options|
+    api_key = asc_api_key
+    submit = options[:submit].to_s == "true"
+
+    upload_to_app_store(
+      api_key: api_key,
+      app_identifier: APP_IDENTIFIER,
+      skip_binary_upload: true,
+      skip_screenshots: true,
+      skip_metadata: false,
+      submit_for_review: submit,
+      automatic_release: true,
+      precheck_include_in_app_purchases: false,
+      force: true,
+      submission_information: {
+        add_id_info_uses_idfa: false,
+        export_compliance_uses_encryption: false
+      }
+    )
+  end
+
+  desc "App Store のメタデータのみ更新（screenshots:true でスクショも）"
+  lane :metadata do |options|
+    api_key = asc_api_key
+    upload_to_app_store(
+      api_key: api_key,
+      app_identifier: APP_IDENTIFIER,
+      skip_binary_upload: true,
+      skip_screenshots: options[:screenshots].to_s != "true",
+      submit_for_review: false,
+      force: true,
+      precheck_include_in_app_purchases: false
+    )
   end
 end

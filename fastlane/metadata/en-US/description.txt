@@ -1,4 +1,4 @@
-MornDash makes your phone useless every morning until you actually finish your morning routine.
+MornDash makes your phone useless every morning until you actually finish your morning routine — a focus timer and app blocker for early risers.
 
 Set a wake-up time. From that moment, the distracting apps you choose are blocked. The block doesn't lift for an alarm, a snooze, or a burst of willpower — it lifts only when you check off every task on your morning list. No sound, no notifications, no shortcuts. Just you, your routine, and a phone that won't let you doomscroll in bed.
 
