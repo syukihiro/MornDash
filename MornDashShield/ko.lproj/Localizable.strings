@@ -1,0 +1,4 @@
+/* 차단된 앱 위에 표시되는 실드 화면 */
+"shield_title" = "이 앱은 잠겨 있습니다";
+"shield_attempts_today" = "오늘 열려고 한 횟수: %d";
+"shield_close" = "닫기";

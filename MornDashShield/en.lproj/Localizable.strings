@@ -1,8 +1,4 @@
 /* Shield screen shown over blocked apps */
-"shield_title" = "Today's tasks aren't done yet";
-"shield_tasks_remaining" = "%1$d to go — %2$@";
-"shield_tasks_unknown" = "Finish your morning tasks in MornDash to unlock.";
-"shield_task_separator" = ", ";
-"shield_task_more_suffix" = "…";
+"shield_title" = "This app is locked";
 "shield_attempts_today" = "Open attempts today: %d";
-"shield_close" = "Back to my routine";
+"shield_close" = "Close";

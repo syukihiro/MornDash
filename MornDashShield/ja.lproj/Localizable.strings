@@ -1,8 +1,4 @@
 /* ブロック中のアプリに被せるシールド画面 */
-"shield_title" = "今日のタスクはまだ完了していません";
-"shield_tasks_remaining" = "あと%1$d個で解除 — %2$@";
-"shield_tasks_unknown" = "MornDash で朝のタスクを完了するとロック解除。";
-"shield_task_separator" = "、";
-"shield_task_more_suffix" = " など";
-"shield_attempts_today" = "開こうとした回数：%d回";
-"shield_close" = "ルーティンに戻る";
+"shield_title" = "このアプリはロックされています";
+"shield_attempts_today" = "開こうとした回数：%d";
+"shield_close" = "閉じる";

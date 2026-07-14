@@ -1,0 +1,4 @@
+/* Schermata di blocco mostrata sopra le app bloccate */
+"shield_title" = "Questa app è bloccata";
+"shield_attempts_today" = "Tentativi di apertura oggi: %d";
+"shield_close" = "Chiudi";

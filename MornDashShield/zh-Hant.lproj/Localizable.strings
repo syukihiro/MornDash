@@ -1,0 +1,4 @@
+/* 覆蓋在被封鎖應用程式上的鎖定畫面 */
+"shield_title" = "此 App 已鎖定";
+"shield_attempts_today" = "今天嘗試開啟次數：%d";
+"shield_close" = "關閉";

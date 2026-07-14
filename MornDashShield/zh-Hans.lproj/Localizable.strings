@@ -1,0 +1,4 @@
+/* 覆盖在被拦截应用上的锁定屏幕 */
+"shield_title" = "此 App 已锁定";
+"shield_attempts_today" = "今天尝试打开次数：%d";
+"shield_close" = "关闭";

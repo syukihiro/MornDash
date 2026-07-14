@@ -1,0 +1,4 @@
+/* Shield-Bildschirm über blockierten Apps */
+"shield_title" = "Diese App ist gesperrt";
+"shield_attempts_today" = "Öffnungsversuche heute: %d";
+"shield_close" = "Schließen";

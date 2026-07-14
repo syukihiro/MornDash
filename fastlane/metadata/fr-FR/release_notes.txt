@@ -1,3 +1,3 @@
-• Détection des squats plus précise
-• Sessions de concentration et d'étude plus stables
-• Ajustements pour une routine matinale plus fiable
+• Nouvel écran de verrouillage plus épuré sur les apps bloquées : il affiche désormais combien de fois vous avez tenté de les ouvrir aujourd'hui
+• L'offre gratuite permet désormais de bloquer jusqu'à 3 apps (au lieu de 2)
+• Améliorations de stabilité et finitions

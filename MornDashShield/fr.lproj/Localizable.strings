@@ -1,0 +1,4 @@
+/* Écran de blocage affiché sur les apps bloquées */
+"shield_title" = "Cette app est verrouillée";
+"shield_attempts_today" = "Tentatives d'ouverture aujourd'hui : %d";
+"shield_close" = "Fermer";

@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		E208E13C2F9848B90080B9D3 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E208E13B2F9848B90080B9D3 /* DeviceActivity.framework */; };
 		E208E1442F9848B90080B9D3 /* MornDashMonitor.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E208E1392F9848B90080B9D3 /* MornDashMonitor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E2SHLD000000000000000002 /* MornDashShield.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E2SHLD000000000000000001 /* MornDashShield.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E208E1502F9848B90080B9D3 /* MornDashReport.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = E208E1522F9848B90080B9D3 /* MornDashReport.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E208E15D2F9848B90080B9D3 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E208E13B2F9848B90080B9D3 /* DeviceActivity.framework */; };
 		E2A1B2C3D4E5F60001000004 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = E2A1B2C3D4E5F60001000002 /* RevenueCat */; };
 		E2A1B2C3D4E5F60001000005 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = E2A1B2C3D4E5F60001000003 /* RevenueCatUI */; };
 		E2A1B2C3D4E5F60002000002 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = E2A1B2C3D4E5F60002000001 /* FirebaseCore */; };
 		E2A1B2C3D4E5F60002000004 /* FirebaseAnalyticsCore in Frameworks */ = {isa = PBXBuildFile; productRef = E2A1B2C3D4E5F60002000003 /* FirebaseAnalyticsCore */; };
+		E2SHLD000000000000000002 /* MornDashShield.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E2SHLD000000000000000001 /* MornDashShield.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,19 +99,19 @@
 			);
 			target = E208E1562F9848B90080B9D3 /* MornDashReport */;
 		};
-		E2SHLD000000000000000005 /* Exceptions for "MornDashShield" folder in "MornDashShield" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = E2SHLD00000000000000000A /* MornDashShield */;
-		};
 		E27449EA2F185E7500413322 /* Exceptions for "MornDash" folder in "MornDash" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
 			);
 			target = E27449B62F17D1B200413322 /* MornDash */;
+		};
+		E2SHLD000000000000000005 /* Exceptions for "MornDashShield" folder in "MornDashShield" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E2SHLD00000000000000000A /* MornDashShield */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -132,20 +132,20 @@
 			path = MornDashReport;
 			sourceTree = "<group>";
 		};
-		E2SHLD000000000000000006 /* MornDashShield */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				E2SHLD000000000000000005 /* Exceptions for "MornDashShield" folder in "MornDashShield" target */,
-			);
-			path = MornDashShield;
-			sourceTree = "<group>";
-		};
 		E27449B92F17D1B200413322 /* MornDash */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				E27449EA2F185E7500413322 /* Exceptions for "MornDash" folder in "MornDash" target */,
 			);
 			path = MornDash;
+			sourceTree = "<group>";
+		};
+		E2SHLD000000000000000006 /* MornDashShield */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E2SHLD000000000000000005 /* Exceptions for "MornDashShield" folder in "MornDashShield" target */,
+			);
+			path = MornDashShield;
 			sourceTree = "<group>";
 		};
 		E2TEST022F9900000080B9D3 /* MornDashTests */ = {
@@ -280,28 +280,6 @@
 			productReference = E208E1522F9848B90080B9D3 /* MornDashReport.appex */;
 			productType = "com.apple.product-type.extensionkit-extension";
 		};
-		E2SHLD00000000000000000A /* MornDashShield */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = E2SHLD00000000000000000B /* Build configuration list for PBXNativeTarget "MornDashShield" */;
-			buildPhases = (
-				E2SHLD000000000000000007 /* Sources */,
-				E2SHLD000000000000000008 /* Frameworks */,
-				E2SHLD000000000000000009 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				E2SHLD000000000000000006 /* MornDashShield */,
-			);
-			name = MornDashShield;
-			packageProductDependencies = (
-			);
-			productName = MornDashShield;
-			productReference = E2SHLD000000000000000001 /* MornDashShield.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		E27449B62F17D1B200413322 /* MornDash */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E27449C22F17D1B400413322 /* Build configuration list for PBXNativeTarget "MornDash" */;
@@ -332,6 +310,28 @@
 			productName = MornDash;
 			productReference = E27449B72F17D1B200413322 /* MornDash.app */;
 			productType = "com.apple.product-type.application";
+		};
+		E2SHLD00000000000000000A /* MornDashShield */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2SHLD00000000000000000B /* Build configuration list for PBXNativeTarget "MornDashShield" */;
+			buildPhases = (
+				E2SHLD000000000000000007 /* Sources */,
+				E2SHLD000000000000000008 /* Frameworks */,
+				E2SHLD000000000000000009 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E2SHLD000000000000000006 /* MornDashShield */,
+			);
+			name = MornDashShield;
+			packageProductDependencies = (
+			);
+			productName = MornDashShield;
+			productReference = E2SHLD000000000000000001 /* MornDashShield.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		E2TEST032F9900000080B9D3 /* MornDashTests */ = {
 			isa = PBXNativeTarget;
@@ -527,7 +527,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MornDashMonitor/MornDashMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 96W757Z4R8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MornDashMonitor/Info.plist;
@@ -562,7 +562,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MornDashMonitor/MornDashMonitor.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 96W757Z4R8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MornDashMonitor/Info.plist;
@@ -598,7 +598,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MornDashReport/MornDashReport.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 96W757Z4R8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MornDashReport/Info.plist;
@@ -633,7 +633,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = MornDashReport/MornDashReport.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 96W757Z4R8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MornDashReport/Info.plist;
@@ -647,77 +647,6 @@
 				);
 				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash.MornDashReport;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E2SHLD00000000000000000C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = MornDashShield/MornDashShield.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 96W757Z4R8;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MornDashShield/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MornDashShield;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash.MornDashShield;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		E2SHLD00000000000000000D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = MornDashShield/MornDashShield.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 96W757Z4R8;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MornDashShield/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = MornDashShield;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash.MornDashShield;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -864,7 +793,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MornDash/MornDash.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 96W757Z4R8;
 				ENABLE_APP_SANDBOX = YES;
@@ -914,7 +843,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MornDash/MornDash.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 96W757Z4R8;
 				ENABLE_APP_SANDBOX = YES;
@@ -957,12 +886,83 @@
 			};
 			name = Release;
 		};
+		E2SHLD00000000000000000C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MornDashShield/MornDashShield.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = 96W757Z4R8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MornDashShield/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MornDashShield;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash.MornDashShield;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E2SHLD00000000000000000D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MornDashShield/MornDashShield.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = 96W757Z4R8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MornDashShield/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MornDashShield;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash.MornDashShield;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		E2TEST092F9900000080B9D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 96W757Z4R8;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
@@ -983,7 +983,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = 96W757Z4R8;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
@@ -1020,15 +1020,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E2SHLD00000000000000000B /* Build configuration list for PBXNativeTarget "MornDashShield" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E2SHLD00000000000000000C /* Debug */,
-				E2SHLD00000000000000000D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		E27449B22F17D1B200413322 /* Build configuration list for PBXProject "MornDash" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1043,6 +1034,15 @@
 			buildConfigurations = (
 				E27449C32F17D1B400413322 /* Debug */,
 				E27449C42F17D1B400413322 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2SHLD00000000000000000B /* Build configuration list for PBXNativeTarget "MornDashShield" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2SHLD00000000000000000C /* Debug */,
+				E2SHLD00000000000000000D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
