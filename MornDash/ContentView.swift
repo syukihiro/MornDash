@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FamilyControls
+import StoreKit
 
 struct ContentView: View {
     @StateObject private var viewModel = HomeViewModel()
@@ -19,6 +20,7 @@ struct ContentView: View {
     @State private var selectedTab: Int = 0
     @State private var showPostOnboardingPaywall = false
     @Environment(\.scenePhase) private var scenePhase
+    @Environment(\.requestReview) private var requestReview
     @EnvironmentObject private var subscriptionManager: SubscriptionManager
     @Environment(\.accentTheme) private var accentTheme
 
@@ -35,6 +37,7 @@ struct ContentView: View {
             }
         }
         .task {
+            await AnalyticsService.waitUntilConfigured()
             subscriptionManager.syncFirebaseAttribution()
             await subscriptionManager.refresh()
             blockManager.applyFreePlanCategoryRestrictionIfNeeded()
@@ -98,7 +101,7 @@ struct ContentView: View {
                 viewModel.syncShield(blockManager: blockManager)
             }
         }
-        .fullScreenCover(isPresented: $viewModel.showRoutineCompleteCelebration) {
+        .fullScreenCover(isPresented: $viewModel.showRoutineCompleteCelebration, onDismiss: maybeRequestReview) {
             RoutineCompleteCelebrationView(
                 streak: viewModel.streakStore.currentStreak,
                 style: viewModel.routineCelebrationStyle,
@@ -106,7 +109,7 @@ struct ContentView: View {
                 onDismiss: { viewModel.dismissRoutineCompleteCelebration() }
             )
         }
-        .fullScreenCover(item: $viewModel.pendingBadge) { badge in
+        .fullScreenCover(item: $viewModel.pendingBadge, onDismiss: maybeRequestReview) { badge in
             BadgeCelebrationView(
                 badge: badge,
                 streak: viewModel.streakStore.currentStreak,
@@ -128,6 +131,15 @@ struct ContentView: View {
                     showGlow: showGlow
                 )
             }
+        }
+    }
+
+    /// 完了/バッジのセレブレーションが閉じ切った後、ストリーク節目なら App Store 評価を求める。
+    private func maybeRequestReview() {
+        guard let milestone = viewModel.consumeReviewPromptIfReady() else { return }
+        AnalyticsService.logReviewRequested(milestone: milestone)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+            requestReview()
         }
     }
 

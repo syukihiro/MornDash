@@ -20,6 +20,7 @@ class HomeViewModel: ObservableObject {
 
     private var pendingBadgeQueue: [Badge] = []
     private var badgesUnlockedThisCompletion: [Badge] = []
+    private var reviewMilestonePending: Int?
     private var cancellables = Set<AnyCancellable>()
 
     init() {
@@ -129,6 +130,7 @@ class HomeViewModel: ObservableObject {
                 badgesUnlockedThisCompletion = newlyUnlocked
                 celebrationBadge = newlyUnlocked.first
                 showRoutineCompleteCelebration = true
+                reviewMilestonePending = ReviewPromptStore.milestoneToPrompt(forStreak: streak)
             }
             blockManager.clearShield()
         }
@@ -155,6 +157,15 @@ class HomeViewModel: ObservableObject {
     private func presentNextBadgeIfNeeded() {
         guard pendingBadge == nil, !pendingBadgeQueue.isEmpty else { return }
         pendingBadge = pendingBadgeQueue.removeFirst()
+    }
+
+    /// セレブレーションがすべて閉じた後に呼ぶ。評価リクエストを出すべき節目なら一度だけその値を返す。
+    func consumeReviewPromptIfReady() -> Int? {
+        guard !showRoutineCompleteCelebration, pendingBadge == nil,
+              let milestone = reviewMilestonePending else { return nil }
+        reviewMilestonePending = nil
+        ReviewPromptStore.markPrompted(milestone)
+        return milestone
     }
 
     func giveUp(blockManager: BlockManager) {

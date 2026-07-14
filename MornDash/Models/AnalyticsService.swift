@@ -1,30 +1,52 @@
 import Foundation
 import FirebaseAnalytics
+import StoreKit
 
 /// Centralized Firebase Analytics events for funnel and revenue tracking.
 enum AnalyticsService {
 
     /// `false` on Simulator and TestFlight so those sessions never pollute production metrics.
-    static var isCollectionEnabled: Bool {
-        #if targetEnvironment(simulator)
-        return false
-        #else
-        // TestFlight (and Xcode-installed sandbox builds) use `sandboxReceipt`.
-        if Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt" {
-            return false
-        }
-        return true
-        #endif
-    }
+    /// Resolved asynchronously in `configureCollection()`; stays `false` until then.
+    private(set) static var isCollectionEnabled = false
+
+    private static var configurationTask: Task<Void, Never>?
 
     /// Call once after `FirebaseApp.configure()`. Disables automatic + manual collection when not production.
     static func configureCollection() {
-        let enabled = isCollectionEnabled
+        #if targetEnvironment(simulator) || DEBUG
+        applyCollectionEnabled(false)
+        #else
+        configurationTask = Task {
+            applyCollectionEnabled(await isProductionEnvironment())
+        }
+        #endif
+    }
+
+    /// 環境判定の完了を待つ。`isCollectionEnabled` を判定後に参照したい呼び出し元用。
+    static func waitUntilConfigured() async {
+        await configurationTask?.value
+    }
+
+    private static func applyCollectionEnabled(_ enabled: Bool) {
+        isCollectionEnabled = enabled
         Analytics.setAnalyticsCollectionEnabled(enabled)
         #if DEBUG
         print("[Analytics] collection enabled: \(enabled)")
         #endif
     }
+
+    #if !targetEnvironment(simulator) && !DEBUG
+    /// App Store 本番インストールなら true。TestFlight は `.sandbox`、Xcode 直インストールは `.xcode`。
+    /// 環境を取得できなかった場合は従来挙動(sandboxReceipt なし=本番)に合わせて true。
+    /// (App Store / TestFlight 経由なら署名済み AppTransaction が端末内に必ずあるため、失敗は実質起きない)
+    private static func isProductionEnvironment() async -> Bool {
+        guard let result = try? await AppTransaction.shared else { return true }
+        switch result {
+        case .verified(let transaction), .unverified(let transaction, _):
+            return transaction.environment == .production
+        }
+    }
+    #endif
 
     // MARK: - Onboarding
 
@@ -100,6 +122,11 @@ enum AnalyticsService {
 
     static func logGiveUp(streak: Int) {
         log("give_up", ["streak": streak])
+    }
+
+    /// ストリーク節目で App Store 評価リクエストを表示したとき(YouTrainy と同じイベント名)。
+    static func logReviewRequested(milestone: Int) {
+        log("app_store_review_requested", ["milestone": milestone])
     }
 
     // MARK: - User properties
