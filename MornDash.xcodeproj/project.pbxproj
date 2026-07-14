@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E208E13C2F9848B90080B9D3 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E208E13B2F9848B90080B9D3 /* DeviceActivity.framework */; };
 		E208E1442F9848B90080B9D3 /* MornDashMonitor.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E208E1392F9848B90080B9D3 /* MornDashMonitor.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E2SHLD000000000000000002 /* MornDashShield.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E2SHLD000000000000000001 /* MornDashShield.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E208E1502F9848B90080B9D3 /* MornDashReport.appex in Embed ExtensionKit Extensions */ = {isa = PBXBuildFile; fileRef = E208E1522F9848B90080B9D3 /* MornDashReport.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E208E15D2F9848B90080B9D3 /* DeviceActivity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E208E13B2F9848B90080B9D3 /* DeviceActivity.framework */; };
 		E2A1B2C3D4E5F60001000004 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = E2A1B2C3D4E5F60001000002 /* RevenueCat */; };
@@ -32,6 +33,13 @@
 			remoteGlobalIDString = E208E1562F9848B90080B9D3;
 			remoteInfo = MornDashReport;
 		};
+		E2SHLD000000000000000003 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E27449AF2F17D1B200413322 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E2SHLD00000000000000000A;
+			remoteInfo = MornDashShield;
+		};
 		E2TEST082F9900000080B9D3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E27449AF2F17D1B200413322 /* Project object */;
@@ -49,6 +57,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				E208E1442F9848B90080B9D3 /* MornDashMonitor.appex in Embed Foundation Extensions */,
+				E2SHLD000000000000000002 /* MornDashShield.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +80,7 @@
 		E208E13B2F9848B90080B9D3 /* DeviceActivity.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DeviceActivity.framework; path = System/Library/Frameworks/DeviceActivity.framework; sourceTree = SDKROOT; };
 		E208E1522F9848B90080B9D3 /* MornDashReport.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = MornDashReport.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E27449B72F17D1B200413322 /* MornDash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MornDash.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2SHLD000000000000000001 /* MornDashShield.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MornDashShield.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2TEST012F9900000080B9D3 /* MornDashTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MornDashTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -88,6 +98,13 @@
 				Info.plist,
 			);
 			target = E208E1562F9848B90080B9D3 /* MornDashReport */;
+		};
+		E2SHLD000000000000000005 /* Exceptions for "MornDashShield" folder in "MornDashShield" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E2SHLD00000000000000000A /* MornDashShield */;
 		};
 		E27449EA2F185E7500413322 /* Exceptions for "MornDash" folder in "MornDash" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -113,6 +130,14 @@
 				E208E1532F9848B90080B9D3 /* Exceptions for "MornDashReport" folder in "MornDashReport" target */,
 			);
 			path = MornDashReport;
+			sourceTree = "<group>";
+		};
+		E2SHLD000000000000000006 /* MornDashShield */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E2SHLD000000000000000005 /* Exceptions for "MornDashShield" folder in "MornDashShield" target */,
+			);
+			path = MornDashShield;
 			sourceTree = "<group>";
 		};
 		E27449B92F17D1B200413322 /* MornDash */ = {
@@ -158,6 +183,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2SHLD000000000000000008 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E2TEST052F9900000080B9D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,6 +215,7 @@
 				E2TEST022F9900000080B9D3 /* MornDashTests */,
 				E208E13D2F9848B90080B9D3 /* MornDashMonitor */,
 				E208E1542F9848B90080B9D3 /* MornDashReport */,
+				E2SHLD000000000000000006 /* MornDashShield */,
 				E208E13A2F9848B90080B9D3 /* Frameworks */,
 				E27449B82F17D1B200413322 /* Products */,
 			);
@@ -195,6 +228,7 @@
 				E2TEST012F9900000080B9D3 /* MornDashTests.xctest */,
 				E208E1392F9848B90080B9D3 /* MornDashMonitor.appex */,
 				E208E1522F9848B90080B9D3 /* MornDashReport.appex */,
+				E2SHLD000000000000000001 /* MornDashShield.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,6 +280,28 @@
 			productReference = E208E1522F9848B90080B9D3 /* MornDashReport.appex */;
 			productType = "com.apple.product-type.extensionkit-extension";
 		};
+		E2SHLD00000000000000000A /* MornDashShield */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E2SHLD00000000000000000B /* Build configuration list for PBXNativeTarget "MornDashShield" */;
+			buildPhases = (
+				E2SHLD000000000000000007 /* Sources */,
+				E2SHLD000000000000000008 /* Frameworks */,
+				E2SHLD000000000000000009 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				E2SHLD000000000000000006 /* MornDashShield */,
+			);
+			name = MornDashShield;
+			packageProductDependencies = (
+			);
+			productName = MornDashShield;
+			productReference = E2SHLD000000000000000001 /* MornDashShield.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E27449B62F17D1B200413322 /* MornDash */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E27449C22F17D1B400413322 /* Build configuration list for PBXNativeTarget "MornDash" */;
@@ -261,6 +317,7 @@
 			dependencies = (
 				E208E1432F9848B90080B9D3 /* PBXTargetDependency */,
 				E208E1592F9848B90080B9D3 /* PBXTargetDependency */,
+				E2SHLD000000000000000004 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				E27449B92F17D1B200413322 /* MornDash */,
@@ -318,6 +375,9 @@
 					E27449B62F17D1B200413322 = {
 						CreatedOnToolsVersion = 26.2;
 					};
+					E2SHLD00000000000000000A = {
+						CreatedOnToolsVersion = 26.2;
+					};
 					E2TEST032F9900000080B9D3 = {
 						CreatedOnToolsVersion = 26.2;
 						TestTargetID = E27449B62F17D1B200413322;
@@ -357,6 +417,7 @@
 				E2TEST032F9900000080B9D3 /* MornDashTests */,
 				E208E1382F9848B90080B9D3 /* MornDashMonitor */,
 				E208E1562F9848B90080B9D3 /* MornDashReport */,
+				E2SHLD00000000000000000A /* MornDashShield */,
 			);
 		};
 /* End PBXProject section */
@@ -377,6 +438,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		E27449B52F17D1B200413322 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E2SHLD000000000000000009 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -414,6 +482,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E2SHLD000000000000000007 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E2TEST042F9900000080B9D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -433,6 +508,11 @@
 			isa = PBXTargetDependency;
 			target = E208E1562F9848B90080B9D3 /* MornDashReport */;
 			targetProxy = E208E1512F9848B90080B9D3 /* PBXContainerItemProxy */;
+		};
+		E2SHLD000000000000000004 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E2SHLD00000000000000000A /* MornDashShield */;
+			targetProxy = E2SHLD000000000000000003 /* PBXContainerItemProxy */;
 		};
 		E2TEST072F9900000080B9D3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -459,7 +539,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash.MornDashMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -494,7 +574,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash.MornDashMonitor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -530,7 +610,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash.MornDashReport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -565,8 +645,79 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash.MornDashReport;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E2SHLD00000000000000000C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MornDashShield/MornDashShield.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 96W757Z4R8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MornDashShield/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MornDashShield;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash.MornDashShield;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		E2SHLD00000000000000000D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = MornDashShield/MornDashShield.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 96W757Z4R8;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MornDashShield/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = MornDashShield;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash.MornDashShield;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -738,7 +889,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -788,7 +939,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 15.7;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDash;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
@@ -815,7 +966,7 @@
 				DEVELOPMENT_TEAM = 96W757Z4R8;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDashTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -836,7 +987,7 @@
 				DEVELOPMENT_TEAM = 96W757Z4R8;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = danchi.MornDashTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -865,6 +1016,15 @@
 			buildConfigurations = (
 				E208E15A2F9848B90080B9D3 /* Debug */,
 				E208E15B2F9848B90080B9D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E2SHLD00000000000000000B /* Build configuration list for PBXNativeTarget "MornDashShield" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2SHLD00000000000000000C /* Debug */,
+				E2SHLD00000000000000000D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

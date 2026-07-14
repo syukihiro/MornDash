@@ -115,6 +115,14 @@ struct TaskStore: Codable {
         if let data = try? JSONEncoder().encode(self) {
             UserDefaults.standard.set(data, forKey: Self.saveKey)
         }
+        mirrorToSharedStorage()
+    }
+
+    /// シールド拡張が残タスクを表示できるよう App Group へ軽量コピーを書く。
+    func mirrorToSharedStorage() {
+        SharedStorage.saveTaskSnapshot(tasks.map {
+            SharedStorage.TaskSnapshot(title: $0.title, lastCompletedDate: $0.lastCompletedDate)
+        })
     }
 
     static func load() -> TaskStore {
@@ -139,6 +147,8 @@ struct TaskStore: Codable {
                     migrated.tasks[index].focusSessionStartedAt = nil
                 }
             }
+            // 既存ユーザーがアップデート直後でもシールド拡張から残タスクが見えるよう、起動時にもミラーする
+            migrated.mirrorToSharedStorage()
             return migrated
         }
         return TaskStore(tasks: [
