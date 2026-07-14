@@ -210,9 +210,9 @@
 "onboarding_apps_desc" = "From yesterday’s list if shown, or use Select Apps.";
 "onboarding_apps_yesterday_label" = "Yesterday";
 "onboarding_apps_free_footer" = "Free: up to %d items. Categories need Pro.";
-"onboarding_apps_limit_title" = "2 apps on the free plan";
+"onboarding_apps_limit_title" = "%d apps on the free plan";
 "onboarding_apps_limit_message" = "You've reached the free limit. Upgrade to Pro to block unlimited apps, categories, and websites.";
-"onboarding_apps_limit_keep_free" = "Keep 2 apps for now";
+"onboarding_apps_limit_keep_free" = "Keep %d apps for now";
 "onboarding_apps_limit_categories_title" = "Categories need Pro";
 "onboarding_apps_limit_categories_message" = "Blocking entire app categories is a Pro feature. Pick individual apps on the free plan, or upgrade.";
 "onboarding_select_apps" = "Select Apps";

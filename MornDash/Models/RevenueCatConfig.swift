@@ -11,7 +11,7 @@ enum RevenueCatConfig {
     static let freeTaskLimit = 3
     static let freeTimerTaskLimit = 1
     static let freeStatsHistoryDays = 7
-    static let freeBlockedAppsLimit = 2
+    static let freeBlockedAppsLimit = 3
 
     static let termsOfServiceURL = URL(string: "https://nostalgic-calendula-e60.notion.site/MornDash-Terms-of-Service-390484266af481a28e07de0a9f4ac201")!
     static let privacyPolicyURL = URL(string: "https://nostalgic-calendula-e60.notion.site/MornDash-Privacy-Policy-390484266af4816e9185eeddb06fd2e0")!

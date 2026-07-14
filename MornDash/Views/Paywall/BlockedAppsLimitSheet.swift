@@ -27,7 +27,7 @@ struct BlockedAppsLimitSheet: View {
                 .padding(.top, 8)
 
             VStack(spacing: 10) {
-                Text(titleKey)
+                Text(title)
                     .font(.system(size: 22, weight: .bold, design: .rounded))
                     .multilineTextAlignment(.center)
                     .foregroundColor(MornDashColors.labelPrimary(colorScheme))
@@ -64,7 +64,7 @@ struct BlockedAppsLimitSheet: View {
                 .buttonStyle(.plain)
 
                 Button(action: onDismiss) {
-                    Text(dismissKey)
+                    Text(dismissTitle)
                         .font(.system(size: 15, weight: .medium))
                         .foregroundColor(MornDashColors.labelSecondary(colorScheme))
                 }
@@ -86,12 +86,15 @@ struct BlockedAppsLimitSheet: View {
         }
     }
 
-    private var titleKey: LocalizedStringKey {
+    private var title: String {
         switch reason {
         case .appLimit:
-            return "onboarding_apps_limit_title"
+            return String(
+                format: NSLocalizedString("onboarding_apps_limit_title", comment: ""),
+                RevenueCatConfig.freeBlockedAppsLimit
+            )
         case .categories:
-            return "onboarding_apps_limit_categories_title"
+            return NSLocalizedString("onboarding_apps_limit_categories_title", comment: "")
         }
     }
 
@@ -104,12 +107,15 @@ struct BlockedAppsLimitSheet: View {
         }
     }
 
-    private var dismissKey: LocalizedStringKey {
+    private var dismissTitle: String {
         switch reason {
         case .appLimit:
-            return "onboarding_apps_limit_keep_free"
+            return String(
+                format: NSLocalizedString("onboarding_apps_limit_keep_free", comment: ""),
+                RevenueCatConfig.freeBlockedAppsLimit
+            )
         case .categories:
-            return "common_ok"
+            return NSLocalizedString("common_ok", comment: "")
         }
     }
 }

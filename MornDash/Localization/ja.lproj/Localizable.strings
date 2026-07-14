@@ -210,9 +210,9 @@
 "onboarding_apps_desc" = "一覧が出ればタップ。出なければ下のボタン。";
 "onboarding_apps_yesterday_label" = "昨日";
 "onboarding_apps_free_footer" = "無料: 最大%d個。カテゴリーはPro。";
-"onboarding_apps_limit_title" = "無料プランは2個まで";
+"onboarding_apps_limit_title" = "無料プランは%d個まで";
 "onboarding_apps_limit_message" = "無料プランの上限に達しました。Proならアプリ・カテゴリ・Webサイトを無制限にブロックできます。";
-"onboarding_apps_limit_keep_free" = "2個のまま続ける";
+"onboarding_apps_limit_keep_free" = "%d個のまま続ける";
 "onboarding_apps_limit_categories_title" = "カテゴリーブロックはPro限定";
 "onboarding_apps_limit_categories_message" = "アプリのカテゴリーをまとめてブロックするにはProが必要です。無料プランでは個別のアプリを選んでください。";
 "onboarding_select_apps" = "アプリを選択";
